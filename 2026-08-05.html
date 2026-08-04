@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>今週の論文 2026-08-05</title>
+<style>
+  :root{
+    --ground:#FBFAF8; --card:#FFFFFF; --line:#E8E4DC; --ink:#1E1C19; --muted:#6C665C;
+    --faint:#9A9389; --accent:#7A5C2E; --accent-bg:#F5EFE3;
+    --sans: system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{--ground:#14130F; --card:#1C1A16; --line:#2E2A24; --ink:#EDE9E1; --muted:#A79F93;
+      --faint:#7C7468; --accent:#C9A468; --accent-bg:#252017;}
+  }
+  :root[data-theme="light"]{--ground:#FBFAF8; --card:#FFFFFF; --line:#E8E4DC; --ink:#1E1C19;
+    --muted:#6C665C; --faint:#9A9389; --accent:#7A5C2E; --accent-bg:#F5EFE3;}
+  :root[data-theme="dark"]{--ground:#14130F; --card:#1C1A16; --line:#2E2A24; --ink:#EDE9E1;
+    --muted:#A79F93; --faint:#7C7468; --accent:#C9A468; --accent-bg:#252017;}
+  /* Phone-first, same scale as the weekly digest: 16px body, no justify (it opens rivers in
+     Japanese at narrow widths), generous side padding, tappable links. */
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0}
+  .wrap{background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:16px;
+    line-height:1.9;-webkit-font-smoothing:antialiased;padding:1.5rem 1.15rem 4rem;
+    min-height:100vh}
+  .inner{max-width:34rem;margin:0 auto}
+  .eyebrow{font-size:.72rem;letter-spacing:.16em;color:var(--faint);text-transform:uppercase;
+    margin:0 0 .5rem}
+  h1{font-size:1.34rem;font-weight:700;line-height:1.55;margin:0 0 .5rem;text-wrap:balance}
+  .meta{font-size:.84rem;color:var(--muted);margin:0 0 1.15rem;line-height:1.75}
+  .oneline{background:var(--accent-bg);border-left:3px solid var(--accent);
+    border-radius:0 10px 10px 0;padding:.9rem .95rem;font-size:1rem;font-weight:600;
+    line-height:1.8;margin:0 0 1.5rem}
+  .hook{font-size:1rem;color:var(--ink);margin:0 0 1.9rem}
+  /* 本文中の小見出し（h2 のセクション見出しより一段下） */
+  .sh{font-size:.95rem;font-weight:700;color:var(--ink);margin:1.4rem 0 .55rem;
+    padding-left:.6rem;border-left:3px solid var(--accent);line-height:1.6}
+  .sh:first-child{margin-top:0}
+  .blist{list-style:none;margin:0 0 1rem;padding:0;display:flex;flex-direction:column;
+    gap:.5rem}
+  .blist li{position:relative;padding-left:1.1rem;line-height:1.85;font-size:.97rem}
+  .blist li::before{content:"";position:absolute;left:.2rem;top:.78em;width:.32rem;
+    height:.32rem;border-radius:50%;background:var(--accent)}
+  .find .dt p, .app .ac p{margin:0 0 .6rem}
+  .find .dt p:last-child, .app .ac p:last-child{margin-bottom:0}
+  h2{font-size:.76rem;font-weight:700;letter-spacing:.14em;color:var(--accent);
+    margin:2rem 0 .8rem;padding-bottom:.45rem;border-bottom:1px solid var(--line)}
+  p{margin:0 0 .95rem;font-size:1rem}
+  p:last-child{margin-bottom:0}
+  .find{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:1rem .95rem;margin-bottom:.75rem}
+  .find .pt{font-size:1rem;font-weight:700;line-height:1.65;margin-bottom:.4rem}
+  .find .dt{font-size:.94rem;color:var(--muted);line-height:1.85}
+  .apply{display:flex;flex-direction:column;gap:.75rem}
+  .app{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:.95rem}
+  .app .sc{font-size:.74rem;font-weight:700;color:var(--accent);letter-spacing:.06em;
+    margin-bottom:.35rem}
+  .app .ac{font-size:.97rem;line-height:1.85}
+  .limits{background:var(--card);border:1px dashed var(--line);border-radius:12px;
+    padding:1rem .95rem;font-size:.95rem;color:var(--muted);line-height:1.85}
+  .src{display:inline-block;margin-top:1.7rem;font-size:.86rem;color:var(--muted);
+    text-decoration:none;border:1px solid var(--line);border-radius:9px;
+    padding:.6rem .8rem;line-height:1.5;word-break:break-word}
+  .src:hover{color:var(--accent);border-color:var(--accent)}
+  footer{margin-top:2.4rem;padding-top:1.1rem;border-top:1px solid var(--line);
+    font-size:.78rem;color:var(--faint);line-height:1.7}
+  a:focus-visible,.src:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="inner">
+  <p class="eyebrow">Paper of the week</p>
+  <h1>研究が指す望ましい物価上昇は年0.6%――2%目標を777推定で数え直す</h1>
+  <p class="meta">Matej Opatrny, Martin Opatrny, Tomas Havranek, Zuzana Irsova, Mojmir Hampl / 2026 / 経済学（金融政策／メタ分析＝研究の研究）
+    <br>Optimal Inflation Rate: A Meta-Analysis (arXiv:2608.00567v1)</p>
+  <div class="oneline">文献の答えは年0.6%。だが2%が誤りとまでは言い切れない</div>
+  <div class="hook"><p>「物価は年2%上がるのが望ましい」――これは日銀を含む主要国の中央銀行が掲げてきた共通の物差しです。経営の現場でも、値上げの幅や賃上げの水準を決めるとき、この2%が暗黙の基準として効いています。</p><p>ところがこの2%に、研究の裏付けがどれだけあるのかを総ざらいした人はいませんでした。研究ごとに前提のモデルが違い、出てくる数字もバラバラで、単純に足して割ることができなかったからです。</p><p>この論文は1989年から2026年までの116本の研究、777個の推定値を集めて数え直しました。文献が指す答えは年0.6%。2%の3分の1以下です。</p><p>読む価値があるのは、著者たちが「だから2%は間違いだ」とは言わない点です。差が出た理由を分解し、どこまでが確かでどこからが分からないかを線引きしています。数字が割れたときに何を疑うべきかという、経営判断そのものの型がここにあります。</p></div>
+
+  <h2>問い</h2>
+  <p>問い自体は単純です。「長い目で見て、物価は年に何%上がるのが一番望ましいのか」。</p><p>しかしこれが難しいのは、答えを出すのに複数の困難が重なるからです。</p><ul class="blist"><li>研究ごとに前提とする経済のモデルが違い、出てきた数字を並べて平均する意味がない</li><li>望ましい値を低く出した研究と高く出した研究の、どちらが世に出やすかったかが分からない</li><li>比べる物差しである公式の物価指数そのものに測定の誤差があり、基準が揺れている</li></ul><p>これまでの研究は、個々のモデルを精緻にする方向で進んできました。ある前提を置けばこの数字、別の前提ならあの数字、という積み上げです。</p><p>足りなかったのは、文献全体としてどこで意見が割れているのかを数えた仕事でした。この論文はそこを埋めにいっています。</p>
+
+  <h2>どう調べたか</h2>
+  <h3 class="sh">集めた範囲</h3><p>1989年から2026年までに公表された116本の研究から、777個の推定値を集めました。著者らによれば、この主題では過去最大の規模です。</p><p>論文本体は62ページ、図は4点です。</p><h3 class="sh">数字の集め方（ここが新しい）</h3><p>元データの抜き出しを、最初から最後まで大規模言語モデル（生成AI）の処理手順に任せています。経済学のメタ分析でこれを端から端まで行ったのは、著者らの知る限り初期の事例です。</p><p>ただしAIに丸投げしたわけではありません。</p><ul class="blist"><li>人が手作業で分類した訓練用のデータを先に作る</li><li>そのデータに合わせてAIの抽出を較正する</li><li>手順を文書化し、後から誰でも追試できる形で公開する</li></ul><p>この設計にした理由は、数百本の論文から前提条件まで人手で拾うと作業量が膨大になるうえ、拾い方のブレが結論を左右してしまうからです。ブレを消せないなら、記録を残して検証可能にするという発想です。</p><h3 class="sh">割れ方の分解</h3><p>研究間で数字がばらつく原因を測るため、構造的な条件の全体に「ベイズモデル平均」をかけました。説明の候補となる要因の組み合わせを総当たりで試し、それぞれの効き目を重み付けする手法です。</p><h3 class="sh">都合のいい報告がないかの検査</h3><p>2%という目標値のすぐ上に推定値が不自然に固まっていないかを、分布の形だけを見る検定（キャリパー検定）で調べています。</p><p>もし研究者が2%に合う結果を選んで発表していたなら、2%付近に山ができるはずだ、という考え方です。交絡をここで潰しにいっています。</p><h3 class="sh">論文からは不明な部分</h3><p>116本が対象とする国や時代の内訳、0.6%という値の幅（信頼区間）、ベイズモデル平均に投入した要因の本数、キャリパー検定の窓の幅は、参照できた情報からは分かりません。</p>
+
+  <h2>分かったこと</h2>
+  <div class="find"><div class="pt">文献が指す望ましい物価上昇率は年0.6%。中央銀行の2%より大幅に低い</div><div class="dt"><p>777個の推定値を統合した結果、望ましい長期の物価上昇率は年0.6%ポイント程度でした。</p><p>これは主要先進国の中央銀行が掲げる2%の3分の1以下です。差は誤差の範囲ではなく、方向がはっきりした開きです。</p><p>ただし著者はこの数字を単独で持ち出すことを戒めています。あくまで「これまでに書かれた研究群が指し示す中心」であって、政策の正解として提示されたものではありません。</p><p>数字そのものより、2%という広く共有された前提が、研究の蓄積とは別のところで決まってきた可能性を示した点に意味があります。</p></div></div><div class="find"><div class="pt">著者自身が「だから2%が間違い」とは言い切らない</div><div class="dt"><p>論文は、この差を2%目標への有罪判決として自動的に読むな、と明記しています。</p><p>理由は物価指数の測定誤差です。公表される物価指数には元々ズレがあり、そのズレは0.6と2の差を縮めることも、広げることも、符号ごと逆転させることもありえます。</p><p>さらに厄介なのは、必要な補正がプラス方向なのかマイナス方向なのかを、既存の理論研究自体が特定できていない点です。</p><p>つまり「文献の中心は0.6だった」という事実は確かでも、「だから目標は下げるべきだ」という結論には橋が架かっていません。ここを混ぜないのがこの論文の誠実さです。</p></div></div><div class="find"><div class="pt">数字のばらつきは「都合のいい結果を選んだから」ではなかった</div><div class="dt"><p>研究によって答えが違うとき、まず疑われるのは選択的な報告です。望ましい結果が出た分析だけを世に出す、という行動です。</p><p>ベイズモデル平均で調べた結果、研究間の差を説明していたのは選択的報告ではなく、実際のモデル設計の選択でした。</p><p>補強として、2%のすぐ上に推定値が固まる現象（上方バンチング）も検出されませんでした。目標値に寄せた報告が横行していれば、そこに山ができるはずですが、なかったということです。</p><p>結論が割れていても、割れ方が正直だったという診断になります。</p></div></div><div class="find"><div class="pt">意見の割れ目は4つの設計選択に集約される</div><div class="dt"><p>数字を動かしていた主な要因は、次の4つでした。</p><ul class="blist"><li>金融政策の基準をどこに置くか（現金保有に不利を課さない「フリードマン・ルール」か、放任か）</li><li>お金のやり取りにかかる手間や摩擦を、どう表現するか</li><li>どんな種類の変動が起きる世界を想定するか</li><li>価格や賃金の動きにくさを、どの契約の型で表すか</li></ul><p>いずれも研究者が最初に置く前提であって、データから決まるものではありません。</p><p>裏返せば、前提を揃えれば数字はかなり収束するということです。文献の混乱は、無秩序ではなく設計の分岐だったと分解されました。</p></div></div><div class="find"><div class="pt">文献の読み取り自体をAIに任せ、人手の見本で較正し、記録を公開した</div><div class="dt"><p>この論文は結論とは別に、作業の方法そのものを成果として出しています。</p><p>116本からの元データ抽出を、生成AIの処理手順で最初から最後まで実行しました。経済学のメタ分析としては早い事例です。</p><p>担保の取り方は3点です。人が手で分類した訓練データを先に用意すること、それに照らしてAIの出力を較正すること、手順を公開して他人が再現できるようにすること。</p><p>AIを使ったかどうかではなく、使ったうえで検証可能にした点が要になっています。</p></div></div>
+
+  <h2>なぜそうなるのか</h2>
+  <h3 class="sh">なぜ望ましい物価上昇はゼロでないのか</h3><p>理屈だけを追えば、物価は上がらないほうがよいという結論になります。現金を持っているだけで価値が目減りしないからです。この発想を突き詰めると、最適な値はマイナスにさえなりえます。</p><h3 class="sh">それでもプラスが要る理由</h3><p>現実の経済には、下向きに動きにくい仕組みがあります。</p><ul class="blist"><li>賃金と価格は下げにくい。物価が上がっていれば、金額を据え置くだけで実質的な引き下げができ、調整の余地が生まれる</li><li>金利はゼロより下げにくい。平時の物価上昇率が高いほど、不況時に下げる余地が残る</li><li>値札やメニューを張り替える作業自体に手間と費用がかかる</li></ul><h3 class="sh">どこで釣り合うかが前提で動く</h3><p>「上がらないほうがよい」力と「少しは上がっていないと困る」力の綱引きが、どこで均衡するか。それを決めるのが、先に挙げた4つの設計選択です。</p><p>動きにくさをどの契約の型で表すか、どんな変動を想定するかで、釣り合う点はいくらでも動きます。だから研究ごとに数字が割れます。</p><h3 class="sh">対抗する説明をどう退けたか</h3><p>もう一つの説明は「研究者が2%に近い数字を選んで発表しているだけ」というものです。これが正しければ、文献の中心は人為的に2%へ引き寄せられているはずです。</p><p>著者はこれを、分布の形を見る検定で退けました。2%のすぐ上に推定値の山がないからです。</p><p>ばらつきの正体は不正ではなく前提の違いだった――この切り分けが論文の背骨です。</p>
+
+  <h2>自社でどう使うか</h2>
+  <div class="apply"><div class="app"><div class="sc">美容室のメニュー改定や、携帯周辺サービスの価格を見直す会議。「世の中2%くらい上がっているから」を根拠にしている場面。</div><div class="ac"><p>2%という全国の目標値を、自社の値付けの前提に使わないでください。</p><p>代わりに自社版の上昇率を出します。材料・薬剤の仕入れ、人件費、家賃、光熱費を、前年同月と並べて品目ごとに変化率を計算するだけです。</p><p>担当は店長と経理、着手は改定の2か月前。全国平均と自社の実勢がどれだけ違うかが、改定幅の根拠になります。</p><p>成功の目安は、改定後3か月の客数の落ち込みが事前に見込んだ幅に収まることです。</p></div></div><div class="app"><div class="sc">賃上げの原資が読み切れないまま、基本給を上げるか賞与で出すかを決める場面。</div><div class="ac"><p>論文が扱う「下方硬直性」は、そのまま人件費の話です。一度上げた基本給は、業績が落ちても下げられません。</p><p>確実に払い続けられる分だけを基本給に乗せ、不確実な分は賞与・手当・一時金に振り分けてください。</p><p>判断の材料は、直近3年で最も悪かった年の粗利です。その水準でも払える額が基本給の上限になります。</p><p>決めるのはオーナー、時期は年度の賃金改定の1か月前。翌年に減額交渉が発生しなければ設計は成功です。</p></div></div><div class="app"><div class="sc">店舗間・部門間で売上予測や実績の数字が食い違い、誰かが盛っているのではと疑いが出る場面。</div><div class="ac"><p>この論文の手順をそのまま真似てください。数字が割れたとき、著者はまず「都合のいい報告」を疑い、検定して退けたうえで、割れ方を前提の違いに分解しました。</p><p>実務では、疑う前に定義を揃えます。客数の数え方、対象期間、キャンペーン込みか否か、税込か税抜か。この4点を書き出して突き合わせるだけで、大半の食い違いは消えます。</p><p>本部の担当が月次会議の前に実施し、残った差だけを議題に上げる運用にしてください。</p></div></div><div class="app"><div class="sc">請求書・日報・アンケートなどの読み取りや集計を、AIにやらせようとしている場面。</div><div class="ac"><p>この論文のやり方が、そのまま導入の型になります。</p><ul class="blist"><li>人が手作業で処理した見本を、先に数十件つくる</li><li>AIの出力をその見本と突き合わせ、ズレる箇所を洗い出して指示を調整する</li><li>使った指示文と結果を残し、後から誰でも検証できるようにする</li></ul><p>順番が肝心です。見本を作らずに走らせると、間違っていることに気づけません。</p><p>本部の担当が2週間かけて較正し、その後は月1回の抜き取り再検査へ移行します。人手との一致率が目標に届いたら本番投入という判断でよいでしょう。</p></div></div></div>
+
+  <h2>どこまで言えるか</h2>
+  <div class="limits"><p>この研究が扱っているのは、中央銀行が掲げる物価目標という国の政策の話です。個々の店舗が明日いくら値上げすべきかを示すものではありません。</p><p>また「長い目で見て望ましい水準」であって、今年の物価が何%になるかという予測でもありません。0.6%という数字を、そのまま経営の前提に持ち込まないでください。</p><p>著者自身が、物価指数の測定誤差によって結論が縮みも広がりも逆転もしうると書いています。この留保は本文の中心に置かれており、脚注ではありません。</p><p>116本の研究がどの国・どの時代を対象にしているかの内訳は、参照できた情報からは不明です。日本の長いデフレ期がどれだけ含まれているかも分かりません。欧米中心であれば、賃金が長く動かなかった日本の実情とは前提が違います。</p><p>抽出をAIで行った手法そのものが新しく、他の研究者による追試はこれからです。手法が公開されている点は強みですが、検証済みという意味ではありません。</p><p>加えて、沖縄や福岡の物価と人手不足の実勢は全国平均ともさらに違います。全国の数字を地域の判断に直輸入しないこと自体が、この論文から引き出せる姿勢です。</p></div>
+
+  <a class="src" href="https://arxiv.org/abs/2608.00567" target="_blank" rel="noopener">arXiv econ.GN ↗</a>
+  <footer>論文の内容を実務向けに解説したものです。「自社でどう使うか」は本記事による解釈で、
+  原論文の主張ではありません。判断の前に出典をご確認ください。</footer>
+</div></div>
+</body>
+</html>
