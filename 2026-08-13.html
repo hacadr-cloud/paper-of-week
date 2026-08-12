@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>今週の論文 2026-08-13</title>
+<style>
+  :root{
+    --ground:#FBFAF8; --card:#FFFFFF; --line:#E8E4DC; --ink:#1E1C19; --muted:#6C665C;
+    --faint:#9A9389; --accent:#7A5C2E; --accent-bg:#F5EFE3;
+    --sans: system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{--ground:#14130F; --card:#1C1A16; --line:#2E2A24; --ink:#EDE9E1; --muted:#A79F93;
+      --faint:#7C7468; --accent:#C9A468; --accent-bg:#252017;}
+  }
+  :root[data-theme="light"]{--ground:#FBFAF8; --card:#FFFFFF; --line:#E8E4DC; --ink:#1E1C19;
+    --muted:#6C665C; --faint:#9A9389; --accent:#7A5C2E; --accent-bg:#F5EFE3;}
+  :root[data-theme="dark"]{--ground:#14130F; --card:#1C1A16; --line:#2E2A24; --ink:#EDE9E1;
+    --muted:#A79F93; --faint:#7C7468; --accent:#C9A468; --accent-bg:#252017;}
+  /* Phone-first, same scale as the weekly digest: 16px body, no justify (it opens rivers in
+     Japanese at narrow widths), generous side padding, tappable links. */
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0}
+  .wrap{background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:16px;
+    line-height:1.9;-webkit-font-smoothing:antialiased;padding:1.5rem 1.15rem 4rem;
+    min-height:100vh}
+  .inner{max-width:34rem;margin:0 auto}
+  .eyebrow{font-size:.72rem;letter-spacing:.16em;color:var(--faint);text-transform:uppercase;
+    margin:0 0 .5rem}
+  h1{font-size:1.34rem;font-weight:700;line-height:1.55;margin:0 0 .5rem;text-wrap:balance}
+  .meta{font-size:.84rem;color:var(--muted);margin:0 0 1.15rem;line-height:1.75}
+  .oneline{background:var(--accent-bg);border-left:3px solid var(--accent);
+    border-radius:0 10px 10px 0;padding:.9rem .95rem;font-size:1rem;font-weight:600;
+    line-height:1.8;margin:0 0 1.5rem}
+  .hook{font-size:1rem;color:var(--ink);margin:0 0 1.9rem}
+  /* 本文中の小見出し（h2 のセクション見出しより一段下） */
+  .sh{font-size:.95rem;font-weight:700;color:var(--ink);margin:1.4rem 0 .55rem;
+    padding-left:.6rem;border-left:3px solid var(--accent);line-height:1.6}
+  .sh:first-child{margin-top:0}
+  .blist{list-style:none;margin:0 0 1rem;padding:0;display:flex;flex-direction:column;
+    gap:.5rem}
+  .blist li{position:relative;padding-left:1.1rem;line-height:1.85;font-size:.97rem}
+  .blist li::before{content:"";position:absolute;left:.2rem;top:.78em;width:.32rem;
+    height:.32rem;border-radius:50%;background:var(--accent)}
+  .find .dt p, .app .ac p{margin:0 0 .6rem}
+  .find .dt p:last-child, .app .ac p:last-child{margin-bottom:0}
+  h2{font-size:.76rem;font-weight:700;letter-spacing:.14em;color:var(--accent);
+    margin:2rem 0 .8rem;padding-bottom:.45rem;border-bottom:1px solid var(--line)}
+  p{margin:0 0 .95rem;font-size:1rem}
+  p:last-child{margin-bottom:0}
+  .find{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:1rem .95rem;margin-bottom:.75rem}
+  .find .pt{font-size:1rem;font-weight:700;line-height:1.65;margin-bottom:.4rem}
+  .find .dt{font-size:.94rem;color:var(--muted);line-height:1.85}
+  .apply{display:flex;flex-direction:column;gap:.75rem}
+  .app{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:.95rem}
+  .app .sc{font-size:.74rem;font-weight:700;color:var(--accent);letter-spacing:.06em;
+    margin-bottom:.35rem}
+  .app .ac{font-size:.97rem;line-height:1.85}
+  .limits{background:var(--card);border:1px dashed var(--line);border-radius:12px;
+    padding:1rem .95rem;font-size:.95rem;color:var(--muted);line-height:1.85}
+  .src{display:inline-block;margin-top:1.7rem;font-size:.86rem;color:var(--muted);
+    text-decoration:none;border:1px solid var(--line);border-radius:9px;
+    padding:.6rem .8rem;line-height:1.5;word-break:break-word}
+  .src:hover{color:var(--accent);border-color:var(--accent)}
+  footer{margin-top:2.4rem;padding-top:1.1rem;border-top:1px solid var(--line);
+    font-size:.78rem;color:var(--faint);line-height:1.7}
+  a:focus-visible,.src:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+.fav{appearance:none;-webkit-appearance:none;cursor:pointer;display:inline-flex;
+  align-items:center;justify-content:center;gap:6px;min-width:44px;min-height:44px;
+  padding:0 12px;border-radius:999px;font:inherit;font-size:14px;font-weight:600;
+  background:var(--surface,#fff);color:var(--ink-mut,#6b7280);
+  border:1px solid var(--line,#e5e7eb);line-height:1;}
+.fav:hover{border-color:#f0b429;color:#b26b00;}
+.fav[aria-pressed="true"]{background:#fff8e6;border-color:#f0b429;color:#b26b00;}
+.fav .ic{font-size:16px;line-height:1;}
+.fav-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:14px 0 6px;}
+.fav-bar a.all{font-size:13.5px;color:var(--ink-mut,#6b7280);text-decoration:none;
+  min-height:44px;display:inline-flex;align-items:center;}
+.fav-bar a.all:hover{text-decoration:underline;}
+.fav-mini{appearance:none;-webkit-appearance:none;cursor:pointer;background:none;border:0;
+  padding:6px 8px;margin-left:2px;font-size:15px;line-height:1;color:#c3c8d0;
+  min-width:36px;min-height:36px;}
+.fav-mini[aria-pressed="true"]{color:#f0b429;}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="inner">
+  <p class="eyebrow">Paper of the week</p>
+  <h1>競争相手は同業他社だけではない——業界の儲けは5つの力で決まる</h1>
+  <p class="meta">Michael E. Porter / 1979 / 戦略
+    <br>How Competitive Forces Shape Strategy</p>
+  <div class="fav-bar"><button class="fav" data-fav data-url="https://hacadr-cloud.github.io/paper-of-week/2026-08-13.html" data-title="競争相手は同業他社だけではない——業界の儲けは5つの力で決まる" data-kind="paper" data-date="2026-08-13" aria-pressed="false"><span class="ic">☆</span><span class="tx">あとで読む</span></button><a class="all" href="favorites.html">保存した記事を見る →</a></div>
+  <div class="oneline">儲けを削る5つの力のうち、最も強いものが業界の利益の上限を決める</div>
+  <div class="hook"><p>当時、競争といえば目の前の同業他社との値引き合戦とシェア争いのことだった。戦略論も「自社の強みを機会に当てる」という一般論にとどまっていた。</p><p>一方で、業界構造を分析する経済学（産業組織論）は存在したが、それは「独占をどう規制するか」を考える政府側の学問だった。</p><p>ポーターはこの道具を反転させ、規制する側ではなく企業の側が使えるものに作り替えた。そのうえで「あなたの利益を削っているのは同業他社だけではない」と宣言した。買い手も、供給者も、まだ来ていない新規参入者も、別の手段で同じ用を足す代替品も、同じ利益を奪い合う競争者だと定義し直した。</p><p>数十年たっても引用され続ける理由は、結論ではなく問いの立て方にある。</p><ul class="blist"><li>儲かる業界と儲からない業界の差を、経営者の努力の差に帰さずに説明した</li><li>しかもその説明を、観察できる条件のチェックリストに落とした</li><li>個別の業界分析は数年で古びるが、「どこを見るか」の目録は業界が変わっても使える</li></ul></div>
+
+  <h2>問い</h2>
+  <p>この論文が答えようとしたのは、次の問いである。なぜある業界は何十年も高い利益率を保ち、別の業界はどれだけ努力しても薄利のままなのか。そして個々の企業は、その構造の中でどこに位置を取るべきなのか。</p><p>これが難しい問いなのは、素直な答えがどれも説明になっていないからだ。</p><ul class="blist"><li>「経営が下手だから」では、下手な経営者ばかりが特定の業界に集まる理由を説明できない</li><li>「競争が激しいから」も循環論法になる。なぜその業界だけ激しいのかが問われている</li><li>競争圧力の多くは目に見えない。値下げ合戦が起きていない業界でも、起きうるという圧力だけで価格は抑えられている</li></ul><p>さらに、経済学は業界を「完全競争か独占か」という両極で語ってきた。現実の業界はほぼ全部その中間にある。中間のどこにいるのかを測る物差しが無かった。</p>
+
+  <h2>どう組み立てられているか</h2>
+  <p>まず押さえるべき点がある。**これはデータを取った実証研究ではない。** 概念論文であり、実務家向け雑誌に載った枠組みの提示である。</p><ul class="blist"><li>サンプルも、統計分析も、仮説検定も無い</li><li>何社を何年追ったという調査は行われていない</li><li>したがって「この理論は検証済みだ」とは言えない</li></ul><p>置かれている前提は2つ。</p><ul class="blist"><li>業界が生みうる利益の上限は、5つの競争圧力の「集合的な強さ」で決まる</li><li>業界は完全競争（誰も超過利益を得られない）と独占（利益が守られる）を両端とする一本の線上のどこかにあり、構造要因がその位置を決める</li></ul><p>論の組み立て方はこうなっている。</p><ul class="blist"><li>利益を削る経路を5つに分類する（参入・買い手・供給者・代替品・既存の敵対）</li><li>各経路について「どういう条件のときその力が強くなるか」を列挙する</li><li>その条件を、外から観察できるもの（集中度、固定費の重さ、切り替え費用、規模の経済など）に限定する</li></ul><p>証拠として使われているのは、素材・容器・消費財・機械といった各種業界の断片的な挿話である。ただしそれらは枠組みを例証するための例示であって、枠組みの正しさを検証したものではない。</p><p>結論への接続も明快だ。5つのうち**最も強い力**が、その業界の収益性を支配する。だから戦略とは、最も強い力から守られる位置を取るか、力の配置そのものを変えるか、力の変化に先回りするか、の3通りになる。</p>
+
+  <h2>主張の中身</h2>
+  <div class="find"><div class="pt">新規参入の脅威——高い利益は資本を呼び寄せ、参入が利益を平準化する</div><div class="dt"><p>儲かっていることが外から見えれば、資本と新しい競争者が入ってくる。参入者は生産能力を持ち込み、シェアを取りに来るので、価格は下がるかコストは上がる。</p><p>つまり業界の利益が持続するかどうかは、「入りたい者を入れない仕組み」があるかで決まる。ポーターはその仕組みを6つ挙げた。</p><ul class="blist"><li>規模の経済——小さく入ると単位あたりコストで負ける</li><li>製品の差別化——既存ブランドへの愛着を崩すには先行投資が要る</li><li>必要な資本量——特に広告や研究開発のような回収不能な支出</li><li>切り替え費用——顧客が乗り換えるときに負担する手間・訓練・設備</li><li>流通経路の確保——棚や販路が既に押さえられている</li><li>規模と無関係のコスト優位——特許、原料への有利なアクセス、立地、経験の蓄積</li></ul><p>これに加えて、政府の規制と「既存企業がどう報復すると予想されるか」も障壁として働く。過去に激しく報復した実績がある業界には、そもそも誰も入ってこない。</p></div></div><div class="find"><div class="pt">買い手の交渉力——顧客は値下げと品質向上を要求し、業界の利益を吸い上げる</div><div class="dt"><p>買い手は業界の敵ではないが、業界が生んだ余剰の取り分を争う相手ではある。値下げ、品質向上、サービス追加の要求は、すべて業界側の利益を削る方向に働く。</p><p>買い手が強くなるのは次の条件が揃うときである。</p><ul class="blist"><li>買い手が少数に集中している、または一社あたりの購入量が大きい</li><li>買っているものが標準品で、他所からでも同じものが手に入る</li><li>その購入品が買い手のコストの大きな割合を占める（だから真剣に値切る）</li><li>買い手自身の利益率が低い（コストに敏感にならざるを得ない）</li><li>その部品が買い手の最終製品の品質を左右しない（安いもので済ませられる）</li><li>買い手が自分で作れる、あるいは作ると言える（川上への統合の脅し）</li></ul><p>逆に、買っているものが買い手の製品の出来を決定的に左右する場合、買い手は価格より確実性を優先する。ここが交渉力の分かれ目になる。</p></div></div><div class="find"><div class="pt">供給者の交渉力——値上げか品質低下という形で、上流が利益を持ち帰る</div><div class="dt"><p>供給者の力は買い手の力の裏返しである。値上げできる供給者、あるいは品質を落としても取引が切れない供給者は、その分だけ下流の利益を吸い上げている。</p><p>供給者が強くなる条件は次のとおり。</p><ul class="blist"><li>供給側が少数の企業に集中しており、買う側より集中度が高い</li><li>その供給品に代替が無い</li><li>その業界が供給者にとって重要な顧客ではない（切られても痛くない）</li><li>供給品が買い手の事業に不可欠、または切り替え費用が高い</li><li>供給者が川下へ統合してくる可能性がある</li></ul><p>ポーターがここで注意を促しているのは、**労働力も供給者として数えるべきだ**という点である。技能が希少で組織化されている労働は、供給者と同じ論理で交渉力を持ち、業界の利益を持ち帰る。原材料や部品だけを供給者と考えると、この経路が見えなくなる。</p></div></div><div class="find"><div class="pt">代替品の脅威——別の手段で同じ用を足すものが、価格の天井を作る</div><div class="dt"><p>代替品とは、同じ業界の似た商品のことではない。**まったく違う手段で顧客の同じ用事を片付けてしまうもの**を指す。</p><p>この力の効き方は他の4つと少し違う。取り分を奪うのではなく、業界全体が設定できる価格に上限を課す。値上げすれば顧客はそちらへ流れるので、価格を上げられなくなる。</p><p>特に警戒すべき代替品として、次の2種類が挙げられる。</p><ul class="blist"><li>価格と性能の比が、自分たちの製品に対して改善し続けているもの</li><li>高い利益を上げている業界が作っているもの——余力があるので、価格を下げてでも攻めてくる</li></ul><p>代替品が厄介なのは、業界の中を見ていると気づけないところにある。同業他社の動きだけを追っていると、天井が下がってきていることに最後まで気づかない。</p></div></div><div class="find"><div class="pt">既存企業間の敵対——値下げ合戦は余剰を顧客に流出させ、誰も得をしない</div><div class="dt"><p>同業他社との争いは、価格競争、広告合戦、新製品投入、サービス競争として現れる。価格競争がとりわけ危険なのは、業界全体の利益をまとめて減らすからである。追随されれば全員の値段が下がり、顧客だけが得をする。</p><p>敵対が激しくなるのは次の条件のときである。</p><ul class="blist"><li>競争企業が多数、または規模と力が拮抗している</li><li>業界の成長が遅い（伸びない市場では、シェアは奪い合うしかない）</li><li>固定費や在庫費用が重い（稼働率を埋めるため値引きの誘惑が強い）</li><li>差別化も切り替え費用も無い</li><li>生産能力を増やすとき、大きな単位でしか増やせない（増設のたびに供給過剰になる）</li><li>競争相手の出自や戦略がばらばらで、暗黙の了解が成立しない</li><li>その事業への戦略的な賭け金が大きい（赤字でも撤退できない）</li></ul><p>そして**退出障壁**。特殊すぎて転用できない設備、退職金や労働協約に伴う撤退費用、他事業との相互依存、経営者の感情、政府や地域社会からの圧力。退出障壁が高い業界では、負けている企業も出ていかない。過剰能力が居座り、利益は全員にとって低いまま固定される。</p></div></div>
+
+  <h2>なぜそうなるのか</h2>
+  <p>なぜ構造が利益を決めるのか。理屈はきわめて単純な分配の話に還元できる。</p><p>業界が生む余剰は有限である。顧客が払う額と、投入に払う額の差。それが業界に残りうる利益の総量になる。5つの力は、この総量を削るか、取り分を持ち去るかのどちらかとして働く。</p><p>削り方が力ごとに違う。</p><ul class="blist"><li>買い手と供給者は「取り分」を奪う——余剰の総量は変わらないが、業界の手元に残る額が減る</li><li>参入と代替品は「価格の上限」を作る——超過利益が出ても、それが長く続かない</li><li>既存の敵対は「余剰そのものを顧客へ流す」——値下げ合戦は、誰の懐にも入らない形で利益を消す</li></ul><p>次に、なぜ利益は放っておくと消えるのか。**超過利益は信号だからである。** 儲かっていることが外から見えれば、資本と人が入ってくる。だから高い利益が長く続いている業界には必ず「見えているのに入れない理由」がある。参入障壁とは、その理由を分類したものにほかならない。障壁の高さは、そのまま利益の耐久年数になる。</p><p>交渉力の正体も、突き詰めれば非対称性ひとつに還元できる。</p><ul class="blist"><li>相手にとって自分が取り替え可能で、自分にとって相手が取り替え不能なら、条件は相手が決める</li><li>集中度の差も、切り替え費用も、代替の有無も、この非対称性を作る具体的な経路にすぎない</li></ul><p>ここから、この論文で最も実用的な結論が出てくる。**最も強い1つの力が、業界の収益性を支配する。** 5つのうち4つが弱くても、1つが極端に強ければ、利益はそこから漏れ出す。堤防で水位を決めるのは、一番低い場所である。</p><p>そして戦略の3つのモードもここから導かれる。最も強い力から守られる位置を取る（防御）。力の配置そのものを動かす（能動）。構造の変化を先に読んで動く（先回り）。どれを選ぶにせよ、まず「どの力が一番強いか」を特定しなければ始まらない。</p>
+
+  <h2>どこまで言えるか</h2>
+  <div class="limits"><p>この枠組みには、指摘され続けてきた限界がある。</p><p>**静態的であること。** 撮れるのはある時点のスナップショットで、構造が動く速度そのものは扱えない。技術や規制が数年で前提を書き換える領域では、分析が終わる頃に対象が変わっている。</p><p>**業界の境界が恣意的であること。** どこまでを同じ業界とみなすかは分析者が決める。境界を変えれば集中度も代替品の顔ぶれも変わり、結論が変わる。枠組み自体は境界の引き方を教えてくれない。</p><p>**補完財が抜けていること。** ブランデンバーガーとネイルバフは1996年に、自社製品の価値を高める補完者を「第6の力」として加えるべきだと論じた。これに対しポーター自身は2008年の改訂稿で、補完財は6番目の力ではなく5つの力それぞれに作用する要因だと位置づけ直している。</p><p>**業界より企業のほうが効く、という実証からの反撃。** 1980年代以降の資源ベース観（ワーナーフェルト1984、バーニー1991）は、収益差の源泉を業界構造ではなく企業固有の資源と能力に求めた。収益率のばらつきを要因分解する研究でも、業界に所属していることで説明できる部分より、個々の事業単位に固有の要因で説明できる部分のほうが大きいという結果が繰り返し得られている。同じ業界の中に、儲かる企業と儲からない企業が併存する事実は、構造だけでは説明できない。</p><p>**対立を前提にしていること。** 提携、共同開発、エコシステム、両面プラットフォームでは、同じ相手が買い手であり供給者であり補完者でもある。力を5つに切り分ける前提が崩れる。</p><p>なお2008年の改訂で、ポーター自身がよくある誤用も否定している。業界の成長率・技術・政府は力そのものではなく、力に作用する要因にすぎない。「成長している業界だから魅力的」という読み方は、この枠組みの結論ではない。</p></div>
+
+  <a class="src" href="https://scholar.google.com/scholar?q=How%20Competitive%20Forces%20Shape%20Strategy" target="_blank" rel="noopener">Harvard Business Reviewを探す ↗</a>
+  <footer>経営学の古典を実務家向けに解説したものです。解釈は本記事によるもので、原典の記述
+  そのものではありません。判断の前に原典をご確認ください。</footer>
+</div></div>
+<script>
+(function(){
+  var KEY = "lsm-favs-v1";
+  function load(){ try { return JSON.parse(localStorage.getItem(KEY)) || []; }
+                   catch(e){ return []; } }
+  function save(v){ try { localStorage.setItem(KEY, JSON.stringify(v)); } catch(e){} }
+  function has(url){ return load().some(function(x){ return x.url === url; }); }
+  function paint(b){
+    var on = has(b.dataset.url);
+    b.setAttribute("aria-pressed", on ? "true" : "false");
+    var ic = b.querySelector(".ic"), tx = b.querySelector(".tx");
+    if (ic) ic.textContent = on ? "\u2605" : "\u2606";
+    if (tx) tx.textContent = on ? "保存済み" : "あとで読む";
+    if (!ic && !tx) b.textContent = on ? "\u2605" : "\u2606";
+  }
+  function toggle(b){
+    var d = b.dataset, list = load(), i = list.findIndex(function(x){ return x.url === d.url; });
+    if (i >= 0) list.splice(i, 1);
+    else list.unshift({url:d.url, title:d.title||d.url, kind:d.kind||"", date:d.date||"",
+                       note:d.note||"", saved:new Date().toISOString().slice(0,10)});
+    save(list); paint(b);
+    if (window.renderFavs) window.renderFavs();
+  }
+  function wire(){
+    var bs = document.querySelectorAll("[data-fav]");
+    for (var i = 0; i < bs.length; i++){
+      (function(b){ paint(b); b.addEventListener("click", function(e){
+        e.preventDefault(); e.stopPropagation(); toggle(b); }); })(bs[i]);
+    }
+  }
+  window.favStore = {load:load, save:save, has:has};
+  if (document.readyState === "loading")
+    document.addEventListener("DOMContentLoaded", wire);
+  else wire();
+})();
+</script>
+</body>
+</html>
