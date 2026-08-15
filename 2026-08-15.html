@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>今週の論文 2026-08-15</title>
+<style>
+  :root{
+    --ground:#FBFAF8; --card:#FFFFFF; --line:#E8E4DC; --ink:#1E1C19; --muted:#6C665C;
+    --faint:#9A9389; --accent:#7A5C2E; --accent-bg:#F5EFE3;
+    --sans: system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{--ground:#14130F; --card:#1C1A16; --line:#2E2A24; --ink:#EDE9E1; --muted:#A79F93;
+      --faint:#7C7468; --accent:#C9A468; --accent-bg:#252017;}
+  }
+  :root[data-theme="light"]{--ground:#FBFAF8; --card:#FFFFFF; --line:#E8E4DC; --ink:#1E1C19;
+    --muted:#6C665C; --faint:#9A9389; --accent:#7A5C2E; --accent-bg:#F5EFE3;}
+  :root[data-theme="dark"]{--ground:#14130F; --card:#1C1A16; --line:#2E2A24; --ink:#EDE9E1;
+    --muted:#A79F93; --faint:#7C7468; --accent:#C9A468; --accent-bg:#252017;}
+  /* Phone-first, same scale as the weekly digest: 16px body, no justify (it opens rivers in
+     Japanese at narrow widths), generous side padding, tappable links. */
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0}
+  .wrap{background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:16px;
+    line-height:1.9;-webkit-font-smoothing:antialiased;padding:1.5rem 1.15rem 4rem;
+    min-height:100vh}
+  .inner{max-width:34rem;margin:0 auto}
+  .eyebrow{font-size:.72rem;letter-spacing:.16em;color:var(--faint);text-transform:uppercase;
+    margin:0 0 .5rem}
+  h1{font-size:1.34rem;font-weight:700;line-height:1.55;margin:0 0 .5rem;text-wrap:balance}
+  .meta{font-size:.84rem;color:var(--muted);margin:0 0 1.15rem;line-height:1.75}
+  .oneline{background:var(--accent-bg);border-left:3px solid var(--accent);
+    border-radius:0 10px 10px 0;padding:.9rem .95rem;font-size:1rem;font-weight:600;
+    line-height:1.8;margin:0 0 1.5rem}
+  .hook{font-size:1rem;color:var(--ink);margin:0 0 1.9rem}
+  /* 本文中の小見出し（h2 のセクション見出しより一段下） */
+  .sh{font-size:.95rem;font-weight:700;color:var(--ink);margin:1.4rem 0 .55rem;
+    padding-left:.6rem;border-left:3px solid var(--accent);line-height:1.6}
+  .sh:first-child{margin-top:0}
+  .blist{list-style:none;margin:0 0 1rem;padding:0;display:flex;flex-direction:column;
+    gap:.5rem}
+  .blist li{position:relative;padding-left:1.1rem;line-height:1.85;font-size:.97rem}
+  .blist li::before{content:"";position:absolute;left:.2rem;top:.78em;width:.32rem;
+    height:.32rem;border-radius:50%;background:var(--accent)}
+  .find .dt p, .app .ac p{margin:0 0 .6rem}
+  .find .dt p:last-child, .app .ac p:last-child{margin-bottom:0}
+  h2{font-size:.76rem;font-weight:700;letter-spacing:.14em;color:var(--accent);
+    margin:2rem 0 .8rem;padding-bottom:.45rem;border-bottom:1px solid var(--line)}
+  p{margin:0 0 .95rem;font-size:1rem}
+  p:last-child{margin-bottom:0}
+  .find{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:1rem .95rem;margin-bottom:.75rem}
+  .find .pt{font-size:1rem;font-weight:700;line-height:1.65;margin-bottom:.4rem}
+  .find .dt{font-size:.94rem;color:var(--muted);line-height:1.85}
+  .apply{display:flex;flex-direction:column;gap:.75rem}
+  .app{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:.95rem}
+  .app .sc{font-size:.74rem;font-weight:700;color:var(--accent);letter-spacing:.06em;
+    margin-bottom:.35rem}
+  .app .ac{font-size:.97rem;line-height:1.85}
+  .limits{background:var(--card);border:1px dashed var(--line);border-radius:12px;
+    padding:1rem .95rem;font-size:.95rem;color:var(--muted);line-height:1.85}
+  .src{display:inline-block;margin-top:1.7rem;font-size:.86rem;color:var(--muted);
+    text-decoration:none;border:1px solid var(--line);border-radius:9px;
+    padding:.6rem .8rem;line-height:1.5;word-break:break-word}
+  .src:hover{color:var(--accent);border-color:var(--accent)}
+  footer{margin-top:2.4rem;padding-top:1.1rem;border-top:1px solid var(--line);
+    font-size:.78rem;color:var(--faint);line-height:1.7}
+  a:focus-visible,.src:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+.fav{appearance:none;-webkit-appearance:none;cursor:pointer;display:inline-flex;
+  align-items:center;justify-content:center;gap:6px;min-width:44px;min-height:44px;
+  padding:0 12px;border-radius:999px;font:inherit;font-size:14px;font-weight:600;
+  background:var(--surface,#fff);color:var(--ink-mut,#6b7280);
+  border:1px solid var(--line,#e5e7eb);line-height:1;}
+.fav:hover{border-color:#f0b429;color:#b26b00;}
+.fav[aria-pressed="true"]{background:#fff8e6;border-color:#f0b429;color:#b26b00;}
+.fav .ic{font-size:16px;line-height:1;}
+.fav-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:14px 0 6px;}
+.fav-bar a.all{font-size:13.5px;color:var(--ink-mut,#6b7280);text-decoration:none;
+  min-height:44px;display:inline-flex;align-items:center;}
+.fav-bar a.all:hover{text-decoration:underline;}
+.fav-mini{appearance:none;-webkit-appearance:none;cursor:pointer;background:none;border:0;
+  padding:6px 8px;margin-left:2px;font-size:15px;line-height:1;color:#c3c8d0;
+  min-width:36px;min-height:36px;}
+.fav-mini[aria-pressed="true"]{color:#f0b429;}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="inner">
+  <p class="eyebrow">Paper of the week</p>
+  <h1>会社が傾くのは、成功を支えた前提が現実とずれたとき</h1>
+  <p class="meta">Peter F. Drucker / 1994 / 経営全般
+    <br>The Theory of the Business</p>
+  <div class="fav-bar"><button class="fav" data-fav data-url="https://hacadr-cloud.github.io/paper-of-week/2026-08-15.html" data-title="会社が傾くのは、成功を支えた前提が現実とずれたとき" data-kind="paper" data-date="2026-08-15" aria-pressed="false"><span class="ic">☆</span><span class="tx">あとで読む</span></button><a class="all" href="favorites.html">保存した記事を見る →</a></div>
+  <div class="oneline">事業の前提は仮説にすぎず、成功しているときこそ疑うべきだ</div>
+  <div class="hook"><p>1980年代から90年代にかけて、GMやIBMのような優等生が次々に苦境に落ちた。当時の通説は「経営の質が落ちたからだ」「もっと効率よくやれ」であり、処方箋は人員削減・外注・品質管理・業務再設計といった手法だった。</p><p>ドラッカーはそれを正面から否定する。彼らは間違ったことをしていたのではない。**正しいことを正しくやって、それが実らなくなった**のだと。</p><p>原因は現場の実行力ではなく、事業を支えてきた前提そのものが現実と食い違ったことにある——この診断が本稿の核心だ。</p><p>数十年たっても引用され続けるのは、「うまくいっているのに、なぜか成果が細っていく」という状態を説明できる数少ない枠組みだからである。</p></div>
+
+  <h2>問い</h2>
+  <p>この論文が答えようとした問いは、こうだ。</p><ul class="blist"><li>なぜ、優れた経営陣が、優れた実行をして、負けるのか。</li><li>なぜ、危機の前兆はたいてい「失敗」ではなく「成功」の形をとるのか。</li></ul><p>難しいのは、原因が行動ではなく**前提**にあるからだ。前提は書かれていない。会議で議論されない。</p><p>それは業績指標・組織図・予算配分・昇進の基準に染み込んでいて、当事者にとっては「考え方」ではなく「当たり前の現実」として見えている。</p><p>しかも、その前提はかつて正しかった。だからこそ会社は大きくなった。自分を勝たせてくれたものを疑うのは、論理の問題ではなく心理の問題になる。</p>
+
+  <h2>どう組み立てられているか</h2>
+  <p>**これは実証研究ではない。データを集めて検証した論文ではなく、概念的な枠組みを提示した論考である。**</p><p>ドラッカーが置いた前提は一つ。組織はすべて、明示されていない「事業の理論」の上に立って動いている、というものだ。</p><p>その理論を、彼は三つの前提の束として定義する。環境についての前提、使命についての前提、中核的な能力についての前提の三つである。</p><p>論の進め方は、医学のたとえを骨格にしている。</p><ul class="blist"><li>定義（理論とは何か）</li><li>有効性の要件（健康な状態の条件）</li><li>陳腐化（発症のしくみ）</li><li>予防（症状が出る前の手当て）</li><li>早期診断（見逃してはいけない兆候）</li><li>治療（発症後にすべきこと）</li></ul><p>証拠として使われるのは、統計ではなく企業史の事例だ。中心はGMとIBMで、いずれも「かつて極めて有効だった理論が、その有効性ゆえに捨てられなくなった」例として読まれる。</p><p>対比として、シアーズ、マークス&amp;スペンサー、AT&amp;Tのように、長く機能した理論と、それを作り直した局面が挙げられる。</p><p>ただし事例は結果が出たあとから選ばれている。測定した指標も、比較対照群も、期間の設計もない。ここは読むときに割り引くべき点である。</p>
+
+  <h2>主張の中身</h2>
+  <div class="find"><div class="pt">事業の理論は「環境・使命・中核能力」という三つの前提でできている</div><div class="dt"><p>環境についての前提とは、社会の構造・市場・顧客・技術がどうなっているかの見立てだ。これが**何に対して対価を払ってもらえるか**を決める。</p><p>使命についての前提は、自分たちは何を成果とみなすかを決める。売上なのか、社会での位置なのか、特定の顧客層における地位なのか。</p><p>中核能力の前提は、その使命を果たすためにどこで抜きん出ていなければならないかを決める。</p><p>三つはばらばらの項目ではなく、一つの仮説の三面である。どれか一つが現実とずれれば、他の二つも意味を失う。</p></div></div><div class="find"><div class="pt">有効な理論には四つの条件があり、どれか一つ欠けても効かない</div><div class="dt"><p>ドラッカーが挙げる条件は次の四つだ。</p><ul class="blist"><li>三つの前提が、それぞれ現実に合っていること</li><li>三つの前提が、互いに矛盾していないこと</li><li>組織の全員に知られ、理解されていること</li><li>絶えず検証され続けていること</li></ul><p>二番目が見落とされやすい。個々の判断は正しいのに、環境の見立てと能力の前提が食い違っていれば全体は破綻する。</p><p>三番目も軽く見られる。創業期は言わなくても共有されているが、大きくなると前提は手続きに置き換わり、理由を知らないまま運用だけが残る。</p></div></div><div class="find"><div class="pt">理論の危機は、失敗ではなく「目標を達成したとき」に始まる</div><div class="dt"><p>当初の目標を達成することは、祝う理由ではなく、考え直す理由だとドラッカーは言う。</p><p>AT&amp;Tが「すべての家庭と事業所に電話を」を掲げ、それを実際に成し遂げたとき、その使命はもう組織を導く力を失っている。</p><p>急成長も同じ危険信号だ。短期間で規模が二倍・三倍になった組織は、必然的に自分の理論を追い越している。</p><p>人の数も、意思決定の距離も、顧客の顔ぶれも変わっているのに、前提だけが創業時のまま残る。うまくいっているという事実が、点検の動機を消してしまう。</p></div></div><div class="find"><div class="pt">予期せぬ成功と予期せぬ失敗は、最も早く届く警報である</div><div class="dt"><p>どちらも「自社のもの」だけでなく「競合のもの」を含む。ここが要点だ。</p><p>予期せぬ成功は、自分の前提の外側に市場があることを示している。想定していなかった顧客が買った、というのは前提が狭すぎた証拠だ。</p><p>予期せぬ失敗も同じことを裏から示す。うまくいくはずのことが効かないなら、前提そのものが現実とずれている。</p><p>ところが組織の反応はたいてい逆になる。予期せぬ成功は「たまたま」と処理され、予期せぬ失敗は「実行が甘かった」と処理される。</p><p>どちらも例外として扱われた瞬間、警報は握りつぶされる。</p></div></div><div class="find"><div class="pt">予防は二つ——三年ごとの廃棄の問いと、非顧客を見ること</div><div class="dt"><p>一つ目は廃棄である。三年ごとに、あらゆる製品・サービス・方針・販路について一つの問いを立てる。</p><p>- 「もしこれをまだやっていなかったとして、今から始めるか」</p><p>答えが否なら、追加調査ではなく「では何をやめるか」を考える。惰性で続いているものを、能動的に外に出す仕掛けだ。</p><p>二つ目は、組織の外を見ること、とりわけ**買っていない人**を見ることだ。</p><p>変化はたいてい顧客の中ではなく、顧客でない人の中で先に起きる。どんな大手でも市場の一部しか押さえておらず、既存顧客の声だけを集めれば、既存の前提が正しいという答えしか返ってこない。</p></div></div>
+
+  <h2>なぜそうなるのか</h2>
+  <p>なぜ、正しいことをやって負けるのか。順序を追うと理屈が見える。</p><p>事業の理論は、もともと現実についての**仮説**である。ある時点の社会・市場・技術を正しく捉えていたから、それに沿った行動が成果を生んだ。</p><p>成果が出ると、その前提は検証を免除される。うまくいっているものを疑う理由は、日々の業務のどこにも生まれないからだ。</p><p>そして前提は言葉から手続きへ移る。予算の配分基準、業績評価の指標、昇進する人材の型、優先される顧客の順番——すべてに前提が埋め込まれる。</p><p>ここまで来ると、前提はもう意見ではなく、組織にとっての物理法則になる。誰も選んでいないのに、全員がそれに従って動く。</p><p>一方で、前提が写し取った現実のほうは動き続ける。社会も、顧客の分かれ方も、技術も止まらない。ずれは静かに広がる。</p><p>ずれが業績に現れ始めても、組織は前提を疑わない。前提を疑う語彙を持っていないからだ。代わりに「実行が足りない」と読み、努力を増やす。</p><p>ここで最も危険なことが起きる。**正しい行動を、間違った前提の上で、より一生懸命にやる**。だから努力が成果を悪化させる。</p><p>ドラッカーが継ぎ接ぎを否定するのはこのためだ。症状ごとの手当ては前提に触れないので、直したところがまた別の場所で壊れる。必要なのは、理論そのものを組み立て直すことである。</p>
+
+  <h2>どこまで言えるか</h2>
+  <div class="limits"><p>第一に、これは実証論文ではない。前提が陳腐化したという診断は、うまくいかなくなった事実から遡って組み立てられており、**外れた予測がない代わりに、反証もできない**。</p><p>第二に、事例は結果を知ってから選ばれている。同じ前提を持ちながら生き延びた企業は数えられていないので、前提の陳腐化がどれだけ致命的かは分からない。</p><p>第三に、予後そのものが外れた例がある。本稿が末期的に描いたIBMはその後サービス企業へ転換して復活し、GMは2009年に破綻した。同じ診断から結果は分かれた。</p><p>後年の研究は、直観を残しつつ機構を特定した。プラハラッドとベティスの「支配的論理」（1986）は前提が経営陣の情報処理を縛る仕組みを、クリステンセンの破壊的イノベーション（1997）は既存顧客への合理的な対応こそが転換を妨げることを示した。</p><p>処方も修正された。ドラッカーは「古い理論を捨てて作り直せ」と説くが、オライリーとタッシュマンらの両利きの経営は、捨てるのではなく新旧を別構造で併存させる道を示している。</p></div>
+
+  <a class="src" href="https://scholar.google.com/scholar?q=The%20Theory%20of%20the%20Business" target="_blank" rel="noopener">Harvard Business Reviewを探す ↗</a>
+  <footer>経営学の古典を実務家向けに解説したものです。解釈は本記事によるもので、原典の記述
+  そのものではありません。判断の前に原典をご確認ください。</footer>
+</div></div>
+<script>
+(function(){
+  var KEY = "lsm-favs-v1";
+  function load(){ try { return JSON.parse(localStorage.getItem(KEY)) || []; }
+                   catch(e){ return []; } }
+  function save(v){ try { localStorage.setItem(KEY, JSON.stringify(v)); } catch(e){} }
+  function has(url){ return load().some(function(x){ return x.url === url; }); }
+  function paint(b){
+    var on = has(b.dataset.url);
+    b.setAttribute("aria-pressed", on ? "true" : "false");
+    var ic = b.querySelector(".ic"), tx = b.querySelector(".tx");
+    if (ic) ic.textContent = on ? "\u2605" : "\u2606";
+    if (tx) tx.textContent = on ? "保存済み" : "あとで読む";
+    if (!ic && !tx) b.textContent = on ? "\u2605" : "\u2606";
+  }
+  function toggle(b){
+    var d = b.dataset, list = load(), i = list.findIndex(function(x){ return x.url === d.url; });
+    if (i >= 0) list.splice(i, 1);
+    else list.unshift({url:d.url, title:d.title||d.url, kind:d.kind||"", date:d.date||"",
+                       note:d.note||"", saved:new Date().toISOString().slice(0,10)});
+    save(list); paint(b);
+    if (window.renderFavs) window.renderFavs();
+  }
+  function wire(){
+    var bs = document.querySelectorAll("[data-fav]");
+    for (var i = 0; i < bs.length; i++){
+      (function(b){ paint(b); b.addEventListener("click", function(e){
+        e.preventDefault(); e.stopPropagation(); toggle(b); }); })(bs[i]);
+    }
+  }
+  window.favStore = {load:load, save:save, has:has};
+  if (document.readyState === "loading")
+    document.addEventListener("DOMContentLoaded", wire);
+  else wire();
+})();
+</script>
+</body>
+</html>
