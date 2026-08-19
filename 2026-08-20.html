@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>今週の論文 2026-08-20</title>
+<style>
+  :root{
+    --ground:#FBFAF8; --card:#FFFFFF; --line:#E8E4DC; --ink:#1E1C19; --muted:#6C665C;
+    --faint:#9A9389; --accent:#7A5C2E; --accent-bg:#F5EFE3;
+    --sans: system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{--ground:#14130F; --card:#1C1A16; --line:#2E2A24; --ink:#EDE9E1; --muted:#A79F93;
+      --faint:#7C7468; --accent:#C9A468; --accent-bg:#252017;}
+  }
+  :root[data-theme="light"]{--ground:#FBFAF8; --card:#FFFFFF; --line:#E8E4DC; --ink:#1E1C19;
+    --muted:#6C665C; --faint:#9A9389; --accent:#7A5C2E; --accent-bg:#F5EFE3;}
+  :root[data-theme="dark"]{--ground:#14130F; --card:#1C1A16; --line:#2E2A24; --ink:#EDE9E1;
+    --muted:#A79F93; --faint:#7C7468; --accent:#C9A468; --accent-bg:#252017;}
+  /* Phone-first, same scale as the weekly digest: 16px body, no justify (it opens rivers in
+     Japanese at narrow widths), generous side padding, tappable links. */
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0}
+  .wrap{background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:16px;
+    line-height:1.9;-webkit-font-smoothing:antialiased;padding:1.5rem 1.15rem 4rem;
+    min-height:100vh}
+  .inner{max-width:34rem;margin:0 auto}
+  .eyebrow{font-size:.72rem;letter-spacing:.16em;color:var(--faint);text-transform:uppercase;
+    margin:0 0 .5rem}
+  h1{font-size:1.34rem;font-weight:700;line-height:1.55;margin:0 0 .5rem;text-wrap:balance}
+  .meta{font-size:.84rem;color:var(--muted);margin:0 0 1.15rem;line-height:1.75}
+  .oneline{background:var(--accent-bg);border-left:3px solid var(--accent);
+    border-radius:0 10px 10px 0;padding:.9rem .95rem;font-size:1rem;font-weight:600;
+    line-height:1.8;margin:0 0 1.5rem}
+  .hook{font-size:1rem;color:var(--ink);margin:0 0 1.9rem}
+  /* 本文中の小見出し（h2 のセクション見出しより一段下） */
+  .sh{font-size:.95rem;font-weight:700;color:var(--ink);margin:1.4rem 0 .55rem;
+    padding-left:.6rem;border-left:3px solid var(--accent);line-height:1.6}
+  .sh:first-child{margin-top:0}
+  .blist{list-style:none;margin:0 0 1rem;padding:0;display:flex;flex-direction:column;
+    gap:.5rem}
+  .blist li{position:relative;padding-left:1.1rem;line-height:1.85;font-size:.97rem}
+  .blist li::before{content:"";position:absolute;left:.2rem;top:.78em;width:.32rem;
+    height:.32rem;border-radius:50%;background:var(--accent)}
+  .find .dt p, .app .ac p{margin:0 0 .6rem}
+  .find .dt p:last-child, .app .ac p:last-child{margin-bottom:0}
+  h2{font-size:.76rem;font-weight:700;letter-spacing:.14em;color:var(--accent);
+    margin:2rem 0 .8rem;padding-bottom:.45rem;border-bottom:1px solid var(--line)}
+  p{margin:0 0 .95rem;font-size:1rem}
+  p:last-child{margin-bottom:0}
+  .find{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:1rem .95rem;margin-bottom:.75rem}
+  .find .pt{font-size:1rem;font-weight:700;line-height:1.65;margin-bottom:.4rem}
+  .find .dt{font-size:.94rem;color:var(--muted);line-height:1.85}
+  .apply{display:flex;flex-direction:column;gap:.75rem}
+  .app{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:.95rem}
+  .app .sc{font-size:.74rem;font-weight:700;color:var(--accent);letter-spacing:.06em;
+    margin-bottom:.35rem}
+  .app .ac{font-size:.97rem;line-height:1.85}
+  .limits{background:var(--card);border:1px dashed var(--line);border-radius:12px;
+    padding:1rem .95rem;font-size:.95rem;color:var(--muted);line-height:1.85}
+  .src{display:inline-block;margin-top:1.7rem;font-size:.86rem;color:var(--muted);
+    text-decoration:none;border:1px solid var(--line);border-radius:9px;
+    padding:.6rem .8rem;line-height:1.5;word-break:break-word}
+  .src:hover{color:var(--accent);border-color:var(--accent)}
+  footer{margin-top:2.4rem;padding-top:1.1rem;border-top:1px solid var(--line);
+    font-size:.78rem;color:var(--faint);line-height:1.7}
+  a:focus-visible,.src:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+.fav{appearance:none;-webkit-appearance:none;cursor:pointer;display:inline-flex;
+  align-items:center;justify-content:center;gap:6px;min-width:44px;min-height:44px;
+  padding:0 12px;border-radius:999px;font:inherit;font-size:14px;font-weight:600;
+  background:var(--surface,#fff);color:var(--ink-mut,#6b7280);
+  border:1px solid var(--line,#e5e7eb);line-height:1;}
+.fav:hover{border-color:#f0b429;color:#b26b00;}
+.fav[aria-pressed="true"]{background:#fff8e6;border-color:#f0b429;color:#b26b00;}
+.fav .ic{font-size:16px;line-height:1;}
+.fav-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:14px 0 6px;}
+.fav-bar a.all{font-size:13.5px;color:var(--ink-mut,#6b7280);text-decoration:none;
+  min-height:44px;display:inline-flex;align-items:center;}
+.fav-bar a.all:hover{text-decoration:underline;}
+.fav-mini{appearance:none;-webkit-appearance:none;cursor:pointer;background:none;border:0;
+  padding:6px 8px;margin-left:2px;font-size:15px;line-height:1;color:#c3c8d0;
+  min-width:36px;min-height:36px;}
+.fav-mini[aria-pressed="true"]{color:#f0b429;}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="inner">
+  <p class="eyebrow">Paper of the week</p>
+  <h1>命令は、受け取る側が受け入れて初めて権威になる</h1>
+  <p class="meta">Chester I. Barnard / 1938 / 組織
+    <br>The Functions of the Executive</p>
+  <div class="fav-bar"><button class="fav" data-fav data-url="https://hacadr-cloud.github.io/paper-of-week/2026-08-20.html" data-title="命令は、受け取る側が受け入れて初めて権威になる" data-kind="paper" data-date="2026-08-20" aria-pressed="false"><span class="ic">☆</span><span class="tx">あとで読む</span></button><a class="all" href="favorites.html">保存した記事を見る →</a></div>
+  <div class="oneline">組織を動かすのは職位の力ではなく、受け手の同意である。</div>
+  <div class="hook"><p>1938年当時、管理の議論の中心は上から下への統制だった。作業を標準化するテイラーの科学的管理も、規則と職位で秩序をつくるウェーバーの官僚制も、権限は職位に備わり、命令は発した瞬間に効力を持つと考えていた。</p><p>バーナードはこれを裏返した。ある命令が権威を持つかどうかを決めるのは、発する側ではなく受け取る側だと言った。受け入れられない命令は、どれだけ正式な手続きを踏んでいても権威ではない。</p><p>数十年たっても引かれ続けるのは、「人が動かない」という現象の説明を、上司の力量や部下の資質ではなく、命令が受け入れられる条件の側に置き換えたからだ。同じ問いの立て方が、心理的契約・組織コミットメント・リーダーシップの正統性研究へ引き継がれている。</p></div>
+
+  <h2>問い</h2>
+  <p>バーナードの中心の問いは「協働の仕組みは、なぜ成り立ち、なぜ短命に終わるのか」である。多くの組織が数年で消えるのに、一部は個人の寿命を超えて続く。その差はどこから来るのか。</p><p>この問いが難しいのは、組織を「人の集まり」と見ている限り答えが出ないからだ。個人は自由意思を持ち、貢献をやめる選択をいつでもできる。誰も強制的には縛られていない。</p><p>それなのに、人は自分の直接の利益にならない指示にも日常的に従う。この矛盾を、個人の自由を否定せずに説明できるか——それが問いだった。</p>
+
+  <h2>どう組み立てられているか</h2>
+  <p>★この本は実証研究ではない。統計調査も実験も行っていない。概念を組み立てた理論書である。</p><p>元になったのは、1937年にボストンのローウェル研究所で行われた連続講義。著者は学者ではなく、ニュージャージー・ベル電話会社の社長を務めた実務家で、経営の現場から出発している。</p><p>議論は、次の前提から演繹的に積み上げられる。</p><ul class="blist"><li>個人は自由意思を持ち、協働に加わるかどうかを自分で決める</li><li>しかし個人には生物的・物理的・社会的な限界があり、単独では達成できない目的がある</li><li>ゆえに人は協働を選ぶが、その協働体系は放っておけば崩れる</li></ul><p>ここから論理は一本道で進む。組織とは何かを定義し直し、成立の条件を挙げ、存続の条件を二種類に分け、権威の所在を問い、最後に経営者の職能と責任にたどり着く。</p><p>証拠として使われるのは、統計ではなく事例である。電話交換の現場、オーケストラ、軍隊、教会、職場に自然にできる仲間集団といった観察が引かれる。加えて、当時ハーバードで盛んだったパレート派の社会学や、ホーソン工場の研究をめぐる人間関係論の知見が土台にある。</p><p>つまりこの本の強さは、データの量ではなく、用語を一から定義し直して矛盾なく最後まで積み上げた点にある。</p>
+
+  <h2>主張の中身</h2>
+  <div class="find"><div class="pt">組織とは人の集まりではなく、活動の体系である</div><div class="dt"><p>バーナードは公式組織を「二人以上の人々の、意識的に調整された活動または諸力の体系」と定義した。</p><p>構成要素は人ではなく、人が提供する活動のほうだ。同じ人物が会社にも組合にも教会にも活動を提供している以上、人を数えても組織の輪郭は出ない。</p><p>この定義には実務上の含意がある。</p><ul class="blist"><li>組織の境界は、貢献を出している相手すべてに及ぶ（顧客や取引先も含みうる）</li><li>誰かが辞めても、活動が別の形で調整され続ける限り組織は残る</li><li>逆に人が全員残っていても、調整が失われた瞬間に組織は消えている</li></ul></div></div><div class="find"><div class="pt">組織が成立するには、共通目的・貢献意欲・伝達の三つが同時に要る</div><div class="dt"><p>どれか一つでも欠ければ組織は成立しない、という条件の立て方をしている。</p><ul class="blist"><li>共通目的——何のために協働するのかが共有されていること。ただし各人が目的を同じように理解している必要はなく、自分の役割との関係で理解していればよい</li><li>貢献意欲——努力を差し出す気持ち。個人の側にあり、強制はできない</li><li>伝達——目的と意欲を結びつける経路。これが無ければ、目的があっても意欲があっても活動は調整されない</li></ul><p>三つのうち伝達が実務上いちばん軽く見られる、というのがバーナードの指摘だ。目的の共有と動機づけは意識されるが、経路そのものの設計は放置されやすい。</p></div></div><div class="find"><div class="pt">権威は上位者の職位ではなく、受け手の同意にある</div><div class="dt"><p>命令が権威を持つのは、受け手がそれを受け入れたときだけである。これが受容説と呼ばれる中心命題だ。</p><p>バーナードは、命令が受け入れられるための四つの条件を挙げている。四つすべてが満たされて初めて受容が起こる。</p><ul class="blist"><li>その伝達を理解できる</li><li>組織の目的と矛盾しないと信じられる</li><li>自分自身の利害と両立すると信じられる</li><li>精神的にも肉体的にも、実際にそれに従いうる</li></ul><p>逆に言えば、意味が伝わらない指示、目的と噛み合わない指示、本人の不利益になる指示、物理的に実行不能な指示は、形式が整っていても権威にならない。</p></div></div><div class="find"><div class="pt">組織の存続条件は二つあり、達成と満足は別物である</div><div class="dt"><p>バーナードは、組織目的が達成されたかどうかを「有効性」、参加者個人の動機が満たされたかどうかを「能率」と呼んで、厳密に分けた。日常語の能率（速さ・無駄の少なさ）とは意味が違う。</p><p>組織は、参加者に与える誘因が、参加者が差し出す貢献に見合っている間だけ存続する。この釣り合いが崩れれば、目的をいくら達成していても人は抜ける。</p><ul class="blist"><li>目的を達成しているのに人が去る組織＝有効だが能率が低い</li><li>人は満足しているのに成果が出ない組織＝能率は高いが有効でない</li></ul><p>誘因には金銭だけでなく、威信・参加感・仲間との関係・理想への一体感なども含まれる。物質的誘因だけでは足りないことが多い、というのが著者の見立てだ。</p></div></div><div class="find"><div class="pt">経営者の職能は三つに絞られる</div><div class="dt"><p>個々の業務を指示することは経営者の職能に入っていない。挙げられているのは次の三つだけである。</p><ul class="blist"><li>伝達体系を維持すること。組織図を描くことではなく、経路が実際に機能するよう人を選び、配置し、士気を保つこと</li><li>組織に不可欠な努力を確保すること。人を組織との関係に引き入れ、誘因と説得によって貢献を引き出し続けること</li><li>目的と目標を定式化すること。抽象的な目的を、各階層で実行できる具体的な目標へ翻訳していくこと</li></ul><p>三つ目は上位者だけの仕事ではない、と明記されている点が特徴だ。目的の細分化は組織の全階層で分担され、下層ほど具体的な目標を扱う。</p></div></div><div class="find"><div class="pt">組織の道徳を創り出すことが、経営者責任の中身である</div><div class="dt"><p>バーナードは、経営者の判断には二つの側面があると言う。</p><ul class="blist"><li>機会主義的側面——手段を選び、状況を読み、制約の中で最も効く一点を突く判断</li><li>道徳的側面——何を正しいとするかの準則に関わる判断</li></ul><p>責任とは、自分に課した準則に従い続ける能力であり、準則同士が対立したときに裁定できることだと定義される。組織が大きく複雑になるほど、個人の中で準則の衝突は増える。</p><p>そして最上位の職能として、組織のために新しい道徳準則を創り出すことが置かれる。人を鼓舞するのは技術ではなく、この創造だとされる。ここが本書の最終章であり、同時に最も批判を集めた部分でもある。</p></div></div>
+
+  <h2>なぜそうなるのか</h2>
+  <p>受容説だけを取り出すと、組織はいつ崩れてもおかしくないように見える。誰も命令に従う義務が無いことになるからだ。バーナードはこの穴を、いくつかの仕組みで埋めている。</p><p>第一に「無関心圏」。人には、いちいち是非を考えずに受け入れてしまう命令の範囲がある。その範囲に入る指示は自動的に通る。</p><p>圏の広さは固定ではない。受け取る誘因が差し出す貢献を上回るほど広がり、下回るほど狭まる。処遇が悪化すると、以前は通っていた指示にまで理由を求められるようになるのは、このためだ。</p><p>第二に「権威の擬制」。人々は、上位の職位には権威があるという前提を、自ら進んで維持する。個人が判断責任を負わずに済み、組織が安定し、自分もその安定から利益を受けるからだ。権威は上から降りてくるように見えるが、実際には下から支えられている。</p><p>第三に非公式組織。公式の命令系統の外にできる人間関係が、伝達を助け、集団の結びつきを保ち、個人の自尊心を守る。ここが壊れると、正式な経路だけでは受容の土台が保てない。</p><p>誘因そのものが足りないときに残る手段が「説得」である。教育、宣伝、共通の目的への訴えによって、人の動機の側を変える。</p><p>こうして見ると、経営者の仕事は命令を出すことではなく、命令が受け入れられる状態を維持することになる。三つの職能が伝達・貢献・目的の定式化に絞られているのは、この理屈の帰結である。</p>
+
+  <h2>どこまで言えるか</h2>
+  <div class="limits"><p>最大の限界は、実証されていないことだ。無関心圏の広さも、誘因と貢献の釣り合いも、測定の手続きが示されていない。定義が抽象的なため、反証のしようがないという批判は早くから出ている。</p><p>受容説そのものへの批判も強い。生活がかかっている従業員に「受け入れない自由」が実際にあるのか、という点だ。ペローら組織社会学の側からは、権力・強制・階級の非対称を軽視し、結果として経営者の立場を正当化するイデオロギーになっている、と指摘された。</p><p>道徳的リーダーシップを最上位に置く最終章は、検証された命題ではなく信念の表明に近い。ここを本書の核と読むか、時代の産物と切り離して読むかで評価が割れる。</p><p>理論としての継承は、ハーバート・サイモン『経営行動』（1947）が担った。サイモンは受容説を受け継いで「受容圏」と言い換えつつ、議論の中心を経営者の道徳から、人間の限られた情報処理能力（限定合理性）に基づく意思決定へと移した。</p><p>前提となる文脈にも注意が要る。想定されているのは、長期雇用を前提とした単一組織の内部である。業務委託・短期契約・プラットフォーム型の働き方のように、抜ける自由が大きく、貢献が細かく切り売りされる関係にそのまま当てはまるかは、別に考える必要がある。</p></div>
+
+  <a class="src" href="https://scholar.google.com/scholar?q=The%20Functions%20of%20the%20Executive" target="_blank" rel="noopener">Harvard University Pressを探す ↗</a>
+  <footer>経営学の古典を実務家向けに解説したものです。解釈は本記事によるもので、原典の記述
+  そのものではありません。判断の前に原典をご確認ください。</footer>
+</div></div>
+<script>
+(function(){
+  var KEY = "lsm-favs-v1";
+  function load(){ try { return JSON.parse(localStorage.getItem(KEY)) || []; }
+                   catch(e){ return []; } }
+  function save(v){ try { localStorage.setItem(KEY, JSON.stringify(v)); } catch(e){} }
+  function has(url){ return load().some(function(x){ return x.url === url; }); }
+  function paint(b){
+    var on = has(b.dataset.url);
+    b.setAttribute("aria-pressed", on ? "true" : "false");
+    var ic = b.querySelector(".ic"), tx = b.querySelector(".tx");
+    if (ic) ic.textContent = on ? "\u2605" : "\u2606";
+    if (tx) tx.textContent = on ? "保存済み" : "あとで読む";
+    if (!ic && !tx) b.textContent = on ? "\u2605" : "\u2606";
+  }
+  function toggle(b){
+    var d = b.dataset, list = load(), i = list.findIndex(function(x){ return x.url === d.url; });
+    if (i >= 0) list.splice(i, 1);
+    else list.unshift({url:d.url, title:d.title||d.url, kind:d.kind||"", date:d.date||"",
+                       note:d.note||"", saved:new Date().toISOString().slice(0,10)});
+    save(list); paint(b);
+    if (window.renderFavs) window.renderFavs();
+  }
+  function wire(){
+    var bs = document.querySelectorAll("[data-fav]");
+    for (var i = 0; i < bs.length; i++){
+      (function(b){ paint(b); b.addEventListener("click", function(e){
+        e.preventDefault(); e.stopPropagation(); toggle(b); }); })(bs[i]);
+    }
+  }
+  window.favStore = {load:load, save:save, has:has};
+  if (document.readyState === "loading")
+    document.addEventListener("DOMContentLoaded", wire);
+  else wire();
+})();
+</script>
+</body>
+</html>
