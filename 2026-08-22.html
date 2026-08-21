@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>今週の論文 2026-08-22</title>
+<style>
+  :root{
+    --ground:#FBFAF8; --card:#FFFFFF; --line:#E8E4DC; --ink:#1E1C19; --muted:#6C665C;
+    --faint:#9A9389; --accent:#7A5C2E; --accent-bg:#F5EFE3;
+    --sans: system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{--ground:#14130F; --card:#1C1A16; --line:#2E2A24; --ink:#EDE9E1; --muted:#A79F93;
+      --faint:#7C7468; --accent:#C9A468; --accent-bg:#252017;}
+  }
+  :root[data-theme="light"]{--ground:#FBFAF8; --card:#FFFFFF; --line:#E8E4DC; --ink:#1E1C19;
+    --muted:#6C665C; --faint:#9A9389; --accent:#7A5C2E; --accent-bg:#F5EFE3;}
+  :root[data-theme="dark"]{--ground:#14130F; --card:#1C1A16; --line:#2E2A24; --ink:#EDE9E1;
+    --muted:#A79F93; --faint:#7C7468; --accent:#C9A468; --accent-bg:#252017;}
+  /* Phone-first, same scale as the weekly digest: 16px body, no justify (it opens rivers in
+     Japanese at narrow widths), generous side padding, tappable links. */
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0}
+  .wrap{background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:16px;
+    line-height:1.9;-webkit-font-smoothing:antialiased;padding:1.5rem 1.15rem 4rem;
+    min-height:100vh}
+  .inner{max-width:34rem;margin:0 auto}
+  .eyebrow{font-size:.72rem;letter-spacing:.16em;color:var(--faint);text-transform:uppercase;
+    margin:0 0 .5rem}
+  h1{font-size:1.34rem;font-weight:700;line-height:1.55;margin:0 0 .5rem;text-wrap:balance}
+  .meta{font-size:.84rem;color:var(--muted);margin:0 0 1.15rem;line-height:1.75}
+  .oneline{background:var(--accent-bg);border-left:3px solid var(--accent);
+    border-radius:0 10px 10px 0;padding:.9rem .95rem;font-size:1rem;font-weight:600;
+    line-height:1.8;margin:0 0 1.5rem}
+  .hook{font-size:1rem;color:var(--ink);margin:0 0 1.9rem}
+  /* 本文中の小見出し（h2 のセクション見出しより一段下） */
+  .sh{font-size:.95rem;font-weight:700;color:var(--ink);margin:1.4rem 0 .55rem;
+    padding-left:.6rem;border-left:3px solid var(--accent);line-height:1.6}
+  .sh:first-child{margin-top:0}
+  .blist{list-style:none;margin:0 0 1rem;padding:0;display:flex;flex-direction:column;
+    gap:.5rem}
+  .blist li{position:relative;padding-left:1.1rem;line-height:1.85;font-size:.97rem}
+  .blist li::before{content:"";position:absolute;left:.2rem;top:.78em;width:.32rem;
+    height:.32rem;border-radius:50%;background:var(--accent)}
+  .find .dt p, .app .ac p{margin:0 0 .6rem}
+  .find .dt p:last-child, .app .ac p:last-child{margin-bottom:0}
+  h2{font-size:.76rem;font-weight:700;letter-spacing:.14em;color:var(--accent);
+    margin:2rem 0 .8rem;padding-bottom:.45rem;border-bottom:1px solid var(--line)}
+  p{margin:0 0 .95rem;font-size:1rem}
+  p:last-child{margin-bottom:0}
+  .find{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:1rem .95rem;margin-bottom:.75rem}
+  .find .pt{font-size:1rem;font-weight:700;line-height:1.65;margin-bottom:.4rem}
+  .find .dt{font-size:.94rem;color:var(--muted);line-height:1.85}
+  .apply{display:flex;flex-direction:column;gap:.75rem}
+  .app{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:.95rem}
+  .app .sc{font-size:.74rem;font-weight:700;color:var(--accent);letter-spacing:.06em;
+    margin-bottom:.35rem}
+  .app .ac{font-size:.97rem;line-height:1.85}
+  .limits{background:var(--card);border:1px dashed var(--line);border-radius:12px;
+    padding:1rem .95rem;font-size:.95rem;color:var(--muted);line-height:1.85}
+  .src{display:inline-block;margin-top:1.7rem;font-size:.86rem;color:var(--muted);
+    text-decoration:none;border:1px solid var(--line);border-radius:9px;
+    padding:.6rem .8rem;line-height:1.5;word-break:break-word}
+  .src:hover{color:var(--accent);border-color:var(--accent)}
+  footer{margin-top:2.4rem;padding-top:1.1rem;border-top:1px solid var(--line);
+    font-size:.78rem;color:var(--faint);line-height:1.7}
+  a:focus-visible,.src:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+.fav{appearance:none;-webkit-appearance:none;cursor:pointer;display:inline-flex;
+  align-items:center;justify-content:center;gap:6px;min-width:44px;min-height:44px;
+  padding:0 12px;border-radius:999px;font:inherit;font-size:14px;font-weight:600;
+  background:var(--surface,#fff);color:var(--ink-mut,#6b7280);
+  border:1px solid var(--line,#e5e7eb);line-height:1;}
+.fav:hover{border-color:#f0b429;color:#b26b00;}
+.fav[aria-pressed="true"]{background:#fff8e6;border-color:#f0b429;color:#b26b00;}
+.fav .ic{font-size:16px;line-height:1;}
+.fav-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:14px 0 6px;}
+.fav-bar a.all{font-size:13.5px;color:var(--ink-mut,#6b7280);text-decoration:none;
+  min-height:44px;display:inline-flex;align-items:center;}
+.fav-bar a.all:hover{text-decoration:underline;}
+.fav-mini{appearance:none;-webkit-appearance:none;cursor:pointer;background:none;border:0;
+  padding:6px 8px;margin-left:2px;font-size:15px;line-height:1;color:#c3c8d0;
+  min-width:36px;min-height:36px;}
+.fav-mini[aria-pressed="true"]{color:#f0b429;}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="inner">
+  <p class="eyebrow">Paper of the week</p>
+  <h1>仕事を測れば、経験と勘の代わりに標準がつくれる</h1>
+  <p class="meta">Frederick W. Taylor / 1911 / オペレーション
+    <br>The Principles of Scientific Management</p>
+  <div class="fav-bar"><button class="fav" data-fav data-url="https://hacadr-cloud.github.io/paper-of-week/2026-08-22.html" data-title="仕事を測れば、経験と勘の代わりに標準がつくれる" data-kind="paper" data-date="2026-08-22" aria-pressed="false"><span class="ic">☆</span><span class="tx">あとで読む</span></button><a class="all" href="favorites.html">保存した記事を見る →</a></div>
+  <div class="oneline">測らなければ管理はできない、と最初に言い切った本</div>
+  <div class="hook"><p>「作業のやり方は職人が決めるもの」——1900年前後の工場では、これが当たり前だった。管理者は仕事の中身を知らず、量と納期だけを命じ、あとは現場任せ。テイラーはこの前提を壊した。</p><p>彼が持ち込んだのは、作業を要素に分解し、ストップウォッチで測り、最も速い手順を「標準」として書き出すという発想である。</p><p>測るという行為そのものが管理の対象を変えた。100年以上たっても引用され続けるのは、賛成されているからではない。工程表・標準時間・作業手順書・出来高評価という現代の道具立てが、すべてここから出ているからだ。批判する側も、この土台の上で議論している。</p></div>
+
+  <h2>問い</h2>
+  <p>テイラーが立てた問いは「なぜ労働者は、できるはずの半分しか働かないのか」である。</p><p>彼はこれを怠け心の問題とは見なかった。むしろ、当時の賃金制度のもとでは全力を出さないほうが合理的だと考えた。</p><p>難しいのは、この問いが2つの層にまたがっている点にある。</p><ul class="blist"><li>一つは技術の層——そもそも「その仕事の正しい速さ」を誰も知らない</li><li>もう一つは利害の層——速く働くと単価を下げられるので、知られたくない</li></ul><p>片方だけ解いても意味がない。作業研究だけでは労働者が隠すし、賃金制度だけでは何が適正かが分からない。テイラーは両方を同時に潰そうとした。</p>
+
+  <h2>どう組み立てられているか</h2>
+  <p>★これは統計的な調査研究ではない。読者が誤解しやすいので最初に断っておく。</p><p>本書は1911年にアメリカ機械技術者協会での議論と講演をもとにまとめられた、実務家による主張の書である。仮説検定も対照群も標本抽出もない。根拠として使われているのは、テイラー自身が約26年にわたって関与した工場での実験と、その場での作業改善の記録である。</p><p>中心的に扱われる事例は次のものだ。</p><ul class="blist"><li>ベツレヘム・スチールの銑鉄運び**——鉄塊を貨車に積む単純作業。原典では1人1日あたり12.5トンから47.5トンへ、賃金は日給1ドル15セントから1ドル85セントへ動いたと報告される</li><li>ショベル作業**——石炭や鉱石をすくう仕事。1すくいの重量を変えて1日の総量を比べ、およそ21ポンド前後が最も総量が出るとした。構内作業者数と1トンあたりコストの低下も併記される</li><li>ボールベアリングの検査**——自転車部品を目視で選別する作業。検査員の人数を減らし、労働時間を短くしながら精度と量を上げたとされる</li><li>金属切削の実験**——刃物の材質・送り・速度を長年にわたり変えて記録した膨大な試験</li></ul><p>いずれも「測って条件を変え、結果を見る」という形をとる。ただし報告するのは実施した本人であり、外部による追試や検証の手続きは踏まれていない。</p>
+
+  <h2>主張の中身</h2>
+  <div class="find"><div class="pt">出発点は「組織的怠業」という診断だった</div><div class="dt"><p>テイラーが最初に置いたのは、労働者が意図的に力を出し切らないという観察である。</p><p>彼はこれを2つに分けた。</p><ul class="blist"><li>人間が楽をしたがるという自然な傾向</li><li>仲間との申し合わせによる、意識的な手加減</li></ul><p>後者が本命だと彼は見た。理由は経験にある。当時の出来高払いでは、労働者が頑張って稼ぎが増えると、経営側が単価を切り下げた。</p><p>一度それを味わえば、次からは「速く働けることを見せない」のが自衛策になる。怠業は性格の問題ではなく、制度が生んだ合理的な反応だという整理である。</p></div></div><div class="find"><div class="pt">第一の原則——経験則を捨て、作業を測って科学に置き換える</div><div class="dt"><p>職人が親方から受け継いだやり方には、無駄な動作と有効な動作が混ざっている。テイラーはそれを分解した。</p><p>手順は次の通り。</p><ul class="blist"><li>その仕事に長けた作業者を複数選ぶ</li><li>各人の動作を要素に切り分けて記録する</li><li>要素ごとに所要時間を測る</li><li>無駄な動作を捨て、最も速い要素だけを組み合わせて1つの手順にする</li></ul><p>できあがるのは、誰か特定の職人のやり方ではない。複数の人から良い部分を抜き出して合成した手順である。</p><p>これを「その仕事の唯一最善のやり方」として文書化し、標準時間を添える。ここに現代の作業標準書の原型がある。</p></div></div><div class="find"><div class="pt">第二の原則——人を科学的に選び、訓練し、育てる</div><div class="dt"><p>標準を決めても、誰にでも同じ結果が出るわけではない。テイラーは仕事ごとに向き不向きがあると考えた。</p><p>そのうえで、従来のやり方をこう批判する。</p><ul class="blist"><li>労働者が自分で職を選ぶのに任せている</li><li>訓練は本人の努力任せになっている</li></ul><p>代わりに、管理側が適性を見て人を配置し、標準の手順を教え込む責任を負うべきだとした。</p><p>銑鉄運びの事例で「この作業に耐えられる体格の人物を選んだ」と書かれているのがこれにあたる。裏を返せば、標準に届かない人は別の仕事へ移すか、その職場から外れることになる。ここが後に最も強く批判される点になる。</p></div></div><div class="find"><div class="pt">第三の原則——科学と労働者を、心からの協力で結びつける</div><div class="dt"><p>手順書を配っただけでは現場は動かない。テイラーもそれは分かっていた。</p><p>彼が用意した接着剤は報酬である。標準を達成した者には、従来より高い賃金を払う。原典の事例では3割から6割程度の上乗せが語られる。</p><p>ただし単なる賃上げではない。条件が付く。</p><ul class="blist"><li>決められた手順の通りにやること</li><li>決められた時間内に終えること</li></ul><p>監督者の役割も変わる。命令して追い立てるのではなく、標準通りにできるよう手を貸す側に回る。</p><p>労使が同じ方向を向くための仕掛けとして設計されている点が、単なる能率向上策との違いである。</p></div></div><div class="find"><div class="pt">第四の原則——考える仕事と手を動かす仕事を、管理側と現場で分ける</div><div class="dt"><p>最も影響が大きく、最も批判された原則がこれである。</p><p>テイラーは仕事をほぼ半分ずつに分けた。</p><ul class="blist"><li>管理側——計画する、標準を決める、段取りを組む、手順を書く</li><li>現場——書かれた手順の通りに実行する</li></ul><p>このために計画部門を設け、監督も職能別に分けた。1人の職長が全部を見るのではなく、段取り・速度・検査・修繕といった役割ごとに担当を置く発想である。</p><p>狙いは、現場の負担を減らして実行に集中させることにあった。だが結果として、作業者から「どうやるかを決める権限」が制度的に取り上げられた。これが後年の脱熟練化批判の直接の的になる。</p></div></div>
+
+  <h2>なぜそうなるのか</h2>
+  <p>なぜ「測る」ことが対立を解くのか。テイラーの理屈はこう組み立てられている。</p><p>出発点は、単価をめぐる争いである。適正な作業量を誰も知らないから、経営は勘で単価を決め、労働者は稼ぎすぎを恐れて手を抜く。</p><p>ここで両者は、限られたパイの取り分を奪い合っている。</p><ul class="blist"><li>経営は単価を下げたい</li><li>労働者は下げられたくない</li><li>どちらの主張にも根拠がない</li></ul><p>測定はこの構図を変える、というのがテイラーの主張だ。</p><p>作業を分解して時間を測れば、「この手順なら1日あたりこれだけできる」という事実が出る。事実があれば、単価は交渉ではなく計算で決まる。切り下げの恐れが消えれば、隠す理由も消える。</p><p>さらに標準化そのものが生産量を押し上げる。無駄な動作が落ち、適した人が配置され、道具や段取りが揃うからだ。</p><p>すると分配できる総量が増える。テイラーはここに解決を見た。取り分を争うのではなく、パイを大きくして双方の分を増やす。彼が本書で繰り返す「労使の利害は本来一致している」という主張は、この計算に立っている。</p><p>つまり測定は、能率の道具である以前に、対立を事実で置き換えるための装置だった。</p>
+
+  <h2>どこまで言えるか</h2>
+  <div class="limits"><p>最大の弱点は、根拠がすべて本人の報告である点にある。</p><p>後年の検証で、ベツレヘムの記録は原典の記述と一致しないと指摘された。標準に到達できず職場を離れた作業者が相当数いたこと、模範として描かれる人物が複数人の話の合成である可能性などが挙げられている。</p><p>適用範囲も狭い。成り立つ条件はおよそ次の通りだ。</p><ul class="blist"><li>作業が反復的で、動作を切り出せる</li><li>成果を量で測れる</li><li>環境が安定していて、手順が長く使える</li></ul><p>企画・研究・接客・複雑な判断を含む仕事には、そのままでは効かない。</p><p>批判は当時から出ていた。1910年代のアメリカでは労働側の強い反発を受け、公的な調査が行われ、政府施設での作業測定に制限が課された時期もある。</p><p>人の動機を賃金に還元した点も覆された。1920年代以降の職場研究は、集団の規範や関係性が生産量を左右することを示し、人間関係論へつながる。1970年代には、構想と実行の分離が労働者から技能を奪う仕組みだとする批判が体系化された。</p><p>後年の修正の方向は明確である。標準を作ること自体は残し、それを誰が作るかを現場へ戻した。日本の製造業が定着させた、作業者自身が標準を書き換えていくやり方はその代表例といえる。</p></div>
+
+  <a class="src" href="https://scholar.google.com/scholar?q=The%20Principles%20of%20Scientific%20Management" target="_blank" rel="noopener">Harper &amp; Brothersを探す ↗</a>
+  <footer>経営学の古典を実務家向けに解説したものです。解釈は本記事によるもので、原典の記述
+  そのものではありません。判断の前に原典をご確認ください。</footer>
+</div></div>
+<script>
+(function(){
+  var KEY = "lsm-favs-v1";
+  function load(){ try { return JSON.parse(localStorage.getItem(KEY)) || []; }
+                   catch(e){ return []; } }
+  function save(v){ try { localStorage.setItem(KEY, JSON.stringify(v)); } catch(e){} }
+  function has(url){ return load().some(function(x){ return x.url === url; }); }
+  function paint(b){
+    var on = has(b.dataset.url);
+    b.setAttribute("aria-pressed", on ? "true" : "false");
+    var ic = b.querySelector(".ic"), tx = b.querySelector(".tx");
+    if (ic) ic.textContent = on ? "\u2605" : "\u2606";
+    if (tx) tx.textContent = on ? "保存済み" : "あとで読む";
+    if (!ic && !tx) b.textContent = on ? "\u2605" : "\u2606";
+  }
+  function toggle(b){
+    var d = b.dataset, list = load(), i = list.findIndex(function(x){ return x.url === d.url; });
+    if (i >= 0) list.splice(i, 1);
+    else list.unshift({url:d.url, title:d.title||d.url, kind:d.kind||"", date:d.date||"",
+                       note:d.note||"", saved:new Date().toISOString().slice(0,10)});
+    save(list); paint(b);
+    if (window.renderFavs) window.renderFavs();
+  }
+  function wire(){
+    var bs = document.querySelectorAll("[data-fav]");
+    for (var i = 0; i < bs.length; i++){
+      (function(b){ paint(b); b.addEventListener("click", function(e){
+        e.preventDefault(); e.stopPropagation(); toggle(b); }); })(bs[i]);
+    }
+  }
+  window.favStore = {load:load, save:save, has:has};
+  if (document.readyState === "loading")
+    document.addEventListener("DOMContentLoaded", wire);
+  else wire();
+})();
+</script>
+</body>
+</html>
