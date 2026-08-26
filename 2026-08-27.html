@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>今週の論文 2026-08-27</title>
+<style>
+  :root{
+    --ground:#FBFAF8; --card:#FFFFFF; --line:#E8E4DC; --ink:#1E1C19; --muted:#6C665C;
+    --faint:#9A9389; --accent:#7A5C2E; --accent-bg:#F5EFE3;
+    --sans: system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{--ground:#14130F; --card:#1C1A16; --line:#2E2A24; --ink:#EDE9E1; --muted:#A79F93;
+      --faint:#7C7468; --accent:#C9A468; --accent-bg:#252017;}
+  }
+  :root[data-theme="light"]{--ground:#FBFAF8; --card:#FFFFFF; --line:#E8E4DC; --ink:#1E1C19;
+    --muted:#6C665C; --faint:#9A9389; --accent:#7A5C2E; --accent-bg:#F5EFE3;}
+  :root[data-theme="dark"]{--ground:#14130F; --card:#1C1A16; --line:#2E2A24; --ink:#EDE9E1;
+    --muted:#A79F93; --faint:#7C7468; --accent:#C9A468; --accent-bg:#252017;}
+  /* Phone-first, same scale as the weekly digest: 16px body, no justify (it opens rivers in
+     Japanese at narrow widths), generous side padding, tappable links. */
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0}
+  .wrap{background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:16px;
+    line-height:1.9;-webkit-font-smoothing:antialiased;padding:1.5rem 1.15rem 4rem;
+    min-height:100vh}
+  .inner{max-width:34rem;margin:0 auto}
+  .eyebrow{font-size:.72rem;letter-spacing:.16em;color:var(--faint);text-transform:uppercase;
+    margin:0 0 .5rem}
+  h1{font-size:1.34rem;font-weight:700;line-height:1.55;margin:0 0 .5rem;text-wrap:balance}
+  .meta{font-size:.84rem;color:var(--muted);margin:0 0 1.15rem;line-height:1.75}
+  .oneline{background:var(--accent-bg);border-left:3px solid var(--accent);
+    border-radius:0 10px 10px 0;padding:.9rem .95rem;font-size:1rem;font-weight:600;
+    line-height:1.8;margin:0 0 1.5rem}
+  .hook{font-size:1rem;color:var(--ink);margin:0 0 1.9rem}
+  /* 本文中の小見出し（h2 のセクション見出しより一段下） */
+  .sh{font-size:.95rem;font-weight:700;color:var(--ink);margin:1.4rem 0 .55rem;
+    padding-left:.6rem;border-left:3px solid var(--accent);line-height:1.6}
+  .sh:first-child{margin-top:0}
+  .blist{list-style:none;margin:0 0 1rem;padding:0;display:flex;flex-direction:column;
+    gap:.5rem}
+  .blist li{position:relative;padding-left:1.1rem;line-height:1.85;font-size:.97rem}
+  .blist li::before{content:"";position:absolute;left:.2rem;top:.78em;width:.32rem;
+    height:.32rem;border-radius:50%;background:var(--accent)}
+  .find .dt p, .app .ac p{margin:0 0 .6rem}
+  .find .dt p:last-child, .app .ac p:last-child{margin-bottom:0}
+  h2{font-size:.76rem;font-weight:700;letter-spacing:.14em;color:var(--accent);
+    margin:2rem 0 .8rem;padding-bottom:.45rem;border-bottom:1px solid var(--line)}
+  p{margin:0 0 .95rem;font-size:1rem}
+  p:last-child{margin-bottom:0}
+  .find{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:1rem .95rem;margin-bottom:.75rem}
+  .find .pt{font-size:1rem;font-weight:700;line-height:1.65;margin-bottom:.4rem}
+  .find .dt{font-size:.94rem;color:var(--muted);line-height:1.85}
+  .apply{display:flex;flex-direction:column;gap:.75rem}
+  .app{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:.95rem}
+  .app .sc{font-size:.74rem;font-weight:700;color:var(--accent);letter-spacing:.06em;
+    margin-bottom:.35rem}
+  .app .ac{font-size:.97rem;line-height:1.85}
+  .limits{background:var(--card);border:1px dashed var(--line);border-radius:12px;
+    padding:1rem .95rem;font-size:.95rem;color:var(--muted);line-height:1.85}
+  .src{display:inline-block;margin-top:1.7rem;font-size:.86rem;color:var(--muted);
+    text-decoration:none;border:1px solid var(--line);border-radius:9px;
+    padding:.6rem .8rem;line-height:1.5;word-break:break-word}
+  .src:hover{color:var(--accent);border-color:var(--accent)}
+  footer{margin-top:2.4rem;padding-top:1.1rem;border-top:1px solid var(--line);
+    font-size:.78rem;color:var(--faint);line-height:1.7}
+  a:focus-visible,.src:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+.fav{appearance:none;-webkit-appearance:none;cursor:pointer;display:inline-flex;
+  align-items:center;justify-content:center;gap:6px;min-width:44px;min-height:44px;
+  padding:0 12px;border-radius:999px;font:inherit;font-size:14px;font-weight:600;
+  background:var(--surface,#fff);color:var(--ink-mut,#6b7280);
+  border:1px solid var(--line,#e5e7eb);line-height:1;}
+.fav:hover{border-color:#f0b429;color:#b26b00;}
+.fav[aria-pressed="true"]{background:#fff8e6;border-color:#f0b429;color:#b26b00;}
+.fav .ic{font-size:16px;line-height:1;}
+.fav-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:14px 0 6px;}
+.fav-bar a.all{font-size:13.5px;color:var(--ink-mut,#6b7280);text-decoration:none;
+  min-height:44px;display:inline-flex;align-items:center;}
+.fav-bar a.all:hover{text-decoration:underline;}
+.fav-mini{appearance:none;-webkit-appearance:none;cursor:pointer;background:none;border:0;
+  padding:6px 8px;margin-left:2px;font-size:15px;line-height:1;color:#c3c8d0;
+  min-width:36px;min-height:36px;}
+.fav-mini[aria-pressed="true"]{color:#f0b429;}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="inner">
+  <p class="eyebrow">Paper of the week</p>
+  <h1>他社と違うことをやる——改善の延長線上に戦略はない</h1>
+  <p class="meta">Michael E. Porter / 1996 / 戦略
+    <br>What Is Strategy?</p>
+  <div class="fav-bar"><button class="fav" data-fav data-url="https://hacadr-cloud.github.io/paper-of-week/2026-08-27.html" data-title="他社と違うことをやる——改善の延長線上に戦略はない" data-kind="paper" data-date="2026-08-27" aria-pressed="false"><span class="ic">☆</span><span class="tx">あとで読む</span></button><a class="all" href="favorites.html">保存した記事を見る →</a></div>
+  <div class="oneline">戦略とは、何を捨てるかを決め、その選択同士を噛み合わせること</div>
+  <div class="hook"><p>1990年代前半の経営論は改善一色だった。総合的品質管理、他社比較（ベンチマーキング）、外注化、業務プロセスの作り直し——どれも「同じ仕事を他社より上手くやる」ための道具だ。</p><p>ポーターはそこに冷や水を浴びせた。全社が同じ道具で同じ改善を続ければ、行き着く先は全社が似た姿になることだ、と。</p><p>当時の通説は「日本企業の強さ＝改善の強さ」であり、それが競争優位そのものだという理解だった。ポーターはこれを読み替えた。日本企業は改善では突出したが独自の位置取りを持たなかった、だから90年代に行き詰まったのだ、と。</p><p>30年たっても引かれ続けるのは、この論文が「戦略」という言葉に検証できる定義を与えたからだ。独自の活動の組み合わせがあるか、捨てたものがあるか——この2つを問うだけで、戦略と称するものの大半はふるい落とせる。</p></div>
+
+  <h2>問い</h2>
+  <p>問いは素朴だ。「戦略とは何か」。</p><p>難しいのは、この言葉が誰にでも使えてしまう点にある。売上目標も、業務改善計画も、買収案件も、社内では等しく「戦略」と呼ばれる。定義がないから、何をしても戦略をやっていることになり、何もしていなくても否定されない。</p><p>ポーターが立てた問いを具体的に書き下すと、こうなる。</p><ul class="blist"><li>業界の全社が同じ最善手法を追いかけたとき、利益はどこへ行くのか</li><li>収益性の差が長く続く会社は、他と何が違うのか</li><li>その違いは、なぜ真似されないのか</li></ul><p>1つ目が厄介なのは、改善が誰の目にも明らかに正しく見えることだ。個々の会社にとって合理的な行動が、業界全体では値下げ競争しか生まない。この落差を説明しなければならなかった。</p>
+
+  <h2>どう組み立てられているか</h2>
+  <p>まず押さえるべき点——これは実証研究ではない。</p><ul class="blist"><li>データを集めていない。標本も、統計的な検定も、効果の大きさの推定も存在しない</li><li>学術誌ではなく実務家向け誌（ハーバード・ビジネス・レビュー 1996年11-12月号）に書かれている</li><li>結論は測定からではなく、定義と論理の組み立てから導かれている</li></ul><p>組み立ては3段だ。</p><p>第1段は、考えるための道具立て。「生産性フロンティア」を想定する。ある時点で手に入る最善の手法をすべて使い切ったときに到達できる、コストと提供価値の限界線のことだ。改善とはこの線へ近づくことであり、線そのものは技術の進歩で外側へ動いていく。</p><p>第2段は、分析の単位を下げること。ポーターはそれまで業界構造と大まかな位置取り（コストで勝つか、違いで勝つか）で語ってきた。ここでは「活動」まで降りる。企業を、設計・製造・接客・配送といった個別の活動の集合とみなし、戦略をその活動の選び方と繋ぎ方として定義し直した。</p><p>第3段は、事例による例示。サウスウエスト航空、イケア、バンガード、ジフィールーブ、ベッセマー・トラスト、カーマイク・シネマズ、ニュートロジーナ、メイタッグ、コンチネンタル・ライト。</p><p>ただしこれらは仮説を検証するための標本ではない。定義を見せるための図解であり、うまくいった会社を後から選んで並べたものだ。</p><p>可視化の道具として「活動システム図」を導入した点は実務的な発明だった。中核となる位置取りを丸で置き、それを支える活動を線で結び、どれとどれが補強し合っているかを一枚に描く。</p>
+
+  <h2>主張の中身</h2>
+  <div class="find"><div class="pt">改善は必要だが、それだけでは差がつかない</div><div class="dt"><p>同じ仕事をより上手くやることを、ポーターは「業務の有効性」と呼んで戦略と切り分けた。</p><p>改善そのものは否定していない。線に近づけない会社は勝負の土俵にすら乗れないからだ。問題は、それが差の源泉にならないことにある。</p><p>理由は伝わり方にある。</p><ul class="blist"><li>最善手法は、コンサルタント・機器の売り手・業界誌・転職者を通じて確実に広がる</li><li>他社比較は、定義上、他社と同じ姿へ近づく作業になる</li><li>外注化を進めれば、同じ外部業者が同じ部品と同じ工程を全社へ供給する</li></ul><p>結果として起きるのが「競争の収束」だ。各社の姿が似てくると、顧客から見て選ぶ理由が価格しか残らない。</p><p>ポーターはこれを、誰も得をしない奪い合いだと表現した。改善の努力は顧客と外部業者へ流れ出し、会社の手元には残らない。</p></div></div><div class="find"><div class="pt">戦略とは独自の位置取り。その取り方は3つに整理できる</div><div class="dt"><p>位置取りとは「他社と違う活動をやる」か「同じ活動を違うやり方でやる」ことだ。ポーターは取り方を3つに分けた。</p><ul class="blist"><li>品揃えで取る**：業界の商品・サービスのうち一部だけを提供する。自動車の整備からオイル交換だけを切り出したジフィールーブがその例</li><li>必要性で取る**：特定の顧客層の必要をほぼ全部満たす。運用資産500万ドル以上の一族に絞ったベッセマー・トラストは、はるかに低い基準で広く受けるシティバンクの富裕層部門とは別の活動の組み方になる</li><li>近づき方で取る**：同じ必要を持つ顧客でも、届け方の条件で区切る。人口20万人未満の町だけに映画館を出したカーマイク・シネマズがその例</li></ul><p>重要なのは、どれを選んでも「別の活動の組み方」が要求される点だ。顧客層を絞ることは、看板を掛け替えることではない。</p></div></div><div class="find"><div class="pt">捨てるものが無ければ、位置取りは守れない</div><div class="dt"><p>戦略の本質は「何をやらないかを決めること」だ。両立できない選択があって初めて、他社は簡単に真似できなくなる。</p><p>ポーターは両立できない理由を3つ挙げた。</p><ul class="blist"><li>評判・印象が噛み合わない**：安さで知られた会社が高級品を出しても、顧客の頭の中で像が結ばない</li><li>活動そのものが噛み合わない**：必要な設備・技能・作業手順が違う。低価格を成立させる工程では、高い柔軟性は出せない</li><li>社内の調整と管理が混線する**：現場が2つの相反する指示を同時に受けると、優先順位が決まらず両方が中途半端になる</li></ul><p>実例が航空会社だ。コンチネンタルは一部路線だけ格安便を走らせ、残りは従来型のまま維持しようとした。</p><p>どちらつかずは高くついた。同社は数億ドル規模の損失を出し、経営トップは職を失った。</p><p>ニュートロジーナも同じ道を辿る。皮膚科医の推奨と残留物の無さで独自の場所を得ていたが、量販への配荷拡大と製品ラインの追加で輪郭がぼやけた。</p></div></div><div class="find"><div class="pt">個々の活動でなく、活動同士の噛み合わせが持続性を生む</div><div class="dt"><p>ポーターは噛み合い（フィット）を3段階に分けた。</p><ul class="blist"><li>第1段**：それぞれの活動が、全体の位置取りと矛盾しない</li><li>第2段**：活動同士が互いを強め合う</li><li>第3段**：重複や無駄が消えるところまで、活動の間で情報と手順が最適化されている</li></ul><p>サウスウエスト航空を見るとわかる。短距離・地点間直行・二次空港・機内食なし・座席指定なし・手荷物の乗り継ぎなし・機体を737に統一——この一つひとつが、15分での折り返しという中核を支えている。</p><p>どれか1つだけを真似しても意味がない。機内食をやめただけの大手は、折り返し時間も稼働率も変わらない。</p><p>ここが持続性の正体だ。仮に個々の活動を真似できる確率が9割あったとしても、噛み合った10個をすべて再現できる確率は3割台まで落ちる（掛け算になるため）。</p><p>ポーターの結論は明快だ。競争優位は個別の強みからではなく、活動の集合から生まれる。</p></div></div><div class="find"><div class="pt">位置取りを溶かす最大の力は、外部の競争ではなく成長圧力</div><div class="dt"><p>独自の位置取りを持つ会社は、たいてい内側から崩れる。</p><p>崩れ方には型がある。</p><ul class="blist"><li>売上を伸ばすため、狙っていなかった顧客層へ手を伸ばす</li><li>製品の種類を足す（ラインの拡張）</li><li>好調な他社のやり方を部分的に取り込む</li><li>結果として、捨てていたはずのものを拾い直す</li></ul><p>メイタッグはその例として挙げられている。高い信頼性という評判で稼いでいた会社が、品揃えの拡大と買収で幅を広げ、利幅を落とした。</p><p>ポーターの処方は「広げるな、深めろ」だ。既存の位置取りを他社に真似できないほど濃くする。地理的に広げるなら、同じ位置取りのまま国外へ持っていく。</p><p>そして継続性を強調する。噛み合いは何年もかけて積み上がるものなので、位置取りを頻繁に変える会社では最後まで組み上がらない。</p><p>経営者の仕事はここにある。何を選び何を捨てたかを決めて社内へ伝え、日々持ち込まれる「これもやりましょう」の大半に、理由を言って断ること。</p></div></div>
+
+  <h2>なぜそうなるのか</h2>
+  <p>なぜ改善では差が残らず、位置取りなら残るのか。理屈は模倣の費用で説明できる。</p><p>改善の中身は、突き詰めれば「誰にとっても良いこと」だ。不良を減らす、在庫を寝かせない、待ち時間を短くする。誰にとっても良いのだから、遅れている会社には追いかける理由がある。</p><p>そして追いかける経路が整っている。コンサルタント、機器の売り手、業界団体、転職者。良い手法ほど速く広がる。</p><p>だから改善による差は、時間が経てば必ず縮む。全社が同じ線の上に並んだ時点で、顧客が選ぶ基準は価格だけになり、改善で浮いた分は値下げの原資として外へ出ていく。</p><p>位置取りが違うのは、真似する側に選択を迫るからだ。</p><ul class="blist"><li>自分の位置取りを捨てて乗り換える（既存顧客と既存の稼ぎを手放す）</li><li>両方をやる（相反する活動を同じ組織で回す費用を払う）</li></ul><p>前者は痛みが大きく、後者は先に見たとおり中途半端になる。トレードオフとは、真似を不可能にする仕掛けではなく、真似を割に合わなくする仕掛けだ。</p><p>さらに噛み合いが効く。価値が個々の活動ではなく活動の関係に宿っているとき、他社が一つずつ調べても、持ち帰れるものがない。</p><p>他社比較という手法そのものが空振りするわけだ。良い部品だけを抜き出して自社に付けても、それを活かす他の20個が無い。</p><p>こうして、改善は「追いつかれる速さ」で決まり、位置取りは「乗り換えの痛み×再現すべき数」で決まる。両者は同じ土俵の上にない、というのがポーターの主張の芯にある。</p>
+
+  <h2>どこまで言えるか</h2>
+  <div class="limits"><p>鵜呑みにできない点は多い。</p><ul class="blist"><li>証拠の選び方**：うまくいった会社を後から選んで説明しているため、同じ論理で失敗した会社は視野に入らない。事例として褒められたカーマイク・シネマズは、論文の4年後に破産法の適用を申請している</li><li>静止した世界を前提にしている**：位置取りと噛み合いを固めるほど、業界の前提が変わったときに動けなくなる。後年の「動的能力」論や、クリステンセンの破壊的技術の議論は、まさに噛み合いの良い企業ほど新しい波に対応できないことを示した。強みを説明する論理が、そのまま硬直の説明にもなる</li><li>トレードオフは本当に避けられないのか**：2005年の『ブルー・オーシャン戦略』は、違いと低コストは同時に達成できると主張した。ポーター側の反論は「それは新しい位置取りの発見であって、両立ではない」だが、この応酬は決着していない</li><li>改善だけで長く勝つ会社は実在する**：トヨタやウォルマートのように、業務の作り込みで数十年差を保った例がある。組織に深く埋め込まれた手法は、伝わりやすいはずの最善手法であっても、実際には移植できない</li><li>書かれた時期**：1996年はインターネット商用化の初期で、基盤型企業・ネットワーク効果・企業の枠を越えた協業関係は視野に入っていない。活動の集合＝一社の内側、という前提そのものが今は自明でない</li></ul><p>付け加えるなら、ポーター自身が創業した戦略助言会社モニター・グループは2012年に破綻した。理論の正しさとは別の話だが、「戦略の正しさは実行と切り離せない」ことの例としてよく引かれる。</p></div>
+
+  <a class="src" href="https://scholar.google.com/scholar?q=What%20Is%20Strategy%3F" target="_blank" rel="noopener">Harvard Business Reviewを探す ↗</a>
+  <footer>経営学の古典を実務家向けに解説したものです。解釈は本記事によるもので、原典の記述
+  そのものではありません。判断の前に原典をご確認ください。</footer>
+</div></div>
+<script>
+(function(){
+  var KEY = "lsm-favs-v1";
+  function load(){ try { return JSON.parse(localStorage.getItem(KEY)) || []; }
+                   catch(e){ return []; } }
+  function save(v){ try { localStorage.setItem(KEY, JSON.stringify(v)); } catch(e){} }
+  function has(url){ return load().some(function(x){ return x.url === url; }); }
+  function paint(b){
+    var on = has(b.dataset.url);
+    b.setAttribute("aria-pressed", on ? "true" : "false");
+    var ic = b.querySelector(".ic"), tx = b.querySelector(".tx");
+    if (ic) ic.textContent = on ? "\u2605" : "\u2606";
+    if (tx) tx.textContent = on ? "保存済み" : "あとで読む";
+    if (!ic && !tx) b.textContent = on ? "\u2605" : "\u2606";
+  }
+  function toggle(b){
+    var d = b.dataset, list = load(), i = list.findIndex(function(x){ return x.url === d.url; });
+    if (i >= 0) list.splice(i, 1);
+    else list.unshift({url:d.url, title:d.title||d.url, kind:d.kind||"", date:d.date||"",
+                       note:d.note||"", saved:new Date().toISOString().slice(0,10)});
+    save(list); paint(b);
+    if (window.renderFavs) window.renderFavs();
+  }
+  function wire(){
+    var bs = document.querySelectorAll("[data-fav]");
+    for (var i = 0; i < bs.length; i++){
+      (function(b){ paint(b); b.addEventListener("click", function(e){
+        e.preventDefault(); e.stopPropagation(); toggle(b); }); })(bs[i]);
+    }
+  }
+  window.favStore = {load:load, save:save, has:has};
+  if (document.readyState === "loading")
+    document.addEventListener("DOMContentLoaded", wire);
+  else wire();
+})();
+</script>
+</body>
+</html>
