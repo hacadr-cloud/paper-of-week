@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>今週の論文 2026-09-05</title>
+<style>
+  :root{
+    --ground:#FBFAF8; --card:#FFFFFF; --line:#E8E4DC; --ink:#1E1C19; --muted:#6C665C;
+    --faint:#9A9389; --accent:#7A5C2E; --accent-bg:#F5EFE3;
+    --sans: system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{--ground:#14130F; --card:#1C1A16; --line:#2E2A24; --ink:#EDE9E1; --muted:#A79F93;
+      --faint:#7C7468; --accent:#C9A468; --accent-bg:#252017;}
+  }
+  :root[data-theme="light"]{--ground:#FBFAF8; --card:#FFFFFF; --line:#E8E4DC; --ink:#1E1C19;
+    --muted:#6C665C; --faint:#9A9389; --accent:#7A5C2E; --accent-bg:#F5EFE3;}
+  :root[data-theme="dark"]{--ground:#14130F; --card:#1C1A16; --line:#2E2A24; --ink:#EDE9E1;
+    --muted:#A79F93; --faint:#7C7468; --accent:#C9A468; --accent-bg:#252017;}
+  /* Phone-first, same scale as the weekly digest: 16px body, no justify (it opens rivers in
+     Japanese at narrow widths), generous side padding, tappable links. */
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0}
+  .wrap{background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:16px;
+    line-height:1.9;-webkit-font-smoothing:antialiased;padding:1.5rem 1.15rem 4rem;
+    min-height:100vh}
+  .inner{max-width:34rem;margin:0 auto}
+  .eyebrow{font-size:.72rem;letter-spacing:.16em;color:var(--faint);text-transform:uppercase;
+    margin:0 0 .5rem}
+  h1{font-size:1.34rem;font-weight:700;line-height:1.55;margin:0 0 .5rem;text-wrap:balance}
+  .meta{font-size:.84rem;color:var(--muted);margin:0 0 1.15rem;line-height:1.75}
+  .oneline{background:var(--accent-bg);border-left:3px solid var(--accent);
+    border-radius:0 10px 10px 0;padding:.9rem .95rem;font-size:1rem;font-weight:600;
+    line-height:1.8;margin:0 0 1.5rem}
+  .hook{font-size:1rem;color:var(--ink);margin:0 0 1.9rem}
+  /* 本文中の小見出し（h2 のセクション見出しより一段下） */
+  .sh{font-size:.95rem;font-weight:700;color:var(--ink);margin:1.4rem 0 .55rem;
+    padding-left:.6rem;border-left:3px solid var(--accent);line-height:1.6}
+  .sh:first-child{margin-top:0}
+  .blist{list-style:none;margin:0 0 1rem;padding:0;display:flex;flex-direction:column;
+    gap:.5rem}
+  .blist li{position:relative;padding-left:1.1rem;line-height:1.85;font-size:.97rem}
+  .blist li::before{content:"";position:absolute;left:.2rem;top:.78em;width:.32rem;
+    height:.32rem;border-radius:50%;background:var(--accent)}
+  .find .dt p, .app .ac p{margin:0 0 .6rem}
+  .find .dt p:last-child, .app .ac p:last-child{margin-bottom:0}
+  h2{font-size:.76rem;font-weight:700;letter-spacing:.14em;color:var(--accent);
+    margin:2rem 0 .8rem;padding-bottom:.45rem;border-bottom:1px solid var(--line)}
+  p{margin:0 0 .95rem;font-size:1rem}
+  p:last-child{margin-bottom:0}
+  .find{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:1rem .95rem;margin-bottom:.75rem}
+  .find .pt{font-size:1rem;font-weight:700;line-height:1.65;margin-bottom:.4rem}
+  .find .dt{font-size:.94rem;color:var(--muted);line-height:1.85}
+  .apply{display:flex;flex-direction:column;gap:.75rem}
+  .app{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:.95rem}
+  .app .sc{font-size:.74rem;font-weight:700;color:var(--accent);letter-spacing:.06em;
+    margin-bottom:.35rem}
+  .app .ac{font-size:.97rem;line-height:1.85}
+  .limits{background:var(--card);border:1px dashed var(--line);border-radius:12px;
+    padding:1rem .95rem;font-size:.95rem;color:var(--muted);line-height:1.85}
+  .src{display:inline-block;margin-top:1.7rem;font-size:.86rem;color:var(--muted);
+    text-decoration:none;border:1px solid var(--line);border-radius:9px;
+    padding:.6rem .8rem;line-height:1.5;word-break:break-word}
+  .src:hover{color:var(--accent);border-color:var(--accent)}
+  footer{margin-top:2.4rem;padding-top:1.1rem;border-top:1px solid var(--line);
+    font-size:.78rem;color:var(--faint);line-height:1.7}
+  a:focus-visible,.src:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+.fav{appearance:none;-webkit-appearance:none;cursor:pointer;display:inline-flex;
+  align-items:center;justify-content:center;gap:6px;min-width:44px;min-height:44px;
+  padding:0 12px;border-radius:999px;font:inherit;font-size:14px;font-weight:600;
+  background:var(--surface,#fff);color:var(--ink-mut,#6b7280);
+  border:1px solid var(--line,#e5e7eb);line-height:1;}
+.fav:hover{border-color:#f0b429;color:#b26b00;}
+.fav[aria-pressed="true"]{background:#fff8e6;border-color:#f0b429;color:#b26b00;}
+.fav .ic{font-size:16px;line-height:1;}
+.fav-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:14px 0 6px;}
+.fav-bar a.all{font-size:13.5px;color:var(--ink-mut,#6b7280);text-decoration:none;
+  min-height:44px;display:inline-flex;align-items:center;}
+.fav-bar a.all:hover{text-decoration:underline;}
+.fav-mini{appearance:none;-webkit-appearance:none;cursor:pointer;background:none;border:0;
+  padding:6px 8px;margin-left:2px;font-size:15px;line-height:1;color:#c3c8d0;
+  min-width:36px;min-height:36px;}
+.fav-mini[aria-pressed="true"]{color:#f0b429;}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="inner">
+  <p class="eyebrow">Paper of the week</p>
+  <h1>照明でも休憩でもなく、職場の人間関係が生産性を動かした</h1>
+  <p class="meta">Elton Mayo / 1933 / 人材・組織行動
+    <br>The Human Problems of an Industrial Civilization</p>
+  <div class="fav-bar"><button class="fav" data-fav data-url="https://hacadr-cloud.github.io/paper-of-week/2026-09-05.html" data-title="照明でも休憩でもなく、職場の人間関係が生産性を動かした" data-kind="paper" data-date="2026-09-05" aria-pressed="false"><span class="ic">☆</span><span class="tx">あとで読む</span></button><a class="all" href="favorites.html">保存した記事を見る →</a></div>
+  <div class="oneline">人を動かすのは条件と賃金ではなく、仲間の中での立場だった</div>
+  <div class="hook"><p>当時の通説は明快だった。働く人の能率は物理条件で決まる。照明・温度・休憩・作業手順を最適に組めば、産出は上がる。テイラーの科学的管理法が支配的で、人は賃金に反応する個人の集まりと見なされていた。</p><p>メイヨーが報告したのは、その前提が現場で崩れた記録である。照明を落としても産出は上がった。与えた休憩をすべて取り上げても、産出は落ちなかった。</p><p>この本が九十年たっても引かれるのは、答えが正しかったからではない。答えの多くは後に修正された。</p><p>引かれ続けるのは、「測っていない何かが効いている」という問いを経営の中心に置いた最初の本だからだ。組織行動論も、従業員面接も、動機づけ研究も、ここから枝分かれした。</p></div>
+
+  <h2>問い</h2>
+  <p>表向きの問いは単純に見える。人はなぜ働き、何が能率を左右するのか。</p><p>難しいのは、答えの候補が互いに絡んで切り離せないことだ。</p><ul class="blist"><li>賃金を変えれば、監督のやり方も休憩も同時に変わってしまう</li><li>観察すること自体が、観察している対象を変えてしまう</li><li>本人に理由を尋ねても、本人が自分の理由を知らない</li></ul><p>もう一段深い問いが背後にある。産業化が地域や家族の結びつきを解体したあと、人はどこに所属するのか。</p><p>工場がその受け皿になりうるのか。メイヨーはそこまで含めて問うている。だからこの本は、能率の本であると同時に社会の本になっている。</p>
+
+  <h2>どう組み立てられているか</h2>
+  <p>まず前提を一つ。これはメイヨー自身が設計した実験の報告書ではない。</p><p>調査はウェスタン・エレクトリック社のホーソン工場（シカゴ近郊の巨大工場）で、会社側が始めたものだ。メイヨーがハーバードから関与するのは1928年、照明実験が終わったあとになる。彼の役割は、設計者ではなく解釈者である。</p><p>作業の詳細な記録そのものは、1939年にレスリスバーガーとディクソンが別の本（『Management and the Worker』）にまとめている。本書はその手前の、解釈と位置づけの書だと考えたほうが正確だ。</p><p>扱う材料は主に四つ。</p><ul class="blist"><li>フィラデルフィアの紡績工場（1923〜24年）：ある工程だけ年間離職率が250%に達していた。休憩を入れると離職は数%台まで落ち、産出も上がった</li><li>照明実験（1924〜27年）：試験群と対照群を置き、照明の強さを段階的に上下させて産出を記録した</li><li>継電器組立試験室（1927年開始）：女性作業者5〜6名を別室に移し、休憩・軽食・終業時刻・週休を十数の期間に分けて変え、数年にわたり一人あたりの産出を記録した。途中で2名が交代している</li><li>面接計画（1928〜30年）：2万人を超える従業員に面接した。質問表による聞き取りから、途中で「質問をやめて相手に語らせる」形へ切り替えている</li></ul><p>測っているのは産出量・離職率・欠勤・苦情の中身である。統計的な検定は行っていない。</p><p>そして本の後半は実証ではない。デュルケームの「アノミー（規範の崩壊）」、精神医学者ジャネの強迫的思考、人類学が記録した小規模社会の事例を材料に、産業社会の診断を論証として組み立てている。</p><p>データが支えているのは前半だけだ。結論の射程を一気に広げているのは後半の理屈のほうで、ここは読み分けたほうがいい。</p>
+
+  <h2>主張の中身</h2>
+  <div class="find"><div class="pt">照明を上げても下げても、産出は上がった</div><div class="dt"><p>照明実験は、明るさと能率の関係を数値で押さえるはずの調査だった。</p><p>結果はこうなった。</p><ul class="blist"><li>試験群の照明を上げると産出が上がる</li><li>下げても産出は上がる</li><li>月明かりに近い暗さまで落とすまで、下がらない</li><li>照明をまったく変えていない対照群でも上がる</li></ul><p>結論は「照明では説明できない」という消去法である。積極的に何かを証明したのではない。</p><p>予想が外れたこと自体が出発点になり、ここから継電器組立試験室の長期観察が始まった。この実験は後年もっとも激しく再検討されることになる（後述）。</p></div></div><div class="find"><div class="pt">与えた条件をすべて取り上げても、産出は落ちなかった</div><div class="dt"><p>継電器組立試験室では、5〜6名を別室に移し、条件を段階的に足していった。休憩、軽食、早い終業、週休。産出は上がっていった。</p><p>そのあと、ある期間で条件をすべて元に戻した。休憩なし、週48時間、軽食なし。</p><p>産出は下がらなかった。むしろ高い水準のまま推移した。休憩や時短が原因なら、取り上げれば戻るはずだった。この一点が「条件説」を壊した。</p><p>ただし公平に言えば、同じ期間に賃金の計算方法が少人数の出来高制へ変わっており、成績の低い2名が交代している。原因の候補は消し切れていない。</p></div></div><div class="find"><div class="pt">実際に変わっていたのは、監督のやり方だった</div><div class="dt"><p>試験室では、監督者が命令者ではなく観察者・相談相手として振る舞った。</p><p>具体的には、</p><ul class="blist"><li>変更は事前に説明され、意見を聞かれた</li><li>嫌がられた案は取り下げられた</li><li>作業中の私語が許された</li><li>「自分たちの部屋」を持ち、見学者が訪れ、注目された</li></ul><p>メイヨーの読みはこうだ。彼女たちは、命令を受け取る個人から、自分たちの仕事に関与する一つの集団へ変わった。</p><p>変えたつもりのなかった変数——扱われ方——が、変えたつもりの変数を上回った。実験の失敗が発見になった構図である。</p></div></div><div class="find"><div class="pt">苦情は、苦情の中身を指していない</div><div class="dt"><p>会社は不満を集める目的で大規模な面接を始めた。当初は質問表に沿った聞き取りだった。</p><p>やがて質問をやめ、相手に自由に語らせて聞く形（非指示的面接）へ変わる。すると出てくるものが変わった。</p><p>ロッカーの位置や食堂への苦情の背後から、監督者との関係、家庭の事情、将来への不安が現れる。メイヨーは苦情を「症状」と呼ぶ。名指しされた対象を直しても収まらない場合がある、という主張だ。</p><p>もう一つの観察がある。聞かれること自体が本人の状態を変えた。面接は情報収集ではなく、すでに介入になっていた。</p></div></div><div class="find"><div class="pt">公式の組織とは別に、非公式の集団と規範が存在する</div><div class="dt"><p>作業者たちは自分たちで産出の水準を持っている。これ以上は作らない、これ以下も作らない、という暗黙の線だ。</p><p>出来高給でもっと稼げるのに、作らない。速すぎる者は仲間から抑えられ、遅すぎる者も咎められる。管理側が知らないところで、集団が自前の秩序を運用している。</p><p>つまり、金銭的な自己利益より、仲間の中での立場が優先される場面がある。経済的個人という前提そのものへの反証として扱われた。</p><p>この点をもっとも明確に示したのはバンク配線作業観察室の記録で、詳しい報告は1939年の続編に載る。本書はその方向を先取りする形になっている。</p></div></div>
+
+  <h2>なぜそうなるのか</h2>
+  <p>メイヨーの出発点は疲労の研究だった。当時、疲労は筋肉と生理の問題として測られていた。</p><p>だが彼が現場で見たのは、生理的な限界より手前で人が崩れることだった。単調な作業は、体を消耗させる前に注意を内側へ向ける。考えが同じところを回り始める。</p><p>ここで彼は精神医学者ジャネから「悲観的な想念にとらわれる」という考え方を借りる。作業者の不調は、体の消耗ではなく思考の膠着だと読む。</p><p>この見立てだと、休憩が効いた理由も変わる。体が休まったからではない。話す相手ができ、区切りが入り、自分たちで決められる余地ができたから、注意の向きが外へ戻った。</p><p>そのうえで彼は社会の層へ議論を上げる。デュルケームのアノミーだ。産業化以前の社会は、生まれた場所に役割と所属をあらかじめ用意していた。産業社会は人を移動させ、その用意を壊す。</p><p>所属先を失った個人にとって、職場が事実上ほとんど唯一の、持続する集団になる。だから職場の人間関係は付随的な福利ではなく、その人が安定して働けるかどうかの土台になる。</p><p>ここから経営者の仕事の定義が変わる。命令系統や作業手順の設計ではなく、自発的な協働が成り立つ条件をつくることだ。必要な技能は技術知識ではなく、人の状況を診断し、聞く力になる。</p><p>因果の向きが従来と逆になっている点が要点だ。旧来は、条件を整え報酬を出せば満足が結果としてついてくると考えた。メイヨーは、所属と関与が先にあり、能率はその後からついてくると読んだ。</p>
+
+  <h2>どこまで言えるか</h2>
+  <div class="limits"><p>第一に規模が小さい。継電器組立試験室は5〜6名である。統計的な検定はなく、結論の隙間は解釈で埋められている。</p><p>第二に、同じデータから別の説明ができる。</p><ul class="blist"><li>キャリー（1967年）：産出の上昇は、賃金制度の変更と、成績の低い2名を入れ替えた規律的な措置で説明できる。交代で入った1人が牽引役になった</li><li>フランケとカウル（1978年）の再分析：管理側の規律と、恐慌下の失業不安が変動の大部分を説明する</li><li>パーソンズ（1974年）：作業者は自分の成績を随時知らされ、出来高で払われていた。単なる学習と報酬の効果でよい</li><li>レヴィットとリスト（2011年）：長く行方不明だった照明実験の原データを再発見したが、通説ほど明快な効果は見つからなかった</li></ul><p>第三に立場の偏りだ。ベンディックスやミルズらは、労働組合・利害対立・権力をほぼ扱わず、不満を「不適応」として処理していると批判した。「経営のための社会学」という評価がついた。</p><p>第四に、後継の研究が素朴な形を否定した。「満足すれば生産的になる」という命題は、満足と業績の相関が弱いことが繰り返し示され、そのままでは成立しない。</p><p>残ったものは限定的だが堅い。条件だけでは説明できないこと、集団規範が実在すること、聞くという行為がすでに介入であること——この三つである。</p></div>
+
+  <a class="src" href="https://scholar.google.com/scholar?q=The%20Human%20Problems%20of%20an%20Industrial%20Civilization" target="_blank" rel="noopener">Macmillanを探す ↗</a>
+  <footer>経営学の古典を実務家向けに解説したものです。解釈は本記事によるもので、原典の記述
+  そのものではありません。判断の前に原典をご確認ください。</footer>
+</div></div>
+<script>
+(function(){
+  var KEY = "lsm-favs-v1";
+  function load(){ try { return JSON.parse(localStorage.getItem(KEY)) || []; }
+                   catch(e){ return []; } }
+  function save(v){ try { localStorage.setItem(KEY, JSON.stringify(v)); } catch(e){} }
+  function has(url){ return load().some(function(x){ return x.url === url; }); }
+  function paint(b){
+    var on = has(b.dataset.url);
+    b.setAttribute("aria-pressed", on ? "true" : "false");
+    var ic = b.querySelector(".ic"), tx = b.querySelector(".tx");
+    if (ic) ic.textContent = on ? "\u2605" : "\u2606";
+    if (tx) tx.textContent = on ? "保存済み" : "あとで読む";
+    if (!ic && !tx) b.textContent = on ? "\u2605" : "\u2606";
+  }
+  function toggle(b){
+    var d = b.dataset, list = load(), i = list.findIndex(function(x){ return x.url === d.url; });
+    if (i >= 0) list.splice(i, 1);
+    else list.unshift({url:d.url, title:d.title||d.url, kind:d.kind||"", date:d.date||"",
+                       note:d.note||"", saved:new Date().toISOString().slice(0,10)});
+    save(list); paint(b);
+    if (window.renderFavs) window.renderFavs();
+  }
+  function wire(){
+    var bs = document.querySelectorAll("[data-fav]");
+    for (var i = 0; i < bs.length; i++){
+      (function(b){ paint(b); b.addEventListener("click", function(e){
+        e.preventDefault(); e.stopPropagation(); toggle(b); }); })(bs[i]);
+    }
+  }
+  window.favStore = {load:load, save:save, has:has};
+  if (document.readyState === "loading")
+    document.addEventListener("DOMContentLoaded", wire);
+  else wire();
+})();
+</script>
+</body>
+</html>
