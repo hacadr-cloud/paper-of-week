@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>今週の論文 2026-09-04</title>
+<style>
+  :root{
+    --ground:#FBFAF8; --card:#FFFFFF; --line:#E8E4DC; --ink:#1E1C19; --muted:#6C665C;
+    --faint:#9A9389; --accent:#7A5C2E; --accent-bg:#F5EFE3;
+    --sans: system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{--ground:#14130F; --card:#1C1A16; --line:#2E2A24; --ink:#EDE9E1; --muted:#A79F93;
+      --faint:#7C7468; --accent:#C9A468; --accent-bg:#252017;}
+  }
+  :root[data-theme="light"]{--ground:#FBFAF8; --card:#FFFFFF; --line:#E8E4DC; --ink:#1E1C19;
+    --muted:#6C665C; --faint:#9A9389; --accent:#7A5C2E; --accent-bg:#F5EFE3;}
+  :root[data-theme="dark"]{--ground:#14130F; --card:#1C1A16; --line:#2E2A24; --ink:#EDE9E1;
+    --muted:#A79F93; --faint:#7C7468; --accent:#C9A468; --accent-bg:#252017;}
+  /* Phone-first, same scale as the weekly digest: 16px body, no justify (it opens rivers in
+     Japanese at narrow widths), generous side padding, tappable links. */
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0}
+  .wrap{background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:16px;
+    line-height:1.9;-webkit-font-smoothing:antialiased;padding:1.5rem 1.15rem 4rem;
+    min-height:100vh}
+  .inner{max-width:34rem;margin:0 auto}
+  .eyebrow{font-size:.72rem;letter-spacing:.16em;color:var(--faint);text-transform:uppercase;
+    margin:0 0 .5rem}
+  h1{font-size:1.34rem;font-weight:700;line-height:1.55;margin:0 0 .5rem;text-wrap:balance}
+  .meta{font-size:.84rem;color:var(--muted);margin:0 0 1.15rem;line-height:1.75}
+  .oneline{background:var(--accent-bg);border-left:3px solid var(--accent);
+    border-radius:0 10px 10px 0;padding:.9rem .95rem;font-size:1rem;font-weight:600;
+    line-height:1.8;margin:0 0 1.5rem}
+  .hook{font-size:1rem;color:var(--ink);margin:0 0 1.9rem}
+  /* 本文中の小見出し（h2 のセクション見出しより一段下） */
+  .sh{font-size:.95rem;font-weight:700;color:var(--ink);margin:1.4rem 0 .55rem;
+    padding-left:.6rem;border-left:3px solid var(--accent);line-height:1.6}
+  .sh:first-child{margin-top:0}
+  .blist{list-style:none;margin:0 0 1rem;padding:0;display:flex;flex-direction:column;
+    gap:.5rem}
+  .blist li{position:relative;padding-left:1.1rem;line-height:1.85;font-size:.97rem}
+  .blist li::before{content:"";position:absolute;left:.2rem;top:.78em;width:.32rem;
+    height:.32rem;border-radius:50%;background:var(--accent)}
+  .find .dt p, .app .ac p{margin:0 0 .6rem}
+  .find .dt p:last-child, .app .ac p:last-child{margin-bottom:0}
+  h2{font-size:.76rem;font-weight:700;letter-spacing:.14em;color:var(--accent);
+    margin:2rem 0 .8rem;padding-bottom:.45rem;border-bottom:1px solid var(--line)}
+  p{margin:0 0 .95rem;font-size:1rem}
+  p:last-child{margin-bottom:0}
+  .find{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:1rem .95rem;margin-bottom:.75rem}
+  .find .pt{font-size:1rem;font-weight:700;line-height:1.65;margin-bottom:.4rem}
+  .find .dt{font-size:.94rem;color:var(--muted);line-height:1.85}
+  .apply{display:flex;flex-direction:column;gap:.75rem}
+  .app{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:.95rem}
+  .app .sc{font-size:.74rem;font-weight:700;color:var(--accent);letter-spacing:.06em;
+    margin-bottom:.35rem}
+  .app .ac{font-size:.97rem;line-height:1.85}
+  .limits{background:var(--card);border:1px dashed var(--line);border-radius:12px;
+    padding:1rem .95rem;font-size:.95rem;color:var(--muted);line-height:1.85}
+  .src{display:inline-block;margin-top:1.7rem;font-size:.86rem;color:var(--muted);
+    text-decoration:none;border:1px solid var(--line);border-radius:9px;
+    padding:.6rem .8rem;line-height:1.5;word-break:break-word}
+  .src:hover{color:var(--accent);border-color:var(--accent)}
+  footer{margin-top:2.4rem;padding-top:1.1rem;border-top:1px solid var(--line);
+    font-size:.78rem;color:var(--faint);line-height:1.7}
+  a:focus-visible,.src:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+.fav{appearance:none;-webkit-appearance:none;cursor:pointer;display:inline-flex;
+  align-items:center;justify-content:center;gap:6px;min-width:44px;min-height:44px;
+  padding:0 12px;border-radius:999px;font:inherit;font-size:14px;font-weight:600;
+  background:var(--surface,#fff);color:var(--ink-mut,#6b7280);
+  border:1px solid var(--line,#e5e7eb);line-height:1;}
+.fav:hover{border-color:#f0b429;color:#b26b00;}
+.fav[aria-pressed="true"]{background:#fff8e6;border-color:#f0b429;color:#b26b00;}
+.fav .ic{font-size:16px;line-height:1;}
+.fav-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:14px 0 6px;}
+.fav-bar a.all{font-size:13.5px;color:var(--ink-mut,#6b7280);text-decoration:none;
+  min-height:44px;display:inline-flex;align-items:center;}
+.fav-bar a.all:hover{text-decoration:underline;}
+.fav-mini{appearance:none;-webkit-appearance:none;cursor:pointer;background:none;border:0;
+  padding:6px 8px;margin-left:2px;font-size:15px;line-height:1;color:#c3c8d0;
+  min-width:36px;min-height:36px;}
+.fav-mini[aria-pressed="true"]{color:#f0b429;}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="inner">
+  <p class="eyebrow">Paper of the week</p>
+  <h1>使い捨ての道具に価値を吹き込み、組織を制度に変えるのが経営者の仕事</h1>
+  <p class="meta">Philip Selznick / 1957 / 組織
+    <br>Leadership in Administration</p>
+  <div class="fav-bar"><button class="fav" data-fav data-url="https://hacadr-cloud.github.io/paper-of-week/2026-09-04.html" data-title="使い捨ての道具に価値を吹き込み、組織を制度に変えるのが経営者の仕事" data-kind="paper" data-date="2026-09-04" aria-pressed="false"><span class="ic">☆</span><span class="tx">あとで読む</span></button><a class="all" href="favorites.html">保存した記事を見る →</a></div>
+  <div class="oneline">経営者の本業は、組織に「何のための存在か」を宿らせ、守ることである。</div>
+  <div class="hook"><p>1950年代の経営論の主流は、組織を「目的を達成するための合理的な道具」として設計することだった。権限の線を引き、手続きを整え、効率を上げる。セルズニックはそこに水を差した。</p><p>組織は放っておくと、ある時点から道具でなくなる。中の人にとって、それ自体が守るべき対象に変わる。彼はこれを「制度化」と呼び、目の前の仕事が技術的に要求する以上の価値が吹き込まれる過程だと定義した。</p><p>ならば経営者の本業は効率の管理ではない。組織にどんな価値を宿らせるかを選び、埋め込み、守ることだ——というのがこの本の主張である。</p><p>数十年たっても引用され続けるのは、ここで初めて使われた「他にはない得意分野（distinctive competence）」という言葉が、後の競争戦略論・コアコンピタンス論・企業文化論の共通の出発点になったからだ。組織を「作る」ではなく「育つもの」として見る視点も、ここから広がった。</p></div>
+
+  <h2>問い</h2>
+  <p>この本が答えようとしたのは、絡み合った二つの問いである。</p><p>一つ——同じ設計図、同じ資金、同じ市場を与えられた組織が、なぜ違う振る舞いをするのか。組織図でも制度でも説明がつかない差は、どこから来るのか。</p><p>もう一つ——経営者にしか務まらない仕事とは、具体的に何か。効率の改善や部下の統率なら、優秀な管理者が代わりを務められる。代わりのきかない部分だけを取り出したい。</p><p>難しいのは、答えが目に見えない領域にあることだ。価値も性格も、決算書にも組織図にも現れない。しかも、それが出来上がっていたことは、たいてい変えようとして初めて分かる。</p><p>さらに厄介なのは、経営者自身がすでに出来上がった性格の中で判断している点である。外から白紙に設計できる立場に、誰もいない。</p>
+
+  <h2>どう組み立てられているか</h2>
+  <p>まず前提としてはっきりさせておくべきことがある。この本は調査データを取った実証研究ではない。統計も、事例の体系的な比較もない。著者が自分の過去の現地調査と既存の記述をもとに概念を組み立てた、理論書である。</p><p>議論の土台に置かれるのは、二つの区別だ。一つ目は組織と制度の区別。</p><ul class="blist"><li>組織——特定の仕事のために作られた、取り替えのきく道具</li><li>制度——人と時間の積み重ねの中で、それ自体に価値が宿った存在</li></ul><p>二つ目は、決定の種類の区別である。</p><ul class="blist"><li>日常的な決定——既存の目的と手続きの中で処理できるもの</li><li>決定的な決定——組織の性格そのものを変えてしまうもの</li></ul><p>結論はこの二つの区別から論理的に導かれる。決定的な決定の領域だけが「経営者にしかできない仕事」であり、日常が回っている間、リーダーシップは不要だ、と彼は言い切る。</p><p>証拠として引かれるのは、主に著者自身の先行研究である。</p><ul class="blist"><li>テネシー川流域開発公社（TVA）の実地研究（1949年）——地元組織を意思決定に取り込んだ結果、当初の目的がずれていった過程</li><li>ボリシェビキ型政党の組織分析（1952年）——価値の注入を意図的に設計した「組織兵器」としての政党</li></ul><p>そのほか軍・官庁・学校・企業の逸話が随所で引かれるが、いずれも論理を示す例示であって、仮説の検証ではない。読むときは「証明された法則」ではなく「ものの見方の提案」として扱うのが正しい。</p><p>知的な土台にはバーナード『経営者の役割』（1938年）がある。バーナードが道徳的創造性と呼んだ経営者の役割を、組織の性格形成という社会学の言葉に置き換えたもの、と読むと位置づけがはっきりする。</p>
+
+  <h2>主張の中身</h2>
+  <div class="find"><div class="pt">組織はいつのまにか「制度」に変わる。そこから先は、取り替えのきく道具ではなくなる</div><div class="dt"><p>制度化の定義は短い。目の前の仕事が技術的に要求する以上の価値が、組織に吹き込まれることである。</p><p>道具であれば、より安い代替品が出た時点で捨てられる。だが制度になった組織は、中の人にとって捨てがたい。やり方を変えることが、単なる手順変更ではなく「自分たちらしさを失うこと」として抵抗される。</p><p>大事なのは、これが良し悪しの話ではなく程度の話だという点だ。</p><ul class="blist"><li>道具に近い組織——目的が一つに定まり、人の入れ替えが効く</li><li>制度に近い組織——目的が曖昧か、外部の期待を背負い、人が長く残る</li></ul><p>同じ会社の中でも部署によって程度は違う。外注しても困らない部門と、外注した瞬間に会社が別物になる部門がある。その線引きが、どこが制度化しているかを示している。</p></div></div><div class="find"><div class="pt">第一の仕事——使命と役割を決める。これは調査の結論ではなく、創造的な選択である</div><div class="dt"><p>この組織は何のためにあり、どの役割を引き受けるのか。セルズニックはこれを分析ではなく創造だと言う。</p><p>市場や環境をいくら調べても、答えが自動的に出てくるわけではない。ありうる将来像は無数にあり、その中から一つを選び、残りを捨てる行為だからだ。</p><p>ただし選択は自由ではなく、二つの現実に縛られる。</p><ul class="blist"><li>外の状況——需要、規制、競合、資源の制約</li><li>内の性格——これまでの決定の積み重ねが作った、できること・できないこと</li></ul><p>掲げた使命が内の性格と噛み合っていなければ、文書の上の目標に終わる。逆に、性格に合った使命を言葉にできたとき、組織は初めて上に聞かずに判断できるようになる。使命は号令ではなく、現場の判断基準として働くときにだけ意味を持つ。</p></div></div><div class="find"><div class="pt">第二の仕事——使命を語るのではなく、人と構造に焼き付ける</div><div class="dt"><p>決めた使命を組織の骨格に作り込むこと。ここが実務としては最も地味で、最も時間がかかる。</p><p>手段は演説ではなく設計である。</p><ul class="blist"><li>誰を採り、誰を昇進させるか</li><li>どんな訓練を課し、何を新人に最初に教えるか</li><li>どの部門に権限と予算を置くか</li><li>何を測り、何を評価し、何を見逃すか</li></ul><p>この積み重ねが、その組織にしかない得意分野を作る。セルズニックがここで使った distinctive competence という言葉が、後の戦略論に引き継がれていった。</p><p>同時に裏返しも起きる。得意ができるということは、不得意も固定されるということだ。技師を集めて技術で勝ってきた組織は、技術で解けない問題に対して構造的に弱くなる。彼はこの表と裏を、切り離せない一組の現象として扱っている。</p></div></div><div class="find"><div class="pt">第三の仕事——統合性を守る。敵は外からの好機と、内からの空洞化の両方である</div><div class="dt"><p>統合性とは、掲げた価値と実際の振る舞いが一枚になっている状態を指す。これは放っておくと崩れる。</p><p>崩し方は主に二つある。</p><ul class="blist"><li>機会主義——目先の利益や受けのよい機会に飛びつき、長期の目的を少しずつ削る。一件ごとには合理的な判断に見えるのが厄介なところだ</li><li>空文化——誰も反対できないほど抽象的な理想を掲げ、選択を回避する。何を捨てるかを決めていない目標は、実質的に何も決めていない</li></ul><p>さらに、性格を薄める出来事がある。急拡大、合併、新規事業への進出。いずれも大量の人の入れ替えと、これまでと違う外部の期待を同時に持ち込む。</p><p>セルズニックの見立てでは、こうした局面での判断こそが経営者の本番であり、平時の管理業務とは種類が違う。</p></div></div><div class="find"><div class="pt">第四の仕事——内部の対立を秩序づける。なくすことではなく、土俵を決めること</div><div class="dt"><p>組織が大きくなると、下位集団がそれぞれの利害と世界観を持つ。営業には営業の、製造には製造の「正しさ」がある。</p><p>放置するとどうなるか。特定の部門の利害が、全体の使命を乗っ取る。全社の方針という顔をした部門の都合が通り、誰も嘘をついていないのに方向が曲がる。</p><p>リーダーの仕事は対立を消すことではない。どの主張がどこまで通るのか、その土俵を決めることだ。</p><p>この論点の実例が、著者自身のTVA研究である。地元の既存組織を意思決定の内側に取り込むことで、事業は正統性と協力を得た。だが代わりに、当初掲げていた目的の一部が譲り渡された。彼はこれを「抱き込み（cooptation）」と呼ぶ。支持と引き換えに目的を変える取引であり、多くの場合それは意図されずに起きる。</p></div></div>
+
+  <h2>なぜそうなるのか</h2>
+  <p>なぜ道具が勝手に制度に変わるのか。セルズニックの答えは「決定は約束を残す」である。</p><p>一つひとつの決定は小さい。だが決めた瞬間に、それを前提にした人と仕組みが生まれる。次の決定は、その前提の上でしか行えない。</p><p>約束を後戻りできなくする力は、少なくとも四方向から働く。</p><ul class="blist"><li>採用した人々の性質——技師を集めた組織は、技師のように問題を定義する</li><li>生まれた既得権益——予算と地位を得た部門は、それを守る側に回る</li><li>外部の期待——顧客・行政・地域が「この会社はこういうものだ」と見なし始める</li><li>決定の過程で生まれた利害の中心——味方につけた相手への義理が、次の選択肢を削る</li></ul><p>こうして、公式の目標とは別に、実際の行動を決める癖ができあがる。これが組織の「性格」である。</p><p>性格ができると、組織は同じ状況に同じ反応を返すようになる。得意な仕事は速く正確になる。一方、性格に合わない仕事は、命令が通っても実行段階で骨抜きになる。誰も反抗していないのに、なぜか進まないという形で現れる。</p><p>だから経営者が方向を変えたいとき、宣言だけでは動かない。性格を作った決定の系列——誰を採るか、何を評価するか、どこに権限を置くか——に手を入れるしかない。時間がかかるのはこのためだ。</p><p>同じ理屈は、リーダーが要らない場面も説明する。性格がすでに使命と噛み合い、外の状況が変わっていなければ、決定はすべて日常的な処理に落ちる。彼が「リーダーシップは常に必要なわけではない」と書いたのは、この意味においてである。逆に言えば、性格と使命がずれた瞬間だけが、経営者の出番になる。</p>
+
+  <h2>どこまで言えるか</h2>
+  <div class="limits"><p>この本が見ているのは、長く続く組織である。</p><ul class="blist"><li>数年で解散する事業体</li><li>目的が一つに定まった請負仕事</li><li>人が短期で入れ替わることを前提にした組織</li></ul><p>こうした場面では、組織は道具のままでよく、価値を吹き込む努力は空回りする。著者自身、制度化は程度問題だと断っている。</p><p>方法上の弱点もはっきりしている。「性格」も「価値」も測れない。成功した組織を後から見て「価値が宿っていた」と説明することは、いくらでもできてしまう。反証しにくい理論である。</p><p>後年、二方向から修正が入った。</p><ul class="blist"><li>価値の裏面としての硬直——価値を宿らせる同じ仕組みが、変化を拒む力になる。1980〜90年代の研究は、得意分野がそのまま足枷に転じることや、組織が構造的な慣性を持つことを示した</li><li>制度理論の重心移動——1970年代後半以降のいわゆる新制度派は、制度化を「リーダーが吹き込むもの」ではなく「業界や社会に当たり前として広がる型」として捉え直した。ここではリーダーの主体性はほぼ後景に退く。2000年代以降、主体性を取り戻す議論が出て、セルズニックが読み直された</li></ul><p>もう一つ、価値の注入は中立な技術ではない。同じ仕組みは、忠誠を設計した政党や閉じた集団も説明する。著者自身がそうした組織の研究者だったことを踏まえて読む必要がある。</p><p>リーダー一人を中心に据え、組織の文化を一枚岩として描く点にも批判がある。実際の組織には、対立する下位文化が並存している。</p></div>
+
+  <a class="src" href="https://scholar.google.com/scholar?q=Leadership%20in%20Administration" target="_blank" rel="noopener">Row, Petersonを探す ↗</a>
+  <footer>経営学の古典を実務家向けに解説したものです。解釈は本記事によるもので、原典の記述
+  そのものではありません。判断の前に原典をご確認ください。</footer>
+</div></div>
+<script>
+(function(){
+  var KEY = "lsm-favs-v1";
+  function load(){ try { return JSON.parse(localStorage.getItem(KEY)) || []; }
+                   catch(e){ return []; } }
+  function save(v){ try { localStorage.setItem(KEY, JSON.stringify(v)); } catch(e){} }
+  function has(url){ return load().some(function(x){ return x.url === url; }); }
+  function paint(b){
+    var on = has(b.dataset.url);
+    b.setAttribute("aria-pressed", on ? "true" : "false");
+    var ic = b.querySelector(".ic"), tx = b.querySelector(".tx");
+    if (ic) ic.textContent = on ? "\u2605" : "\u2606";
+    if (tx) tx.textContent = on ? "保存済み" : "あとで読む";
+    if (!ic && !tx) b.textContent = on ? "\u2605" : "\u2606";
+  }
+  function toggle(b){
+    var d = b.dataset, list = load(), i = list.findIndex(function(x){ return x.url === d.url; });
+    if (i >= 0) list.splice(i, 1);
+    else list.unshift({url:d.url, title:d.title||d.url, kind:d.kind||"", date:d.date||"",
+                       note:d.note||"", saved:new Date().toISOString().slice(0,10)});
+    save(list); paint(b);
+    if (window.renderFavs) window.renderFavs();
+  }
+  function wire(){
+    var bs = document.querySelectorAll("[data-fav]");
+    for (var i = 0; i < bs.length; i++){
+      (function(b){ paint(b); b.addEventListener("click", function(e){
+        e.preventDefault(); e.stopPropagation(); toggle(b); }); })(bs[i]);
+    }
+  }
+  window.favStore = {load:load, save:save, has:has};
+  if (document.readyState === "loading")
+    document.addEventListener("DOMContentLoaded", wire);
+  else wire();
+})();
+</script>
+</body>
+</html>
