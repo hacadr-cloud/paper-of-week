@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>今週の論文 2026-09-10</title>
+<style>
+  :root{
+    --ground:#FBFAF8; --card:#FFFFFF; --line:#E8E4DC; --ink:#1E1C19; --muted:#6C665C;
+    --faint:#9A9389; --accent:#7A5C2E; --accent-bg:#F5EFE3;
+    --sans: system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{--ground:#14130F; --card:#1C1A16; --line:#2E2A24; --ink:#EDE9E1; --muted:#A79F93;
+      --faint:#7C7468; --accent:#C9A468; --accent-bg:#252017;}
+  }
+  :root[data-theme="light"]{--ground:#FBFAF8; --card:#FFFFFF; --line:#E8E4DC; --ink:#1E1C19;
+    --muted:#6C665C; --faint:#9A9389; --accent:#7A5C2E; --accent-bg:#F5EFE3;}
+  :root[data-theme="dark"]{--ground:#14130F; --card:#1C1A16; --line:#2E2A24; --ink:#EDE9E1;
+    --muted:#A79F93; --faint:#7C7468; --accent:#C9A468; --accent-bg:#252017;}
+  /* Phone-first, same scale as the weekly digest: 16px body, no justify (it opens rivers in
+     Japanese at narrow widths), generous side padding, tappable links. */
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0}
+  .wrap{background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:16px;
+    line-height:1.9;-webkit-font-smoothing:antialiased;padding:1.5rem 1.15rem 4rem;
+    min-height:100vh}
+  .inner{max-width:34rem;margin:0 auto}
+  .eyebrow{font-size:.72rem;letter-spacing:.16em;color:var(--faint);text-transform:uppercase;
+    margin:0 0 .5rem}
+  h1{font-size:1.34rem;font-weight:700;line-height:1.55;margin:0 0 .5rem;text-wrap:balance}
+  .meta{font-size:.84rem;color:var(--muted);margin:0 0 1.15rem;line-height:1.75}
+  .oneline{background:var(--accent-bg);border-left:3px solid var(--accent);
+    border-radius:0 10px 10px 0;padding:.9rem .95rem;font-size:1rem;font-weight:600;
+    line-height:1.8;margin:0 0 1.5rem}
+  .hook{font-size:1rem;color:var(--ink);margin:0 0 1.9rem}
+  /* 本文中の小見出し（h2 のセクション見出しより一段下） */
+  .sh{font-size:.95rem;font-weight:700;color:var(--ink);margin:1.4rem 0 .55rem;
+    padding-left:.6rem;border-left:3px solid var(--accent);line-height:1.6}
+  .sh:first-child{margin-top:0}
+  .blist{list-style:none;margin:0 0 1rem;padding:0;display:flex;flex-direction:column;
+    gap:.5rem}
+  .blist li{position:relative;padding-left:1.1rem;line-height:1.85;font-size:.97rem}
+  .blist li::before{content:"";position:absolute;left:.2rem;top:.78em;width:.32rem;
+    height:.32rem;border-radius:50%;background:var(--accent)}
+  .find .dt p, .app .ac p{margin:0 0 .6rem}
+  .find .dt p:last-child, .app .ac p:last-child{margin-bottom:0}
+  h2{font-size:.76rem;font-weight:700;letter-spacing:.14em;color:var(--accent);
+    margin:2rem 0 .8rem;padding-bottom:.45rem;border-bottom:1px solid var(--line)}
+  p{margin:0 0 .95rem;font-size:1rem}
+  p:last-child{margin-bottom:0}
+  .find{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:1rem .95rem;margin-bottom:.75rem}
+  .find .pt{font-size:1rem;font-weight:700;line-height:1.65;margin-bottom:.4rem}
+  .find .dt{font-size:.94rem;color:var(--muted);line-height:1.85}
+  .apply{display:flex;flex-direction:column;gap:.75rem}
+  .app{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:.95rem}
+  .app .sc{font-size:.74rem;font-weight:700;color:var(--accent);letter-spacing:.06em;
+    margin-bottom:.35rem}
+  .app .ac{font-size:.97rem;line-height:1.85}
+  .limits{background:var(--card);border:1px dashed var(--line);border-radius:12px;
+    padding:1rem .95rem;font-size:.95rem;color:var(--muted);line-height:1.85}
+  .src{display:inline-block;margin-top:1.7rem;font-size:.86rem;color:var(--muted);
+    text-decoration:none;border:1px solid var(--line);border-radius:9px;
+    padding:.6rem .8rem;line-height:1.5;word-break:break-word}
+  .src:hover{color:var(--accent);border-color:var(--accent)}
+  footer{margin-top:2.4rem;padding-top:1.1rem;border-top:1px solid var(--line);
+    font-size:.78rem;color:var(--faint);line-height:1.7}
+  a:focus-visible,.src:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+.fav{appearance:none;-webkit-appearance:none;cursor:pointer;display:inline-flex;
+  align-items:center;justify-content:center;gap:6px;min-width:44px;min-height:44px;
+  padding:0 12px;border-radius:999px;font:inherit;font-size:14px;font-weight:600;
+  background:var(--surface,#fff);color:var(--ink-mut,#6b7280);
+  border:1px solid var(--line,#e5e7eb);line-height:1;}
+.fav:hover{border-color:#f0b429;color:#b26b00;}
+.fav[aria-pressed="true"]{background:#fff8e6;border-color:#f0b429;color:#b26b00;}
+.fav .ic{font-size:16px;line-height:1;}
+.fav-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:14px 0 6px;}
+.fav-bar a.all{font-size:13.5px;color:var(--ink-mut,#6b7280);text-decoration:none;
+  min-height:44px;display:inline-flex;align-items:center;}
+.fav-bar a.all:hover{text-decoration:underline;}
+.fav-mini{appearance:none;-webkit-appearance:none;cursor:pointer;background:none;border:0;
+  padding:6px 8px;margin-left:2px;font-size:15px;line-height:1;color:#c3c8d0;
+  min-width:36px;min-height:36px;}
+.fav-mini[aria-pressed="true"]{color:#f0b429;}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="inner">
+  <p class="eyebrow">Paper of the week</p>
+  <h1>会社が傾くのは、成功を支えた前提が現実と合わなくなったとき</h1>
+  <p class="meta">Peter F. Drucker / 1994 / 経営全般
+    <br>The Theory of the Business</p>
+  <div class="fav-bar"><button class="fav" data-fav data-url="https://hacadr-cloud.github.io/paper-of-week/2026-09-10.html" data-title="会社が傾くのは、成功を支えた前提が現実と合わなくなったとき" data-kind="paper" data-date="2026-09-10" aria-pressed="false"><span class="ic">☆</span><span class="tx">あとで読む</span></button><a class="all" href="favorites.html">保存した記事を見る →</a></div>
+  <div class="oneline">会社を殺すのは間違った答えではなく、期限切れの前提である</div>
+  <div class="hook"><p>1994年当時、名門企業の失速は「実行が下手だから」「間違ったことに手を出したから」と説明されていた。</p><p>ドラッカーはそれを正面から否定する。多くの場合、正しいことが、正しいやり方で行われている。それでも実らない。</p><p>理由は、会社を建てたときの前提——市場・顧客・技術・自社の強みについての一組の思い込み——が、現実と合わなくなったからだ。</p><p>30年たっても引かれ続けるのは、後の「ビジネスモデル」論の原型がここにあるからだ。衰退の原因を、能力や努力ではなく「前提の賞味期限」に置いた。この置き換えが、今も古びていない。</p></div>
+
+  <h2>問い</h2>
+  <p>問いは一つ。なぜ、疑いようもなく強かった会社が、しかも短期間で行き詰まるのか。</p><p>これが難しいのは、外から見れば怠慢や無能に見える現象が、中からは正反対に見えるからだ。優秀な人が、決められた手順どおりに、真面目に働いている。</p><p>さらに厄介なのは、前提が目に見えないことだ。前提はうまくいっている間は「当たり前」として空気に溶け、誰も口に出さない。文書にも残らない。</p><p>だから「どこが間違っているか」を探しても、何も出てこない。ドラッカーが立てたのは間違い探しではなく、「正しさはいつ期限切れになるのか」という問いだった。</p>
+
+  <h2>どう組み立てられているか</h2>
+  <p>これは調査研究ではない。データも標本も統計もない。歴史上の組織を解釈して組み立てた概念論文である（『ハーバード・ビジネス・レビュー』1994年9-10月号）。</p><p>出発点に置かれた前提はこうだ。</p><ul class="blist"><li>どんな組織も、一組の仮説の上に建っている</li><li>その仮説は、市場・顧客・競争相手・技術・自社の強みについてのもの</li><li>要するに「何に対して金が払われるのか」の定義である</li></ul><p>ドラッカーはこれを「事業の理論」と呼ぶ。呼び方を変えただけに見えるが、ここに論理の要がある。</p><p>「理論」という語は、自然科学と同じ意味で使われている。検証できるもの、外れうるもの、そしていつか失効するもの、という意味だ。石板に刻まれた戒律ではない。</p><p>この一点から、論文の残り全部が導かれる。</p><ul class="blist"><li>仮説は3つの部分でできている（環境・使命・強み）</li><li>有効であるための条件が4つある</li><li>失効が近いことを知らせる兆候が4つある</li><li>予防の習慣が2つ、処置の原則が1つ</li></ul><p>証拠として使われるのは事例の解釈だ。GM（スローン）、IBM、シアーズ、マークス&amp;スペンサー、AT&amp;T、ドイツ銀行、そして陸軍士官学校（1802年設立）。</p><p>対象は営利企業に限らない。大学、病院、行政機関、教会も同じ構造で説明される。</p><p>ただし、事例は主張のあとに選ばれている。比較対象の設定も、反例の検討も行われていない。</p>
+
+  <h2>主張の中身</h2>
+  <div class="find"><div class="pt">会社の前提は「環境・使命・強み」の3点セットでできている</div><div class="dt"><p>ドラッカーは事業の理論を3つに分解する。</p><ul class="blist"><li>環境についての前提：社会の構造、市場、顧客、技術。要するに「何に金が払われるか」</li><li>使命についての前提：この組織は何を成果と見なすか。世の中にどう違いをもたらすか</li><li>強みについての前提：その使命を果たすために、どこで抜きん出ていなければならないか</li></ul><p>シアーズは、環境を「アメリカの家庭」、使命を「賢い買い手の代理人になること」、強みを「商品の調達と通信販売」と置いた。</p><p>マークス&amp;スペンサーは1930年代に、自らを「社会を変える担い手」と定義し直した。手の届く価格で質の良いものを出すことで、階級のない社会をつくる、という使命である。</p><p>陸軍士官学校は1802年から、使命を「信頼に値する指揮官を出すこと」に置き、強みをそこに合わせてきた。</p></div></div><div class="find"><div class="pt">有効な前提には4つの条件がある。1つ欠けても働かない</div><div class="dt"><p>条件は次の4つだ。</p><ul class="blist"><li>環境・使命・強みの3つとも、現実と合っていること</li><li>その3つが、互いに噛み合っていること</li><li>組織の全員に知られ、理解されていること</li><li>絶えず検証され続けていること</li></ul><p>見落とされやすいのは3番目である。創業期は、言わなくても全員が分かっている。組織が育つと、前提は規則や儀式に姿を変え、中身が抜け落ちる。</p><p>「そういう決まりですから」が答えとして通るようになったとき、その組織はもう前提を理解していない。</p><p>4番目も同じ理屈だ。前提は仮説なのだから、検証をやめた瞬間に信仰に変わる。</p></div></div><div class="find"><div class="pt">前提が古びる合図は4つ。どれも「悪い知らせ」の顔をしていない</div><div class="dt"><p>ドラッカーが挙げる早期警報は次の4つだ。</p><ul class="blist"><li>当初の目標を達成したとき</li><li>短期間で規模が倍・3倍になったとき</li><li>予想外の成功（自社のものでも、競合のものでもよい）</li><li>予想外の失敗（同上）</li></ul><p>厄介なのは、前の2つが祝杯の場面だという点である。目標達成は完成ではなく、前提を作り直せという合図だとドラッカーは言う。</p><p>AT&amp;Tが1950年代半ばに「全米あまねく電話を」という使命を達成した場面が、その例として挙がる。目標が満たされた時点で、その理論は仕事を終えている。</p><p>急成長も同じだ。規模が数倍になった組織は、必ず元の前提からはみ出している。</p><p>予想外の出来事が重要なのは、それが前提の外で起きたという事実そのものが情報だからだ。</p></div></div><div class="find"><div class="pt">予防は2つの習慣——3年ごとの棄却の問いと、非顧客の観察</div><div class="dt"><p>ひとつは体系的な棄却だ。3年に一度、すべての製品・サービス・方針・販路について、こう問う。「いま持っていないとして、これから始めるか」</p><p>この問いが効くのは、答えが「始めない」だったときに逃げ場がなくなるからである。惰性で続いているものを、意思決定の対象に引き戻す装置だ。</p><p>もうひとつは、外を見ること。とりわけ非顧客を見ることである。</p><p>根本的な変化の最初の兆しは、自社の中にも、自社の顧客の中にも、まず現れない。理由は単純で、自社の顧客とは、古い前提に納得している人たちだからだ。</p><p>そして、どの市場でも非顧客のほうが顧客より多い。変化はその多数派の側で先に起きる。</p></div></div><div class="find"><div class="pt">手当ては継ぎはぎではなく作り直し。GMもIBMもここで失敗した</div><div class="dt"><p>GMの前提は、所得階層で市場を切る区分と、それに対応する事業部制だった。1920年代にスローンが設計したこの組み合わせは、見事に働いた。</p><p>ところが1970年代半ばから、買い手の区分は所得ではなく生活様式へ移る。GMはそれを知っていた。しかし答えは土台の作り直しではなく、継ぎはぎだった——新ブランドの立ち上げ、そして本業と無関係な会社の買収。</p><p>IBMは過去に2度、自ら成功した前提を捨てて生き延びている。だがパソコンが来たとき、「計算は中央に集まる」という前提と、手元の機械が売れるという事実を、一つの会社の中で両立させられなかった。</p><p>ドラッカーはこれを、進行する病になぞらえる。急な事故ではないので、その場しのぎの痛み止めが効いているように見える。それが一番危ない。</p></div></div>
+
+  <h2>なぜそうなるのか</h2>
+  <p>なぜ、正しい努力が実らなくなるのか。理屈はこうだ。</p><p>前提は、日々の判断の入り口を決めている。何を機会と見なし、何を雑音として捨てるか。その線引きこそが前提だからだ。</p><p>すると現場は、古い前提の内側で最適化を続けることになる。手順は正しい。品質も上がる。速度も上がる。向きだけが古い。</p><p>ここから「正しいことを正しくやって、それでも実らない」という状態が生まれる。努力の量では取り返せない。</p><p>次に、成功が検証を殺す。うまくいっている間、前提は証拠に囲まれているように見える。反証になりうる出来事は「例外」「一時的なもの」として処理される。</p><p>情報の入り口も塞がる。顧客満足度を測っても、答えるのは古い前提に納得している人だけだ。前提から外れた人は、そもそも顧客ではないので調査票に出てこない。</p><p>業績の数字はもっと遅い。前提の失効は、まず説明のつかない小さな出来事として現れ、損益計算書に届くのは最後になる。届いたときには、使える時間が残っていない。</p><p>最後に、なぜ継ぎはぎが効かないのか。前提は3つが噛み合って初めて働くものだった。</p><p>古い土台に新しい部品を足すと、合っていなかった1つが直る代わりに、それまで噛み合っていた部分が壊れる。部分の不具合ではなく、組み合わせの失効だからだ。</p>
+
+  <h2>どこまで言えるか</h2>
+  <div class="limits"><p>最大の弱点は、証拠の作り方にある。事例は結論のあとで選ばれ、比較対象も反例もない。うまくいっている会社にも古い前提はあるはずだが、そこは検証されない。</p><p>「前提」は事後にいくらでも書けてしまう。説明はできるが予測には使いにくい、という批判はここから来る。4つの兆候も、後から見れば明瞭だが、その時点ではただの雑音と区別がつかない。</p><p>後年、同じ現象はより具体的な仕組みで語り直された。</p><ul class="blist"><li>プラハラード＆ベティスの「支配的な論理」（1986）は、ほぼ同じ現象を先に扱っている</li><li>レオナード＝バートンの「中核的な硬直性」（1992）は、強みがそのまま足枷に変わる経路を示した</li><li>クリステンセン（1997）は、原因を思い込みではなく資源配分の仕組みに置いた。既存顧客の要求に応えるほど新しい市場を捨てる、という構造の問題だとした</li></ul><p>「2つの理論は一社に同居できない」という見立ても修正されている。タシュマンとオライリーの両利き経営は、組織を分ければ並立できると論じた。IBM自身も1990年代の再生では、分割ではなく統合を選んでいる。</p><p>3年ごとの棄却も、無条件に回せば長年の信頼や資産を壊しうる。</p></div>
+
+  <a class="src" href="https://scholar.google.com/scholar?q=The%20Theory%20of%20the%20Business" target="_blank" rel="noopener">Harvard Business Reviewを探す ↗</a>
+  <footer>経営学の古典を実務家向けに解説したものです。解釈は本記事によるもので、原典の記述
+  そのものではありません。判断の前に原典をご確認ください。</footer>
+</div></div>
+<script>
+(function(){
+  var KEY = "lsm-favs-v1";
+  function load(){ try { return JSON.parse(localStorage.getItem(KEY)) || []; }
+                   catch(e){ return []; } }
+  function save(v){ try { localStorage.setItem(KEY, JSON.stringify(v)); } catch(e){} }
+  function has(url){ return load().some(function(x){ return x.url === url; }); }
+  function paint(b){
+    var on = has(b.dataset.url);
+    b.setAttribute("aria-pressed", on ? "true" : "false");
+    var ic = b.querySelector(".ic"), tx = b.querySelector(".tx");
+    if (ic) ic.textContent = on ? "\u2605" : "\u2606";
+    if (tx) tx.textContent = on ? "保存済み" : "あとで読む";
+    if (!ic && !tx) b.textContent = on ? "\u2605" : "\u2606";
+  }
+  function toggle(b){
+    var d = b.dataset, list = load(), i = list.findIndex(function(x){ return x.url === d.url; });
+    if (i >= 0) list.splice(i, 1);
+    else list.unshift({url:d.url, title:d.title||d.url, kind:d.kind||"", date:d.date||"",
+                       note:d.note||"", saved:new Date().toISOString().slice(0,10)});
+    save(list); paint(b);
+    if (window.renderFavs) window.renderFavs();
+  }
+  function wire(){
+    var bs = document.querySelectorAll("[data-fav]");
+    for (var i = 0; i < bs.length; i++){
+      (function(b){ paint(b); b.addEventListener("click", function(e){
+        e.preventDefault(); e.stopPropagation(); toggle(b); }); })(bs[i]);
+    }
+  }
+  window.favStore = {load:load, save:save, has:has};
+  if (document.readyState === "loading")
+    document.addEventListener("DOMContentLoaded", wire);
+  else wire();
+})();
+</script>
+</body>
+</html>
