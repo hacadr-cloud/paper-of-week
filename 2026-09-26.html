@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>今週の論文 2026-09-26</title>
+<style>
+  :root{
+    --ground:#FBFAF8; --card:#FFFFFF; --line:#E8E4DC; --ink:#1E1C19; --muted:#6C665C;
+    --faint:#9A9389; --accent:#7A5C2E; --accent-bg:#F5EFE3;
+    --sans: system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{--ground:#14130F; --card:#1C1A16; --line:#2E2A24; --ink:#EDE9E1; --muted:#A79F93;
+      --faint:#7C7468; --accent:#C9A468; --accent-bg:#252017;}
+  }
+  :root[data-theme="light"]{--ground:#FBFAF8; --card:#FFFFFF; --line:#E8E4DC; --ink:#1E1C19;
+    --muted:#6C665C; --faint:#9A9389; --accent:#7A5C2E; --accent-bg:#F5EFE3;}
+  :root[data-theme="dark"]{--ground:#14130F; --card:#1C1A16; --line:#2E2A24; --ink:#EDE9E1;
+    --muted:#A79F93; --faint:#7C7468; --accent:#C9A468; --accent-bg:#252017;}
+  /* Phone-first, same scale as the weekly digest: 16px body, no justify (it opens rivers in
+     Japanese at narrow widths), generous side padding, tappable links. */
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0}
+  .wrap{background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:16px;
+    line-height:1.9;-webkit-font-smoothing:antialiased;padding:1.5rem 1.15rem 4rem;
+    min-height:100vh}
+  .inner{max-width:34rem;margin:0 auto}
+  .eyebrow{font-size:.72rem;letter-spacing:.16em;color:var(--faint);text-transform:uppercase;
+    margin:0 0 .5rem}
+  h1{font-size:1.34rem;font-weight:700;line-height:1.55;margin:0 0 .5rem;text-wrap:balance}
+  .meta{font-size:.84rem;color:var(--muted);margin:0 0 1.15rem;line-height:1.75}
+  .oneline{background:var(--accent-bg);border-left:3px solid var(--accent);
+    border-radius:0 10px 10px 0;padding:.9rem .95rem;font-size:1rem;font-weight:600;
+    line-height:1.8;margin:0 0 1.5rem}
+  .hook{font-size:1rem;color:var(--ink);margin:0 0 1.9rem}
+  /* 本文中の小見出し（h2 のセクション見出しより一段下） */
+  .sh{font-size:.95rem;font-weight:700;color:var(--ink);margin:1.4rem 0 .55rem;
+    padding-left:.6rem;border-left:3px solid var(--accent);line-height:1.6}
+  .sh:first-child{margin-top:0}
+  .blist{list-style:none;margin:0 0 1rem;padding:0;display:flex;flex-direction:column;
+    gap:.5rem}
+  .blist li{position:relative;padding-left:1.1rem;line-height:1.85;font-size:.97rem}
+  .blist li::before{content:"";position:absolute;left:.2rem;top:.78em;width:.32rem;
+    height:.32rem;border-radius:50%;background:var(--accent)}
+  .find .dt p, .app .ac p{margin:0 0 .6rem}
+  .find .dt p:last-child, .app .ac p:last-child{margin-bottom:0}
+  h2{font-size:.76rem;font-weight:700;letter-spacing:.14em;color:var(--accent);
+    margin:2rem 0 .8rem;padding-bottom:.45rem;border-bottom:1px solid var(--line)}
+  p{margin:0 0 .95rem;font-size:1rem}
+  p:last-child{margin-bottom:0}
+  .find{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:1rem .95rem;margin-bottom:.75rem}
+  .find .pt{font-size:1rem;font-weight:700;line-height:1.65;margin-bottom:.4rem}
+  .find .dt{font-size:.94rem;color:var(--muted);line-height:1.85}
+  .apply{display:flex;flex-direction:column;gap:.75rem}
+  .app{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:.95rem}
+  .app .sc{font-size:.74rem;font-weight:700;color:var(--accent);letter-spacing:.06em;
+    margin-bottom:.35rem}
+  .app .ac{font-size:.97rem;line-height:1.85}
+  .limits{background:var(--card);border:1px dashed var(--line);border-radius:12px;
+    padding:1rem .95rem;font-size:.95rem;color:var(--muted);line-height:1.85}
+  .src{display:inline-block;margin-top:1.7rem;font-size:.86rem;color:var(--muted);
+    text-decoration:none;border:1px solid var(--line);border-radius:9px;
+    padding:.6rem .8rem;line-height:1.5;word-break:break-word}
+  .src:hover{color:var(--accent);border-color:var(--accent)}
+  footer{margin-top:2.4rem;padding-top:1.1rem;border-top:1px solid var(--line);
+    font-size:.78rem;color:var(--faint);line-height:1.7}
+  a:focus-visible,.src:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+.fav{appearance:none;-webkit-appearance:none;cursor:pointer;display:inline-flex;
+  align-items:center;justify-content:center;gap:6px;min-width:44px;min-height:44px;
+  padding:0 12px;border-radius:999px;font:inherit;font-size:14px;font-weight:600;
+  background:var(--surface,#fff);color:var(--ink-mut,#6b7280);
+  border:1px solid var(--line,#e5e7eb);line-height:1;}
+.fav:hover{border-color:#f0b429;color:#b26b00;}
+.fav[aria-pressed="true"]{background:#fff8e6;border-color:#f0b429;color:#b26b00;}
+.fav .ic{font-size:16px;line-height:1;}
+.fav-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:14px 0 6px;}
+.fav-bar a.all{font-size:13.5px;color:var(--ink-mut,#6b7280);text-decoration:none;
+  min-height:44px;display:inline-flex;align-items:center;}
+.fav-bar a.all:hover{text-decoration:underline;}
+.fav-mini{appearance:none;-webkit-appearance:none;cursor:pointer;background:none;border:0;
+  padding:6px 8px;margin-left:2px;font-size:15px;line-height:1;color:#c3c8d0;
+  min-width:36px;min-height:36px;}
+.fav-mini[aria-pressed="true"]{color:#f0b429;}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="inner">
+  <p class="eyebrow">Paper of the week</p>
+  <h1>事業の目的は顧客をつくること――経営を「仕事」として体系化した本</h1>
+  <p class="meta">Peter F. Drucker / 1954 / 経営全般
+    <br>The Practice of Management</p>
+  <div class="fav-bar"><button class="fav" data-fav data-url="https://hacadr-cloud.github.io/paper-of-week/2026-09-26.html" data-title="事業の目的は顧客をつくること――経営を「仕事」として体系化した本" data-kind="paper" data-date="2026-09-26" aria-pressed="false"><span class="ic">☆</span><span class="tx">あとで読む</span></button><a class="all" href="favorites.html">保存した記事を見る →</a></div>
+  <div class="oneline">事業は顧客が決め、経営は目標で人を自律させる仕事だ</div>
+  <div class="hook"><p>1950年代の前半、経営は社長個人の才覚か、工場の能率を上げる技術だと思われていました。会社の目的は利益だ、というのが常識でした。</p><p>ドラッカーはこれを覆しました。事業の目的は「顧客をつくること」で、利益はその結果であり、事業を続けるための費用だと言いました。そして経営を、誰でも学べて点検できる「仕事」として初めて一冊にまとめました。</p><p>目標による管理、「われわれの事業は何か」という問い、利益以外の複数の目標。いま当たり前に使われる考え方の多くが、ここから出ています。70年たっても引用されるのは、議論の出発点になったからです。</p></div>
+
+  <h2>問い</h2>
+  <p>この本が答えようとしたのは、「経営者とは何をする人で、会社は何のためにあるのか」という問いです。</p><p>当時、大企業は急に増えましたが、それを動かす管理職の仕事は言葉になっていませんでした。所有者の勘に頼る会社は、代替わりや規模の拡大で崩れていきました。</p><p>難しいのは、経営が一つの物差しで測れないことです。利益だけを見れば、将来の投資や人材育成を削るほうが得に見えます。短期と長期、会社と社会、上司と部下の利害を、どう一つの仕事にまとめるかが問われました。</p>
+
+  <h2>どう組み立てられているか</h2>
+  <p>この本は統計を集めて検証した実証研究ではありません。**観察と事例にもとづく概念の書**です。アンケートや対照比較は行っていません。</p><p>土台になったのは、著者自身の経験です。</p><ul class="blist"><li>1940年代にゼネラル・モーターズ（GM）の内部を調べ、前作『企業とは何か』（1946年）を書いたこと</li><li>ゼネラル・エレクトリック（GE）などの大企業に助言者として関わったこと</li></ul><p>組み立ては次の順です。</p><ul class="blist"><li>経営は会社の「器官」であり、会社は経済的な成果を出すためにある、と前提を置く</li><li>そこから事業の管理、管理職の管理、働く人と仕事の管理という三つの仕事を導く</li><li>最後に、組織の構造と、経営者個人に求められることを論じる</li></ul><p>証拠として使われるのは事例です。シアーズ・ローバックが顧客の変化を読んで通信販売から店舗販売へ移ったこと。創業者ヘンリー・フォードが管理職を置かずに会社を傾け、孫のヘンリー・フォード2世が立て直したこと。IBMが一人の仕事の範囲を広げたことなど。</p><p>つまり結論は「測った結果」ではなく、事例から筋道を立てた主張です。</p>
+
+  <h2>主張の中身</h2>
+  <div class="find"><div class="pt">事業の目的は「顧客をつくること」である</div><div class="dt"><p>会社が何者かを決めるのは、経営者ではなく顧客です。顧客が何にお金を払うかで、事業の中身が決まります。</p><p>そのため会社の基本機能は二つだけだとされます。</p><ul class="blist"><li>マーケティング：顧客が何を価値と感じるかから出発すること</li><li>イノベーション：より良い、より新しい価値を生み出すこと</li></ul><p>利益は目的ではありません。事業がうまくいっているかの判定であり、将来のリスクに備える費用だと位置づけられます。</p></div></div><div class="find"><div class="pt">「われわれの事業は何か」を問い続けなければならない</div><div class="dt"><p>この問いは、会社の中からは答えられません。顧客は誰か、どこにいるか、何を買っているのかを外から見て、初めて答えが出ます。</p><p>答えは一度では終わりません。「将来どうなるか」「どうあるべきか」も合わせて問います。</p><p>シアーズは、農家向けの通信販売で成功しました。しかし車の普及で農家が町へ買い物に出るようになると、この問いを立て直して店舗に転じました。問いを怠った会社は、成功した時期の定義のまま取り残されます。</p></div></div><div class="find"><div class="pt">目標は利益一つではなく、複数の領域に立てる</div><div class="dt"><p>事業の存続に関わる領域すべてに目標が要る、とされます。挙げられたのは次の八つです。</p><ul class="blist"><li>市場での地位</li><li>イノベーション</li><li>生産性</li><li>物的資源と資金</li><li>収益性</li><li>管理職の仕事ぶりと育成</li><li>働く人の仕事ぶりと姿勢</li><li>社会への責任</li></ul><p>利益だけを目標にすると、育成や研究のように効果が遅れて出るものが削られます。その場では数字が良くなっても、数年後に事業が弱ります。複数の目標は、この短期偏重を防ぐ仕掛けです。</p></div></div><div class="find"><div class="pt">管理職は「目標と自己管理」で動かす</div><div class="dt"><p>いわゆる「目標による管理」です。管理職は、自分の部門の目標を上から渡されるのではなく、会社全体の目標から自分で考えて上司と合意します。</p><p>ここで言う「自己管理」は、上から締めつけることではありません。自分の成果を自分で測り、自分で直せるようにすることです。そのため、成績の情報は上司より先に本人に届くべきだとされます。</p><p>「石を切っている」「国一番の石工の仕事をしている」「大聖堂を建てている」と答える三人の石工のたとえも、この本の話です。二人目のように技能そのものが目的になる危うさを示しています。</p></div></div><div class="find"><div class="pt">働く人は「費用」ではなく「資源」として扱う</div><div class="dt"><p>当時主流だった考え方は、仕事を細かく分けて人を部品のように配置するものでした。ドラッカーはこれでは人の判断力や責任感が生かされないと見ました。</p><p>提案されたのは次のことです。</p><ul class="blist"><li>仕事のまとまりを大きくして、成果が見えるようにする</li><li>働く人自身に計画や改善へ関わらせる</li><li>職場を責任ある共同体として扱う</li></ul><p>IBMの事例は、仕事の範囲を広げると生産性も意欲も上がった例として挙げられています。</p></div></div>
+
+  <h2>なぜそうなるのか</h2>
+  <p>理屈の出発点は「会社は社会の中にあり、外の誰かの役に立つことでしか存在を許されない」という見方です。だから中心は顧客になり、利益は結果になります。</p><p>次に、なぜ目標が要るのか。会社が大きくなると、一人一人の管理職は全体を見られなくなります。放っておけば各自が自分の専門や部門の都合を優先し、力が全体の成果に向かいません。</p><p>ここで命令と監視で揃えようとすると、上の人の目が届く範囲でしか会社が動きません。情報も上に集まり、現場の判断が遅れます。</p><p>そこで方向を揃える道具として目標を使います。全体の目標から各自が自分の目標を導けば、細かい指示が無くても同じ方向を向けます。</p><p>さらに、成果を自分で測れる人は、叱られなくても自分で直します。監視の手間が減り、人は責任を負うことで育ちます。「目標」と「自己管理」は一組で、片方だけでは効きません。</p><p>複数の目標を並べるのも同じ理屈です。測られるものだけに人は力を注ぎます。存続に要る領域をすべて測る対象にしておけば、目先の数字のために将来が削られることを防げます。</p>
+
+  <h2>どこまで言えるか</h2>
+  <div class="limits"><p>まず、これは事例と観察からの主張で、効果が測定で確かめられたわけではありません。取り上げた会社も米国の大企業が中心です。</p><p>後年の批判で最も大きいのは、目標による管理の運用です。多くの会社で数値ノルマと査定の道具に変わり、本来の「自己管理」が抜け落ちました。品質管理のデミングは1982年の著書で、数値目標による管理をやめるよう強く主張しています。</p><p>ミンツバーグは1973年に管理職の実際の働き方を観察しました。仕事は細切れで、計画的に目標を立てて動く姿とはかなり違うと示しました。</p><p>「目的は顧客の創造」という主張には、1970年代以降の株主価値を重視する考え方が対立しました。また、シアーズやフォードなど手本にされた会社の多くは、その後に衰えています。原則が正しくても、実行し続けられるかは別の問題です。</p></div>
+
+  <a class="src" href="https://scholar.google.com/scholar?q=The%20Practice%20of%20Management" target="_blank" rel="noopener">Harper &amp; Rowを探す ↗</a>
+  <footer>経営学の古典を実務家向けに解説したものです。解釈は本記事によるもので、原典の記述
+  そのものではありません。判断の前に原典をご確認ください。</footer>
+</div></div>
+<script>
+(function(){
+  var KEY = "lsm-favs-v1";
+  function load(){ try { return JSON.parse(localStorage.getItem(KEY)) || []; }
+                   catch(e){ return []; } }
+  function save(v){ try { localStorage.setItem(KEY, JSON.stringify(v)); } catch(e){} }
+  function has(url){ return load().some(function(x){ return x.url === url; }); }
+  function paint(b){
+    var on = has(b.dataset.url);
+    b.setAttribute("aria-pressed", on ? "true" : "false");
+    var ic = b.querySelector(".ic"), tx = b.querySelector(".tx");
+    if (ic) ic.textContent = on ? "\u2605" : "\u2606";
+    if (tx) tx.textContent = on ? "保存済み" : "あとで読む";
+    if (!ic && !tx) b.textContent = on ? "\u2605" : "\u2606";
+  }
+  function toggle(b){
+    var d = b.dataset, list = load(), i = list.findIndex(function(x){ return x.url === d.url; });
+    if (i >= 0) list.splice(i, 1);
+    else list.unshift({url:d.url, title:d.title||d.url, kind:d.kind||"", date:d.date||"",
+                       note:d.note||"", saved:new Date().toISOString().slice(0,10)});
+    save(list); paint(b);
+    if (window.renderFavs) window.renderFavs();
+  }
+  function wire(){
+    var bs = document.querySelectorAll("[data-fav]");
+    for (var i = 0; i < bs.length; i++){
+      (function(b){ paint(b); b.addEventListener("click", function(e){
+        e.preventDefault(); e.stopPropagation(); toggle(b); }); })(bs[i]);
+    }
+  }
+  window.favStore = {load:load, save:save, has:has};
+  if (document.readyState === "loading")
+    document.addEventListener("DOMContentLoaded", wire);
+  else wire();
+})();
+</script>
+</body>
+</html>
