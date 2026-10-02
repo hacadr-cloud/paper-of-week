@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>今週の論文 2026-10-03</title>
+<style>
+  :root{
+    --ground:#FBFAF8; --card:#FFFFFF; --line:#E8E4DC; --ink:#1E1C19; --muted:#6C665C;
+    --faint:#9A9389; --accent:#7A5C2E; --accent-bg:#F5EFE3;
+    --sans: system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{--ground:#14130F; --card:#1C1A16; --line:#2E2A24; --ink:#EDE9E1; --muted:#A79F93;
+      --faint:#7C7468; --accent:#C9A468; --accent-bg:#252017;}
+  }
+  :root[data-theme="light"]{--ground:#FBFAF8; --card:#FFFFFF; --line:#E8E4DC; --ink:#1E1C19;
+    --muted:#6C665C; --faint:#9A9389; --accent:#7A5C2E; --accent-bg:#F5EFE3;}
+  :root[data-theme="dark"]{--ground:#14130F; --card:#1C1A16; --line:#2E2A24; --ink:#EDE9E1;
+    --muted:#A79F93; --faint:#7C7468; --accent:#C9A468; --accent-bg:#252017;}
+  /* Phone-first, same scale as the weekly digest: 16px body, no justify (it opens rivers in
+     Japanese at narrow widths), generous side padding, tappable links. */
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0}
+  .wrap{background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:16px;
+    line-height:1.9;-webkit-font-smoothing:antialiased;padding:1.5rem 1.15rem 4rem;
+    min-height:100vh}
+  .inner{max-width:34rem;margin:0 auto}
+  .eyebrow{font-size:.72rem;letter-spacing:.16em;color:var(--faint);text-transform:uppercase;
+    margin:0 0 .5rem}
+  h1{font-size:1.34rem;font-weight:700;line-height:1.55;margin:0 0 .5rem;text-wrap:balance}
+  .meta{font-size:.84rem;color:var(--muted);margin:0 0 1.15rem;line-height:1.75}
+  .oneline{background:var(--accent-bg);border-left:3px solid var(--accent);
+    border-radius:0 10px 10px 0;padding:.9rem .95rem;font-size:1rem;font-weight:600;
+    line-height:1.8;margin:0 0 1.5rem}
+  .hook{font-size:1rem;color:var(--ink);margin:0 0 1.9rem}
+  /* 本文中の小見出し（h2 のセクション見出しより一段下） */
+  .sh{font-size:.95rem;font-weight:700;color:var(--ink);margin:1.4rem 0 .55rem;
+    padding-left:.6rem;border-left:3px solid var(--accent);line-height:1.6}
+  .sh:first-child{margin-top:0}
+  .blist{list-style:none;margin:0 0 1rem;padding:0;display:flex;flex-direction:column;
+    gap:.5rem}
+  .blist li{position:relative;padding-left:1.1rem;line-height:1.85;font-size:.97rem}
+  .blist li::before{content:"";position:absolute;left:.2rem;top:.78em;width:.32rem;
+    height:.32rem;border-radius:50%;background:var(--accent)}
+  .find .dt p, .app .ac p{margin:0 0 .6rem}
+  .find .dt p:last-child, .app .ac p:last-child{margin-bottom:0}
+  h2{font-size:.76rem;font-weight:700;letter-spacing:.14em;color:var(--accent);
+    margin:2rem 0 .8rem;padding-bottom:.45rem;border-bottom:1px solid var(--line)}
+  p{margin:0 0 .95rem;font-size:1rem}
+  p:last-child{margin-bottom:0}
+  .find{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:1rem .95rem;margin-bottom:.75rem}
+  .find .pt{font-size:1rem;font-weight:700;line-height:1.65;margin-bottom:.4rem}
+  .find .dt{font-size:.94rem;color:var(--muted);line-height:1.85}
+  .apply{display:flex;flex-direction:column;gap:.75rem}
+  .app{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:.95rem}
+  .app .sc{font-size:.74rem;font-weight:700;color:var(--accent);letter-spacing:.06em;
+    margin-bottom:.35rem}
+  .app .ac{font-size:.97rem;line-height:1.85}
+  .limits{background:var(--card);border:1px dashed var(--line);border-radius:12px;
+    padding:1rem .95rem;font-size:.95rem;color:var(--muted);line-height:1.85}
+  .src{display:inline-block;margin-top:1.7rem;font-size:.86rem;color:var(--muted);
+    text-decoration:none;border:1px solid var(--line);border-radius:9px;
+    padding:.6rem .8rem;line-height:1.5;word-break:break-word}
+  .src:hover{color:var(--accent);border-color:var(--accent)}
+  footer{margin-top:2.4rem;padding-top:1.1rem;border-top:1px solid var(--line);
+    font-size:.78rem;color:var(--faint);line-height:1.7}
+  a:focus-visible,.src:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+.fav{appearance:none;-webkit-appearance:none;cursor:pointer;display:inline-flex;
+  align-items:center;justify-content:center;gap:6px;min-width:44px;min-height:44px;
+  padding:0 12px;border-radius:999px;font:inherit;font-size:14px;font-weight:600;
+  background:var(--surface,#fff);color:var(--ink-mut,#6b7280);
+  border:1px solid var(--line,#e5e7eb);line-height:1;}
+.fav:hover{border-color:#f0b429;color:#b26b00;}
+.fav[aria-pressed="true"]{background:#fff8e6;border-color:#f0b429;color:#b26b00;}
+.fav .ic{font-size:16px;line-height:1;}
+.fav-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:14px 0 6px;}
+.fav-bar a.all{font-size:13.5px;color:var(--ink-mut,#6b7280);text-decoration:none;
+  min-height:44px;display:inline-flex;align-items:center;}
+.fav-bar a.all:hover{text-decoration:underline;}
+.fav-mini{appearance:none;-webkit-appearance:none;cursor:pointer;background:none;border:0;
+  padding:6px 8px;margin-left:2px;font-size:15px;line-height:1;color:#c3c8d0;
+  min-width:36px;min-height:36px;}
+.fav-mini[aria-pressed="true"]{color:#f0b429;}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="inner">
+  <p class="eyebrow">Paper of the week</p>
+  <h1>工場の生産性を動かすのは、作業条件より職場の人のつながりだ</h1>
+  <p class="meta">Elton Mayo / 1933 / 人材・組織行動
+    <br>The Human Problems of an Industrial Civilization</p>
+  <div class="fav-bar"><button class="fav" data-fav data-url="https://hacadr-cloud.github.io/paper-of-week/2026-10-03.html" data-title="工場の生産性を動かすのは、作業条件より職場の人のつながりだ" data-kind="paper" data-date="2026-10-03" aria-pressed="false"><span class="ic">☆</span><span class="tx">あとで読む</span></button><a class="all" href="favorites.html">保存した記事を見る →</a></div>
+  <div class="oneline">人は条件ではなく関係の中で働く、と工場から文明を論じた書</div>
+  <div class="hook"><p>当時の工場経営では、人は条件に反応する機械として扱われていました。照明を明るくする、休憩を何分入れる、出来高で賃金を払う。こうした条件を整えれば生産は上がる、というのが通説でした。</p><p>メイヨーはこの見方を崩しました。人は職場の仲間や上司との関係の中で働いている。だから同じ条件でも、関係が変われば成果が変わる、と主張したのです。</p><p>数十年たっても引用されるのは、この本が「人間関係論」という大きな流れの出発点になったからです。同時に、その証拠の扱い方が後に厳しく批判され、「有名だが誤解も多い古典」として論争の的であり続けていることも理由です。</p></div>
+
+  <h2>問い</h2>
+  <p>この本が答えようとした問いは「工場で働く人の生産性や満足を左右しているのは、本当は何なのか」です。</p><p>難しいのは、原因が目に見えにくいからです。照明や休憩時間は測れます。しかし働く人の気分、仲間への帰属意識、会社への不信感は測りにくい。しかも、調べようとする行為そのものが働く人の気持ちを変えてしまいます。</p><p>さらにメイヨーは、問いを工場の外まで広げました。工業化で昔ながらの共同体が崩れたとき、人はどこで安心と役割を得るのか。工場の問題を、文明全体の問題として問い直したのです。</p>
+
+  <h2>どう組み立てられているか</h2>
+  <p>この本は、一つの調査の報告書ではありません。メイヨー自身や周辺の研究を材料に、解釈と主張を組み立てた論考です。</p><p>材料は大きく次の3つです。</p><ul class="blist"><li>メイヨーが以前から取り組んでいた、疲労・単調な作業・休憩の効果に関する研究</li><li>米ウェスタン・エレクトリック社のホーソン工場で行われた一連の実験と面接調査</li><li>フランスの社会学者デュルケームらの、社会の結びつきが崩れる問題についての議論</li></ul><p>ホーソン工場の照明実験は、メイヨーが関わる前に会社側などが行ったものです。メイヨーらハーバードの研究グループが関わったのは、その後の段階です。</p><p>中心的な証拠として扱われたのは、少人数の女性工員を別室に移した組立作業の実験です。休憩や労働時間などの条件を何年にもわたって変え、生産量を記録しました。もう一つは、多数の従業員に行った面接調査です。</p><p>論理の運びは次の通りです。</p><ul class="blist"><li>作業条件をどう変えても、単純な因果では生産量の動きを説明できなかった</li><li>面接では、働く人が抱える不満や不安が仕事の外の事情とも絡んでいた</li><li>したがって、働く人の態度と職場の人間関係こそが鍵である</li></ul><p>ここから議論はさらに広がります。工業社会全体で人のつながりが失われており、それを修復できる管理者が必要だ、という結論に進みます。統計的な検証ではなく、事例の解釈と社会理論で結論を支える組み立てです。</p>
+
+  <h2>主張の中身</h2>
+  <div class="find"><div class="pt">作業条件だけでは生産量の変化を説明できない</div><div class="dt"><p>別室の組立実験では、休憩を増やしたり労働時間を短くしたりするたびに生産量が上がりました。</p><p>ところが、条件を元に戻しても生産量は大きく下がりませんでした。メイヨーはこれを、条件そのものとは別の要因が働いている証拠と読みました。</p><p>照明実験でも、明るさと生産量の間にきれいな対応は見られなかったとされます。ここから「物理的な条件で人を動かす」という発想の限界が示された、と主張したのです。</p></div></div><div class="find"><div class="pt">働く人の態度と、扱われ方が成果を左右する</div><div class="dt"><p>別室の工員たちは、実験の相手として注目され、意見を聞かれ、監督も以前よりゆるやかでした。</p><p>メイヨーは、この扱われ方の変化が工員の態度を変えたと考えました。自分たちが大事にされているという感覚が、仲間同士の協力と、仕事への前向きさを生んだという解釈です。</p><p>のちに「観察されること自体が行動を変える」現象は、この工場の名をとって呼ばれるようになります。ただしこの呼び名は本書より後に広まったものです。</p></div></div><div class="find"><div class="pt">不満の中身は、表に出た言葉と違うことが多い</div><div class="dt"><p>面接調査では、働く人が会社や上司への不満を語りました。メイヨーは、その不満を額面通りに受け取るべきではないと考えました。</p><p>不満の背後には、家庭の事情や将来の不安、孤立感などが絡んでいることがある。話を遮らずに聞いてもらうだけで、気持ちが落ち着き態度が和らぐ例もあったとされます。</p><p>ここから、命令するよりも聞くことが管理者の大事な技能だ、という考えが導かれました。</p></div></div><div class="find"><div class="pt">単調な作業は、暗い堂々巡りの思考を生む</div><div class="dt"><p>メイヨーは以前から、単調な作業の最中に人が陥る思考に注目していました。</p><p>手を動かしている間、頭は空いています。そのとき孤立した人は、悲観的な考えを繰り返し反芻しがちになる。これが疲労感や不満、離職につながるという見方です。</p><p>休憩を入れると成果が上がるのは、肉体の疲れが取れるからだけではない、とメイヨーは考えました。この思考の流れが断ち切られ、人と話す機会が生まれるからだ、という解釈です。</p></div></div><div class="find"><div class="pt">工業社会は人のつながりを壊しており、管理者がそれを補うべきだ</div><div class="dt"><p>本書の最も大きな主張はここにあります。工業化で村や職人の共同体が崩れました。その結果、人は自分の役割や居場所を見失っている、とメイヨーは論じました。</p><p>デュルケームが論じた「社会の決まりや結びつきが緩んだ状態」が工場で起きている、という見立てです。</p><p>その処方箋として、メイヨーは人の気持ちと集団の動きを理解できる管理者の育成を求めました。技術の専門家だけでなく、人間関係を扱える専門家が企業に必要だ、という主張です。</p></div></div>
+
+  <h2>なぜそうなるのか</h2>
+  <p>メイヨーの理屈の土台は「人は一人で働いていない」という前提です。</p><p>働く人は、賃金や作業条件に一人ずつ反応する存在ではない。職場の小さな集団の一員として、仲間の目や暗黙の決まりの中で動いている。そう考えます。</p><p>この前提に立つと、次のような連鎖が説明できます。</p><ul class="blist"><li>集団に居場所があり、上司に認められていると感じる</li><li>不安や孤立が和らぎ、悲観的な堂々巡りが減る</li><li>仕事に前向きになり、仲間と協力する</li><li>結果として生産量が上がり、辞める人が減る</li></ul><p>逆に、居場所がなく扱いが冷たいとどうなるか。条件を良くしても、人は警戒し、集団で生産を抑えることさえあるとされます。</p><p>この理屈では、照明や休憩の効果も「条件そのもの」ではなく「それが人にどう受け取られたか」を通して表れます。だから同じ施策でも、職場の空気によって効いたり効かなかったりする、という説明になります。</p><p>さらにメイヨーは、これを社会全体に広げます。昔の共同体は、人に役割と安心を自然に与えていました。工業化でそれが失われた以上、工場という場がその代わりを担う必要がある。そして、その担い手は人間関係に通じた管理者である。ここまでが一本の理屈としてつながっています。</p>
+
+  <h2>どこまで言えるか</h2>
+  <div class="limits"><p>第一に、証拠が薄いと批判されてきました。中心となった組立実験は、ごく少人数の工員を対象にしたものです。統計的な比較の設計もありません。この規模で文明論まで語るのは飛躍が大きい、という指摘があります。</p><p>第二に、データの読み直しで別の説明が出ています。</p><ul class="blist"><li>1960年代末のケアリーの批判：実験中に工員の入れ替えがあった点や、賃金の仕組みの変化が軽く扱われていると指摘した</li><li>1970年代末のフランケとカウルの再分析：生産量の変化は、監督の規律や不況下の雇用不安などでかなり説明できると主張した</li><li>2010年代のレヴィットとリストの再分析：残っていた照明実験のデータを調べ、「観察されること自体の効果」は語られてきたほど明確ではないとした</li></ul><p>第三に、立場の偏りが批判されました。労使の利害の対立や労働組合の役割を軽く見ている、という批判です。働く人の不満を「気持ちの問題」として扱い、経営に都合のよい管理の道具になった、という見方は早くからありました。</p><p>また「照明ではなく人間関係」という通称自体が単純化です。照明実験はメイヨー自身の研究ではなく、本書の主張も実験結果よりメイヨーの解釈に多くを負っています。</p></div>
+
+  <a class="src" href="https://scholar.google.com/scholar?q=The%20Human%20Problems%20of%20an%20Industrial%20Civilization" target="_blank" rel="noopener">Macmillanを探す ↗</a>
+  <footer>経営学の古典を実務家向けに解説したものです。解釈は本記事によるもので、原典の記述
+  そのものではありません。判断の前に原典をご確認ください。</footer>
+</div></div>
+<script>
+(function(){
+  var KEY = "lsm-favs-v1";
+  function load(){ try { return JSON.parse(localStorage.getItem(KEY)) || []; }
+                   catch(e){ return []; } }
+  function save(v){ try { localStorage.setItem(KEY, JSON.stringify(v)); } catch(e){} }
+  function has(url){ return load().some(function(x){ return x.url === url; }); }
+  function paint(b){
+    var on = has(b.dataset.url);
+    b.setAttribute("aria-pressed", on ? "true" : "false");
+    var ic = b.querySelector(".ic"), tx = b.querySelector(".tx");
+    if (ic) ic.textContent = on ? "\u2605" : "\u2606";
+    if (tx) tx.textContent = on ? "保存済み" : "あとで読む";
+    if (!ic && !tx) b.textContent = on ? "\u2605" : "\u2606";
+  }
+  function toggle(b){
+    var d = b.dataset, list = load(), i = list.findIndex(function(x){ return x.url === d.url; });
+    if (i >= 0) list.splice(i, 1);
+    else list.unshift({url:d.url, title:d.title||d.url, kind:d.kind||"", date:d.date||"",
+                       note:d.note||"", saved:new Date().toISOString().slice(0,10)});
+    save(list); paint(b);
+    if (window.renderFavs) window.renderFavs();
+  }
+  function wire(){
+    var bs = document.querySelectorAll("[data-fav]");
+    for (var i = 0; i < bs.length; i++){
+      (function(b){ paint(b); b.addEventListener("click", function(e){
+        e.preventDefault(); e.stopPropagation(); toggle(b); }); })(bs[i]);
+    }
+  }
+  window.favStore = {load:load, save:save, has:has};
+  if (document.readyState === "loading")
+    document.addEventListener("DOMContentLoaded", wire);
+  else wire();
+})();
+</script>
+</body>
+</html>
