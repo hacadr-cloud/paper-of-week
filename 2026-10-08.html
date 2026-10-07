@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>今週の論文 2026-10-08</title>
+<style>
+  :root{
+    --ground:#FBFAF8; --card:#FFFFFF; --line:#E8E4DC; --ink:#1E1C19; --muted:#6C665C;
+    --faint:#9A9389; --accent:#7A5C2E; --accent-bg:#F5EFE3;
+    --sans: system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{--ground:#14130F; --card:#1C1A16; --line:#2E2A24; --ink:#EDE9E1; --muted:#A79F93;
+      --faint:#7C7468; --accent:#C9A468; --accent-bg:#252017;}
+  }
+  :root[data-theme="light"]{--ground:#FBFAF8; --card:#FFFFFF; --line:#E8E4DC; --ink:#1E1C19;
+    --muted:#6C665C; --faint:#9A9389; --accent:#7A5C2E; --accent-bg:#F5EFE3;}
+  :root[data-theme="dark"]{--ground:#14130F; --card:#1C1A16; --line:#2E2A24; --ink:#EDE9E1;
+    --muted:#A79F93; --faint:#7C7468; --accent:#C9A468; --accent-bg:#252017;}
+  /* Phone-first, same scale as the weekly digest: 16px body, no justify (it opens rivers in
+     Japanese at narrow widths), generous side padding, tappable links. */
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0}
+  .wrap{background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:16px;
+    line-height:1.9;-webkit-font-smoothing:antialiased;padding:1.5rem 1.15rem 4rem;
+    min-height:100vh}
+  .inner{max-width:34rem;margin:0 auto}
+  .eyebrow{font-size:.72rem;letter-spacing:.16em;color:var(--faint);text-transform:uppercase;
+    margin:0 0 .5rem}
+  h1{font-size:1.34rem;font-weight:700;line-height:1.55;margin:0 0 .5rem;text-wrap:balance}
+  .meta{font-size:.84rem;color:var(--muted);margin:0 0 1.15rem;line-height:1.75}
+  .oneline{background:var(--accent-bg);border-left:3px solid var(--accent);
+    border-radius:0 10px 10px 0;padding:.9rem .95rem;font-size:1rem;font-weight:600;
+    line-height:1.8;margin:0 0 1.5rem}
+  .hook{font-size:1rem;color:var(--ink);margin:0 0 1.9rem}
+  /* 本文中の小見出し（h2 のセクション見出しより一段下） */
+  .sh{font-size:.95rem;font-weight:700;color:var(--ink);margin:1.4rem 0 .55rem;
+    padding-left:.6rem;border-left:3px solid var(--accent);line-height:1.6}
+  .sh:first-child{margin-top:0}
+  .blist{list-style:none;margin:0 0 1rem;padding:0;display:flex;flex-direction:column;
+    gap:.5rem}
+  .blist li{position:relative;padding-left:1.1rem;line-height:1.85;font-size:.97rem}
+  .blist li::before{content:"";position:absolute;left:.2rem;top:.78em;width:.32rem;
+    height:.32rem;border-radius:50%;background:var(--accent)}
+  .find .dt p, .app .ac p{margin:0 0 .6rem}
+  .find .dt p:last-child, .app .ac p:last-child{margin-bottom:0}
+  h2{font-size:.76rem;font-weight:700;letter-spacing:.14em;color:var(--accent);
+    margin:2rem 0 .8rem;padding-bottom:.45rem;border-bottom:1px solid var(--line)}
+  p{margin:0 0 .95rem;font-size:1rem}
+  p:last-child{margin-bottom:0}
+  .find{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:1rem .95rem;margin-bottom:.75rem}
+  .find .pt{font-size:1rem;font-weight:700;line-height:1.65;margin-bottom:.4rem}
+  .find .dt{font-size:.94rem;color:var(--muted);line-height:1.85}
+  .apply{display:flex;flex-direction:column;gap:.75rem}
+  .app{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:.95rem}
+  .app .sc{font-size:.74rem;font-weight:700;color:var(--accent);letter-spacing:.06em;
+    margin-bottom:.35rem}
+  .app .ac{font-size:.97rem;line-height:1.85}
+  .limits{background:var(--card);border:1px dashed var(--line);border-radius:12px;
+    padding:1rem .95rem;font-size:.95rem;color:var(--muted);line-height:1.85}
+  .src{display:inline-block;margin-top:1.7rem;font-size:.86rem;color:var(--muted);
+    text-decoration:none;border:1px solid var(--line);border-radius:9px;
+    padding:.6rem .8rem;line-height:1.5;word-break:break-word}
+  .src:hover{color:var(--accent);border-color:var(--accent)}
+  footer{margin-top:2.4rem;padding-top:1.1rem;border-top:1px solid var(--line);
+    font-size:.78rem;color:var(--faint);line-height:1.7}
+  a:focus-visible,.src:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+.fav{appearance:none;-webkit-appearance:none;cursor:pointer;display:inline-flex;
+  align-items:center;justify-content:center;gap:6px;min-width:44px;min-height:44px;
+  padding:0 12px;border-radius:999px;font:inherit;font-size:14px;font-weight:600;
+  background:var(--surface,#fff);color:var(--ink-mut,#6b7280);
+  border:1px solid var(--line,#e5e7eb);line-height:1;}
+.fav:hover{border-color:#f0b429;color:#b26b00;}
+.fav[aria-pressed="true"]{background:#fff8e6;border-color:#f0b429;color:#b26b00;}
+.fav .ic{font-size:16px;line-height:1;}
+.fav-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:14px 0 6px;}
+.fav-bar a.all{font-size:13.5px;color:var(--ink-mut,#6b7280);text-decoration:none;
+  min-height:44px;display:inline-flex;align-items:center;}
+.fav-bar a.all:hover{text-decoration:underline;}
+.fav-mini{appearance:none;-webkit-appearance:none;cursor:pointer;background:none;border:0;
+  padding:6px 8px;margin-left:2px;font-size:15px;line-height:1;color:#c3c8d0;
+  min-width:36px;min-height:36px;}
+.fav-mini[aria-pressed="true"]{color:#f0b429;}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="inner">
+  <p class="eyebrow">Paper of the week</p>
+  <h1>会社の強さは「何を売るか」より「何を持っているか」で決まる</h1>
+  <p class="meta">Birger Wernerfelt / 1984 / 戦略
+    <br>A Resource-Based View of the Firm</p>
+  <div class="fav-bar"><button class="fav" data-fav data-url="https://hacadr-cloud.github.io/paper-of-week/2026-10-08.html" data-title="会社の強さは「何を売るか」より「何を持っているか」で決まる" data-kind="paper" data-date="2026-10-08" aria-pressed="false"><span class="ic">☆</span><span class="tx">あとで読む</span></button><a class="all" href="favorites.html">保存した記事を見る →</a></div>
+  <div class="oneline">会社を製品でなく資源の束として見ると、長く儲かる理由が見える</div>
+  <div class="hook"><p>1980年代前半の戦略論は、「どの業界・どの製品で戦うか」を中心に組み立てられていました。代表はポーターの業界分析です。儲かる市場を選び、そこでの位置取りを決めることが戦略だと考えられていました。</p><p>この論文は見る向きを逆にしました。製品の裏にある「会社が持っているもの」から戦略を考えたのです。</p><p>発表直後はほとんど注目されませんでした。それでも、後に続く膨大な研究がこの論文を出発点として引用しています。「資源に基づく見方」という名前そのものが、この論文から来ているためです。</p></div>
+
+  <h2>問い</h2>
+  <p>問いは「会社が長く儲け続けられる理由を、製品や市場ではなく、会社が持つ資源の側から説明できるか」です。</p><p>これが難しいのは、資源が目に見えにくいからです。</p><ul class="blist"><li>製品や市場は、売上やシェアで数えられる</li><li>ブランド、技術の蓄積、熟練した人材、取引先との関係は、数えにくい</li><li>しかも一つの資源が複数の製品にまたがって効く</li></ul><p>そのため、「どの資源が利益を生んでいるのか」「どの資源を増やすべきか」を、製品の分析と同じ精度で語る道具がありませんでした。</p>
+
+  <h2>どう組み立てられているか</h2>
+  <p>この論文は**概念論文**です。データを集めて検証したものではありません。誌面にして10ページほどの短い論文です。</p><p>出発点は単純な前提です。製品と資源は同じコインの裏表であり、どちらから見ても会社を記述できる、というものです。多くの製品は複数の資源を必要とし、多くの資源は複数の製品に使えます。</p><p>資源の定義は広く取られています。会社の強みにも弱みにもなりうるもので、会社に半ば固定的に結びついている有形・無形のものすべてです。例として次が挙げられています。</p><ul class="blist"><li>ブランド名</li><li>社内に蓄積した技術の知識</li><li>熟練した人材</li><li>取引先とのつながり</li><li>機械設備</li><li>効率のよい手順</li><li>資金</li></ul><p>論証の中心は、既存の理論を資源の側へ「裏返す」ことです。業界分析でいう「参入障壁」を、資源についての障壁に置き換えました。製品の位置づけを示す成長率とシェアの図表（BCGの図表）にならい、「資源と製品の組み合わせ表」を作りました。</p><p>使われる例は、機械の生産能力、顧客の愛着、生産の経験、技術の先行といった一般的・仮想的なものです。特定企業の事例研究で証明する形はとっていません。</p>
+
+  <h2>主張の中身</h2>
+  <div class="find"><div class="pt">資源にも「参入障壁」に相当するものがある</div><div class="dt"><p>著者は、資源の先行保有者が後から来る者より有利になる状況を「資源の位置の障壁」と呼びました。</p><p>先に資源を持つ会社は、その資源を使ってさらに同じ資源を安く増やせます。後から来る会社は、同じ資源を手に入れるのに高いコストを払うか、低い見返りしか得られません。</p><p>業界の参入障壁が「その市場に入りにくい」理由なら、こちらは「その資源を持ちにくい」理由です。利益が長続きする源は、ここにあるとされました。</p></div></div><div class="find"><div class="pt">障壁を作れる資源の典型例</div><div class="dt"><p>論文は、障壁を生みやすい資源の例として次を挙げます。</p><ul class="blist"><li>機械の生産能力：先に大きな設備を持つ会社がいると、後発は需要を食い合うので投資の採算が合いにくい</li><li>顧客の愛着：先に買われたブランドは、後発が同じ評価を得るのに多くの費用がかかる</li><li>生産の経験：作れば作るほどコストが下がるので、先行者の差が縮まらない</li><li>技術の先行：先に進んだ技術から、次の技術が生まれやすい</li></ul><p>共通点は「持っていること自体が、さらに持つことを有利にする」構造です。</p></div></div><div class="find"><div class="pt">良い戦略は「今の資源を使う」と「新しい資源を育てる」の釣り合い</div><div class="dt"><p>著者は、成長率とシェアで製品を並べる図表にならい、資源を軸にした組み合わせ表を提案しました。</p><p>ここから導かれる考え方は、今ある強い資源で稼ぎつつ、その稼ぎで次の資源を育てるという順番です。</p><ul class="blist"><li>今の資源を使い切るだけでは、いずれ障壁が崩れる</li><li>新しい資源に手を広げすぎると、今の稼ぎを失う</li></ul><p>両者の釣り合いをとることが戦略の中身だとされました。</p></div></div><div class="find"><div class="pt">多角化は「飛び石」のように順番に進める</div><div class="dt"><p>資源の障壁を持つ分野から、関連する分野へ一歩ずつ進む道筋が示されます。</p><p>ある市場で得た資源を足がかりに、次の市場へ入ります。そこで新たな資源を得て、さらに次へ進みます。著者はこれを飛び石にたとえました。</p><p>要点は、進出先を「市場の魅力」だけで選ばないことです。「手持ちの資源が効き、かつ新しい障壁を築ける先か」で選ぶ、という基準が示されています。</p></div></div><div class="find"><div class="pt">買収は「市場で売り買いしにくい資源の束」を買う手段</div><div class="dt"><p>熟練した組織や取引関係のような資源は、単体では市場で買えません。会社ごと買うしかありません。著者は買収をこの視点で捉え直しました。</p><p>論文が示す論点は次のとおりです。</p><ul class="blist"><li>買い手が少ない資源ほど、割安で手に入る可能性がある</li><li>自社の資源を補う資源か、同じ資源を上乗せするものかで、得られる効果が違う</li></ul><p>買収の良し悪しを、資源の組み合わせという観点から判断する視点が示されました。</p></div></div>
+
+  <h2>なぜそうなるのか</h2>
+  <p>理屈の核は「利益は、他社が真似しにくいものからしか長続きしない」という点です。</p><p>市場で誰でも同じ値段で買えるものは、利益の源になりません。全員が買えば、差がなくなるからです。差が残るのは、手に入れにくく、増やしにくいものを持っている場合です。</p><p>著者はこの差がどう生まれ、どう保たれるかを、参入障壁の論理を借りて説明しました。</p><ul class="blist"><li>先に資源を持つと、その資源を使って同じ資源を安く増やせる</li><li>後から来る者は、先行者がいるせいで採算が悪くなる</li><li>その結果、差は放っておいても縮まりにくい</li></ul><p>製品から見ると、この構造は見えにくくなります。一つの資源が複数の製品を支えていることが多いからです。製品ごとの損益を見ても、どの資源が稼いでいるのかは分かりません。</p><p>だから、資源を軸に会社を眺め直す必要がある、と著者は主張しました。</p><p>さらに、資源の障壁はいずれ崩れます。技術は古くなり、顧客の好みは変わります。そのため、今の障壁で稼いでいる間に次の障壁を育てる必要があります。ここから、使うことと育てることの釣り合いという戦略の考え方が出てきます。</p>
+
+  <h2>どこまで言えるか</h2>
+  <div class="limits"><p>まず、この論文は実証をしていません。資源の障壁が実際どれほど利益を守るのかは、示されていません。</p><p>著者自身、10年後の振り返り（1995年）で、この論文は発表から数年ほとんど引用されなかったと書いています。広く読まれるようになったのは、後続の研究が理論を固めてからです。</p><p>後年の主な修正・批判は次のとおりです。</p><ul class="blist"><li>バーニー（1991）：「価値がある・希少・真似しにくい・代わりがきかない」という条件で、どの資源が優位を生むかを絞り込んだ。この論文の定義は広すぎて判定に使いにくかった</li><li>ディーリックスとクール（1989）：資源は買うものではなく、時間をかけて積み上げるものだと強調した</li><li>ティースら（1997）：資源の「今ある量」ではなく、環境の変化に合わせて組み替える力が大事だとした。この論文の見方は静的すぎるという批判</li><li>プリエムとバトラー（2001）：「優位を生む資源が優位を生む」という循環論法に陥りやすく、事前に検証しにくいと批判した</li></ul><p>また、顧客の側（需要）の変化をあまり扱っていない点も指摘されています。資源が価値を持つかどうかは、結局は市場が決めるからです。</p></div>
+
+  <a class="src" href="https://scholar.google.com/scholar?q=A%20Resource-Based%20View%20of%20the%20Firm" target="_blank" rel="noopener">Strategic Management Journalを探す ↗</a>
+  <footer>経営学の古典を実務家向けに解説したものです。解釈は本記事によるもので、原典の記述
+  そのものではありません。判断の前に原典をご確認ください。</footer>
+</div></div>
+<script>
+(function(){
+  var KEY = "lsm-favs-v1";
+  function load(){ try { return JSON.parse(localStorage.getItem(KEY)) || []; }
+                   catch(e){ return []; } }
+  function save(v){ try { localStorage.setItem(KEY, JSON.stringify(v)); } catch(e){} }
+  function has(url){ return load().some(function(x){ return x.url === url; }); }
+  function paint(b){
+    var on = has(b.dataset.url);
+    b.setAttribute("aria-pressed", on ? "true" : "false");
+    var ic = b.querySelector(".ic"), tx = b.querySelector(".tx");
+    if (ic) ic.textContent = on ? "\u2605" : "\u2606";
+    if (tx) tx.textContent = on ? "保存済み" : "あとで読む";
+    if (!ic && !tx) b.textContent = on ? "\u2605" : "\u2606";
+  }
+  function toggle(b){
+    var d = b.dataset, list = load(), i = list.findIndex(function(x){ return x.url === d.url; });
+    if (i >= 0) list.splice(i, 1);
+    else list.unshift({url:d.url, title:d.title||d.url, kind:d.kind||"", date:d.date||"",
+                       note:d.note||"", saved:new Date().toISOString().slice(0,10)});
+    save(list); paint(b);
+    if (window.renderFavs) window.renderFavs();
+  }
+  function wire(){
+    var bs = document.querySelectorAll("[data-fav]");
+    for (var i = 0; i < bs.length; i++){
+      (function(b){ paint(b); b.addEventListener("click", function(e){
+        e.preventDefault(); e.stopPropagation(); toggle(b); }); })(bs[i]);
+    }
+  }
+  window.favStore = {load:load, save:save, has:has};
+  if (document.readyState === "loading")
+    document.addEventListener("DOMContentLoaded", wire);
+  else wire();
+})();
+</script>
+</body>
+</html>
