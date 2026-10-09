@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>今週の論文 2026-10-10</title>
+<style>
+  :root{
+    --ground:#FBFAF8; --card:#FFFFFF; --line:#E8E4DC; --ink:#1E1C19; --muted:#6C665C;
+    --faint:#9A9389; --accent:#7A5C2E; --accent-bg:#F5EFE3;
+    --sans: system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{--ground:#14130F; --card:#1C1A16; --line:#2E2A24; --ink:#EDE9E1; --muted:#A79F93;
+      --faint:#7C7468; --accent:#C9A468; --accent-bg:#252017;}
+  }
+  :root[data-theme="light"]{--ground:#FBFAF8; --card:#FFFFFF; --line:#E8E4DC; --ink:#1E1C19;
+    --muted:#6C665C; --faint:#9A9389; --accent:#7A5C2E; --accent-bg:#F5EFE3;}
+  :root[data-theme="dark"]{--ground:#14130F; --card:#1C1A16; --line:#2E2A24; --ink:#EDE9E1;
+    --muted:#A79F93; --faint:#7C7468; --accent:#C9A468; --accent-bg:#252017;}
+  /* Phone-first, same scale as the weekly digest: 16px body, no justify (it opens rivers in
+     Japanese at narrow widths), generous side padding, tappable links. */
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0}
+  .wrap{background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:16px;
+    line-height:1.9;-webkit-font-smoothing:antialiased;padding:1.5rem 1.15rem 4rem;
+    min-height:100vh}
+  .inner{max-width:34rem;margin:0 auto}
+  .eyebrow{font-size:.72rem;letter-spacing:.16em;color:var(--faint);text-transform:uppercase;
+    margin:0 0 .5rem}
+  h1{font-size:1.34rem;font-weight:700;line-height:1.55;margin:0 0 .5rem;text-wrap:balance}
+  .meta{font-size:.84rem;color:var(--muted);margin:0 0 1.15rem;line-height:1.75}
+  .oneline{background:var(--accent-bg);border-left:3px solid var(--accent);
+    border-radius:0 10px 10px 0;padding:.9rem .95rem;font-size:1rem;font-weight:600;
+    line-height:1.8;margin:0 0 1.5rem}
+  .hook{font-size:1rem;color:var(--ink);margin:0 0 1.9rem}
+  /* 本文中の小見出し（h2 のセクション見出しより一段下） */
+  .sh{font-size:.95rem;font-weight:700;color:var(--ink);margin:1.4rem 0 .55rem;
+    padding-left:.6rem;border-left:3px solid var(--accent);line-height:1.6}
+  .sh:first-child{margin-top:0}
+  .blist{list-style:none;margin:0 0 1rem;padding:0;display:flex;flex-direction:column;
+    gap:.5rem}
+  .blist li{position:relative;padding-left:1.1rem;line-height:1.85;font-size:.97rem}
+  .blist li::before{content:"";position:absolute;left:.2rem;top:.78em;width:.32rem;
+    height:.32rem;border-radius:50%;background:var(--accent)}
+  .find .dt p, .app .ac p{margin:0 0 .6rem}
+  .find .dt p:last-child, .app .ac p:last-child{margin-bottom:0}
+  h2{font-size:.76rem;font-weight:700;letter-spacing:.14em;color:var(--accent);
+    margin:2rem 0 .8rem;padding-bottom:.45rem;border-bottom:1px solid var(--line)}
+  p{margin:0 0 .95rem;font-size:1rem}
+  p:last-child{margin-bottom:0}
+  .find{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:1rem .95rem;margin-bottom:.75rem}
+  .find .pt{font-size:1rem;font-weight:700;line-height:1.65;margin-bottom:.4rem}
+  .find .dt{font-size:.94rem;color:var(--muted);line-height:1.85}
+  .apply{display:flex;flex-direction:column;gap:.75rem}
+  .app{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:.95rem}
+  .app .sc{font-size:.74rem;font-weight:700;color:var(--accent);letter-spacing:.06em;
+    margin-bottom:.35rem}
+  .app .ac{font-size:.97rem;line-height:1.85}
+  .limits{background:var(--card);border:1px dashed var(--line);border-radius:12px;
+    padding:1rem .95rem;font-size:.95rem;color:var(--muted);line-height:1.85}
+  .src{display:inline-block;margin-top:1.7rem;font-size:.86rem;color:var(--muted);
+    text-decoration:none;border:1px solid var(--line);border-radius:9px;
+    padding:.6rem .8rem;line-height:1.5;word-break:break-word}
+  .src:hover{color:var(--accent);border-color:var(--accent)}
+  footer{margin-top:2.4rem;padding-top:1.1rem;border-top:1px solid var(--line);
+    font-size:.78rem;color:var(--faint);line-height:1.7}
+  a:focus-visible,.src:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+.fav{appearance:none;-webkit-appearance:none;cursor:pointer;display:inline-flex;
+  align-items:center;justify-content:center;gap:6px;min-width:44px;min-height:44px;
+  padding:0 12px;border-radius:999px;font:inherit;font-size:14px;font-weight:600;
+  background:var(--surface,#fff);color:var(--ink-mut,#6b7280);
+  border:1px solid var(--line,#e5e7eb);line-height:1;}
+.fav:hover{border-color:#f0b429;color:#b26b00;}
+.fav[aria-pressed="true"]{background:#fff8e6;border-color:#f0b429;color:#b26b00;}
+.fav .ic{font-size:16px;line-height:1;}
+.fav-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:14px 0 6px;}
+.fav-bar a.all{font-size:13.5px;color:var(--ink-mut,#6b7280);text-decoration:none;
+  min-height:44px;display:inline-flex;align-items:center;}
+.fav-bar a.all:hover{text-decoration:underline;}
+.fav-mini{appearance:none;-webkit-appearance:none;cursor:pointer;background:none;border:0;
+  padding:6px 8px;margin-left:2px;font-size:15px;line-height:1;color:#c3c8d0;
+  min-width:36px;min-height:36px;}
+.fav-mini[aria-pressed="true"]{color:#f0b429;}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="inner">
+  <p class="eyebrow">Paper of the week</p>
+  <h1>経営は技術ではない——「管理」という独立した仕事の発見</h1>
+  <p class="meta">Henri Fayol / 1916 / 経営全般
+    <br>General and Industrial Management</p>
+  <div class="fav-bar"><button class="fav" data-fav data-url="https://hacadr-cloud.github.io/paper-of-week/2026-10-10.html" data-title="経営は技術ではない——「管理」という独立した仕事の発見" data-kind="paper" data-date="2026-10-10" aria-pressed="false"><span class="ic">☆</span><span class="tx">あとで読む</span></button><a class="all" href="favorites.html">保存した記事を見る →</a></div>
+  <div class="oneline">管理は才能ではなく、分解して教えられる独立した仕事だ</div>
+  <div class="hook"><p>当時は「経営は才能と経験で身につくもの」と考えられていました。技術に長けた者が出世し、上に立てば自然と人を動かせる、という前提です。</p><p>ファヨールはこれを否定しました。会社を動かす仕事の中に、技術とも販売とも違う「管理」という独立した仕事があると言ったのです。管理は分解でき、言葉にでき、学校で教えられるとも主張しました。</p><p>「計画・組織・指揮・調整・統制」という分け方は、100年以上たった今も経営の教科書の章立てとして残っています。批判され続けながら、それに代わる骨組みがまだ出ていない。引用され続ける理由はそこにあります。</p></div>
+
+  <h2>問い</h2>
+  <p>問いは「組織のトップは、実際には何をする人なのか」です。</p><p>現場の作業者が何をするかは見ればわかります。しかし社長の仕事は目に見えにくく、本人に聞いても「全体を見ている」としか答えが返ってきません。中身が言葉になっていないので、教えることも評価することもできませんでした。</p><p>さらに難しいのは、業種を問わず通用する答えを求めた点です。鉱山でも役所でも軍隊でも共通する仕事の型があるのか。ファヨールはそれを問いました。</p>
+
+  <h2>どう組み立てられているか</h2>
+  <p>これは統計データを集めて検証した実証研究ではありません。著者自身の長い実務経験から原則を引き出した、経験にもとづく理論書です。</p><p>著者は鉱山技師として出発し、のちに仏の鉱山・製鉄会社コマンボー社の社長を約30年務めました。就任当時は経営危機にあった会社を立て直した経験が、議論の土台になっています。</p><p>組み立ては次の順です。</p><ul class="blist"><li>まず会社のあらゆる活動を6種類に分ける（技術・商業・財務・保全・会計・管理）</li><li>そのうち「管理」だけが、他の5つと違って誰も明確に扱ってこなかったと指摘する</li><li>管理を5つの要素（計画・組織・指揮・調整・統制）に分解する</li><li>管理を行う上で役立った14の原則を示す</li></ul><p>証拠として使われているのは、主に著者自身の会社での運営例や、軍隊・国家行政との比較です。職位ごとにどの能力がどれだけ重要かを示した表も載っていますが、これは測定値ではなく著者の見積もりです。</p><p>なお当初は4部構成で構想されましたが、刊行されたのは前半の2部だけでした。</p>
+
+  <h2>主張の中身</h2>
+  <div class="find"><div class="pt">計画（先を見通し、行動の筋道を立てる）</div><div class="dt"><p>原語の「プレヴォワール」は「予測する」と「備える」の両方を含みます。将来を見積もり、それに沿った行動計画を作ることです。</p><p>著者は、年次の計画と10年程度の長期計画を組み合わせて作ることを実際に行っていました。計画には次の性質が求められるとしています。</p><ul class="blist"><li>一貫していること（部門ごとにばらばらでない）</li><li>状況に応じて修正できる柔軟さ</li><li>できるだけ正確であること</li></ul><p>計画が無い会社は、出来事に振り回されるだけになると著者は見ていました。</p></div></div><div class="find"><div class="pt">組織（人と物の骨組みをつくる）</div><div class="dt"><p>計画を実行するのに必要な人、設備、資金をそろえ、誰が何を担当するかを決めることです。</p><p>著者が特に重視したのは「人」の側の組織、つまり職位と役割の構造でした。役割の重なりや空白をなくし、各人の権限と責任を一致させることが中心になります。</p><p>14原則のうち「仕事の分担」「権限と責任の一致」「命令の一元性」「階層の連なり」などは、主にこの組織づくりに関わる原則です。</p></div></div><div class="find"><div class="pt">指揮（人を動かし続ける）</div><div class="dt"><p>組織ができた後、実際に人を働かせ続けることです。著者はこれを、部下をよく知り、無能な者を外し、自ら手本を示すことだと説明しました。</p><p>命令は一人の上司からだけ受けるべきだとする「命令の一元性」を、著者は最も重要な原則の一つに数えています。二人の上司から別々の指示が来ると、権威が損なわれ、規律が乱れ、組織が不安定になると考えたからです。</p><p>同時代のテイラーが提唱した、職能ごとに複数の職長を置く方式を、著者はこの原則に反するとして批判しました。</p></div></div><div class="find"><div class="pt">調整（ばらばらの動きを噛み合わせる）</div><div class="dt"><p>各部門の活動が互いに矛盾せず、全体として釣り合うようにすることです。販売が売りすぎて製造が追いつかない、といったずれを防ぎます。</p><p>著者が具体的な手段として挙げたのは、部門長を集めた定例の会議でした。各部門が自分の状況を報告し、互いの動きを確認する場です。</p><p>また、階層を上下にたどると連絡が遅くなる問題に対して、同じ階層の者同士が上司の了承のもとで直接やりとりする「渡り板」という仕組みも提案しています。</p></div></div><div class="find"><div class="pt">統制（計画どおりか確かめ、ずれを正す）</div><div class="dt"><p>物事が計画・命令・原則どおりに進んでいるかを確かめることです。目的は罰することではなく、誤りを見つけて直し、繰り返さないようにすることだとされています。</p><p>著者は統制が有効であるための条件として次を挙げました。</p><ul class="blist"><li>時機を逃さないこと</li><li>確かめた結果を是正につなげること</li><li>確かめる者が公平で独立していること</li></ul><p>こうして統制の結果が次の計画に反映され、5つの要素は一巡するという構図になっています。</p></div></div>
+
+  <h2>なぜそうなるのか</h2>
+  <p>著者の理屈の出発点は、「組織が大きくなるほど、技術の力より管理の力が効いてくる」という観察です。</p><p>現場の作業者にとっては技術の腕前がほぼすべてです。しかし職位が上がるにつれ、求められる能力の比重は管理の方へ移っていきます。大きな会社の社長にとっては、管理の能力が最も重要になる。著者はこれを職位別の表で示しました。</p><p>ここから一つの問題が見えてきます。</p><ul class="blist"><li>当時の技術者教育は、技術しか教えていなかった</li><li>にもかかわらず、優秀な技術者ほど管理職に引き上げられた</li><li>結果、最も重要な能力を誰からも教わらないまま上に立つことになる</li></ul><p>著者は、管理が教えられない原因を「理論が無いこと」に求めました。経験は個人の中にとどまり、言葉にならないので人に渡せない。だから管理を要素に分け、原則として書き出す必要があったのです。</p><p>5つの要素の並びにも筋があります。先を見て筋道を立て、その筋道に合わせて体制を作り、体制の中で人を動かし、動きを噛み合わせ、結果を確かめて次の計画に戻す。一つが欠けると全体が回らない、という構造になっています。</p><p>14原則について、著者は「固定した法則ではない」と断っています。同じ原則でも状況によって適用の度合いは変わり、その加減を判断することこそが管理の技量だとしました。原則は目安であって、機械的に当てはめるものではないという立場です。</p>
+
+  <h2>どこまで言えるか</h2>
+  <div class="limits"><p>最大の弱点は、根拠が一人の経営者の経験だという点です。体系的なデータで確かめられたものではなく、当時の大規模な重工業という環境に強く依存しています。</p><p>後年の主な批判は次のとおりです。</p><ul class="blist"><li>サイモン（1946年）は、こうした管理原則は互いに矛盾しうる「ことわざ」にすぎないと批判した。例えば専門分化を進めると、命令の一元性と衝突する</li><li>ミンツバーグ（1973年）は経営者の実際の行動を観察し、仕事は細切れで、話し言葉中心で、計画的に進んでいないと示した。5要素は経営者の実像ではなく「通説」だと論じた</li><li>状況によって最適な組織は違うとする後の研究は、どこでも通じる原則という発想そのものを相対化した</li></ul><p>実務面でも、二人の上司を持つ組織形態が広く使われるようになり、命令の一元性は絶対の原則ではなくなりました。</p><p>一方で、5要素は「経営者が実際に何をしているか」の記述ではなく、「管理の仕事が果たすべき機能」の整理として読めば今も有効だ、という擁護もあります。著者自身が原則を柔軟に扱うよう求めていた点も、批判の際に見落とされがちです。</p></div>
+
+  <a class="src" href="https://scholar.google.com/scholar?q=General%20and%20Industrial%20Management" target="_blank" rel="noopener">Dunodを探す ↗</a>
+  <footer>経営学の古典を実務家向けに解説したものです。解釈は本記事によるもので、原典の記述
+  そのものではありません。判断の前に原典をご確認ください。</footer>
+</div></div>
+<script>
+(function(){
+  var KEY = "lsm-favs-v1";
+  function load(){ try { return JSON.parse(localStorage.getItem(KEY)) || []; }
+                   catch(e){ return []; } }
+  function save(v){ try { localStorage.setItem(KEY, JSON.stringify(v)); } catch(e){} }
+  function has(url){ return load().some(function(x){ return x.url === url; }); }
+  function paint(b){
+    var on = has(b.dataset.url);
+    b.setAttribute("aria-pressed", on ? "true" : "false");
+    var ic = b.querySelector(".ic"), tx = b.querySelector(".tx");
+    if (ic) ic.textContent = on ? "\u2605" : "\u2606";
+    if (tx) tx.textContent = on ? "保存済み" : "あとで読む";
+    if (!ic && !tx) b.textContent = on ? "\u2605" : "\u2606";
+  }
+  function toggle(b){
+    var d = b.dataset, list = load(), i = list.findIndex(function(x){ return x.url === d.url; });
+    if (i >= 0) list.splice(i, 1);
+    else list.unshift({url:d.url, title:d.title||d.url, kind:d.kind||"", date:d.date||"",
+                       note:d.note||"", saved:new Date().toISOString().slice(0,10)});
+    save(list); paint(b);
+    if (window.renderFavs) window.renderFavs();
+  }
+  function wire(){
+    var bs = document.querySelectorAll("[data-fav]");
+    for (var i = 0; i < bs.length; i++){
+      (function(b){ paint(b); b.addEventListener("click", function(e){
+        e.preventDefault(); e.stopPropagation(); toggle(b); }); })(bs[i]);
+    }
+  }
+  window.favStore = {load:load, save:save, has:has};
+  if (document.readyState === "loading")
+    document.addEventListener("DOMContentLoaded", wire);
+  else wire();
+})();
+</script>
+</body>
+</html>
