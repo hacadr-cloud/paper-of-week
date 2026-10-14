@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>今週の論文 2026-10-15</title>
+<style>
+  :root{
+    --ground:#FBFAF8; --card:#FFFFFF; --line:#E8E4DC; --ink:#1E1C19; --muted:#6C665C;
+    --faint:#9A9389; --accent:#7A5C2E; --accent-bg:#F5EFE3;
+    --sans: system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{--ground:#14130F; --card:#1C1A16; --line:#2E2A24; --ink:#EDE9E1; --muted:#A79F93;
+      --faint:#7C7468; --accent:#C9A468; --accent-bg:#252017;}
+  }
+  :root[data-theme="light"]{--ground:#FBFAF8; --card:#FFFFFF; --line:#E8E4DC; --ink:#1E1C19;
+    --muted:#6C665C; --faint:#9A9389; --accent:#7A5C2E; --accent-bg:#F5EFE3;}
+  :root[data-theme="dark"]{--ground:#14130F; --card:#1C1A16; --line:#2E2A24; --ink:#EDE9E1;
+    --muted:#A79F93; --faint:#7C7468; --accent:#C9A468; --accent-bg:#252017;}
+  /* Phone-first, same scale as the weekly digest: 16px body, no justify (it opens rivers in
+     Japanese at narrow widths), generous side padding, tappable links. */
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0}
+  .wrap{background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:16px;
+    line-height:1.9;-webkit-font-smoothing:antialiased;padding:1.5rem 1.15rem 4rem;
+    min-height:100vh}
+  .inner{max-width:34rem;margin:0 auto}
+  .eyebrow{font-size:.72rem;letter-spacing:.16em;color:var(--faint);text-transform:uppercase;
+    margin:0 0 .5rem}
+  h1{font-size:1.34rem;font-weight:700;line-height:1.55;margin:0 0 .5rem;text-wrap:balance}
+  .meta{font-size:.84rem;color:var(--muted);margin:0 0 1.15rem;line-height:1.75}
+  .oneline{background:var(--accent-bg);border-left:3px solid var(--accent);
+    border-radius:0 10px 10px 0;padding:.9rem .95rem;font-size:1rem;font-weight:600;
+    line-height:1.8;margin:0 0 1.5rem}
+  .hook{font-size:1rem;color:var(--ink);margin:0 0 1.9rem}
+  /* 本文中の小見出し（h2 のセクション見出しより一段下） */
+  .sh{font-size:.95rem;font-weight:700;color:var(--ink);margin:1.4rem 0 .55rem;
+    padding-left:.6rem;border-left:3px solid var(--accent);line-height:1.6}
+  .sh:first-child{margin-top:0}
+  .blist{list-style:none;margin:0 0 1rem;padding:0;display:flex;flex-direction:column;
+    gap:.5rem}
+  .blist li{position:relative;padding-left:1.1rem;line-height:1.85;font-size:.97rem}
+  .blist li::before{content:"";position:absolute;left:.2rem;top:.78em;width:.32rem;
+    height:.32rem;border-radius:50%;background:var(--accent)}
+  .find .dt p, .app .ac p{margin:0 0 .6rem}
+  .find .dt p:last-child, .app .ac p:last-child{margin-bottom:0}
+  h2{font-size:.76rem;font-weight:700;letter-spacing:.14em;color:var(--accent);
+    margin:2rem 0 .8rem;padding-bottom:.45rem;border-bottom:1px solid var(--line)}
+  p{margin:0 0 .95rem;font-size:1rem}
+  p:last-child{margin-bottom:0}
+  .find{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:1rem .95rem;margin-bottom:.75rem}
+  .find .pt{font-size:1rem;font-weight:700;line-height:1.65;margin-bottom:.4rem}
+  .find .dt{font-size:.94rem;color:var(--muted);line-height:1.85}
+  .apply{display:flex;flex-direction:column;gap:.75rem}
+  .app{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:.95rem}
+  .app .sc{font-size:.74rem;font-weight:700;color:var(--accent);letter-spacing:.06em;
+    margin-bottom:.35rem}
+  .app .ac{font-size:.97rem;line-height:1.85}
+  .limits{background:var(--card);border:1px dashed var(--line);border-radius:12px;
+    padding:1rem .95rem;font-size:.95rem;color:var(--muted);line-height:1.85}
+  .src{display:inline-block;margin-top:1.7rem;font-size:.86rem;color:var(--muted);
+    text-decoration:none;border:1px solid var(--line);border-radius:9px;
+    padding:.6rem .8rem;line-height:1.5;word-break:break-word}
+  .src:hover{color:var(--accent);border-color:var(--accent)}
+  footer{margin-top:2.4rem;padding-top:1.1rem;border-top:1px solid var(--line);
+    font-size:.78rem;color:var(--faint);line-height:1.7}
+  a:focus-visible,.src:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+.fav{appearance:none;-webkit-appearance:none;cursor:pointer;display:inline-flex;
+  align-items:center;justify-content:center;gap:6px;min-width:44px;min-height:44px;
+  padding:0 12px;border-radius:999px;font:inherit;font-size:14px;font-weight:600;
+  background:var(--surface,#fff);color:var(--ink-mut,#6b7280);
+  border:1px solid var(--line,#e5e7eb);line-height:1;}
+.fav:hover{border-color:#f0b429;color:#b26b00;}
+.fav[aria-pressed="true"]{background:#fff8e6;border-color:#f0b429;color:#b26b00;}
+.fav .ic{font-size:16px;line-height:1;}
+.fav-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:14px 0 6px;}
+.fav-bar a.all{font-size:13.5px;color:var(--ink-mut,#6b7280);text-decoration:none;
+  min-height:44px;display:inline-flex;align-items:center;}
+.fav-bar a.all:hover{text-decoration:underline;}
+.fav-mini{appearance:none;-webkit-appearance:none;cursor:pointer;background:none;border:0;
+  padding:6px 8px;margin-left:2px;font-size:15px;line-height:1;color:#c3c8d0;
+  min-width:36px;min-height:36px;}
+.fav-mini[aria-pressed="true"]{color:#f0b429;}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="inner">
+  <p class="eyebrow">Paper of the week</p>
+  <h1>市場で取引するにも費用がかかる。だから会社が生まれる</h1>
+  <p class="meta">Ronald H. Coase / 1937 / 企業理論
+    <br>The Nature of the Firm</p>
+  <div class="fav-bar"><button class="fav" data-fav data-url="https://hacadr-cloud.github.io/paper-of-week/2026-10-15.html" data-title="市場で取引するにも費用がかかる。だから会社が生まれる" data-kind="paper" data-date="2026-10-15" aria-pressed="false"><span class="ic">☆</span><span class="tx">あとで読む</span></button><a class="all" href="favorites.html">保存した記事を見る →</a></div>
+  <div class="oneline">市場を使うにも費用がかかる。その節約こそが会社の存在理由だ</div>
+  <div class="hook"><p>当時の経済学では、経済は価格が自動的に調整するものとされていた。資源は価格を見て動く。だから、命令で人や物を動かす会社という仕組みがなぜあるのかは、問われもしなかった。</p><p>コースは、市場で取引するにも費用がかかると指摘した。会社はその費用を節約するために生まれる、という説明である。</p><p>発表後30年以上はほとんど引用されなかった。1970年代に「取引費用」の考え方として掘り起こされ、1991年のノーベル経済学賞の授賞理由にもなった。外注するか自前でやるかを論じる議論は、今もほぼすべてこの論文が出発点になっている。</p></div>
+
+  <h2>問い</h2>
+  <p>問いは単純だ。価格がうまく資源を配分するなら、なぜ会社の中では価格を使わず、上司の指示で人や物が動くのか。</p><p>経済学者ロバートソンは、会社を「無意識の協力の海に浮かぶ、意識的な力の島」にたとえた。海が市場で、島が会社である。では、なぜ島ができるのか。</p><p>この問いは裏返しの問いも抱えている。会社のほうが効率的なら、なぜ経済全体が一つの巨大企業にならないのか。会社が「ある理由」と「大きくなりすぎない理由」を、一つの理屈でまとめて説明しなければならない。そこが難しい。</p>
+
+  <h2>どう組み立てられているか</h2>
+  <p>**これは実証研究ではない。** データを集めて分析した論文ではなく、理屈を積み上げて結論を出す理論的な論文である。数式も統計も使っていない。</p><p>着想のきっかけは、若い頃のコースの米国旅行だったと本人が後年語っている。旅行中に工場や企業を見て回った経験があった。ただし、この論文の中で見学の記録が証拠として使われているわけではない。</p><p>組み立ては次の順序で進む。</p><ul class="blist"><li>まず、会社の定義を「現実に合っていること」と「理論で扱えること」の両方を満たすように決める</li><li>次に、会社の特徴を「価格ではなく、指示する人（経営者）が資源の行き先を決める仕組み」と定める</li><li>そのうえで、市場を使うことにかかる費用を挙げ、会社の中ならそれが減ると論じる</li><li>最後に、会社の中でも取引が増えると費用が上がることを示し、会社の大きさの限界を説明する</li></ul><p>先行する説明の検討にも紙幅を割いている。たとえば、会社の存在を「不確実性」だけで説明したナイトの議論を検討し、それだけでは足りないと退けた。</p><p>定義が現実に合っているかの確認には、法律上の「雇い主と雇われる人」の関係を使った。法律家が雇用関係をどう定義しているかを引き、自分の定義と一致すると示している。</p>
+
+  <h2>主張の中身</h2>
+  <div class="find"><div class="pt">市場で取引するには費用がかかる</div><div class="dt"><p>価格の仕組みを使うこと自体にコストがかかる。これが論文の核心である。</p><p>コースが挙げた主な費用は次の二つ。</p><ul class="blist"><li>適正な価格がいくらなのかを調べる手間</li><li>取引のたびに交渉し、契約を結ぶ手間</li></ul><p>当時の理論は、この手間をゼロとみなしていた。コースはそれを正面から費用として数えた。後年「取引費用」と呼ばれる考え方の原型である。</p></div></div><div class="find"><div class="pt">会社は、契約の束をまとめて一本にする仕組み</div><div class="dt"><p>会社の中では、取引のたびに契約を結び直さなくてよい。働き手は一度雇用契約を結べば、一定の範囲内で経営者の指示に従う。</p><p>つまり、無数の小さな契約が一本の長期契約に置き換わる。契約の中身は細かく決めず、「この範囲なら指示に従う」とだけ決めておく。</p><p>先のことが読めない状況では、これが特に効く。細部を事前に決めきれないので、後から指示で埋めるほうが安く済むからだ。</p></div></div><div class="find"><div class="pt">市場取引だけにかかる税や規制も、会社を大きくする</div><div class="dt"><p>副次的な理由として、税や規制にも触れている。</p><p>たとえば売上税のように、市場で売買したときだけかかる税がある。そういう税は、同じ作業を社内で済ませる動機を生む。</p><p>価格統制や割当の規制がある場合も同じである。市場を通すと不利になる制度は、会社の中に取り込む方向に働く。会社の範囲は費用だけでなく、制度によっても動く。</p></div></div><div class="find"><div class="pt">会社が大きくなるほど、組織する費用は上がる</div><div class="dt"><p>では、なぜ一社が経済全体を飲み込まないのか。コースは、社内で取引を増やすと費用が上がるからだと答えた。</p><p>挙げた理由は三つある。</p><ul class="blist"><li>取引が増えると、追加の取引をまとめる費用が上がっていく</li><li>経営者が資源をうまく配置できなくなり、判断の失敗が増える</li><li>規模が大きくなると、必要な人や材料を集める値段が上がることがある</li></ul><p>取引が地理的に散らばっていたり、種類がばらばらだったりすると、この上昇は速まるとも述べている。</p></div></div><div class="find"><div class="pt">会社の大きさは「限界」で決まる</div><div class="dt"><p>結論として、会社は次の点まで大きくなる。社内で取引を一つ増やす費用が、それを市場で行う費用、または別の会社に任せる費用と等しくなる点である。</p><p>この「もう一つ増やしたらどうか」で考える方法は、当時の経済学の標準的な道具だった。コースはその道具をそのまま会社の境界に当てはめた。</p><p>これにより、会社の大きさを理論の中で扱えるようになった。また、通信手段の進歩のように組織する費用を下げる技術は、会社を大きくする方向に働くとも論じている。</p></div></div>
+
+  <h2>なぜそうなるのか</h2>
+  <p>理屈の土台は「比べる」ことにある。同じ仕事を進めるには、二つのやり方がある。</p><ul class="blist"><li>市場で買う（取引ごとに相手を探し、値段を決め、契約する）</li><li>社内でやる（雇った人に指示して済ませる）</li></ul><p>どちらにも費用がかかる。安いほうが選ばれる。</p><p>市場が高くつくのは、取引のたびに同じ手間が繰り返されるからだ。相場を調べ、交渉し、約束を文書にする。取引が頻繁で、中身が先々変わりそうなほど、この手間はかさむ。</p><p>会社は、この繰り返しを一度の雇用契約にまとめる。細かい指示は後から出せばよい。だから、変化の多い仕事ほど社内に取り込む利点が大きい。</p><p>ただし、社内の指示にも費用がある。指示を出す人の目が届く範囲には限りがある。仕事が増えるほど情報は遅れ、判断を誤りやすくなる。</p><p>つまり、規模が大きくなるほど市場の弱点は避けられるが、組織の弱点が育っていく。二つの費用が釣り合う点が会社の境界になる。</p><p>この説明の強みは、会社が「ある理由」と「大きくなりすぎない理由」を同じ物差しで説明できる点にある。条件が変わって費用の大小が変われば、境界も動く。</p>
+
+  <h2>どこまで言えるか</h2>
+  <div class="limits"><p>最大の弱点は、取引費用の中身が曖昧なことだった。何が費用を高くするのかを具体的に示さなかったため、長く検証できなかった。コース自身も後年、この論文は「よく引用されるが、ほとんど使われない」と認めている。</p><p>後続研究による修正は主に次のとおり。</p><ul class="blist"><li>ウィリアムソンは、取引費用が高くなる条件を特定した。その取引専用の設備や技能があるとき、相手の裏切りを防ぎにくいとき、などである</li><li>アルチアンとデムセッツは「会社に命令の力などない。雇用も市場の契約と本質は同じ」と批判した。代わりに、共同作業を誰が監視するかに注目した</li><li>グロスマン、ハート、ムーアは、契約に書ききれない部分を誰が決めるかに注目した。その決定権は資産の所有から生まれるとして、所有の意味を理論に組み込んだ</li></ul><p>別の方向の批判もある。取引費用の節約だけを見ていて、会社が知識や能力を育てる場であるという面を説明できない、というものだ。会社の境界は費用だけでなく、何ができるかでも決まるという主張である。</p></div>
+
+  <a class="src" href="https://scholar.google.com/scholar?q=The%20Nature%20of%20the%20Firm" target="_blank" rel="noopener">Economicaを探す ↗</a>
+  <footer>経営学の古典を実務家向けに解説したものです。解釈は本記事によるもので、原典の記述
+  そのものではありません。判断の前に原典をご確認ください。</footer>
+</div></div>
+<script>
+(function(){
+  var KEY = "lsm-favs-v1";
+  function load(){ try { return JSON.parse(localStorage.getItem(KEY)) || []; }
+                   catch(e){ return []; } }
+  function save(v){ try { localStorage.setItem(KEY, JSON.stringify(v)); } catch(e){} }
+  function has(url){ return load().some(function(x){ return x.url === url; }); }
+  function paint(b){
+    var on = has(b.dataset.url);
+    b.setAttribute("aria-pressed", on ? "true" : "false");
+    var ic = b.querySelector(".ic"), tx = b.querySelector(".tx");
+    if (ic) ic.textContent = on ? "\u2605" : "\u2606";
+    if (tx) tx.textContent = on ? "保存済み" : "あとで読む";
+    if (!ic && !tx) b.textContent = on ? "\u2605" : "\u2606";
+  }
+  function toggle(b){
+    var d = b.dataset, list = load(), i = list.findIndex(function(x){ return x.url === d.url; });
+    if (i >= 0) list.splice(i, 1);
+    else list.unshift({url:d.url, title:d.title||d.url, kind:d.kind||"", date:d.date||"",
+                       note:d.note||"", saved:new Date().toISOString().slice(0,10)});
+    save(list); paint(b);
+    if (window.renderFavs) window.renderFavs();
+  }
+  function wire(){
+    var bs = document.querySelectorAll("[data-fav]");
+    for (var i = 0; i < bs.length; i++){
+      (function(b){ paint(b); b.addEventListener("click", function(e){
+        e.preventDefault(); e.stopPropagation(); toggle(b); }); })(bs[i]);
+    }
+  }
+  window.favStore = {load:load, save:save, has:has};
+  if (document.readyState === "loading")
+    document.addEventListener("DOMContentLoaded", wire);
+  else wire();
+})();
+</script>
+</body>
+</html>
