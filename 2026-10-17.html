@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>今週の論文 2026-10-17</title>
+<style>
+  :root{
+    --ground:#FBFAF8; --card:#FFFFFF; --line:#E8E4DC; --ink:#1E1C19; --muted:#6C665C;
+    --faint:#9A9389; --accent:#7A5C2E; --accent-bg:#F5EFE3;
+    --sans: system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{--ground:#14130F; --card:#1C1A16; --line:#2E2A24; --ink:#EDE9E1; --muted:#A79F93;
+      --faint:#7C7468; --accent:#C9A468; --accent-bg:#252017;}
+  }
+  :root[data-theme="light"]{--ground:#FBFAF8; --card:#FFFFFF; --line:#E8E4DC; --ink:#1E1C19;
+    --muted:#6C665C; --faint:#9A9389; --accent:#7A5C2E; --accent-bg:#F5EFE3;}
+  :root[data-theme="dark"]{--ground:#14130F; --card:#1C1A16; --line:#2E2A24; --ink:#EDE9E1;
+    --muted:#A79F93; --faint:#7C7468; --accent:#C9A468; --accent-bg:#252017;}
+  /* Phone-first, same scale as the weekly digest: 16px body, no justify (it opens rivers in
+     Japanese at narrow widths), generous side padding, tappable links. */
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0}
+  .wrap{background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:16px;
+    line-height:1.9;-webkit-font-smoothing:antialiased;padding:1.5rem 1.15rem 4rem;
+    min-height:100vh}
+  .inner{max-width:34rem;margin:0 auto}
+  .eyebrow{font-size:.72rem;letter-spacing:.16em;color:var(--faint);text-transform:uppercase;
+    margin:0 0 .5rem}
+  h1{font-size:1.34rem;font-weight:700;line-height:1.55;margin:0 0 .5rem;text-wrap:balance}
+  .meta{font-size:.84rem;color:var(--muted);margin:0 0 1.15rem;line-height:1.75}
+  .oneline{background:var(--accent-bg);border-left:3px solid var(--accent);
+    border-radius:0 10px 10px 0;padding:.9rem .95rem;font-size:1rem;font-weight:600;
+    line-height:1.8;margin:0 0 1.5rem}
+  .hook{font-size:1rem;color:var(--ink);margin:0 0 1.9rem}
+  /* 本文中の小見出し（h2 のセクション見出しより一段下） */
+  .sh{font-size:.95rem;font-weight:700;color:var(--ink);margin:1.4rem 0 .55rem;
+    padding-left:.6rem;border-left:3px solid var(--accent);line-height:1.6}
+  .sh:first-child{margin-top:0}
+  .blist{list-style:none;margin:0 0 1rem;padding:0;display:flex;flex-direction:column;
+    gap:.5rem}
+  .blist li{position:relative;padding-left:1.1rem;line-height:1.85;font-size:.97rem}
+  .blist li::before{content:"";position:absolute;left:.2rem;top:.78em;width:.32rem;
+    height:.32rem;border-radius:50%;background:var(--accent)}
+  .find .dt p, .app .ac p{margin:0 0 .6rem}
+  .find .dt p:last-child, .app .ac p:last-child{margin-bottom:0}
+  h2{font-size:.76rem;font-weight:700;letter-spacing:.14em;color:var(--accent);
+    margin:2rem 0 .8rem;padding-bottom:.45rem;border-bottom:1px solid var(--line)}
+  p{margin:0 0 .95rem;font-size:1rem}
+  p:last-child{margin-bottom:0}
+  .find{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:1rem .95rem;margin-bottom:.75rem}
+  .find .pt{font-size:1rem;font-weight:700;line-height:1.65;margin-bottom:.4rem}
+  .find .dt{font-size:.94rem;color:var(--muted);line-height:1.85}
+  .apply{display:flex;flex-direction:column;gap:.75rem}
+  .app{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:.95rem}
+  .app .sc{font-size:.74rem;font-weight:700;color:var(--accent);letter-spacing:.06em;
+    margin-bottom:.35rem}
+  .app .ac{font-size:.97rem;line-height:1.85}
+  .limits{background:var(--card);border:1px dashed var(--line);border-radius:12px;
+    padding:1rem .95rem;font-size:.95rem;color:var(--muted);line-height:1.85}
+  .src{display:inline-block;margin-top:1.7rem;font-size:.86rem;color:var(--muted);
+    text-decoration:none;border:1px solid var(--line);border-radius:9px;
+    padding:.6rem .8rem;line-height:1.5;word-break:break-word}
+  .src:hover{color:var(--accent);border-color:var(--accent)}
+  footer{margin-top:2.4rem;padding-top:1.1rem;border-top:1px solid var(--line);
+    font-size:.78rem;color:var(--faint);line-height:1.7}
+  a:focus-visible,.src:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+.fav{appearance:none;-webkit-appearance:none;cursor:pointer;display:inline-flex;
+  align-items:center;justify-content:center;gap:6px;min-width:44px;min-height:44px;
+  padding:0 12px;border-radius:999px;font:inherit;font-size:14px;font-weight:600;
+  background:var(--surface,#fff);color:var(--ink-mut,#6b7280);
+  border:1px solid var(--line,#e5e7eb);line-height:1;}
+.fav:hover{border-color:#f0b429;color:#b26b00;}
+.fav[aria-pressed="true"]{background:#fff8e6;border-color:#f0b429;color:#b26b00;}
+.fav .ic{font-size:16px;line-height:1;}
+.fav-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:14px 0 6px;}
+.fav-bar a.all{font-size:13.5px;color:var(--ink-mut,#6b7280);text-decoration:none;
+  min-height:44px;display:inline-flex;align-items:center;}
+.fav-bar a.all:hover{text-decoration:underline;}
+.fav-mini{appearance:none;-webkit-appearance:none;cursor:pointer;background:none;border:0;
+  padding:6px 8px;margin-left:2px;font-size:15px;line-height:1;color:#c3c8d0;
+  min-width:36px;min-height:36px;}
+.fav-mini[aria-pressed="true"]{color:#f0b429;}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="inner">
+  <p class="eyebrow">Paper of the week</p>
+  <h1>人は「最善」ではなく「これで十分」を探して決める</h1>
+  <p class="meta">Herbert A. Simon / 1955 / 意思決定
+    <br>A Behavioral Model of Rational Choice</p>
+  <div class="fav-bar"><button class="fav" data-fav data-url="https://hacadr-cloud.github.io/paper-of-week/2026-10-17.html" data-title="人は「最善」ではなく「これで十分」を探して決める" data-kind="paper" data-date="2026-10-17" aria-pressed="false"><span class="ic">☆</span><span class="tx">あとで読む</span></button><a class="all" href="favorites.html">保存した記事を見る →</a></div>
+  <div class="oneline">人は限られた頭で、最善でなく基準を超えた「十分な案」を選ぶ</div>
+  <div class="hook"><p>当時の経済学は、人を「すべての選択肢を知り、結果を正確に計算し、一番得なものを選ぶ存在」と仮定していました。サイモンは、この仮定は現実の人間には不可能だと正面から指摘しました。</p><p>代わりに出したのは、計算できる範囲で考え、基準を満たした案が見つかれば決める、という人間像です。この見方は後に「限定された合理性」と呼ばれ、1978年のノーベル経済学賞の授賞理由の中心になりました。</p><p>今も引用され続けるのは、「人は不合理だ」とは言わずに、「限られた頭で合理的にふるまうとどうなるか」を問い直したからです。</p></div>
+
+  <h2>問い</h2>
+  <p>問いは単純です。現実の人間や組織は、情報も計算能力も限られている。その中で「合理的に選ぶ」とは、実際には何をしていることなのか。</p><p>これが難しいのは、二つの立場の間に道が無かったからです。「完全に合理的」と仮定すれば計算はきれいになりますが、現実に合いません。「人は気まぐれだ」と言えば現実には近づきますが、何も予測できません。</p><p>サイモンは、合理性を捨てずに、人間が実際に使える手続きとして書き直せないかを問いました。</p>
+
+  <h2>どう組み立てられているか</h2>
+  <p>これは**データを取った実証研究ではありません**。理論を組み立て直す概念論文です。実験や調査の結果は示されていません。</p><p>組み立ては次の順です。</p><ul class="blist"><li>まず、従来の「経済人」モデルが前提にしているものを分解する</li><li>選択肢の全体、検討する選択肢、起こりうる将来、それぞれの結果の価値、どの将来が起こるかの情報、という要素に分ける</li><li>各要素について、現実の人間がどこで計算しきれないかを示す</li><li>その上で、要求を軽くした「単純化された選び方」を順に提案する</li></ul><p>証拠として使われるのは、主に思考実験的な事例です。</p><ul class="blist"><li>チェス：理論上は最善手が存在するが、手の組み合わせが膨大で、誰も計算しきれない。実際の指し手は、十分に良い局面に至る手を探す</li><li>家の売却：売り手はすべての買い手を比べられない。受け入れ価格を決めて、それを超える申し出が来たら売る。来なければ価格を下げていく</li></ul><p>心理学の「要求水準（aspiration level）」の考え方も借りています。論文自体も、これは厳密な最終形ではなく第一次の近似だと位置づけています。</p>
+
+  <h2>主張の中身</h2>
+  <div class="find"><div class="pt">完全な合理性は、現実の人間には要求しすぎである</div><div class="dt"><p>従来モデルは、三つのことを同時に求めていました。</p><ul class="blist"><li>すべての選択肢を知っている</li><li>各選択肢がもたらす結果を知っている</li><li>結果をすべて一列に並べて比べられる</li></ul><p>サイモンは、このどれもが現実には満たせないと指摘しました。問題は努力不足ではなく、情報と計算の量が人間の処理能力を超えていることです。チェスのように規則が完全に分かっている場面ですら、最善手は計算できません。</p></div></div><div class="find"><div class="pt">結果の評価を「良い・悪い」の二択にまで単純化できる</div><div class="dt"><p>従来は、結果一つひとつに細かい点数をつけて比べる前提でした。サイモンは、実際の判断はもっと粗いと考えました。</p><p>「満足できる／できない」の二段階、あるいは「勝ち・引き分け・負け」の三段階で十分なことが多い。こう単純化すると、全選択肢の細かな比較が要らなくなります。</p><p>必要なのは「この案は基準を超えているか」という判定だけになり、計算量が劇的に減ります。</p></div></div><div class="find"><div class="pt">選択肢は一度に並べず、順番に探して、基準を超えたら止める</div><div class="dt"><p>従来モデルでは、選択肢は最初から全部目の前にあることになっていました。サイモンは、現実の選択肢は探さないと見つからないものだと考えました。</p><p>そこで手順はこうなります。</p><ul class="blist"><li>一つ見つける</li><li>基準を満たすか判定する</li><li>満たせば採用し、探すのをやめる</li><li>満たさなければ次を探す</li></ul><p>最善かどうかは確かめません。この「十分なら止める」選び方は、翌年以降の論文で「サティスファイシング（満足化）」と呼ばれ、広く知られるようになりました。</p></div></div><div class="find"><div class="pt">基準（要求水準）は固定ではなく、経験で上下する</div><div class="dt"><p>「十分」の線は、最初から決まっているわけではありません。サイモンは、探索の経験によって動くと考えました。</p><ul class="blist"><li>良い案が簡単に見つかるときは、基準が上がる</li><li>なかなか見つからないときは、基準が下がる</li></ul><p>家の売り手の例がこれにあたります。高めの価格で始め、買い手がつかなければ徐々に下げます。この調整があるので、基準が高すぎて永遠に決まらない、あるいは低すぎて何でも受け入れる、という事態が自然に避けられます。</p></div></div><div class="find"><div class="pt">比べられない複数の目標は、無理に一つにまとめなくてよい</div><div class="dt"><p>現実の判断には、利益、安全、評判など、同じ物差しで測れない目標が並びます。従来モデルは、これらを一つの点数に換算できると仮定していました。</p><p>サイモンは、換算せずに目標ごとに基準を置けばよいと考えました。すべての目標で基準を超える案を探せばよいのです。</p><p>これにより、「利益1円は安全何点分か」という、そもそも答えようのない問いを避けられます。</p></div></div>
+
+  <h2>なぜそうなるのか</h2>
+  <p>なぜ人は「最善」ではなく「十分」で決めるのか。サイモンの理屈の芯は、**考えること自体にコストがかかり、しかも能力に上限がある**という点です。</p><p>最善を選ぶには、全選択肢を集め、全結果を予測し、全部を比べる必要があります。選択肢が増えるほど、この作業は爆発的に増えます。チェスがその典型です。</p><p>一方、「十分」で決める手順は、作業量が小さく抑えられます。</p><ul class="blist"><li>判定は「基準を超えたか」の一点だけ</li><li>良い案に当たった時点で探索が終わる</li><li>細かな点数づけも、異なる目標の換算も要らない</li></ul><p>ここで大事なのは、これを「手抜き」とは見ていないことです。能力に限りがある存在にとっては、これが理にかなったやり方だという主張です。だから「限定された合理性」と呼ばれます。合理性を捨てたのではなく、人間が実際に実行できる形に作り替えたのです。</p><p>もう一つの鍵は、要求水準の自動調整です。基準が環境に合わせて上下するので、粗い手順でも、長い目で見ればそれなりに環境に見合った結果に落ち着きます。</p><p>サイモンは後年、合理的な行動は「頭の限界」と「環境の構造」の両方で決まると述べ、二枚の刃を持つハサミに例えました。片方だけを見ても、行動は説明できないという意味です。</p>
+
+  <h2>どこまで言えるか</h2>
+  <div class="limits"><p>まず、この論文は理論の提案であり、実際の人がこう選んでいると実証したものではありません。家の売却やチェスは説明のための例です。</p><p>後年の主な批判と修正は次のとおりです。</p><ul class="blist"><li>最適化の一種にすぎないという批判**：スティグラー（1961）らは、探す手間をコストに入れれば「十分で止める」も最適化で説明できると論じた。サイモン側は、それなら「どこまで探すか」の計算自体が必要になり、問題が先送りされるだけだと反論した</li><li>基準の決め方があいまい**：要求水準がどこに置かれ、どれだけの速さで動くかを、理論は具体的に予測しない。そのため検証しにくいと指摘された</li><li>「経済学は仮定が現実的である必要はない」という立場**：予測が当たればよいとするフリードマン（1953）流の考え方からは、そもそも修正が不要だとされた</li></ul><p>後続の研究は二方向に分かれました。カーネマンとトヴェルスキーは、簡便な判断が生む系統的な誤りを掘り下げました。ギゲレンツァーは逆に、単純な判断が環境に合えば精密な計算に勝つこともあると示し、サイモンの「環境」の側面を発展させました。サイアートとマーチ（1963）は、この考え方を企業組織の意思決定理論へ広げています。</p></div>
+
+  <a class="src" href="https://scholar.google.com/scholar?q=A%20Behavioral%20Model%20of%20Rational%20Choice" target="_blank" rel="noopener">Quarterly Journal of Economicsを探す ↗</a>
+  <footer>経営学の古典を実務家向けに解説したものです。解釈は本記事によるもので、原典の記述
+  そのものではありません。判断の前に原典をご確認ください。</footer>
+</div></div>
+<script>
+(function(){
+  var KEY = "lsm-favs-v1";
+  function load(){ try { return JSON.parse(localStorage.getItem(KEY)) || []; }
+                   catch(e){ return []; } }
+  function save(v){ try { localStorage.setItem(KEY, JSON.stringify(v)); } catch(e){} }
+  function has(url){ return load().some(function(x){ return x.url === url; }); }
+  function paint(b){
+    var on = has(b.dataset.url);
+    b.setAttribute("aria-pressed", on ? "true" : "false");
+    var ic = b.querySelector(".ic"), tx = b.querySelector(".tx");
+    if (ic) ic.textContent = on ? "\u2605" : "\u2606";
+    if (tx) tx.textContent = on ? "保存済み" : "あとで読む";
+    if (!ic && !tx) b.textContent = on ? "\u2605" : "\u2606";
+  }
+  function toggle(b){
+    var d = b.dataset, list = load(), i = list.findIndex(function(x){ return x.url === d.url; });
+    if (i >= 0) list.splice(i, 1);
+    else list.unshift({url:d.url, title:d.title||d.url, kind:d.kind||"", date:d.date||"",
+                       note:d.note||"", saved:new Date().toISOString().slice(0,10)});
+    save(list); paint(b);
+    if (window.renderFavs) window.renderFavs();
+  }
+  function wire(){
+    var bs = document.querySelectorAll("[data-fav]");
+    for (var i = 0; i < bs.length; i++){
+      (function(b){ paint(b); b.addEventListener("click", function(e){
+        e.preventDefault(); e.stopPropagation(); toggle(b); }); })(bs[i]);
+    }
+  }
+  window.favStore = {load:load, save:save, has:has};
+  if (document.readyState === "loading")
+    document.addEventListener("DOMContentLoaded", wire);
+  else wire();
+})();
+</script>
+</body>
+</html>
