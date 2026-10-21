@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>今週の論文 2026-10-22</title>
+<style>
+  :root{
+    --ground:#FBFAF8; --card:#FFFFFF; --line:#E8E4DC; --ink:#1E1C19; --muted:#6C665C;
+    --faint:#9A9389; --accent:#7A5C2E; --accent-bg:#F5EFE3;
+    --sans: system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{--ground:#14130F; --card:#1C1A16; --line:#2E2A24; --ink:#EDE9E1; --muted:#A79F93;
+      --faint:#7C7468; --accent:#C9A468; --accent-bg:#252017;}
+  }
+  :root[data-theme="light"]{--ground:#FBFAF8; --card:#FFFFFF; --line:#E8E4DC; --ink:#1E1C19;
+    --muted:#6C665C; --faint:#9A9389; --accent:#7A5C2E; --accent-bg:#F5EFE3;}
+  :root[data-theme="dark"]{--ground:#14130F; --card:#1C1A16; --line:#2E2A24; --ink:#EDE9E1;
+    --muted:#A79F93; --faint:#7C7468; --accent:#C9A468; --accent-bg:#252017;}
+  /* Phone-first, same scale as the weekly digest: 16px body, no justify (it opens rivers in
+     Japanese at narrow widths), generous side padding, tappable links. */
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0}
+  .wrap{background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:16px;
+    line-height:1.9;-webkit-font-smoothing:antialiased;padding:1.5rem 1.15rem 4rem;
+    min-height:100vh}
+  .inner{max-width:34rem;margin:0 auto}
+  .eyebrow{font-size:.72rem;letter-spacing:.16em;color:var(--faint);text-transform:uppercase;
+    margin:0 0 .5rem}
+  h1{font-size:1.34rem;font-weight:700;line-height:1.55;margin:0 0 .5rem;text-wrap:balance}
+  .meta{font-size:.84rem;color:var(--muted);margin:0 0 1.15rem;line-height:1.75}
+  .oneline{background:var(--accent-bg);border-left:3px solid var(--accent);
+    border-radius:0 10px 10px 0;padding:.9rem .95rem;font-size:1rem;font-weight:600;
+    line-height:1.8;margin:0 0 1.5rem}
+  .hook{font-size:1rem;color:var(--ink);margin:0 0 1.9rem}
+  /* 本文中の小見出し（h2 のセクション見出しより一段下） */
+  .sh{font-size:.95rem;font-weight:700;color:var(--ink);margin:1.4rem 0 .55rem;
+    padding-left:.6rem;border-left:3px solid var(--accent);line-height:1.6}
+  .sh:first-child{margin-top:0}
+  .blist{list-style:none;margin:0 0 1rem;padding:0;display:flex;flex-direction:column;
+    gap:.5rem}
+  .blist li{position:relative;padding-left:1.1rem;line-height:1.85;font-size:.97rem}
+  .blist li::before{content:"";position:absolute;left:.2rem;top:.78em;width:.32rem;
+    height:.32rem;border-radius:50%;background:var(--accent)}
+  .find .dt p, .app .ac p{margin:0 0 .6rem}
+  .find .dt p:last-child, .app .ac p:last-child{margin-bottom:0}
+  h2{font-size:.76rem;font-weight:700;letter-spacing:.14em;color:var(--accent);
+    margin:2rem 0 .8rem;padding-bottom:.45rem;border-bottom:1px solid var(--line)}
+  p{margin:0 0 .95rem;font-size:1rem}
+  p:last-child{margin-bottom:0}
+  .find{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:1rem .95rem;margin-bottom:.75rem}
+  .find .pt{font-size:1rem;font-weight:700;line-height:1.65;margin-bottom:.4rem}
+  .find .dt{font-size:.94rem;color:var(--muted);line-height:1.85}
+  .apply{display:flex;flex-direction:column;gap:.75rem}
+  .app{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:.95rem}
+  .app .sc{font-size:.74rem;font-weight:700;color:var(--accent);letter-spacing:.06em;
+    margin-bottom:.35rem}
+  .app .ac{font-size:.97rem;line-height:1.85}
+  .limits{background:var(--card);border:1px dashed var(--line);border-radius:12px;
+    padding:1rem .95rem;font-size:.95rem;color:var(--muted);line-height:1.85}
+  .src{display:inline-block;margin-top:1.7rem;font-size:.86rem;color:var(--muted);
+    text-decoration:none;border:1px solid var(--line);border-radius:9px;
+    padding:.6rem .8rem;line-height:1.5;word-break:break-word}
+  .src:hover{color:var(--accent);border-color:var(--accent)}
+  footer{margin-top:2.4rem;padding-top:1.1rem;border-top:1px solid var(--line);
+    font-size:.78rem;color:var(--faint);line-height:1.7}
+  a:focus-visible,.src:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+.fav{appearance:none;-webkit-appearance:none;cursor:pointer;display:inline-flex;
+  align-items:center;justify-content:center;gap:6px;min-width:44px;min-height:44px;
+  padding:0 12px;border-radius:999px;font:inherit;font-size:14px;font-weight:600;
+  background:var(--surface,#fff);color:var(--ink-mut,#6b7280);
+  border:1px solid var(--line,#e5e7eb);line-height:1;}
+.fav:hover{border-color:#f0b429;color:#b26b00;}
+.fav[aria-pressed="true"]{background:#fff8e6;border-color:#f0b429;color:#b26b00;}
+.fav .ic{font-size:16px;line-height:1;}
+.fav-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:14px 0 6px;}
+.fav-bar a.all{font-size:13.5px;color:var(--ink-mut,#6b7280);text-decoration:none;
+  min-height:44px;display:inline-flex;align-items:center;}
+.fav-bar a.all:hover{text-decoration:underline;}
+.fav-mini{appearance:none;-webkit-appearance:none;cursor:pointer;background:none;border:0;
+  padding:6px 8px;margin-left:2px;font-size:15px;line-height:1;color:#c3c8d0;
+  min-width:36px;min-height:36px;}
+.fav-mini[aria-pressed="true"]{color:#f0b429;}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="inner">
+  <p class="eyebrow">Paper of the week</p>
+  <h1>真似も代替もできない経営資源だけが、長く勝ち続ける源になる</h1>
+  <p class="meta">Jay B. Barney / 1991 / 戦略
+    <br>Firm Resources and Sustained Competitive Advantage</p>
+  <div class="fav-bar"><button class="fav" data-fav data-url="https://hacadr-cloud.github.io/paper-of-week/2026-10-22.html" data-title="真似も代替もできない経営資源だけが、長く勝ち続ける源になる" data-kind="paper" data-date="2026-10-22" aria-pressed="false"><span class="ic">☆</span><span class="tx">あとで読む</span></button><a class="all" href="favorites.html">保存した記事を見る →</a></div>
+  <div class="oneline">長く勝つ源は、価値があり希少で、真似も代替もできない資源だ</div>
+  <div class="hook"><p>1980年代の戦略論で主流だったのは、ポーターに代表される「業界という外の環境を見よ」という考え方でした。どの業界に入り、どこに位置取るかで収益が決まるという発想です。</p><p>この論文は、視線を会社の内側に向けました。同じ業界にいても、会社ごとに持っている資源は違います。しかもその資源は簡単には他社へ移りません。だから成績に差がつく、と論じました。</p><p>「価値がある・希少・真似しにくい・代わりがない」という4つの条件は、会社の資源から競争力を説明する考え方の標準の物差しになりました。単純で使いやすく、同時に批判の的にもなりやすかったことが、数十年たっても引用され続ける理由です。</p></div>
+
+  <h2>問い</h2>
+  <p>なぜ一部の会社だけが、競合に追いつかれずに優位を保ち続けられるのか。これがこの論文の問いです。</p><p>難しいのは、儲かる仕組みは見えた途端に真似されるからです。優れたやり方が知られれば、競合は同じ設備を買い、同じような人材を雇います。そうすれば差は消えるはずです。</p><p>それでも差が残る会社があるなら、その差は何から生まれているのか。どんな性質の資源であれば、お金で買うことも、真似することもできないのか。論文はその条件を特定しようとしました。</p>
+
+  <h2>どう組み立てられているか</h2>
+  <p>本論文は概念論文です。データを集めて検証したものではなく、論理を積み上げて結論を導いています。</p><p>出発点は、前提の置き換えです。</p><ul class="blist"><li>従来の環境重視の議論：同じ業界の会社は資源が似ていて、差があってもすぐ移ると仮定する</li><li>本論文：会社ごとに資源が違い、しかもその資源は簡単には移らないと仮定する</li></ul><p>資源は広くとらえています。</p><ul class="blist"><li>物的な資源：設備、立地、原材料を手に入れる経路など</li><li>人的な資源：従業員や経営者の経験、判断力、人間関係</li><li>組織的な資源：報告の仕組み、計画や管理の制度、社内外の非公式な関係</li></ul><p>言葉の定義も明確にしています。「競争優位」とは、価値を生む戦略を、ほかの会社が同時には実行できていない状態です。「持続的」とは期間の長さではありません。他社が真似を試みても再現できず、真似の努力が止んだ後も優位が残ることを指します。</p><p>この前提と定義から、資源が持続的な優位を生むための4つの条件を導いています。例としては、計画づくりの制度・情報システム・評判などを取り上げ、4つの条件に当てはめて検討しています。</p>
+
+  <h2>主張の中身</h2>
+  <div class="find"><div class="pt">条件1：価値がある――機会をつかむか、脅威をかわすのに役立つこと</div><div class="dt"><p>資源に価値があると言えるのは、会社が市場の機会をつかむ戦略や、脅威をかわす戦略に使えるときです。</p><p>どれほど珍しい技術でも、市場の機会や脅威と結びつかなければ優位の源にはなりません。つまり資源の価値は、会社の内側だけを見ても判定できません。</p><p>この意味で本論文は、外部環境の分析を捨てたわけではありません。外部環境の分析を補う位置づけをとっています。</p></div></div><div class="find"><div class="pt">条件2：希少――同じ資源を持つ会社が少ないこと</div><div class="dt"><p>多くの競合が同じ資源を持っていれば、どの会社も同じ戦略を実行できます。その場合、資源は優位を生みません。</p><p>とはいえ、価値はあっても希少ではない資源が無意味なわけではありません。業界で生き残るために、他社と同じ水準に並ぶには必要です。</p><p>どれだけ少なければ希少と言えるかについて、著者は厳密な線を引いていません。その資源を持つ会社の数が、完全な価格競争が起きる数より少なければよい、という程度の書き方にとどまっています。</p></div></div><div class="find"><div class="pt">条件3：真似しにくい――歴史・あいまいさ・複雑さが壁になる</div><div class="dt"><p>価値があって希少な資源は優位を生みます。ただ、それだけでは一時的な優位です。競合が同じ資源を手に入れれば、差は消えてしまいます。真似しにくくなる理由として、著者は3つを挙げています。</p><ul class="blist"><li>歴史の積み重ね：特定の時期や経緯の中で手に入れた資源は、後から同じ条件を再現できない</li><li>因果のあいまいさ：その資源がなぜ成果を生むのか、外からも、時には自社にもよくわからない</li><li>社会的な複雑さ：社内の人間関係、組織の文化、取引先や顧客からの評判など、多くの人の関係の上に成り立っている</li></ul></div></div><div class="find"><div class="pt">条件4：代わりがない――別の資源で同じ戦略を実行できないこと</div><div class="dt"><p>最後の条件は、同じ戦略を別の資源で実行できないことです。真似されなくても、別の手段で同じ結果を出されれば、優位は崩れます。</p><p>代わりになる形は2つあります。</p><ul class="blist"><li>よく似た資源：顔ぶれが違っても、同じように機能する経営チームを作れる場合</li><li>まったく違う資源：カリスマ的なリーダーが示す将来像を、整った計画制度で代わりに描ける場合（逆もありうる）</li></ul><p>このように、真似しにくさとは別に、代わりのききにくさも確かめる必要があります。</p></div></div><div class="find"><div class="pt">当てはめると、市場で買えるものほど優位を生みにくい</div><div class="dt"><p>著者は具体例に4つの条件を当てはめ、次のように整理しています。</p><ul class="blist"><li>正式な計画づくりの制度：やり方が広く知られているので真似しやすく、それだけでは持続的な優位の源になりにくい</li><li>情報システム：機械そのものは買えるので真似しやすい。ただし社内の非公式な意思決定の仕組みに深く組み込まれていれば、真似しにくくなる</li><li>評判：顧客や取引先との長い関係の中でできあがったもので、社会的に複雑。持続的な優位の源になりうる</li></ul><p>共通するのは、買えば手に入るものほど優位を生みにくく、社内で時間をかけて育ったものほど生みやすいという点です。</p></div></div>
+
+  <h2>なぜそうなるのか</h2>
+  <p>出発点は単純な思考実験です。すべての会社が同じ資源を持ち、資源が自由に移るとします。すると、ある会社が始めた有利な戦略は、すぐに他社も実行できます。差は残りません。</p><p>だから、差が長く続いているなら、資源が会社ごとに違い、しかも移りにくいはずです。4つの条件は、この「違い」と「移りにくさ」を具体的に分けて示したものです。</p><p>買ってくれば済む資源が優位を生まない理由も、ここから説明できます。著者は以前の論文で、資源を売り買いする市場が正しく働けば、将来の儲けは買値に織り込まれると論じていました。よく儲かる資源は高い値段で売られるので、買い手の手元に特別な利益は残りません。</p><p>因果のあいまいさについては、逆説的な指摘があります。</p><ul class="blist"><li>自社が成功の理由を正確にわかっているなら、その知識を持つ人を引き抜けば真似できる</li><li>自社にもわからないからこそ、他社も真似の手がかりをつかめない</li></ul><p>社会的な複雑さも同じ理屈です。文化や信頼関係は、仕組みがわかっていても、経営者が意図して短期間に作れるものではありません。時間をかけて積み重なったものに、後から急いで追いつくことはできません。</p><p>つまりこの論理からは、持続的な優位は「狙って手に入れる」ものというより、「経緯の中で育つ」ものだということになります。</p>
+
+  <h2>どこまで言えるか</h2>
+  <div class="limits"><p>まず、本論文は概念論文です。4つの条件が本当に長期の優位を生むかどうかは、この論文では実証されていません。「真似しにくさ」や「因果のあいまいさ」は外から測りにくく、後の実証研究でも測り方が大きな課題になりました。</p><p>後年の主な批判と修正は次のとおりです。</p><ul class="blist"><li>堂々巡りだという指摘（プリエムとバトラー、2001年）：資源の「価値」が成果から逆算されがちで、検証できない。価値を決める市場側の説明も薄い</li><li>静的すぎるという指摘：環境が急に変わると、昨日の強みが重荷になる。資源を組み替える力を重視するダイナミック・ケイパビリティ論（ティースら、1997年）が生まれた</li><li>持っているだけでは足りないという修正：著者自身が後に、真似しにくさと代わりのなさを1つにまとめ、「資源を活かせる組織になっているか」を加えた形（VRIO）に改めた</li></ul><p>もう1つの限界は、真似しにくい資源を「どうすれば作れるか」への答えがほとんどないことです。経緯の中で育つものだとすれば、意図して作るための処方箋にはなりにくいからです。</p></div>
+
+  <a class="src" href="https://scholar.google.com/scholar?q=Firm%20Resources%20and%20Sustained%20Competitive%20Advantage" target="_blank" rel="noopener">Journal of Managementを探す ↗</a>
+  <footer>経営学の古典を実務家向けに解説したものです。解釈は本記事によるもので、原典の記述
+  そのものではありません。判断の前に原典をご確認ください。</footer>
+</div></div>
+<script>
+(function(){
+  var KEY = "lsm-favs-v1";
+  function load(){ try { return JSON.parse(localStorage.getItem(KEY)) || []; }
+                   catch(e){ return []; } }
+  function save(v){ try { localStorage.setItem(KEY, JSON.stringify(v)); } catch(e){} }
+  function has(url){ return load().some(function(x){ return x.url === url; }); }
+  function paint(b){
+    var on = has(b.dataset.url);
+    b.setAttribute("aria-pressed", on ? "true" : "false");
+    var ic = b.querySelector(".ic"), tx = b.querySelector(".tx");
+    if (ic) ic.textContent = on ? "\u2605" : "\u2606";
+    if (tx) tx.textContent = on ? "保存済み" : "あとで読む";
+    if (!ic && !tx) b.textContent = on ? "\u2605" : "\u2606";
+  }
+  function toggle(b){
+    var d = b.dataset, list = load(), i = list.findIndex(function(x){ return x.url === d.url; });
+    if (i >= 0) list.splice(i, 1);
+    else list.unshift({url:d.url, title:d.title||d.url, kind:d.kind||"", date:d.date||"",
+                       note:d.note||"", saved:new Date().toISOString().slice(0,10)});
+    save(list); paint(b);
+    if (window.renderFavs) window.renderFavs();
+  }
+  function wire(){
+    var bs = document.querySelectorAll("[data-fav]");
+    for (var i = 0; i < bs.length; i++){
+      (function(b){ paint(b); b.addEventListener("click", function(e){
+        e.preventDefault(); e.stopPropagation(); toggle(b); }); })(bs[i]);
+    }
+  }
+  window.favStore = {load:load, save:save, has:has};
+  if (document.readyState === "loading")
+    document.addEventListener("DOMContentLoaded", wire);
+  else wire();
+})();
+</script>
+</body>
+</html>
