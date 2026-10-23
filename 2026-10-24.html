@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>今週の論文 2026-10-24</title>
+<style>
+  :root{
+    --ground:#FBFAF8; --card:#FFFFFF; --line:#E8E4DC; --ink:#1E1C19; --muted:#6C665C;
+    --faint:#9A9389; --accent:#7A5C2E; --accent-bg:#F5EFE3;
+    --sans: system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{--ground:#14130F; --card:#1C1A16; --line:#2E2A24; --ink:#EDE9E1; --muted:#A79F93;
+      --faint:#7C7468; --accent:#C9A468; --accent-bg:#252017;}
+  }
+  :root[data-theme="light"]{--ground:#FBFAF8; --card:#FFFFFF; --line:#E8E4DC; --ink:#1E1C19;
+    --muted:#6C665C; --faint:#9A9389; --accent:#7A5C2E; --accent-bg:#F5EFE3;}
+  :root[data-theme="dark"]{--ground:#14130F; --card:#1C1A16; --line:#2E2A24; --ink:#EDE9E1;
+    --muted:#A79F93; --faint:#7C7468; --accent:#C9A468; --accent-bg:#252017;}
+  /* Phone-first, same scale as the weekly digest: 16px body, no justify (it opens rivers in
+     Japanese at narrow widths), generous side padding, tappable links. */
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0}
+  .wrap{background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:16px;
+    line-height:1.9;-webkit-font-smoothing:antialiased;padding:1.5rem 1.15rem 4rem;
+    min-height:100vh}
+  .inner{max-width:34rem;margin:0 auto}
+  .eyebrow{font-size:.72rem;letter-spacing:.16em;color:var(--faint);text-transform:uppercase;
+    margin:0 0 .5rem}
+  h1{font-size:1.34rem;font-weight:700;line-height:1.55;margin:0 0 .5rem;text-wrap:balance}
+  .meta{font-size:.84rem;color:var(--muted);margin:0 0 1.15rem;line-height:1.75}
+  .oneline{background:var(--accent-bg);border-left:3px solid var(--accent);
+    border-radius:0 10px 10px 0;padding:.9rem .95rem;font-size:1rem;font-weight:600;
+    line-height:1.8;margin:0 0 1.5rem}
+  .hook{font-size:1rem;color:var(--ink);margin:0 0 1.9rem}
+  /* 本文中の小見出し（h2 のセクション見出しより一段下） */
+  .sh{font-size:.95rem;font-weight:700;color:var(--ink);margin:1.4rem 0 .55rem;
+    padding-left:.6rem;border-left:3px solid var(--accent);line-height:1.6}
+  .sh:first-child{margin-top:0}
+  .blist{list-style:none;margin:0 0 1rem;padding:0;display:flex;flex-direction:column;
+    gap:.5rem}
+  .blist li{position:relative;padding-left:1.1rem;line-height:1.85;font-size:.97rem}
+  .blist li::before{content:"";position:absolute;left:.2rem;top:.78em;width:.32rem;
+    height:.32rem;border-radius:50%;background:var(--accent)}
+  .find .dt p, .app .ac p{margin:0 0 .6rem}
+  .find .dt p:last-child, .app .ac p:last-child{margin-bottom:0}
+  h2{font-size:.76rem;font-weight:700;letter-spacing:.14em;color:var(--accent);
+    margin:2rem 0 .8rem;padding-bottom:.45rem;border-bottom:1px solid var(--line)}
+  p{margin:0 0 .95rem;font-size:1rem}
+  p:last-child{margin-bottom:0}
+  .find{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:1rem .95rem;margin-bottom:.75rem}
+  .find .pt{font-size:1rem;font-weight:700;line-height:1.65;margin-bottom:.4rem}
+  .find .dt{font-size:.94rem;color:var(--muted);line-height:1.85}
+  .apply{display:flex;flex-direction:column;gap:.75rem}
+  .app{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:.95rem}
+  .app .sc{font-size:.74rem;font-weight:700;color:var(--accent);letter-spacing:.06em;
+    margin-bottom:.35rem}
+  .app .ac{font-size:.97rem;line-height:1.85}
+  .limits{background:var(--card);border:1px dashed var(--line);border-radius:12px;
+    padding:1rem .95rem;font-size:.95rem;color:var(--muted);line-height:1.85}
+  .src{display:inline-block;margin-top:1.7rem;font-size:.86rem;color:var(--muted);
+    text-decoration:none;border:1px solid var(--line);border-radius:9px;
+    padding:.6rem .8rem;line-height:1.5;word-break:break-word}
+  .src:hover{color:var(--accent);border-color:var(--accent)}
+  footer{margin-top:2.4rem;padding-top:1.1rem;border-top:1px solid var(--line);
+    font-size:.78rem;color:var(--faint);line-height:1.7}
+  a:focus-visible,.src:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+.fav{appearance:none;-webkit-appearance:none;cursor:pointer;display:inline-flex;
+  align-items:center;justify-content:center;gap:6px;min-width:44px;min-height:44px;
+  padding:0 12px;border-radius:999px;font:inherit;font-size:14px;font-weight:600;
+  background:var(--surface,#fff);color:var(--ink-mut,#6b7280);
+  border:1px solid var(--line,#e5e7eb);line-height:1;}
+.fav:hover{border-color:#f0b429;color:#b26b00;}
+.fav[aria-pressed="true"]{background:#fff8e6;border-color:#f0b429;color:#b26b00;}
+.fav .ic{font-size:16px;line-height:1;}
+.fav-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:14px 0 6px;}
+.fav-bar a.all{font-size:13.5px;color:var(--ink-mut,#6b7280);text-decoration:none;
+  min-height:44px;display:inline-flex;align-items:center;}
+.fav-bar a.all:hover{text-decoration:underline;}
+.fav-mini{appearance:none;-webkit-appearance:none;cursor:pointer;background:none;border:0;
+  padding:6px 8px;margin-left:2px;font-size:15px;line-height:1;color:#c3c8d0;
+  min-width:36px;min-height:36px;}
+.fav-mini[aria-pressed="true"]{color:#f0b429;}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="inner">
+  <p class="eyebrow">Paper of the week</p>
+  <h1>改善ばかりの組織は、気づかぬうちに未来を食い潰す</h1>
+  <p class="meta">James G. March / 1991 / 組織
+    <br>Exploration and Exploitation in Organizational Learning</p>
+  <div class="fav-bar"><button class="fav" data-fav data-url="https://hacadr-cloud.github.io/paper-of-week/2026-10-24.html" data-title="改善ばかりの組織は、気づかぬうちに未来を食い潰す" data-kind="paper" data-date="2026-10-24" aria-pressed="false"><span class="ic">☆</span><span class="tx">あとで読む</span></button><a class="all" href="favorites.html">保存した記事を見る →</a></div>
+  <div class="oneline">学習は確実な改善に偏り、放置すれば新しい可能性を試す力が痩せていく</div>
+  <div class="hook"><p>当時は、組織は経験から学ぶほど賢くなるという見方が一般的でした。うまくいったやり方を繰り返して磨けば、成果は上がり続けるという考え方です。</p><p>マーチはこれに疑問を出しました。学習がうまく回るほど、組織は今あるやり方の改善に偏ります。その結果、新しい可能性を試す力がやせていく、と論じたのです。</p><p>30年以上たっても引用され続けるのは、「今の稼ぎを磨くこと」と「次の芽を探すこと」を対立する二つの軸として示したからです。この二つの言葉は、その後のイノベーション研究や戦略論の共通語になりました。</p></div>
+
+  <h2>問い</h2>
+  <p>組織は限られた人・時間・お金を、二つの活動に配分しなければなりません。</p><ul class="blist"><li>既存のやり方を磨き、確実に成果を出す活動（活用）</li><li>新しいやり方を試し、まだ見えない可能性を探る活動（探索）</li></ul><p>マーチの問いは、この配分がどう決まるのか、そしてなぜ組織は放っておくと偏るのか、でした。</p><p>難しいのは、二つの活動で成果の出方がまったく違うからです。活用の成果はすぐ、身近に、確実に出ます。探索の成果は遅く、遠くで、不確かにしか出ません。だから「どちらが得か」を同じ物差しで比べられないのです。</p>
+
+  <h2>どう組み立てられているか</h2>
+  <p>この論文は現場のデータを集めた実証研究ではありません。**概念的な議論と、コンピュータ上の単純なシミュレーションモデル**で組み立てられています。実在の企業を調べた調査は含まれていません。</p><p>まず前提として、学習には探索と活用の二種類があり、両者は限られた資源を奪い合うと置きます。そのうえで、二つのモデルを作りました。</p><p>一つ目は、組織と個人が互いに学び合うモデルです。</p><ul class="blist"><li>外の世界には「正解」がある（多くの項目について、正しい答えが決まっている）</li><li>個人はそれぞれ、項目ごとに信念を持っている</li><li>組織には共有された「やり方・常識」（組織のコード）がある</li><li>個人はこのコードに染まっていく（社会化）</li><li>コードの側は、コードより正解をよく知っている個人から学ぶ</li></ul><p>この染まる速さ、人の入れ替わり、環境の変化といった条件を変えて、組織全体の知識がどうなるかを計算しました。</p><p>二つ目は、競争の中で順位を争うモデルです。成果の平均を上げることと、成果のばらつき（当たり外れの幅）を大きくすることの、どちらが首位を取るのに効くかを調べました。</p><p>結論はこうした理屈とシミュレーションの組み合わせから導かれています。数値は特定の仮定のもとで出たものです。</p>
+
+  <h2>主張の中身</h2>
+  <div class="find"><div class="pt">個人が組織に早く染まりすぎると、組織全体の知識はかえって伸びない</div><div class="dt"><p>一つ目のモデルでは、個人が組織の常識を素早く取り込むほど、全体の意見はすぐに揃います。しかし揃うのが早すぎると、組織は正解からずれたところで固まってしまいます。</p><p>染まるのが遅い個人は、しばらく組織と違う考えを持ち続けます。その中に正解に近いものがあれば、組織のコードはそこから学べます。</p><p>結果として、社会化がゆっくりなほうが、最終的に組織が到達する知識の水準は高くなりました。</p></div></div><div class="find"><div class="pt">早く染まる人と遅く染まる人の混在が、組織を賢くする</div><div class="dt"><p>全員が遅く染まる必要はありません。モデルでは、早く染まる人と遅く染まる人が混ざっている組織のほうが、成績がよくなる場合がありました。</p><p>早く染まる人は、組織の知識を素早く広めて全体の足並みを揃えます。遅く染まる人は、異なる見方を保ち続け、コードを修正する材料を提供します。</p><p>つまり、組織にとっての「異分子」は、効率を下げる存在であると同時に、学習の源でもあります。</p></div></div><div class="find"><div class="pt">適度な人の入れ替わりは、組織の知識を高めうる</div><div class="dt"><p>人が入れ替わると、その人の経験は失われます。それでもモデルでは、適度な入れ替わりが組織全体の知識を押し上げる場合がありました。</p><p>新しく入った人は、まだ組織の常識に染まっていません。そのため組織にとって新しい考えを持ち込む役割を果たします。</p><p>特に外の環境が変わり続ける場合、入れ替わりがない組織の常識は徐々に古くなります。新しい人の流入がそれを補います。ただし入れ替わりが多すぎれば、蓄積そのものが失われます。</p></div></div><div class="find"><div class="pt">競争相手が多いと、平均より「ばらつき」が順位を決める</div><div class="dt"><p>二つ目のモデルでは、成果の平均とばらつきのどちらが首位を取るのに効くかを調べました。</p><ul class="blist"><li>競争相手が少ないとき：平均を上げること（活用）が有利</li><li>競争相手が多く、首位だけが報われるとき：ばらつきを大きくすること（探索）が有利になりうる</li></ul><p>多数の競争者の中で一番になるには、平均的に良いだけでは足りません。大当たりの可能性を持つ必要があります。ここに、活用だけでは勝てない状況があります。</p></div></div><div class="find"><div class="pt">組織の学習は、放っておくと活用に偏り、長期的に自滅しうる</div><div class="dt"><p>論文全体を通じた主張がこれです。活用の成果は確実で早く、身近に見えます。探索の成果は不確かで遅く、遠くに出ます。</p><p>経験から学ぶ組織は、成果が見えやすい活用を強化しやすくなります。うまくいったやり方ほど上手になり、上手になるほどそれを使う、という循環です。</p><p>この循環は短期的には合理的です。しかし長期的には、新しい選択肢を試す力が失われ、環境が変わったときに対応できなくなります。マーチはこれを、適応の過程が自分自身を壊す可能性として描きました。</p></div></div>
+
+  <h2>なぜそうなるのか</h2>
+  <p>なぜ組織は活用に偏るのか。鍵は、成果が「いつ・どこで・どれくらい確実に」出るかの違いです。</p><p>活用の成果には三つの特徴があります。</p><ul class="blist"><li>早く出る（今期の数字に反映される）</li><li>身近に出る（取り組んだ部署に返ってくる）</li><li>確実に出る（失敗しにくい）</li></ul><p>探索はすべて逆です。成果は遅く、別の部署や将来に出て、多くは失敗に終わります。</p><p>経験から学ぶ組織は、うまくいったことを繰り返し、失敗したことをやめます。この単純な学習の仕組みでは、成果が見えやすい活用ばかりが「成功」として記録されます。探索は失敗として記録されやすく、次第に削られます。</p><p>さらに、慣れたやり方ほど上手になります。上手になると成果が上がり、ますますそのやり方が選ばれます。こうして、本来はもっと良い別のやり方があっても、試す機会が失われます。マーチはこの罠を以前の共著で「有能さの罠」と呼んでいました。</p><p>一つ目のモデルは、この偏りが組織の内部でも起きることを示しています。全員が組織の常識に素早く揃うと、効率は上がります。しかし常識と違う考えが消えるため、常識の誤りを直す材料がなくなります。</p><p>だから探索を守るには、意図的な仕組みが要ります。染まりきらない人、新しく入る人、短期の成果で評価されない場がそれにあたります。</p>
+
+  <h2>どこまで言えるか</h2>
+  <div class="limits"><p>まず、主な根拠は単純化したシミュレーションです。「正解が決まっている世界」「個人と組織のコードの二層構造」など、強い仮定の上に結論が乗っています。現実の組織で同じ結果が出るかは、この論文自体では確かめていません。</p><p>後年の研究では、主に次の点が議論・修正されました。</p><ul class="blist"><li>探索と活用は本当に一本の軸の両端か。両方を同時に高められるのではないか、という指摘（グプタらによる整理など）</li><li>組織の中で部門を分ければ両立できる、という「両利きの経営」の議論（オライリーとタッシュマンら）</li><li>時期によって探索と活用を切り替える、提携先や外部に探索を任せる、という配分の仕方</li></ul><p>また、何を探索と呼び何を活用と呼ぶかが研究者によってまちまちです。概念が広く使われた分、測り方が揃わないという批判も続いています。「適切なバランス」の具体的な水準も、この論文は示していません。</p></div>
+
+  <a class="src" href="https://scholar.google.com/scholar?q=Exploration%20and%20Exploitation%20in%20Organizational%20Learning" target="_blank" rel="noopener">Organization Scienceを探す ↗</a>
+  <footer>経営学の古典を実務家向けに解説したものです。解釈は本記事によるもので、原典の記述
+  そのものではありません。判断の前に原典をご確認ください。</footer>
+</div></div>
+<script>
+(function(){
+  var KEY = "lsm-favs-v1";
+  function load(){ try { return JSON.parse(localStorage.getItem(KEY)) || []; }
+                   catch(e){ return []; } }
+  function save(v){ try { localStorage.setItem(KEY, JSON.stringify(v)); } catch(e){} }
+  function has(url){ return load().some(function(x){ return x.url === url; }); }
+  function paint(b){
+    var on = has(b.dataset.url);
+    b.setAttribute("aria-pressed", on ? "true" : "false");
+    var ic = b.querySelector(".ic"), tx = b.querySelector(".tx");
+    if (ic) ic.textContent = on ? "\u2605" : "\u2606";
+    if (tx) tx.textContent = on ? "保存済み" : "あとで読む";
+    if (!ic && !tx) b.textContent = on ? "\u2605" : "\u2606";
+  }
+  function toggle(b){
+    var d = b.dataset, list = load(), i = list.findIndex(function(x){ return x.url === d.url; });
+    if (i >= 0) list.splice(i, 1);
+    else list.unshift({url:d.url, title:d.title||d.url, kind:d.kind||"", date:d.date||"",
+                       note:d.note||"", saved:new Date().toISOString().slice(0,10)});
+    save(list); paint(b);
+    if (window.renderFavs) window.renderFavs();
+  }
+  function wire(){
+    var bs = document.querySelectorAll("[data-fav]");
+    for (var i = 0; i < bs.length; i++){
+      (function(b){ paint(b); b.addEventListener("click", function(e){
+        e.preventDefault(); e.stopPropagation(); toggle(b); }); })(bs[i]);
+    }
+  }
+  window.favStore = {load:load, save:save, has:has};
+  if (document.readyState === "loading")
+    document.addEventListener("DOMContentLoaded", wire);
+  else wire();
+})();
+</script>
+</body>
+</html>
