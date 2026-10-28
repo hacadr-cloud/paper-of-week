@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>今週の論文 2026-10-29</title>
+<style>
+  :root{
+    --ground:#FBFAF8; --card:#FFFFFF; --line:#E8E4DC; --ink:#1E1C19; --muted:#6C665C;
+    --faint:#9A9389; --accent:#7A5C2E; --accent-bg:#F5EFE3;
+    --sans: system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{--ground:#14130F; --card:#1C1A16; --line:#2E2A24; --ink:#EDE9E1; --muted:#A79F93;
+      --faint:#7C7468; --accent:#C9A468; --accent-bg:#252017;}
+  }
+  :root[data-theme="light"]{--ground:#FBFAF8; --card:#FFFFFF; --line:#E8E4DC; --ink:#1E1C19;
+    --muted:#6C665C; --faint:#9A9389; --accent:#7A5C2E; --accent-bg:#F5EFE3;}
+  :root[data-theme="dark"]{--ground:#14130F; --card:#1C1A16; --line:#2E2A24; --ink:#EDE9E1;
+    --muted:#A79F93; --faint:#7C7468; --accent:#C9A468; --accent-bg:#252017;}
+  /* Phone-first, same scale as the weekly digest: 16px body, no justify (it opens rivers in
+     Japanese at narrow widths), generous side padding, tappable links. */
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0}
+  .wrap{background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:16px;
+    line-height:1.9;-webkit-font-smoothing:antialiased;padding:1.5rem 1.15rem 4rem;
+    min-height:100vh}
+  .inner{max-width:34rem;margin:0 auto}
+  .eyebrow{font-size:.72rem;letter-spacing:.16em;color:var(--faint);text-transform:uppercase;
+    margin:0 0 .5rem}
+  h1{font-size:1.34rem;font-weight:700;line-height:1.55;margin:0 0 .5rem;text-wrap:balance}
+  .meta{font-size:.84rem;color:var(--muted);margin:0 0 1.15rem;line-height:1.75}
+  .oneline{background:var(--accent-bg);border-left:3px solid var(--accent);
+    border-radius:0 10px 10px 0;padding:.9rem .95rem;font-size:1rem;font-weight:600;
+    line-height:1.8;margin:0 0 1.5rem}
+  .hook{font-size:1rem;color:var(--ink);margin:0 0 1.9rem}
+  /* 本文中の小見出し（h2 のセクション見出しより一段下） */
+  .sh{font-size:.95rem;font-weight:700;color:var(--ink);margin:1.4rem 0 .55rem;
+    padding-left:.6rem;border-left:3px solid var(--accent);line-height:1.6}
+  .sh:first-child{margin-top:0}
+  .blist{list-style:none;margin:0 0 1rem;padding:0;display:flex;flex-direction:column;
+    gap:.5rem}
+  .blist li{position:relative;padding-left:1.1rem;line-height:1.85;font-size:.97rem}
+  .blist li::before{content:"";position:absolute;left:.2rem;top:.78em;width:.32rem;
+    height:.32rem;border-radius:50%;background:var(--accent)}
+  .find .dt p, .app .ac p{margin:0 0 .6rem}
+  .find .dt p:last-child, .app .ac p:last-child{margin-bottom:0}
+  h2{font-size:.76rem;font-weight:700;letter-spacing:.14em;color:var(--accent);
+    margin:2rem 0 .8rem;padding-bottom:.45rem;border-bottom:1px solid var(--line)}
+  p{margin:0 0 .95rem;font-size:1rem}
+  p:last-child{margin-bottom:0}
+  .find{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:1rem .95rem;margin-bottom:.75rem}
+  .find .pt{font-size:1rem;font-weight:700;line-height:1.65;margin-bottom:.4rem}
+  .find .dt{font-size:.94rem;color:var(--muted);line-height:1.85}
+  .apply{display:flex;flex-direction:column;gap:.75rem}
+  .app{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:.95rem}
+  .app .sc{font-size:.74rem;font-weight:700;color:var(--accent);letter-spacing:.06em;
+    margin-bottom:.35rem}
+  .app .ac{font-size:.97rem;line-height:1.85}
+  .limits{background:var(--card);border:1px dashed var(--line);border-radius:12px;
+    padding:1rem .95rem;font-size:.95rem;color:var(--muted);line-height:1.85}
+  .src{display:inline-block;margin-top:1.7rem;font-size:.86rem;color:var(--muted);
+    text-decoration:none;border:1px solid var(--line);border-radius:9px;
+    padding:.6rem .8rem;line-height:1.5;word-break:break-word}
+  .src:hover{color:var(--accent);border-color:var(--accent)}
+  footer{margin-top:2.4rem;padding-top:1.1rem;border-top:1px solid var(--line);
+    font-size:.78rem;color:var(--faint);line-height:1.7}
+  a:focus-visible,.src:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+.fav{appearance:none;-webkit-appearance:none;cursor:pointer;display:inline-flex;
+  align-items:center;justify-content:center;gap:6px;min-width:44px;min-height:44px;
+  padding:0 12px;border-radius:999px;font:inherit;font-size:14px;font-weight:600;
+  background:var(--surface,#fff);color:var(--ink-mut,#6b7280);
+  border:1px solid var(--line,#e5e7eb);line-height:1;}
+.fav:hover{border-color:#f0b429;color:#b26b00;}
+.fav[aria-pressed="true"]{background:#fff8e6;border-color:#f0b429;color:#b26b00;}
+.fav .ic{font-size:16px;line-height:1;}
+.fav-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:14px 0 6px;}
+.fav-bar a.all{font-size:13.5px;color:var(--ink-mut,#6b7280);text-decoration:none;
+  min-height:44px;display:inline-flex;align-items:center;}
+.fav-bar a.all:hover{text-decoration:underline;}
+.fav-mini{appearance:none;-webkit-appearance:none;cursor:pointer;background:none;border:0;
+  padding:6px 8px;margin-left:2px;font-size:15px;line-height:1;color:#c3c8d0;
+  min-width:36px;min-height:36px;}
+.fav-mini[aria-pressed="true"]{color:#f0b429;}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="inner">
+  <p class="eyebrow">Paper of the week</p>
+  <h1>自前か外注かは「取引の面倒さ」で決まる——取引コストの経済学</h1>
+  <p class="meta">Oliver E. Williamson / 1981 / 企業理論
+    <br>The Economics of Organization: The Transaction Cost Approach</p>
+  <div class="fav-bar"><button class="fav" data-fav data-url="https://hacadr-cloud.github.io/paper-of-week/2026-10-29.html" data-title="自前か外注かは「取引の面倒さ」で決まる——取引コストの経済学" data-kind="paper" data-date="2026-10-29" aria-pressed="false"><span class="ic">☆</span><span class="tx">あとで読む</span></button><a class="all" href="favorites.html">保存した記事を見る →</a></div>
+  <div class="oneline">内製か外注かは、取引を守る手間が安い方で決まる</div>
+  <div class="hook"><p>当時の経済学では、企業はほとんど「生産をする箱」として扱われていた。その箱の中がどう組み立てられているかも、どこまでを自社でやるかも、まともに問われていなかった。</p><p>ウィリアムソンはこの問いを、取引の性質の問題に置き換えた。自社でやるか、市場で買うか、長期契約を結ぶか。どれを選ぶかは「取引をまとめて守らせる手間がいちばん安く済む形」で説明できる、と論じた。</p><p>この論文は経済学者向けではなく、社会学の専門誌に載った。組織を研究する人たちに、経済学の側から共通の言葉を差し出したものだ。外注・提携・系列・内製化を論じる研究は今もこの枠組みを出発点にしている。2009年のノーベル経済学賞の対象となった仕事の中心でもある。</p></div>
+
+  <h2>問い</h2>
+  <p>問いは単純だ。ある仕事を、なぜ市場で買わずに組織の中でやるのか。逆に、なぜすべてを一社で抱えないのか。</p><p>これが難しいのは、市場の価格の仕組みが効率的だとすると、企業という仕組みがそもそも存在する理由が説明しにくいからだ。かといって組織が常に優れているなら、世界に巨大企業が一社だけあればよい。</p><p>つまり「市場が負ける場面」と「組織が負ける場面」の両方を、同じ物差しで説明しなければならない。その物差しを何にするかが、この論文の核心である。</p>
+
+  <h2>どう組み立てられているか</h2>
+  <p>**これは実証論文ではなく、理論的な枠組みを示す概念論文である。** 著者が新たにデータを集めて検証したものではない。</p><p>組み立ては次の順に進む。</p><ul class="blist"><li>分析の単位を「企業」や「個人」ではなく「1件の取引」に置く</li><li>人間についての2つの前提を置く（後述の「合理性の限界」と「機会主義」）</li><li>取引ごとの性質の違いを特定する</li><li>その違いに合わせて、取引を管理する仕組み（市場・契約・組織内）を割り当てる</li></ul><p>理論の源流として、コースの「企業はなぜ存在するか」の議論や、組織論のサイモンの「人は限られた範囲でしか合理的に考えられない」という考え方を引いている。</p><p>論文はこの枠組みを3つの水準に当てはめる。</p><ul class="blist"><li>企業の境界：どこまでを内製するか（垂直統合）</li><li>企業内部の形：事業部制がなぜ広がったのか</li><li>雇用の関係：職場の仕事がどう組織されるか</li></ul><p>証拠としては、主に企業史の事例を使っている。たとえば、アメリカの大企業が事業部制へ移った歴史（チャンドラーの研究）や、他の研究者による実証研究だ。それらを、自分の枠組みと整合する材料として引いている。</p><p>枠組みを使って既存の観察を説明し直すことが、この論文の主な作業である。</p>
+
+  <h2>主張の中身</h2>
+  <div class="find"><div class="pt">分析の単位は「取引」であり、取引には必ずコストがかかる</div><div class="dt"><p>物やサービスが一つの工程から次の工程へ渡るたびに、取引が起きている。この取引には、価格以外のコストがかかる。</p><ul class="blist"><li>相手を探し、条件を交渉するコスト</li><li>契約を書くコスト</li><li>約束が守られているか見張るコスト</li><li>揉めたときに調整するコスト</li></ul><p>ウィリアムソンは、生産のコストだけでなく、この「取引を回すコスト」を比較しなければ、組織の形は説明できないと主張した。</p></div></div><div class="find"><div class="pt">人は限られた範囲でしか考えられず、隙があれば自分に有利に動く</div><div class="dt"><p>枠組み全体を支える2つの前提がある。</p><p>1つ目は合理性の限界だ。人は合理的であろうとするが、将来のあらゆる事態を予測して契約に書き込むことはできない。だから契約は必ず穴のあるものになる。</p><p>2つ目は機会主義だ。すべての人がそうだというわけではない。ただ、相手が自分の利益のために情報を隠したり約束を曲げたりする可能性がある。そして、誰がそうするかを事前に見分けるのは難しい。</p><p>この2つが揃うと問題が起きる。穴のある契約に、穴を突く相手が入り込む余地が生まれるからだ。どちらか一方だけなら、契約で十分に対処できるとされる。</p></div></div><div class="find"><div class="pt">最も重要な性質は「その相手専用の投資」があるかどうか</div><div class="dt"><p>取引の性質のうち、ウィリアムソンが最も重視したのが資産の特殊性である。特定の相手との取引のためだけに行われ、他に転用しにくい投資のことだ。</p><ul class="blist"><li>立地の特殊性：相手の工場の隣に建てた設備</li><li>物的な特殊性：その顧客専用の金型や機械</li><li>人的な特殊性：その取引の中でしか役立たない技能やノウハウ</li></ul><p>こうした投資があると、取引をやめた場合に価値が大きく失われる。だから当事者は相手に縛られる。この縛りが強いほど、市場での取引は危うくなり、組織の中に取り込む理由が強まる。</p></div></div><div class="find"><div class="pt">頻度と不確実性が、どの管理の仕組みが割に合うかを左右する</div><div class="dt"><p>専用投資以外にも、取引の性質が2つ挙げられる。</p><ul class="blist"><li>頻度：同じ取引が何度も繰り返されるなら、専用の管理の仕組みを作る費用を回収しやすい</li><li>不確実性：先が読めないほど、契約に書いていない事態が起きやすい。その都度の調整が必要になる</li></ul><p>一回きりの標準的な取引なら、市場で買うのが一番よい。専用投資が大きく、繰り返し発生し、先が読めない取引ほど、自社で抱える方が割に合う。</p><p>組織の形は、取引の性質に合わせて選ばれるものだ、というのが結論である。</p></div></div><div class="find"><div class="pt">同じ理屈で、事業部制や職場の組織も説明できる</div><div class="dt"><p>この論文の特徴は、枠組みを企業の境界だけでなく、企業の内部にも当てはめた点にある。</p><p>事業部制については次のように説明する。会社が大きくなり機能別の組織のままでいると、本社に判断が集まりすぎて処理しきれなくなる。各部門も全社ではなく自部門の利益で動き始める。事業ごとに独立した単位を作り、本社が資金配分と監視に専念すれば、この問題を抑えられる。</p><p>雇用についても同じ理屈を使う。その会社でしか役立たない技能が必要な仕事ほど、長期の雇用や内部の昇進の仕組みで守る理由が強い。</p></div></div>
+
+  <h2>なぜそうなるのか</h2>
+  <p>理屈の芯は、取引が始まった後に当事者の力関係が変わる、という点にある。</p><p>取引を始める前は、多くの業者が競い合っている。発注側は一番よい条件を選べる。ところが一社に決めて専用の設備や技能に投資すると、状況が変わる。その相手以外とは同じ条件で取引できなくなるからだ。</p><p>ウィリアムソンはこれを「根本的な転換」と呼んだ。多数の競争だった関係が、事実上の一対一の関係に変わることを指す。</p><p>一対一になると何が起きるか。</p><ul class="blist"><li>契約に書いていない事態が起きると、条件の再交渉が必要になる</li><li>そのとき、相手は「他に代わりはいないでしょう」と足元を見られる</li><li>それを恐れる側は、専用投資そのものをためらう</li><li>結果として、本来なら効率的な投資が行われなくなる</li></ul><p>組織の中に取り込むと、この問題が和らぐ。社内であれば、揉めたときに上司が命令で決着をつけられる。裁判に持ち込む必要がない。情報も見やすく、評価や昇進で長期的な協力を引き出せる。</p><p>ただし組織の中にもコストはある。市場の価格が持つ「頑張れば儲かる」という強い動機づけが弱まる。社内の事情で判断が歪むこともある。だからすべてを内製するのも誤りになる。</p><p>結局、問われるのは比較である。取引ごとに「市場のコスト」と「組織のコスト」を並べ、安い方に落ち着く。競争にさらされた企業は、意図しているかどうかにかかわらず、こうした効率的な形に淘汰されていく、と著者は考えた。</p>
+
+  <h2>どこまで言えるか</h2>
+  <div class="limits"><p>まず、この論文自体は枠組みの提示であって、検証ではない。後年の実証研究は、ある程度支持する結果を出している。専用投資が大きいほど内製しやすいという関係だ。一方で、不確実性や頻度の効果は研究によってばらつく。専用投資の大きさをどう測るかも、ずっと難題であり続けている。</p><p>後年の主な批判は次の通り。</p><ul class="blist"><li>グラノヴェッター（1985年、同じ社会学の専門誌）：取引は人間関係や信頼の中に埋め込まれている。市場でも機会主義は抑えられるし、組織の中でも起きる</li><li>ゴシャールとモラン（1996年）：「相手は裏切るかもしれない」という前提で管理すると、かえって不信と裏切りを生むと指摘した</li><li>知識を重視する立場（コグートとザンダーら）：企業が存在する理由は、裏切りの防止より、知識を共有し組み合わせることにあると主張した</li><li>グロスマンとハートらの所有権の理論：統合すれば問題が消えるのではなく、誰が最終的な決定権を持つかが問題だと定式化し直した</li></ul><p>日本の自動車メーカーと部品会社の関係のように、専用投資が大きいのに統合せず、長期の信頼関係で回している例も多い。ウィリアムソン自身も後に、市場と組織の間の「中間的な形態」を枠組みに加えている。</p><p>また「競争が効率的な形を残す」という前提は、競争が弱い業界では成り立ちにくい。</p></div>
+
+  <a class="src" href="https://scholar.google.com/scholar?q=The%20Economics%20of%20Organization%3A%20The%20Transaction%20Cost%20Approach" target="_blank" rel="noopener">American Journal of Sociologyを探す ↗</a>
+  <footer>経営学の古典を実務家向けに解説したものです。解釈は本記事によるもので、原典の記述
+  そのものではありません。判断の前に原典をご確認ください。</footer>
+</div></div>
+<script>
+(function(){
+  var KEY = "lsm-favs-v1";
+  function load(){ try { return JSON.parse(localStorage.getItem(KEY)) || []; }
+                   catch(e){ return []; } }
+  function save(v){ try { localStorage.setItem(KEY, JSON.stringify(v)); } catch(e){} }
+  function has(url){ return load().some(function(x){ return x.url === url; }); }
+  function paint(b){
+    var on = has(b.dataset.url);
+    b.setAttribute("aria-pressed", on ? "true" : "false");
+    var ic = b.querySelector(".ic"), tx = b.querySelector(".tx");
+    if (ic) ic.textContent = on ? "\u2605" : "\u2606";
+    if (tx) tx.textContent = on ? "保存済み" : "あとで読む";
+    if (!ic && !tx) b.textContent = on ? "\u2605" : "\u2606";
+  }
+  function toggle(b){
+    var d = b.dataset, list = load(), i = list.findIndex(function(x){ return x.url === d.url; });
+    if (i >= 0) list.splice(i, 1);
+    else list.unshift({url:d.url, title:d.title||d.url, kind:d.kind||"", date:d.date||"",
+                       note:d.note||"", saved:new Date().toISOString().slice(0,10)});
+    save(list); paint(b);
+    if (window.renderFavs) window.renderFavs();
+  }
+  function wire(){
+    var bs = document.querySelectorAll("[data-fav]");
+    for (var i = 0; i < bs.length; i++){
+      (function(b){ paint(b); b.addEventListener("click", function(e){
+        e.preventDefault(); e.stopPropagation(); toggle(b); }); })(bs[i]);
+    }
+  }
+  window.favStore = {load:load, save:save, has:has};
+  if (document.readyState === "loading")
+    document.addEventListener("DOMContentLoaded", wire);
+  else wire();
+})();
+</script>
+</body>
+</html>
