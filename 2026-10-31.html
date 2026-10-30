@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>今週の論文 2026-10-31</title>
+<style>
+  :root{
+    --ground:#FBFAF8; --card:#FFFFFF; --line:#E8E4DC; --ink:#1E1C19; --muted:#6C665C;
+    --faint:#9A9389; --accent:#7A5C2E; --accent-bg:#F5EFE3;
+    --sans: system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{--ground:#14130F; --card:#1C1A16; --line:#2E2A24; --ink:#EDE9E1; --muted:#A79F93;
+      --faint:#7C7468; --accent:#C9A468; --accent-bg:#252017;}
+  }
+  :root[data-theme="light"]{--ground:#FBFAF8; --card:#FFFFFF; --line:#E8E4DC; --ink:#1E1C19;
+    --muted:#6C665C; --faint:#9A9389; --accent:#7A5C2E; --accent-bg:#F5EFE3;}
+  :root[data-theme="dark"]{--ground:#14130F; --card:#1C1A16; --line:#2E2A24; --ink:#EDE9E1;
+    --muted:#A79F93; --faint:#7C7468; --accent:#C9A468; --accent-bg:#252017;}
+  /* Phone-first, same scale as the weekly digest: 16px body, no justify (it opens rivers in
+     Japanese at narrow widths), generous side padding, tappable links. */
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0}
+  .wrap{background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:16px;
+    line-height:1.9;-webkit-font-smoothing:antialiased;padding:1.5rem 1.15rem 4rem;
+    min-height:100vh}
+  .inner{max-width:34rem;margin:0 auto}
+  .eyebrow{font-size:.72rem;letter-spacing:.16em;color:var(--faint);text-transform:uppercase;
+    margin:0 0 .5rem}
+  h1{font-size:1.34rem;font-weight:700;line-height:1.55;margin:0 0 .5rem;text-wrap:balance}
+  .meta{font-size:.84rem;color:var(--muted);margin:0 0 1.15rem;line-height:1.75}
+  .oneline{background:var(--accent-bg);border-left:3px solid var(--accent);
+    border-radius:0 10px 10px 0;padding:.9rem .95rem;font-size:1rem;font-weight:600;
+    line-height:1.8;margin:0 0 1.5rem}
+  .hook{font-size:1rem;color:var(--ink);margin:0 0 1.9rem}
+  /* 本文中の小見出し（h2 のセクション見出しより一段下） */
+  .sh{font-size:.95rem;font-weight:700;color:var(--ink);margin:1.4rem 0 .55rem;
+    padding-left:.6rem;border-left:3px solid var(--accent);line-height:1.6}
+  .sh:first-child{margin-top:0}
+  .blist{list-style:none;margin:0 0 1rem;padding:0;display:flex;flex-direction:column;
+    gap:.5rem}
+  .blist li{position:relative;padding-left:1.1rem;line-height:1.85;font-size:.97rem}
+  .blist li::before{content:"";position:absolute;left:.2rem;top:.78em;width:.32rem;
+    height:.32rem;border-radius:50%;background:var(--accent)}
+  .find .dt p, .app .ac p{margin:0 0 .6rem}
+  .find .dt p:last-child, .app .ac p:last-child{margin-bottom:0}
+  h2{font-size:.76rem;font-weight:700;letter-spacing:.14em;color:var(--accent);
+    margin:2rem 0 .8rem;padding-bottom:.45rem;border-bottom:1px solid var(--line)}
+  p{margin:0 0 .95rem;font-size:1rem}
+  p:last-child{margin-bottom:0}
+  .find{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:1rem .95rem;margin-bottom:.75rem}
+  .find .pt{font-size:1rem;font-weight:700;line-height:1.65;margin-bottom:.4rem}
+  .find .dt{font-size:.94rem;color:var(--muted);line-height:1.85}
+  .apply{display:flex;flex-direction:column;gap:.75rem}
+  .app{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:.95rem}
+  .app .sc{font-size:.74rem;font-weight:700;color:var(--accent);letter-spacing:.06em;
+    margin-bottom:.35rem}
+  .app .ac{font-size:.97rem;line-height:1.85}
+  .limits{background:var(--card);border:1px dashed var(--line);border-radius:12px;
+    padding:1rem .95rem;font-size:.95rem;color:var(--muted);line-height:1.85}
+  .src{display:inline-block;margin-top:1.7rem;font-size:.86rem;color:var(--muted);
+    text-decoration:none;border:1px solid var(--line);border-radius:9px;
+    padding:.6rem .8rem;line-height:1.5;word-break:break-word}
+  .src:hover{color:var(--accent);border-color:var(--accent)}
+  footer{margin-top:2.4rem;padding-top:1.1rem;border-top:1px solid var(--line);
+    font-size:.78rem;color:var(--faint);line-height:1.7}
+  a:focus-visible,.src:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+.fav{appearance:none;-webkit-appearance:none;cursor:pointer;display:inline-flex;
+  align-items:center;justify-content:center;gap:6px;min-width:44px;min-height:44px;
+  padding:0 12px;border-radius:999px;font:inherit;font-size:14px;font-weight:600;
+  background:var(--surface,#fff);color:var(--ink-mut,#6b7280);
+  border:1px solid var(--line,#e5e7eb);line-height:1;}
+.fav:hover{border-color:#f0b429;color:#b26b00;}
+.fav[aria-pressed="true"]{background:#fff8e6;border-color:#f0b429;color:#b26b00;}
+.fav .ic{font-size:16px;line-height:1;}
+.fav-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:14px 0 6px;}
+.fav-bar a.all{font-size:13.5px;color:var(--ink-mut,#6b7280);text-decoration:none;
+  min-height:44px;display:inline-flex;align-items:center;}
+.fav-bar a.all:hover{text-decoration:underline;}
+.fav-mini{appearance:none;-webkit-appearance:none;cursor:pointer;background:none;border:0;
+  padding:6px 8px;margin-left:2px;font-size:15px;line-height:1;color:#c3c8d0;
+  min-width:36px;min-height:36px;}
+.fav-mini[aria-pressed="true"]{color:#f0b429;}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="inner">
+  <p class="eyebrow">Paper of the week</p>
+  <h1>会社は一つの頭で決めていない：交渉と前例でできた意思決定</h1>
+  <p class="meta">Richard M. Cyert, James G. March / 1963 / 意思決定
+    <br>A Behavioral Theory of the Firm</p>
+  <div class="fav-bar"><button class="fav" data-fav data-url="https://hacadr-cloud.github.io/paper-of-week/2026-10-31.html" data-title="会社は一つの頭で決めていない：交渉と前例でできた意思決定" data-kind="paper" data-date="2026-10-31" aria-pressed="false"><span class="ic">☆</span><span class="tx">あとで読む</span></button><a class="all" href="favorites.html">保存した記事を見る →</a></div>
+  <div class="oneline">会社は最適解を計算せず、交渉・要求水準・前例の手順で「十分な」答えを選ぶ</div>
+  <div class="hook"><p>当時の経済学は、会社を一人の合理的な人間のように扱っていました。会社は利益を最大にする答えを計算して選ぶ。そういう前提です。</p><p>本書はこの前提を捨てました。会社の中には利害の違う人たちがいます。全部を見通せる人はいません。だから決定は、交渉と妥協、そして手慣れた手順の積み重ねで生まれる、と説きました。</p><p>「目標の水準は実績に合わせて動く」「業績が悪いときだけ解決策を探す」「余裕資源が対立を吸収する」。こうした考え方は、その後の組織研究の共通言語になりました。だから今も引用され続けています。</p></div>
+
+  <h2>問い</h2>
+  <p>問いは一つです。現実の会社は、価格・生産量・予算・投資を実際にはどう決めているのか。</p><p>経済学の答えは「利益が最大になるように」でした。しかしこれは、会社がこう振る舞うはずだという前提にすぎません。社内で決定がどう作られるかは説明していません。</p><p>この問いが難しい理由は三つあります。</p><ul class="blist"><li>会社は人の集まりで、それぞれ目標が違う</li><li>情報は不完全で、計算できる量にも限りがある</li><li>決定は一回きりではなく、時間をかけて繰り返される</li></ul><p>この三つを同時に扱い、しかも予測に使える理論にしなければなりませんでした。</p>
+
+  <h2>どう組み立てられているか</h2>
+  <p>本書は、一つの大規模調査で結論を出した本ではありません。理論の枠組みに、いくつかの小さな実証や事例研究、計算機による模擬実験を組み合わせた構成です。</p><p>出発点はサイモンの「限定合理性」です。人は最善の答えを探し尽くせない。「十分に良い」答えで止める。これを個人から組織へ広げました。</p><p>組み立ては次の順です。</p><ul class="blist"><li>会社を、利害の違う人々の「連合体」と見なす</li><li>そこから、目標・期待・選択がどう決まるかの基本概念を置く</li><li>それらを結ぶ四つの関係概念（後述）で、決定の過程を説明する</li><li>理論を計算機の手順として書き下ろし、現実の決定と照らし合わせる</li></ul><p>証拠としては、次のようなものを使っています。</p><ul class="blist"><li>企業内の具体的な意思決定の事例観察</li><li>見積もりの伝達に偏りが生じるかを調べた実験</li><li>寡占市場の企業行動を模した計算機モデル</li><li>百貨店の一部門の価格設定と発注を再現したモデル</li></ul><p>特に百貨店のモデルは、担当者の実際の値付けをかなりの精度で再現したと報告されています。ただしこれは一社の一部門の話です。多数の企業を統計的に検証したわけではありません。</p>
+
+  <h2>主張の中身</h2>
+  <div class="find"><div class="pt">会社の目標は、交渉で決まる「連合体」の目標である</div><div class="dt"><p>会社には経営者、営業、生産、財務、株主、従業員などがいます。それぞれ欲しいものが違います。会社の目標は、誰か一人が決めるのではありません。参加者同士の交渉で形づくられます。</p><p>本書は、目標は一つの利益指標にまとまらず、複数の項目として並ぶとしました。挙げたのは次の五つです。</p><ul class="blist"><li>生産</li><li>在庫</li><li>売上</li><li>市場シェア</li><li>利益</li></ul><p>しかも、それぞれは「最大化」ではなく「この水準を超えればよい」という要求水準の形をとります。</p></div></div><div class="find"><div class="pt">対立は解消されず、「棚上げ」されたまま回っている</div><div class="dt"><p>目標同士は本来ぶつかります。売上を伸ばしたい営業と、在庫を減らしたい生産は相容れません。それでも会社が止まらないのはなぜか。本書は、対立を根本から解決しないまま運営できる仕組みがあるからだと考えました。</p><p>その仕組みは三つです。</p><ul class="blist"><li>問題を部門ごとに切り分け、各部門に別の目標を担当させる</li><li>目標に順番に注意を向ける。今期は売上、次は費用、というように</li><li>部門間の矛盾を、在庫や予算の余裕で吸収する</li></ul><p>これを「対立の準解決」と呼びました。</p></div></div><div class="find"><div class="pt">会社は不確実さを予測するより、避けようとする</div><div class="dt"><p>経済学では、将来を予測し、確率を見積もって最適な手を選ぶと考えます。本書の観察では、会社はそうしていません。</p><p>代わりに次の行動をとります。</p><ul class="blist"><li>長期の予測より、目の前の問題への短期の対応を優先する</li><li>慣行や業界の取り決め、長期契約などで環境そのものを安定させる</li><li>予算や計画を、交渉で固めた「約束事」として扱う</li></ul><p>予測の難しさに正面から挑むより、予測しなくて済む状態を作るほうを選ぶ、という見方です。これを「不確実性の回避」と呼びました。</p></div></div><div class="find"><div class="pt">解決策の探索は、問題が起きたときに、近くから始まる</div><div class="dt"><p>会社は常に改善策を探しているわけではありません。業績が要求水準を下回ったとき、はじめて探し始めます。これを「問題主導の探索」と呼びました。</p><p>探索のしかたにも癖があります。</p><ul class="blist"><li>まず、問題が起きた場所の近くで探す</li><li>次に、今のやり方の近くにある案を探す</li><li>それで足りないとき、はじめて遠くを探す</li></ul><p>探索は偏ってもいます。担当者の経験や立場、部門の利害が、何を見つけるかを左右します。そして最初に「十分に良い」案が見つかると、そこで探索は止まります。</p></div></div><div class="find"><div class="pt">組織は学習し、目標・注意・探索の手順が変わっていく</div><div class="dt"><p>会社の振る舞いは固定されていません。経験を通じて少しずつ変わります。本書はこれを「組織の学習」として、三つの面で整理しました。</p><ul class="blist"><li>目標の調整：要求水準は、過去の自社の実績や、比較対象となる他社の実績に合わせて上下する</li><li>注意の調整：どの指標や環境に目を向けるかが、経験で変わる</li><li>探索の調整：うまくいった探し方は残り、失敗した探し方は使われなくなる</li></ul><p>こうして蓄積された手順が「標準的な業務手順」となり、日々の決定の大半を担います。</p></div></div>
+
+  <h2>なぜそうなるのか</h2>
+  <p>なぜ会社はこう振る舞うのか。理屈の土台は、人の能力の限界と、利害の違いの二つです。</p><p>まず能力の限界です。会社が直面する問題は複雑すぎます。あらゆる選択肢を並べて比べることはできません。だから「この水準を満たせば良し」という基準を置き、最初にそれを満たした案を選びます。</p><p>次に利害の違いです。参加者は協力の見返りとして、報酬や予算や権限といった「支払い」を求めます。その要求を交渉で調整した結果が、会社の目標になります。目標が一本化されないのはこのためです。</p><p>ここで鍵になるのが「組織の余裕資源」です。これは、参加者を引き留めるのに最低限必要な額を超えて支払われている部分を指します。</p><ul class="blist"><li>業績が良いとき：余裕が積み上がる。高めの配当、ゆるい予算、手厚い人員などの形をとる</li><li>業績が悪いとき：余裕を削って要求水準を守る</li></ul><p>余裕資源は、環境の変化を和らげる緩衝材です。要求水準が実績に合わせてゆっくり動くことと組み合わさって、会社は環境の揺れを直接受けずに済みます。</p><p>決定の大半は、標準的な業務手順で処理されます。手順は、過去に問題を「十分に」解決したやり方の記録です。考える手間を省き、部門間の予想を揃える働きがあります。</p><p>これらは一つの循環をなしています。</p><ul class="blist"><li>業績が要求水準を下回る</li><li>探索が始まる</li><li>近場で十分な案が見つかると、手順が少し変わる</li><li>結果に応じて要求水準も動く</li></ul><p>この循環が、会社の振る舞いを作っています。</p>
+
+  <h2>どこまで言えるか</h2>
+  <div class="limits"><p>第一に、証拠の範囲は狭いです。中心となる模型は、少数の企業や一部門の決定を再現したものです。多数の企業で統計的に検証したわけではありません。理論の多くは、概念と論理による組み立てです。</p><p>第二に、後続の研究は本書の一部だけを熱心に検証してきました。</p><ul class="blist"><li>業績が要求水準を下回ると、会社はリスクの高い変化に踏み出しやすい。この「業績と要求水準の差」の議論は、後年多くの実証で支持された</li><li>余裕資源と革新の関係は単純ではない。少なすぎても多すぎても革新が減る、という山型の関係を示す研究がある</li></ul><p>第三に、後年の総括（アルゴートとグリーヴ、ガヴェッティらによる回顧論文など）は、分野が狭くなったと指摘しています。業績と要求水準の研究に偏り、本書の中心にあった「決定の過程そのもの」の研究が薄れた、という批判です。</p><p>第四に、扱いきれていない領域もあります。</p><ul class="blist"><li>権力の偏りや、社外の制度・規範の影響</li><li>目標や因果関係そのものが曖昧な状況。ここは後にマーチらの「ゴミ箱モデル」が補った</li></ul><p>また、主流の経済学はこの枠組みを全面的には採用しませんでした。一方で、決まった手順を軸に企業の変化を説明する「進化経済学」などには、強い影響を与えています。</p></div>
+
+  <a class="src" href="https://scholar.google.com/scholar?q=A%20Behavioral%20Theory%20of%20the%20Firm" target="_blank" rel="noopener">Prentice-Hallを探す ↗</a>
+  <footer>経営学の古典を実務家向けに解説したものです。解釈は本記事によるもので、原典の記述
+  そのものではありません。判断の前に原典をご確認ください。</footer>
+</div></div>
+<script>
+(function(){
+  var KEY = "lsm-favs-v1";
+  function load(){ try { return JSON.parse(localStorage.getItem(KEY)) || []; }
+                   catch(e){ return []; } }
+  function save(v){ try { localStorage.setItem(KEY, JSON.stringify(v)); } catch(e){} }
+  function has(url){ return load().some(function(x){ return x.url === url; }); }
+  function paint(b){
+    var on = has(b.dataset.url);
+    b.setAttribute("aria-pressed", on ? "true" : "false");
+    var ic = b.querySelector(".ic"), tx = b.querySelector(".tx");
+    if (ic) ic.textContent = on ? "\u2605" : "\u2606";
+    if (tx) tx.textContent = on ? "保存済み" : "あとで読む";
+    if (!ic && !tx) b.textContent = on ? "\u2605" : "\u2606";
+  }
+  function toggle(b){
+    var d = b.dataset, list = load(), i = list.findIndex(function(x){ return x.url === d.url; });
+    if (i >= 0) list.splice(i, 1);
+    else list.unshift({url:d.url, title:d.title||d.url, kind:d.kind||"", date:d.date||"",
+                       note:d.note||"", saved:new Date().toISOString().slice(0,10)});
+    save(list); paint(b);
+    if (window.renderFavs) window.renderFavs();
+  }
+  function wire(){
+    var bs = document.querySelectorAll("[data-fav]");
+    for (var i = 0; i < bs.length; i++){
+      (function(b){ paint(b); b.addEventListener("click", function(e){
+        e.preventDefault(); e.stopPropagation(); toggle(b); }); })(bs[i]);
+    }
+  }
+  window.favStore = {load:load, save:save, has:has};
+  if (document.readyState === "loading")
+    document.addEventListener("DOMContentLoaded", wire);
+  else wire();
+})();
+</script>
+</body>
+</html>
