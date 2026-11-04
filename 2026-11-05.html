@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>今週の論文 2026-11-05</title>
+<style>
+  :root{
+    --ground:#FBFAF8; --card:#FFFFFF; --line:#E8E4DC; --ink:#1E1C19; --muted:#6C665C;
+    --faint:#9A9389; --accent:#7A5C2E; --accent-bg:#F5EFE3;
+    --sans: system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{--ground:#14130F; --card:#1C1A16; --line:#2E2A24; --ink:#EDE9E1; --muted:#A79F93;
+      --faint:#7C7468; --accent:#C9A468; --accent-bg:#252017;}
+  }
+  :root[data-theme="light"]{--ground:#FBFAF8; --card:#FFFFFF; --line:#E8E4DC; --ink:#1E1C19;
+    --muted:#6C665C; --faint:#9A9389; --accent:#7A5C2E; --accent-bg:#F5EFE3;}
+  :root[data-theme="dark"]{--ground:#14130F; --card:#1C1A16; --line:#2E2A24; --ink:#EDE9E1;
+    --muted:#A79F93; --faint:#7C7468; --accent:#C9A468; --accent-bg:#252017;}
+  /* Phone-first, same scale as the weekly digest: 16px body, no justify (it opens rivers in
+     Japanese at narrow widths), generous side padding, tappable links. */
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0}
+  .wrap{background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:16px;
+    line-height:1.9;-webkit-font-smoothing:antialiased;padding:1.5rem 1.15rem 4rem;
+    min-height:100vh}
+  .inner{max-width:34rem;margin:0 auto}
+  .eyebrow{font-size:.72rem;letter-spacing:.16em;color:var(--faint);text-transform:uppercase;
+    margin:0 0 .5rem}
+  h1{font-size:1.34rem;font-weight:700;line-height:1.55;margin:0 0 .5rem;text-wrap:balance}
+  .meta{font-size:.84rem;color:var(--muted);margin:0 0 1.15rem;line-height:1.75}
+  .oneline{background:var(--accent-bg);border-left:3px solid var(--accent);
+    border-radius:0 10px 10px 0;padding:.9rem .95rem;font-size:1rem;font-weight:600;
+    line-height:1.8;margin:0 0 1.5rem}
+  .hook{font-size:1rem;color:var(--ink);margin:0 0 1.9rem}
+  /* 本文中の小見出し（h2 のセクション見出しより一段下） */
+  .sh{font-size:.95rem;font-weight:700;color:var(--ink);margin:1.4rem 0 .55rem;
+    padding-left:.6rem;border-left:3px solid var(--accent);line-height:1.6}
+  .sh:first-child{margin-top:0}
+  .blist{list-style:none;margin:0 0 1rem;padding:0;display:flex;flex-direction:column;
+    gap:.5rem}
+  .blist li{position:relative;padding-left:1.1rem;line-height:1.85;font-size:.97rem}
+  .blist li::before{content:"";position:absolute;left:.2rem;top:.78em;width:.32rem;
+    height:.32rem;border-radius:50%;background:var(--accent)}
+  .find .dt p, .app .ac p{margin:0 0 .6rem}
+  .find .dt p:last-child, .app .ac p:last-child{margin-bottom:0}
+  h2{font-size:.76rem;font-weight:700;letter-spacing:.14em;color:var(--accent);
+    margin:2rem 0 .8rem;padding-bottom:.45rem;border-bottom:1px solid var(--line)}
+  p{margin:0 0 .95rem;font-size:1rem}
+  p:last-child{margin-bottom:0}
+  .find{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:1rem .95rem;margin-bottom:.75rem}
+  .find .pt{font-size:1rem;font-weight:700;line-height:1.65;margin-bottom:.4rem}
+  .find .dt{font-size:.94rem;color:var(--muted);line-height:1.85}
+  .apply{display:flex;flex-direction:column;gap:.75rem}
+  .app{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:.95rem}
+  .app .sc{font-size:.74rem;font-weight:700;color:var(--accent);letter-spacing:.06em;
+    margin-bottom:.35rem}
+  .app .ac{font-size:.97rem;line-height:1.85}
+  .limits{background:var(--card);border:1px dashed var(--line);border-radius:12px;
+    padding:1rem .95rem;font-size:.95rem;color:var(--muted);line-height:1.85}
+  .src{display:inline-block;margin-top:1.7rem;font-size:.86rem;color:var(--muted);
+    text-decoration:none;border:1px solid var(--line);border-radius:9px;
+    padding:.6rem .8rem;line-height:1.5;word-break:break-word}
+  .src:hover{color:var(--accent);border-color:var(--accent)}
+  footer{margin-top:2.4rem;padding-top:1.1rem;border-top:1px solid var(--line);
+    font-size:.78rem;color:var(--faint);line-height:1.7}
+  a:focus-visible,.src:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+.fav{appearance:none;-webkit-appearance:none;cursor:pointer;display:inline-flex;
+  align-items:center;justify-content:center;gap:6px;min-width:44px;min-height:44px;
+  padding:0 12px;border-radius:999px;font:inherit;font-size:14px;font-weight:600;
+  background:var(--surface,#fff);color:var(--ink-mut,#6b7280);
+  border:1px solid var(--line,#e5e7eb);line-height:1;}
+.fav:hover{border-color:#f0b429;color:#b26b00;}
+.fav[aria-pressed="true"]{background:#fff8e6;border-color:#f0b429;color:#b26b00;}
+.fav .ic{font-size:16px;line-height:1;}
+.fav-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:14px 0 6px;}
+.fav-bar a.all{font-size:13.5px;color:var(--ink-mut,#6b7280);text-decoration:none;
+  min-height:44px;display:inline-flex;align-items:center;}
+.fav-bar a.all:hover{text-decoration:underline;}
+.fav-mini{appearance:none;-webkit-appearance:none;cursor:pointer;background:none;border:0;
+  padding:6px 8px;margin-left:2px;font-size:15px;line-height:1;color:#c3c8d0;
+  min-width:36px;min-height:36px;}
+.fav-mini[aria-pressed="true"]{color:#f0b429;}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="inner">
+  <p class="eyebrow">Paper of the week</p>
+  <h1>企業の強さは事業の集まりではなく、それを支える「根っこの技」で決まる</h1>
+  <p class="meta">C.K. Prahalad, Gary Hamel / 1990 / 戦略
+    <br>The Core Competence of the Corporation</p>
+  <div class="fav-bar"><button class="fav" data-fav data-url="https://hacadr-cloud.github.io/paper-of-week/2026-11-05.html" data-title="企業の強さは事業の集まりではなく、それを支える「根っこの技」で決まる" data-kind="paper" data-date="2026-11-05" aria-pressed="false"><span class="ic">☆</span><span class="tx">あとで読む</span></button><a class="all" href="favorites.html">保存した記事を見る →</a></div>
+  <div class="oneline">事業を束ねて売買するな、事業を生み出す能力の根を育てよ</div>
+  <div class="hook"><p>1980年代、欧米の大企業では「会社は事業の集まりだ」という見方が通説でした。事業ごとに採算を見て、伸びる事業に資金を回し、伸びない事業は売る。本社の役割はその選別だ、という考え方です。</p><p>この論文はそれを正面から否定しました。強い日本企業は、事業の集まりではない。複数の事業の下にある「技と知恵の束」を軸に会社を組み立てている、と論じたのです。</p><p>今も引用され続ける理由は2つあります。</p><ul class="blist"><li>「自社の強みは何か」を、製品や市場ではなく、目に見えない能力の言葉で問う習慣を経営に持ち込んだ。</li><li>「何を外に任せ、何を手放してはいけないか」という判断の基準を示した。</li></ul></div>
+
+  <h2>問い</h2>
+  <p>問いはこうです。なぜ、同じように有利な位置にいた会社のうち、一方は新しい市場を次々と取り、もう一方は縮んでいったのか。</p><p>この問いが難しいのは、差が決算書や事業の一覧表に現れにくいからです。売上・利益・市場シェアは「結果」であり、その結果を生み出す力そのものは数字になりません。</p><p>さらに、その力は一つの事業の中に収まっていません。いくつもの事業をまたいで存在します。事業ごとに成績を測る仕組みでは、そもそも見えない場所にあるのです。</p>
+
+  <h2>どう組み立てられているか</h2>
+  <p>これは**実証研究ではありません**。統計データを集めて検証した論文ではなく、事例の比較から考え方の枠組みを示した概念論文です。掲載先も学術誌ではなく、経営者向けの雑誌ハーバード・ビジネス・レビューです。</p><p>議論の軸は、2社の対比です。</p><ul class="blist"><li>米国の通信大手GTE：1980年時点では情報通信の分野で有利な位置にいたが、その後の10年で存在感を落とした。</li><li>日本のNEC：当初は規模で劣っていたが、コンピュータと通信の融合を見据え、半導体を含む技術の土台を意識的に育てて伸びた。</li></ul><p>著者はこの差を、戦略の巧拙や景気ではなく、「会社をどういう単位で捉えていたか」の違いとして説明します。</p><p>補強の事例として、主に日本企業が挙げられます。</p><ul class="blist"><li>ソニーの小型化の技術</li><li>ホンダのエンジンと動力伝達の技術</li><li>キヤノンの光学・画像処理・精密制御の技術</li><li>3Mの基材・塗布・接着の技術</li></ul><p>対照として、エンジンを外部から調達する方向に傾いた米国の自動車会社なども引き合いに出されます。</p><p>事例は著者の主張に合うものが選ばれています。成功例から逆算した説明であり、反証の事例を体系的に調べたわけではありません。この点は限界の項で扱います。</p>
+
+  <h2>主張の中身</h2>
+  <div class="find"><div class="pt">会社は「木」であり、本当の強さは地下の根にある</div><div class="dt"><p>著者は会社を一本の木にたとえます。</p><ul class="blist"><li>幹と太い枝：中核となる部品・ユニット（後述の「中核製品」）</li><li>細い枝：個々の事業部</li><li>葉・花・実：店頭に並ぶ最終製品</li><li>根：コア・コンピタンス（中核となる能力）</li></ul><p>実だけを見て木の健康を判断すると、根の衰えを見落とします。最終製品の売れ行きだけで会社を評価すると、同じ過ちを犯す、というのが著者の警告です。</p></div></div><div class="find"><div class="pt">コア・コンピタンスは「組織に蓄積した学習」であり、特に技術を束ねる力である</div><div class="dt"><p>著者の定義では、コア・コンピタンスは個別の技術そのものではありません。さまざまな生産の技能を調整し、複数の技術の流れを一つにまとめ上げる、組織全体の学習の成果です。</p><p>たとえばソニーの小型化は、単一の特許ではありません。部品・設計・製造・品質管理にわたる知恵が組み合わさって初めて成り立ちます。</p><p>また、技術だけの話でもないとされます。部門の壁を越えて人が協力し、仕事を組み立てる仕方そのものが含まれます。</p></div></div><div class="find"><div class="pt">本物かどうかは3つの条件で見分ける</div><div class="dt"><p>著者は、コア・コンピタンスと呼べるかどうかの目安として3つを挙げます。</p><ul class="blist"><li>幅広い市場への入り口になること：一つの製品に閉じず、複数の分野に展開できる。</li><li>顧客が感じる価値に大きく効くこと：買い手が実際に評価している部分を支えている。</li><li>競合が真似しにくいこと：個別技術の寄せ集めではなく、複雑な組み合わせなので模倣が難しい。</li></ul><p>この基準で数えると、一つの会社が世界の第一線で持てるのは、せいぜい5つか6つ程度だろうと著者は述べています。数十個も挙がるなら、それは単なる技術の一覧にすぎないということです。</p></div></div><div class="find"><div class="pt">根と実の間に「中核製品」があり、ここでの市場シェアが重要になる</div><div class="dt"><p>能力と最終製品の間には、中間の段階があります。エンジン、ブラウン管、レーザープリンターの印字部分のような、多くの最終製品に組み込まれる中核部品です。</p><p>著者は、日本企業がこの中核製品を他社ブランド向けにも供給し、世界的なシェアを取っていたことに注目します。最終製品の市場で負けていても、中核製品で勝っていれば、能力を磨く量と資金が手に入るからです。</p><p>逆に、中核製品を外部から買う会社は、最終製品は売れても能力は相手側に育ってしまいます。</p></div></div><div class="find"><div class="pt">事業部ごとの採算管理が、能力を「人質」にとる</div><div class="dt"><p>著者は、事業部（戦略事業単位）を中心にした経営の弊害を「事業部の専制」と呼び、3つを挙げます。</p><ul class="blist"><li>投資不足：どの事業部も自分の短期採算を優先し、全社の能力づくりに金を出さない。</li><li>資源の囲い込み：優秀な技術者は事業部の「持ち物」とされ、他の事業へ貸し出されない。</li><li>革新の限界：事業部の枠を越える新しい組み合わせが生まれにくい。</li></ul><p>対策として著者は、全社でどの能力を育てるかの設計図（戦略的な全体構想）を描き、中核人材を全社の資源として配置し直すよう求めます。</p></div></div>
+
+  <h2>なぜそうなるのか</h2>
+  <p>なぜ根に注目すると勝てるのか。著者の理屈は、能力と設備の性質の違いにあります。</p><p>機械や工場は使えば摩耗します。ところが組織の知恵は、使うほど磨かれ、共有するほど増えます。一つの能力を複数の事業で使い回せば、事業が増えるたびに学習の量が増え、さらに強くなります。</p><p>ここから、2つの経営のあいだに差が開いていきます。</p><ul class="blist"><li>事業を単位にする会社：各事業部が自分の範囲で最適化する。全社にまたがる能力は誰の責任でもなくなり、少しずつ痩せる。</li><li>能力を単位にする会社：まず育てる能力を決め、それを使える市場へ次々と出ていく。新事業は能力の「出口」として選ばれる。</li></ul><p>外部調達も同じ理屈で効いてきます。中核部品を外から買えば、目先の費用は下がります。しかし、その部品を作る学習は供給側に積み上がります。数年後には、供給側が完成品でも競合として現れかねません。</p><p>だから著者は、目先の採算ではなく「この活動を手放すと、将来どの能力を失うか」で判断せよと説きます。</p><p>もう一つの要点は、能力が一夜では作れないことです。複数の技術と人の連携を束ねるには長い年月がかかります。だから先に構想を描いた会社が、後から来る会社に対して時間の差で勝つ、という構図になります。</p>
+
+  <h2>どこまで言えるか</h2>
+  <div class="limits"><p>まず、証拠の性質に注意が必要です。事例は当時好調だった企業から選ばれており、成功したから強みが見えた、という後付けの説明になりやすい構造です。同じ能力を持ちながら失敗した会社の検討はほとんどありません。</p><p>次に、事前に見分けにくいという批判があります。3つの条件は示されていますが、何がコア・コンピタンスかは結局解釈に依存します。実務では「自社の得意なこと」の言い換えに堕しやすい、と後年多く指摘されました。</p><p>後続研究による修正も重要です。</p><ul class="blist"><li>レナード＝バートン（1992年）：中核能力は環境が変わると「中核の硬直性」になり、変化を妨げると論じた。</li><li>ティースらの「動的能力」論（1997年）：能力を持つことより、組み替え・作り直す力こそ重要だと議論を進めた。</li><li>バーニーら（1991年）の、経営資源に競争優位の源泉を求める理論とは近く、学術的な裏付けはそちらで進んだ。</li></ul><p>最後に、皮肉な事実があります。論文が称えた日本の電機大手の多くは、1990年代以降に苦戦しました。能力を内に抱え込む経営は、部品の標準化と水平分業が進んだ産業では、むしろ足かせになりうることが示されたのです。</p></div>
+
+  <a class="src" href="https://scholar.google.com/scholar?q=The%20Core%20Competence%20of%20the%20Corporation" target="_blank" rel="noopener">Harvard Business Reviewを探す ↗</a>
+  <footer>経営学の古典を実務家向けに解説したものです。解釈は本記事によるもので、原典の記述
+  そのものではありません。判断の前に原典をご確認ください。</footer>
+</div></div>
+<script>
+(function(){
+  var KEY = "lsm-favs-v1";
+  function load(){ try { return JSON.parse(localStorage.getItem(KEY)) || []; }
+                   catch(e){ return []; } }
+  function save(v){ try { localStorage.setItem(KEY, JSON.stringify(v)); } catch(e){} }
+  function has(url){ return load().some(function(x){ return x.url === url; }); }
+  function paint(b){
+    var on = has(b.dataset.url);
+    b.setAttribute("aria-pressed", on ? "true" : "false");
+    var ic = b.querySelector(".ic"), tx = b.querySelector(".tx");
+    if (ic) ic.textContent = on ? "\u2605" : "\u2606";
+    if (tx) tx.textContent = on ? "保存済み" : "あとで読む";
+    if (!ic && !tx) b.textContent = on ? "\u2605" : "\u2606";
+  }
+  function toggle(b){
+    var d = b.dataset, list = load(), i = list.findIndex(function(x){ return x.url === d.url; });
+    if (i >= 0) list.splice(i, 1);
+    else list.unshift({url:d.url, title:d.title||d.url, kind:d.kind||"", date:d.date||"",
+                       note:d.note||"", saved:new Date().toISOString().slice(0,10)});
+    save(list); paint(b);
+    if (window.renderFavs) window.renderFavs();
+  }
+  function wire(){
+    var bs = document.querySelectorAll("[data-fav]");
+    for (var i = 0; i < bs.length; i++){
+      (function(b){ paint(b); b.addEventListener("click", function(e){
+        e.preventDefault(); e.stopPropagation(); toggle(b); }); })(bs[i]);
+    }
+  }
+  window.favStore = {load:load, save:save, has:has};
+  if (document.readyState === "loading")
+    document.addEventListener("DOMContentLoaded", wire);
+  else wire();
+})();
+</script>
+</body>
+</html>
