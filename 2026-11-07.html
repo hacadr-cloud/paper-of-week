@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>今週の論文 2026-11-07</title>
+<style>
+  :root{
+    --ground:#FBFAF8; --card:#FFFFFF; --line:#E8E4DC; --ink:#1E1C19; --muted:#6C665C;
+    --faint:#9A9389; --accent:#7A5C2E; --accent-bg:#F5EFE3;
+    --sans: system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{--ground:#14130F; --card:#1C1A16; --line:#2E2A24; --ink:#EDE9E1; --muted:#A79F93;
+      --faint:#7C7468; --accent:#C9A468; --accent-bg:#252017;}
+  }
+  :root[data-theme="light"]{--ground:#FBFAF8; --card:#FFFFFF; --line:#E8E4DC; --ink:#1E1C19;
+    --muted:#6C665C; --faint:#9A9389; --accent:#7A5C2E; --accent-bg:#F5EFE3;}
+  :root[data-theme="dark"]{--ground:#14130F; --card:#1C1A16; --line:#2E2A24; --ink:#EDE9E1;
+    --muted:#A79F93; --faint:#7C7468; --accent:#C9A468; --accent-bg:#252017;}
+  /* Phone-first, same scale as the weekly digest: 16px body, no justify (it opens rivers in
+     Japanese at narrow widths), generous side padding, tappable links. */
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0}
+  .wrap{background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:16px;
+    line-height:1.9;-webkit-font-smoothing:antialiased;padding:1.5rem 1.15rem 4rem;
+    min-height:100vh}
+  .inner{max-width:34rem;margin:0 auto}
+  .eyebrow{font-size:.72rem;letter-spacing:.16em;color:var(--faint);text-transform:uppercase;
+    margin:0 0 .5rem}
+  h1{font-size:1.34rem;font-weight:700;line-height:1.55;margin:0 0 .5rem;text-wrap:balance}
+  .meta{font-size:.84rem;color:var(--muted);margin:0 0 1.15rem;line-height:1.75}
+  .oneline{background:var(--accent-bg);border-left:3px solid var(--accent);
+    border-radius:0 10px 10px 0;padding:.9rem .95rem;font-size:1rem;font-weight:600;
+    line-height:1.8;margin:0 0 1.5rem}
+  .hook{font-size:1rem;color:var(--ink);margin:0 0 1.9rem}
+  /* 本文中の小見出し（h2 のセクション見出しより一段下） */
+  .sh{font-size:.95rem;font-weight:700;color:var(--ink);margin:1.4rem 0 .55rem;
+    padding-left:.6rem;border-left:3px solid var(--accent);line-height:1.6}
+  .sh:first-child{margin-top:0}
+  .blist{list-style:none;margin:0 0 1rem;padding:0;display:flex;flex-direction:column;
+    gap:.5rem}
+  .blist li{position:relative;padding-left:1.1rem;line-height:1.85;font-size:.97rem}
+  .blist li::before{content:"";position:absolute;left:.2rem;top:.78em;width:.32rem;
+    height:.32rem;border-radius:50%;background:var(--accent)}
+  .find .dt p, .app .ac p{margin:0 0 .6rem}
+  .find .dt p:last-child, .app .ac p:last-child{margin-bottom:0}
+  h2{font-size:.76rem;font-weight:700;letter-spacing:.14em;color:var(--accent);
+    margin:2rem 0 .8rem;padding-bottom:.45rem;border-bottom:1px solid var(--line)}
+  p{margin:0 0 .95rem;font-size:1rem}
+  p:last-child{margin-bottom:0}
+  .find{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:1rem .95rem;margin-bottom:.75rem}
+  .find .pt{font-size:1rem;font-weight:700;line-height:1.65;margin-bottom:.4rem}
+  .find .dt{font-size:.94rem;color:var(--muted);line-height:1.85}
+  .apply{display:flex;flex-direction:column;gap:.75rem}
+  .app{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:.95rem}
+  .app .sc{font-size:.74rem;font-weight:700;color:var(--accent);letter-spacing:.06em;
+    margin-bottom:.35rem}
+  .app .ac{font-size:.97rem;line-height:1.85}
+  .limits{background:var(--card);border:1px dashed var(--line);border-radius:12px;
+    padding:1rem .95rem;font-size:.95rem;color:var(--muted);line-height:1.85}
+  .src{display:inline-block;margin-top:1.7rem;font-size:.86rem;color:var(--muted);
+    text-decoration:none;border:1px solid var(--line);border-radius:9px;
+    padding:.6rem .8rem;line-height:1.5;word-break:break-word}
+  .src:hover{color:var(--accent);border-color:var(--accent)}
+  footer{margin-top:2.4rem;padding-top:1.1rem;border-top:1px solid var(--line);
+    font-size:.78rem;color:var(--faint);line-height:1.7}
+  a:focus-visible,.src:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+.fav{appearance:none;-webkit-appearance:none;cursor:pointer;display:inline-flex;
+  align-items:center;justify-content:center;gap:6px;min-width:44px;min-height:44px;
+  padding:0 12px;border-radius:999px;font:inherit;font-size:14px;font-weight:600;
+  background:var(--surface,#fff);color:var(--ink-mut,#6b7280);
+  border:1px solid var(--line,#e5e7eb);line-height:1;}
+.fav:hover{border-color:#f0b429;color:#b26b00;}
+.fav[aria-pressed="true"]{background:#fff8e6;border-color:#f0b429;color:#b26b00;}
+.fav .ic{font-size:16px;line-height:1;}
+.fav-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:14px 0 6px;}
+.fav-bar a.all{font-size:13.5px;color:var(--ink-mut,#6b7280);text-decoration:none;
+  min-height:44px;display:inline-flex;align-items:center;}
+.fav-bar a.all:hover{text-decoration:underline;}
+.fav-mini{appearance:none;-webkit-appearance:none;cursor:pointer;background:none;border:0;
+  padding:6px 8px;margin-left:2px;font-size:15px;line-height:1;color:#c3c8d0;
+  min-width:36px;min-height:36px;}
+.fav-mini[aria-pressed="true"]{color:#f0b429;}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="inner">
+  <p class="eyebrow">Paper of the week</p>
+  <h1>部品がゆるく繋がっているから、組織は持ちこたえる</h1>
+  <p class="meta">Karl E. Weick / 1976 / 組織
+    <br>Educational Organizations as Loosely Coupled Systems</p>
+  <div class="fav-bar"><button class="fav" data-fav data-url="https://hacadr-cloud.github.io/paper-of-week/2026-11-07.html" data-title="部品がゆるく繋がっているから、組織は持ちこたえる" data-kind="paper" data-date="2026-11-07" aria-pressed="false"><span class="ic">☆</span><span class="tx">あとで読む</span></button><a class="all" href="favorites.html">保存した記事を見る →</a></div>
+  <div class="oneline">ゆるい繋がりは欠陥ではなく、組織を持たせる構造だ</div>
+  <div class="hook"><p>当時の組織論は、組織を「命令が上から下へ正確に伝わる機械」として見るのが普通でした。目標と行動がずれ、部門同士が噛み合わないのは、直すべき欠陥だと考えられていました。</p><p>ワイクはこの見方をひっくり返しました。学校のように中身がばらばらに動く組織を「出来損ない」とは見ず、そのゆるさに固有の働きがあると論じたのです。</p><p>この論文は、つながりの強い弱いを、良し悪しではなく設計上の選択の問題として扱いました。そのため半世紀近くたった今も、分権・現場裁量・事故の連鎖といった話題で引用され続けています。</p></div>
+
+  <h2>問い</h2>
+  <p>学校では、校長が決めたことが教室で行われるとは限りません。教師同士もほとんど互いの授業を見ず、教えた内容と成果の関係もはっきりしません。それでも学校はつぶれず、何十年も続いています。</p><p>ワイクの問いは、なぜこんな「まとまりのない組織」が成り立ち、しかも長続きするのか、というものでした。</p><p>これが難しいのは、当時の組織論の道具立てでは説明できないからです。合理的な組織像では、まとまりの欠如はそのまま非効率や失敗を意味します。ゆるさそのものを分析の対象にするには、新しい言葉と見方が必要でした。</p>
+
+  <h2>どう組み立てられているか</h2>
+  <p>**これは実証研究ではありません。データを集めて検証した論文ではなく、概念を提案した理論論文です。**</p><p>組み立ては次のとおりです。</p><ul class="blist"><li>冒頭で、常識外れのサッカーの比喩を使う。丸くて傾いたグラウンドにゴールが複数あり、人が勝手に出入りし、誰がどのゴールを狙ってもよい。それでも試合は「成り立って」いる。学校はこれに近い、と問いを立てる</li><li>生物学の研究（グラスマン）から「ゆるい結合」という言葉を借りて定義する。各部分は互いに反応はするが、それぞれの独自性と独立性を保っている状態のこと</li><li>学校の例を挙げる。進路指導室と校長室は関係はあるが、一方の変化がすぐ他方に響くわけではない</li></ul><p>次に、学校の中でゆるく繋がりうる組み合わせを並べます。</p><ul class="blist"><li>意図と行動</li><li>昨日と明日（過去の決定と現在）</li><li>階層の上と下</li><li>管理者と教師、教師と教師</li><li>手段と結果</li></ul><p>そのうえで、ゆるさがもたらしうる働きを7つ挙げ、それぞれに裏返しの弊害があることも添えています。最後に、この概念を研究するための課題（どう測るか、どんなデータが要るか）を列挙して締めくくります。</p><p>証拠として使われているのは、主に先行研究の引用、学校についての観察的な記述、思考実験です。数量的な検証は行われていません。</p>
+
+  <h2>主張の中身</h2>
+  <div class="find"><div class="pt">ゆるい繋がりは、部分が生き残り続ける余地を作る</div><div class="dt"><p>部分同士が強く結びついていると、外の変化に組織全体が丸ごと反応しなければなりません。ゆるければ、一部が変化を受け止めても、ほかの部分はそのまま続けられます。</p><p>これは安定の源になります。ただし裏返せば、時代遅れの慣習もそのまま残ってしまうということです。ワイクは、持続性と変化への鈍さを同じ性質の両面として示しました。</p></div></div><div class="find"><div class="pt">ゆるいほうが、外の変化を細かく感じ取れる</div><div class="dt"><p>ワイクは心理学者ハイダーの議論を借ります。たくさんの独立した要素からなる媒体（たとえば砂）は、外から押し付けられた形を忠実に写し取ります。一枚岩の物体ではそうはいきません。</p><p>組織も同じで、各部分が独立していれば、それぞれが別々の変化を拾えます。全体が一体で動く組織は、自分の都合で外界を単純化して受け取りやすくなります。ただしこの利点は、拾った情報が判断に生かされる場合に限られます。</p></div></div><div class="find"><div class="pt">変化への対応を、現場ごとに局所的にできる</div><div class="dt"><p>ある部分だけが環境の変化にさらされたとき、その部分だけで手当てができます。全体を動かす必要がありません。</p><p>その分、対応は速く安上がりになります。一方で、局所的な対応が積み重なると、組織全体として必要な大きな方向転換が起こりにくくなります。ワイクはこれも弊害として挙げています。</p></div></div><div class="find"><div class="pt">多様なやり方が温存され、事故は局所にとどまる</div><div class="dt"><p>各部分が独自にやっているので、組織の中にいろいろな工夫が残ります。環境が変わったとき、その中に役立つものがあるかもしれません。</p><p>また、ある部分が壊れても、その影響は他へ広がりにくくなります。故障を封じ込める働きです。</p><p>ただし裏返すと、良い工夫も他へ広がりにくく、壊れた部分を立て直すための助けも届きにくいということになります。</p></div></div><div class="find"><div class="pt">現場の自己決定感が高まり、調整コストも安く済む</div><div class="dt"><p>細かく管理されないので、教師など現場の人が自分で判断できる余地が大きくなります。ワイクは、これが「自分にはやれる」という感覚を支えると考えました。</p><p>さらに、部分同士を調整する仕組み（会議、報告、監督）があまり要らないので、組織の運営費は安く済みます。</p><p>その代わり、全体の方針を末端まで行き渡らせる手段は弱くなります。改革が教室に届かない理由も、ここにあります。</p></div></div>
+
+  <h2>なぜそうなるのか</h2>
+  <p>出発点は、つながりの強さが「一つの部分の変化が、どれだけ速く、どれだけ確実に他の部分へ伝わるか」で決まるという見方です。</p><p>強く繋がった組織では、どの変化もすぐに全体へ波及します。調整は効きますが、ショックも増幅されて伝わります。ゆるく繋がった組織では、変化は途中で薄まり、遅れて届きます。</p><p>なぜ学校はゆるくなるのか。ワイクは、普通の組織を束ねる二つの仕組みが学校では弱いと考えました。</p><ul class="blist"><li>技術：教え方と学習成果の因果関係がはっきりせず、手順で現場を縛れない</li><li>権限：授業は閉じた教室の中で行われ、上司がほとんど見ない</li></ul><p>束ねる力が弱いと、各部分はそれぞれの事情に合わせて動きます。すると上に挙げた利点、つまり持続性・感度・局所対応・多様性・故障の封じ込め・自律・低コストが生まれます。</p><p>重要なのは、利点と弊害が同じ一つの性質から出てくることです。ショックを吸収する仕組みは、改革の意図も吸収してしまいます。故障を局所に閉じ込める仕組みは、良い工夫も局所に閉じ込めます。</p><p>ワイクがこの論文で言おうとしたのは「ゆるいほうが良い」ということではありません。「ゆるさを欠陥としてではなく、固有の働きをもつ構造として見よ」ということです。</p><p>もう一つの含みは、組織のまとまりは構造そのものよりも、人々が出来事をあとから意味づけることで作られている、という点です。ばらばらに動いていても、関係者が筋の通った話として解釈すれば、組織は一体に見えます。これは、のちのワイクの「意味づけ」論へつながる考え方です。</p>
+
+  <h2>どこまで言えるか</h2>
+  <div class="limits"><p>まず、これは仮説の提案であって検証ではありません。7つの働きはどれも「ありうる」として示されたもので、どの条件で利点が弊害を上回るのかは論文の中で示されていません。</p><p>一般化には次の注意が要ります。</p><ul class="blist"><li>題材は学校で、成果が測りにくく、つぶれにくい組織である</li><li>競争にさらされ、成果がすぐ数字に出る組織に同じ理屈が当てはまるかは別の問題である</li><li>「ゆるい」「きつい」をどう測るかは未解決のまま残された</li></ul><p>後年、ワイク自身がオートンとの共著（1990年）でこの概念を整理し直しました。概念が「単にばらばら」「まとまりがない」という意味に薄められて広まったことを反省しています。本来の意味は「互いに反応しつつ、独自性も保つ」という二面性の同時成立であり、片方だけでは不十分だと強調し直したのです。</p><p>一方、教育改革の側からは、ゆるい結合こそが政策が教室に届かない原因だという批判的な使われ方をされました。成果基準や評価で結合を強めようとする改革は、その裏返しと言えます。</p><p>また、のちのペローの事故研究は、強い結合が事故を連鎖させる面を示しました。故障の封じ込めという論点は補強されましたが、どの程度ゆるければよいかの答えは今も出ていません。</p></div>
+
+  <a class="src" href="https://scholar.google.com/scholar?q=Educational%20Organizations%20as%20Loosely%20Coupled%20Systems" target="_blank" rel="noopener">Administrative Science Quarterlyを探す ↗</a>
+  <footer>経営学の古典を実務家向けに解説したものです。解釈は本記事によるもので、原典の記述
+  そのものではありません。判断の前に原典をご確認ください。</footer>
+</div></div>
+<script>
+(function(){
+  var KEY = "lsm-favs-v1";
+  function load(){ try { return JSON.parse(localStorage.getItem(KEY)) || []; }
+                   catch(e){ return []; } }
+  function save(v){ try { localStorage.setItem(KEY, JSON.stringify(v)); } catch(e){} }
+  function has(url){ return load().some(function(x){ return x.url === url; }); }
+  function paint(b){
+    var on = has(b.dataset.url);
+    b.setAttribute("aria-pressed", on ? "true" : "false");
+    var ic = b.querySelector(".ic"), tx = b.querySelector(".tx");
+    if (ic) ic.textContent = on ? "\u2605" : "\u2606";
+    if (tx) tx.textContent = on ? "保存済み" : "あとで読む";
+    if (!ic && !tx) b.textContent = on ? "\u2605" : "\u2606";
+  }
+  function toggle(b){
+    var d = b.dataset, list = load(), i = list.findIndex(function(x){ return x.url === d.url; });
+    if (i >= 0) list.splice(i, 1);
+    else list.unshift({url:d.url, title:d.title||d.url, kind:d.kind||"", date:d.date||"",
+                       note:d.note||"", saved:new Date().toISOString().slice(0,10)});
+    save(list); paint(b);
+    if (window.renderFavs) window.renderFavs();
+  }
+  function wire(){
+    var bs = document.querySelectorAll("[data-fav]");
+    for (var i = 0; i < bs.length; i++){
+      (function(b){ paint(b); b.addEventListener("click", function(e){
+        e.preventDefault(); e.stopPropagation(); toggle(b); }); })(bs[i]);
+    }
+  }
+  window.favStore = {load:load, save:save, has:has};
+  if (document.readyState === "loading")
+    document.addEventListener("DOMContentLoaded", wire);
+  else wire();
+})();
+</script>
+</body>
+</html>
