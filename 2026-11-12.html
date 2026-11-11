@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>今週の論文 2026-11-12</title>
+<style>
+  :root{
+    --ground:#FBFAF8; --card:#FFFFFF; --line:#E8E4DC; --ink:#1E1C19; --muted:#6C665C;
+    --faint:#9A9389; --accent:#7A5C2E; --accent-bg:#F5EFE3;
+    --sans: system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{--ground:#14130F; --card:#1C1A16; --line:#2E2A24; --ink:#EDE9E1; --muted:#A79F93;
+      --faint:#7C7468; --accent:#C9A468; --accent-bg:#252017;}
+  }
+  :root[data-theme="light"]{--ground:#FBFAF8; --card:#FFFFFF; --line:#E8E4DC; --ink:#1E1C19;
+    --muted:#6C665C; --faint:#9A9389; --accent:#7A5C2E; --accent-bg:#F5EFE3;}
+  :root[data-theme="dark"]{--ground:#14130F; --card:#1C1A16; --line:#2E2A24; --ink:#EDE9E1;
+    --muted:#A79F93; --faint:#7C7468; --accent:#C9A468; --accent-bg:#252017;}
+  /* Phone-first, same scale as the weekly digest: 16px body, no justify (it opens rivers in
+     Japanese at narrow widths), generous side padding, tappable links. */
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0}
+  .wrap{background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:16px;
+    line-height:1.9;-webkit-font-smoothing:antialiased;padding:1.5rem 1.15rem 4rem;
+    min-height:100vh}
+  .inner{max-width:34rem;margin:0 auto}
+  .eyebrow{font-size:.72rem;letter-spacing:.16em;color:var(--faint);text-transform:uppercase;
+    margin:0 0 .5rem}
+  h1{font-size:1.34rem;font-weight:700;line-height:1.55;margin:0 0 .5rem;text-wrap:balance}
+  .meta{font-size:.84rem;color:var(--muted);margin:0 0 1.15rem;line-height:1.75}
+  .oneline{background:var(--accent-bg);border-left:3px solid var(--accent);
+    border-radius:0 10px 10px 0;padding:.9rem .95rem;font-size:1rem;font-weight:600;
+    line-height:1.8;margin:0 0 1.5rem}
+  .hook{font-size:1rem;color:var(--ink);margin:0 0 1.9rem}
+  /* 本文中の小見出し（h2 のセクション見出しより一段下） */
+  .sh{font-size:.95rem;font-weight:700;color:var(--ink);margin:1.4rem 0 .55rem;
+    padding-left:.6rem;border-left:3px solid var(--accent);line-height:1.6}
+  .sh:first-child{margin-top:0}
+  .blist{list-style:none;margin:0 0 1rem;padding:0;display:flex;flex-direction:column;
+    gap:.5rem}
+  .blist li{position:relative;padding-left:1.1rem;line-height:1.85;font-size:.97rem}
+  .blist li::before{content:"";position:absolute;left:.2rem;top:.78em;width:.32rem;
+    height:.32rem;border-radius:50%;background:var(--accent)}
+  .find .dt p, .app .ac p{margin:0 0 .6rem}
+  .find .dt p:last-child, .app .ac p:last-child{margin-bottom:0}
+  h2{font-size:.76rem;font-weight:700;letter-spacing:.14em;color:var(--accent);
+    margin:2rem 0 .8rem;padding-bottom:.45rem;border-bottom:1px solid var(--line)}
+  p{margin:0 0 .95rem;font-size:1rem}
+  p:last-child{margin-bottom:0}
+  .find{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:1rem .95rem;margin-bottom:.75rem}
+  .find .pt{font-size:1rem;font-weight:700;line-height:1.65;margin-bottom:.4rem}
+  .find .dt{font-size:.94rem;color:var(--muted);line-height:1.85}
+  .apply{display:flex;flex-direction:column;gap:.75rem}
+  .app{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:.95rem}
+  .app .sc{font-size:.74rem;font-weight:700;color:var(--accent);letter-spacing:.06em;
+    margin-bottom:.35rem}
+  .app .ac{font-size:.97rem;line-height:1.85}
+  .limits{background:var(--card);border:1px dashed var(--line);border-radius:12px;
+    padding:1rem .95rem;font-size:.95rem;color:var(--muted);line-height:1.85}
+  .src{display:inline-block;margin-top:1.7rem;font-size:.86rem;color:var(--muted);
+    text-decoration:none;border:1px solid var(--line);border-radius:9px;
+    padding:.6rem .8rem;line-height:1.5;word-break:break-word}
+  .src:hover{color:var(--accent);border-color:var(--accent)}
+  footer{margin-top:2.4rem;padding-top:1.1rem;border-top:1px solid var(--line);
+    font-size:.78rem;color:var(--faint);line-height:1.7}
+  a:focus-visible,.src:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+.fav{appearance:none;-webkit-appearance:none;cursor:pointer;display:inline-flex;
+  align-items:center;justify-content:center;gap:6px;min-width:44px;min-height:44px;
+  padding:0 12px;border-radius:999px;font:inherit;font-size:14px;font-weight:600;
+  background:var(--surface,#fff);color:var(--ink-mut,#6b7280);
+  border:1px solid var(--line,#e5e7eb);line-height:1;}
+.fav:hover{border-color:#f0b429;color:#b26b00;}
+.fav[aria-pressed="true"]{background:#fff8e6;border-color:#f0b429;color:#b26b00;}
+.fav .ic{font-size:16px;line-height:1;}
+.fav-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:14px 0 6px;}
+.fav-bar a.all{font-size:13.5px;color:var(--ink-mut,#6b7280);text-decoration:none;
+  min-height:44px;display:inline-flex;align-items:center;}
+.fav-bar a.all:hover{text-decoration:underline;}
+.fav-mini{appearance:none;-webkit-appearance:none;cursor:pointer;background:none;border:0;
+  padding:6px 8px;margin-left:2px;font-size:15px;line-height:1;color:#c3c8d0;
+  min-width:36px;min-height:36px;}
+.fav-mini[aria-pressed="true"]{color:#f0b429;}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="inner">
+  <p class="eyebrow">Paper of the week</p>
+  <h1>持ち分を手放した経営者は、なぜ会社のお金を自分のために使い始めるのか</h1>
+  <p class="meta">Michael C. Jensen, William H. Meckling / 1976 / 企業理論
+    <br>Theory of the Firm: Managerial Behavior, Agency Costs and Ownership Structure</p>
+  <div class="fav-bar"><button class="fav" data-fav data-url="https://hacadr-cloud.github.io/paper-of-week/2026-11-12.html" data-title="持ち分を手放した経営者は、なぜ会社のお金を自分のために使い始めるのか" data-kind="paper" data-date="2026-11-12" aria-pressed="false"><span class="ic">☆</span><span class="tx">あとで読む</span></button><a class="all" href="favorites.html">保存した記事を見る →</a></div>
+  <div class="oneline">任せれば利害はずれ、そのツケは値段を通じて任された側に返る</div>
+  <div class="hook"><p>この論文が出るまで、経済学は会社を「利益を最大にする一つの意思」として扱っていました。中で誰がどんな動機で動いているかは、ほとんど問われていませんでした。</p><p>一方で、1930年代から「所有と経営が分かれた大企業は、経営者が好き勝手をする欠陥のある仕組みだ」という批判がありました。</p><p>本論文はこの2つを結びつけました。そして、利害のずれは任せる以上必ず生じる「費用」だと示しました。その費用を誰が負担し、どう減らすかを一つの理屈で説明したのです。</p><p>株主と経営者、貸し手と借り手。役員報酬や社外取締役、借入の条件を論じるとき、今でも出発点になるのがこの論文です。</p></div>
+
+  <h2>問い</h2>
+  <p>問いは2つあります。</p><p>1つ目は、他人に会社を任せたとき、任された側の行動はどう変わるのか。そのずれは結局誰の損になるのか、です。</p><p>2つ目は、会社が「株を外部に売る」「お金を借りる」をどう組み合わせるのか、です。資金の集め方の比率は何で決まるのか、という問いです。</p><p>これが難しいのは、ずれが目に見えにくいからです。経営者の怠けや無駄遣いは帳簿に「損」と出てきません。</p><p>しかもずれを防ぐ手段にもお金がかかります。だから「ずれをゼロにする」のが正解とは限りません。何と何を比べれば最善と言えるのか、その基準自体を作る必要がありました。</p>
+
+  <h2>どう組み立てられているか</h2>
+  <p>これは**理論論文**です。データを集めて統計的に検証したものではありません。前提を置き、簡単な数式と図で論理を積み上げて結論を出しています。</p><p>出発点は思考実験です。</p><ul class="blist"><li>まず、会社の株を100%持つオーナー経営者を考える</li><li>そのオーナーが、株の一部を外部の投資家に売ったと仮定する</li><li>売る前と後で、オーナーの行動がどう変わるかを比べる</li></ul><p>前提として、人はみな自分の満足を最大にしようとします。経営者が得る満足には、給料だけでなく次のものも含まれます。</p><ul class="blist"><li>豪華な社用車や事務所</li><li>気に入った部下の優遇</li><li>楽をすること</li></ul><p>もう一つの前提は、外部の投資家も愚かではないことです。経営者がどう振る舞うかを予想して、株を買う値段を決めます。</p><p>後半では、同じ考え方を借入にも当てはめます。お金を借りた経営者が、貸し手の不利になる行動をとる理由を論理で示しています。</p><p>実在の企業を使った統計的な証拠は示していません。所有の分散した株式会社が現実に広く生き残っていること。著者はそれを、自分たちの理屈と矛盾しない事実として挙げているだけです。</p>
+
+  <h2>主張の中身</h2>
+  <div class="find"><div class="pt">任せる関係があるところには、必ず「ずれ」と費用が生まれる</div><div class="dt"><p>著者は「代理の関係」をこう定義しました。ある人（依頼する側）が別の人（任される側）に、自分に代わって判断する権限を渡す関係です。</p><p>両者が自分の得を考える限り、任された側がいつも依頼した側のために最善を尽くすとは限りません。</p><p>これは株主と経営者だけの話ではありません。社員と上司、借り手と貸し手、施主と工務店など、協力して物事を進めるあらゆる場面に当てはまります。著者は、この普遍的な問題を会社の分析に持ち込みました。</p></div></div><div class="find"><div class="pt">費用は「見張る」「約束する」「それでも残る損」の3つに分かれる</div><div class="dt"><p>著者は、ずれから生じる費用（エージェンシー費用）を3つに分けました。</p><ul class="blist"><li>監視の費用：依頼した側が見張るためにかけるお金。監査や報告の仕組み、報酬制度の設計など</li><li>保証の費用：任された側が「裏切りません」と示すためにかけるお金。会計監査を自分から受ける、行動を縛る契約を結ぶなど</li><li>残る損失：見張っても約束させても防げずに残る価値の目減り</li></ul><p>大事なのは、3つの合計で考えることです。見張りを強めれば残る損失は減りますが、見張りの費用が増えます。最善の点は「ずれゼロ」ではなく、合計が最小になるところです。</p></div></div><div class="find"><div class="pt">株の一部を売ると、経営者の無駄遣いと怠けが増える</div><div class="dt"><p>100%オーナーにとって、会社のお金で買う1万円の贅沢は自分の1万円です。</p><p>ところが株の半分を売れば、その贅沢のうち自分の負担は5千円になります。残りの5千円は外部の株主が払います。自分の負担が減れば、贅沢を増やす動機が生まれます。</p><p>著者は、目に見える贅沢よりも深刻なものがあると指摘しています。それは、新しい儲け話を探す努力が減ることです。苦労は全部自分が背負うのに、成果は持ち分の分しか戻ってこないからです。持ち分が小さいほど、この傾向は強まります。</p></div></div><div class="find"><div class="pt">その損を最終的に負担するのは、株を売った経営者自身</div><div class="dt"><p>この論文の核心はここです。外部の投資家は、経営者が売却後に緩むことを予想します。だから、その分を差し引いた安い値段でしか株を買いません。</p><p>つまり、ずれによる損は株の売値の値下がりという形で、売った側の経営者に返ってきます。外部株主が一方的に搾取されるわけではありません。</p><p>このため経営者の側に、自分を縛る仕組みを進んで受け入れる動機が生まれます。監査や情報開示、報酬を業績に連動させることなどです。そうすれば株を高く売れるからです。</p></div></div><div class="find"><div class="pt">借入にも別のずれがあり、資金の集め方は両者の兼ね合いで決まる</div><div class="dt"><p>株を売らずに借入で資金を集めれば、上の問題は避けられそうに見えます。しかし借入には別のずれがあります。</p><ul class="blist"><li>危険な賭けへの傾き：成功すれば儲けは株主のもの、失敗すれば損は貸し手にかぶせられる。そのため、借金の多い会社ほど危ない事業を選びやすい</li><li>倒産に伴う費用：手続きや取引先離れで価値が失われる</li><li>貸し手の見張り：借入条件で縛ったり監視したりする手間</li></ul><p>貸し手もこれを予想して、金利や条件を厳しくします。著者は、株と借入それぞれのずれの費用を比べたうえで、合計が最も小さくなる組み合わせが選ばれると論じました。</p></div></div>
+
+  <h2>なぜそうなるのか</h2>
+  <p>この理屈の土台は、「得をする人と負担する人が分かれると、行動が変わる」という単純な事実です。</p><p>100%オーナーは、自分の行動の結果をすべて自分で受け止めます。だから贅沢も怠けも、自分の財布と相談して決めるしかありません。株を一部手放すと、行動の結果の一部が他人の財布に流れるようになります。</p><p>ここで著者が加えたひねりは、相手も合理的だという前提です。投資家や貸し手は「この人はこう緩むだろう」と先読みし、その分を値段に織り込みます。</p><p>その結果、ずれのツケは取引の時点で前払いの形になり、任される側に戻ってきます。</p><ul class="blist"><li>株の売値が下がる</li><li>借入の金利が上がる</li><li>厳しい条件がつく</li></ul><p>だからこそ、任される側にも、自分を縛る仕組みを用意する動機が生まれます。</p><p>この見方から、もう一つの主張が出てきます。会社とは一つの人格ではなく、株主・貸し手・経営者・社員・取引先との「契約の束」だということです。著者は、会社をこうした契約が結び合わされる結び目のような法的な仕組みとして捉えました。</p><p>そう見れば、会社の形やお金の集め方は、契約の束の中でずれの費用を最も小さくするように選ばれた結果だと説明できます。</p><p>著者はさらに、ずれの費用があるから株式会社は欠陥品だ、という批判にも反論しました。費用があっても、外部の資金を集める利点のほうが大きいから、この形が広く生き残っている。費用があること自体は非効率の証拠ではない、という主張です。</p>
+
+  <h2>どこまで言えるか</h2>
+  <div class="limits"><p>まず、この論文は理論であり、主張そのものをデータで確かめたものではありません。後年の実証研究では、経営者の持ち株比率と会社の価値の関係は単純ではないとされました。持ち株が増えると、規律が強まる面と、経営者の地位が固まって追い出しにくくなる面の両方が出ることが示されています。</p><p>次に、どの所有形態が選ばれるかは、業種や事業のリスクによっても左右されます。持ち株比率が原因で業績が結果、とは単純に言えないという批判もあります。</p><ul class="blist"><li>契約で決めきれない部分の扱いが弱い。これは後に「誰が最終的な決定権を持つか」を重視する理論で補われた</li><li>大株主や創業家が強い国では、ずれの中心が大株主と少数株主の間に移る</li><li>人を損得だけで動く存在とみる前提への批判がある。信頼して任せたほうが成果が出るという「受託者としての経営者」論や、この前提が経営者を疑う前提の制度を広め、かえって行動を悪くしたという批判</li></ul><p>さらに、株主の利益を軸に経営者を縛る考え方は、株価連動の報酬を広げました。しかしそれが短期志向や株価操作を招いたとも指摘されています。著者のジェンセン自身も、後に株価が割高なとき特有のずれの問題を論じています。</p></div>
+
+  <a class="src" href="https://scholar.google.com/scholar?q=Theory%20of%20the%20Firm%3A%20Managerial%20Behavior%2C%20Agency%20Costs%20and%20Ownership%20Structure" target="_blank" rel="noopener">Journal of Financial Economicsを探す ↗</a>
+  <footer>経営学の古典を実務家向けに解説したものです。解釈は本記事によるもので、原典の記述
+  そのものではありません。判断の前に原典をご確認ください。</footer>
+</div></div>
+<script>
+(function(){
+  var KEY = "lsm-favs-v1";
+  function load(){ try { return JSON.parse(localStorage.getItem(KEY)) || []; }
+                   catch(e){ return []; } }
+  function save(v){ try { localStorage.setItem(KEY, JSON.stringify(v)); } catch(e){} }
+  function has(url){ return load().some(function(x){ return x.url === url; }); }
+  function paint(b){
+    var on = has(b.dataset.url);
+    b.setAttribute("aria-pressed", on ? "true" : "false");
+    var ic = b.querySelector(".ic"), tx = b.querySelector(".tx");
+    if (ic) ic.textContent = on ? "\u2605" : "\u2606";
+    if (tx) tx.textContent = on ? "保存済み" : "あとで読む";
+    if (!ic && !tx) b.textContent = on ? "\u2605" : "\u2606";
+  }
+  function toggle(b){
+    var d = b.dataset, list = load(), i = list.findIndex(function(x){ return x.url === d.url; });
+    if (i >= 0) list.splice(i, 1);
+    else list.unshift({url:d.url, title:d.title||d.url, kind:d.kind||"", date:d.date||"",
+                       note:d.note||"", saved:new Date().toISOString().slice(0,10)});
+    save(list); paint(b);
+    if (window.renderFavs) window.renderFavs();
+  }
+  function wire(){
+    var bs = document.querySelectorAll("[data-fav]");
+    for (var i = 0; i < bs.length; i++){
+      (function(b){ paint(b); b.addEventListener("click", function(e){
+        e.preventDefault(); e.stopPropagation(); toggle(b); }); })(bs[i]);
+    }
+  }
+  window.favStore = {load:load, save:save, has:has};
+  if (document.readyState === "loading")
+    document.addEventListener("DOMContentLoaded", wire);
+  else wire();
+})();
+</script>
+</body>
+</html>
