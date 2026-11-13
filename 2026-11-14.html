@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>今週の論文 2026-11-14</title>
+<style>
+  :root{
+    --ground:#FBFAF8; --card:#FFFFFF; --line:#E8E4DC; --ink:#1E1C19; --muted:#6C665C;
+    --faint:#9A9389; --accent:#7A5C2E; --accent-bg:#F5EFE3;
+    --sans: system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{--ground:#14130F; --card:#1C1A16; --line:#2E2A24; --ink:#EDE9E1; --muted:#A79F93;
+      --faint:#7C7468; --accent:#C9A468; --accent-bg:#252017;}
+  }
+  :root[data-theme="light"]{--ground:#FBFAF8; --card:#FFFFFF; --line:#E8E4DC; --ink:#1E1C19;
+    --muted:#6C665C; --faint:#9A9389; --accent:#7A5C2E; --accent-bg:#F5EFE3;}
+  :root[data-theme="dark"]{--ground:#14130F; --card:#1C1A16; --line:#2E2A24; --ink:#EDE9E1;
+    --muted:#A79F93; --faint:#7C7468; --accent:#C9A468; --accent-bg:#252017;}
+  /* Phone-first, same scale as the weekly digest: 16px body, no justify (it opens rivers in
+     Japanese at narrow widths), generous side padding, tappable links. */
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0}
+  .wrap{background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:16px;
+    line-height:1.9;-webkit-font-smoothing:antialiased;padding:1.5rem 1.15rem 4rem;
+    min-height:100vh}
+  .inner{max-width:34rem;margin:0 auto}
+  .eyebrow{font-size:.72rem;letter-spacing:.16em;color:var(--faint);text-transform:uppercase;
+    margin:0 0 .5rem}
+  h1{font-size:1.34rem;font-weight:700;line-height:1.55;margin:0 0 .5rem;text-wrap:balance}
+  .meta{font-size:.84rem;color:var(--muted);margin:0 0 1.15rem;line-height:1.75}
+  .oneline{background:var(--accent-bg);border-left:3px solid var(--accent);
+    border-radius:0 10px 10px 0;padding:.9rem .95rem;font-size:1rem;font-weight:600;
+    line-height:1.8;margin:0 0 1.5rem}
+  .hook{font-size:1rem;color:var(--ink);margin:0 0 1.9rem}
+  /* 本文中の小見出し（h2 のセクション見出しより一段下） */
+  .sh{font-size:.95rem;font-weight:700;color:var(--ink);margin:1.4rem 0 .55rem;
+    padding-left:.6rem;border-left:3px solid var(--accent);line-height:1.6}
+  .sh:first-child{margin-top:0}
+  .blist{list-style:none;margin:0 0 1rem;padding:0;display:flex;flex-direction:column;
+    gap:.5rem}
+  .blist li{position:relative;padding-left:1.1rem;line-height:1.85;font-size:.97rem}
+  .blist li::before{content:"";position:absolute;left:.2rem;top:.78em;width:.32rem;
+    height:.32rem;border-radius:50%;background:var(--accent)}
+  .find .dt p, .app .ac p{margin:0 0 .6rem}
+  .find .dt p:last-child, .app .ac p:last-child{margin-bottom:0}
+  h2{font-size:.76rem;font-weight:700;letter-spacing:.14em;color:var(--accent);
+    margin:2rem 0 .8rem;padding-bottom:.45rem;border-bottom:1px solid var(--line)}
+  p{margin:0 0 .95rem;font-size:1rem}
+  p:last-child{margin-bottom:0}
+  .find{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:1rem .95rem;margin-bottom:.75rem}
+  .find .pt{font-size:1rem;font-weight:700;line-height:1.65;margin-bottom:.4rem}
+  .find .dt{font-size:.94rem;color:var(--muted);line-height:1.85}
+  .apply{display:flex;flex-direction:column;gap:.75rem}
+  .app{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:.95rem}
+  .app .sc{font-size:.74rem;font-weight:700;color:var(--accent);letter-spacing:.06em;
+    margin-bottom:.35rem}
+  .app .ac{font-size:.97rem;line-height:1.85}
+  .limits{background:var(--card);border:1px dashed var(--line);border-radius:12px;
+    padding:1rem .95rem;font-size:.95rem;color:var(--muted);line-height:1.85}
+  .src{display:inline-block;margin-top:1.7rem;font-size:.86rem;color:var(--muted);
+    text-decoration:none;border:1px solid var(--line);border-radius:9px;
+    padding:.6rem .8rem;line-height:1.5;word-break:break-word}
+  .src:hover{color:var(--accent);border-color:var(--accent)}
+  footer{margin-top:2.4rem;padding-top:1.1rem;border-top:1px solid var(--line);
+    font-size:.78rem;color:var(--faint);line-height:1.7}
+  a:focus-visible,.src:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+.fav{appearance:none;-webkit-appearance:none;cursor:pointer;display:inline-flex;
+  align-items:center;justify-content:center;gap:6px;min-width:44px;min-height:44px;
+  padding:0 12px;border-radius:999px;font:inherit;font-size:14px;font-weight:600;
+  background:var(--surface,#fff);color:var(--ink-mut,#6b7280);
+  border:1px solid var(--line,#e5e7eb);line-height:1;}
+.fav:hover{border-color:#f0b429;color:#b26b00;}
+.fav[aria-pressed="true"]{background:#fff8e6;border-color:#f0b429;color:#b26b00;}
+.fav .ic{font-size:16px;line-height:1;}
+.fav-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:14px 0 6px;}
+.fav-bar a.all{font-size:13.5px;color:var(--ink-mut,#6b7280);text-decoration:none;
+  min-height:44px;display:inline-flex;align-items:center;}
+.fav-bar a.all:hover{text-decoration:underline;}
+.fav-mini{appearance:none;-webkit-appearance:none;cursor:pointer;background:none;border:0;
+  padding:6px 8px;margin-left:2px;font-size:15px;line-height:1;color:#c3c8d0;
+  min-width:36px;min-height:36px;}
+.fav-mini[aria-pressed="true"]{color:#f0b429;}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="inner">
+  <p class="eyebrow">Paper of the week</p>
+  <h1>組織の決定は「問題・解・人・機会」の偶然の出会いで決まる</h1>
+  <p class="meta">Michael D. Cohen, James G. March, Johan P. Olsen / 1972 / 意思決定
+    <br>A Garbage Can Model of Organizational Choice</p>
+  <div class="fav-bar"><button class="fav" data-fav data-url="https://hacadr-cloud.github.io/paper-of-week/2026-11-14.html" data-title="組織の決定は「問題・解・人・機会」の偶然の出会いで決まる" data-kind="paper" data-date="2026-11-14" aria-pressed="false"><span class="ic">☆</span><span class="tx">あとで読む</span></button><a class="all" href="favorites.html">保存した記事を見る →</a></div>
+  <div class="oneline">組織の決定は、問題・解・人・機会がたまたま出会った時に生まれる</div>
+  <div class="hook"><p>当時の通説では、組織の決定は順番に進むものだった。まず問題を見つけ、次に選択肢を並べ、比べて最善を選ぶ。経済学も経営学も、程度の差はあれこの順番を前提にしていた。</p><p>この論文はその前提を崩した。現実の組織では、問題より先に解決策が転がっている。会議は問題を解くためではなく、たまたま開かれる。決まったことと、解決された問題が一致しないこともよくある。</p><p>数十年たっても引用され続けるのは、多くの人が職場で実感している「なぜこれがこう決まったのか説明できない」状態に、初めて筋の通った説明を与えたからだ。</p></div>
+
+  <h2>問い</h2>
+  <p>目的がはっきりせず、やり方の因果関係も分からず、関わる人が入れ替わり続ける組織で、物事はどうやって決まるのか。これがこの論文の問いである。</p><p>難しいのは、従来の理論がこうした組織を「合理性が欠けた失敗例」として扱い、説明の対象から外していたことだ。目的が曖昧なら、何が最善かという基準そのものが立たない。</p><p>それでも大学や役所は毎日何かを決めている。基準がないのに決定が出てくる仕組みを、「非合理」の一言で片づけずに説明する必要があった。</p>
+
+  <h2>どう組み立てられているか</h2>
+  <p>この論文の中心は、実在する組織から集めたデータではない。**コンピュータ上の模擬実験（シミュレーション）**である。論文には、そのプログラムの中身まで添付されている。</p><p>まず著者たちは、対象とする組織を「組織化された無秩序」と呼び、3つの性質で定義した。</p><ul class="blist"><li>好みがはっきりしない：やってみて初めて自分たちが何を望むか分かる</li><li>技術がはっきりしない：何をすれば何が起きるかを、試行錯誤でしか知らない</li><li>参加が流動的：人によって、時期によって、決定に割く時間が変わる</li></ul><p>次に、組織の中を4つの流れが互いにほぼ独立して動いていると仮定した。</p><ul class="blist"><li>問題：人々が気にしていること</li><li>解：誰かが持ち込みたい答えや案</li><li>参加者：出たり入ったりする人</li><li>選択の機会：会議・契約・採用など「決めるべき場面」</li></ul><p>模擬実験では、組織にかかる負荷の重さ、誰がどの場に参加できるかの決まり方、問題がどの場に入れるかの決まり方などを変えた。そのうえで、どんな決まり方がどれくらい起きるかを数えた。</p><p>実証の材料としては、主に大学の運営を事例に挙げている。豊かな大学と苦しい大学で決まり方がどう変わるかを、模擬実験の結果と照らして論じた。ただし、大学を体系的に調査したわけではない。</p>
+
+  <h2>主張の中身</h2>
+  <div class="find"><div class="pt">決定の多くは、問題を解かずに下されている</div><div class="dt"><p>模擬実験では、決定の決まり方が3種類に分かれた。</p><ul class="blist"><li>解決：問題に取り組んで決める</li><li>見過ごし：問題が入ってくる前に、さっさと決めてしまう</li><li>逃避：問題が別の場へ移り、残った場で決める</li></ul><p>問題をきちんと解いて決める「解決」は、多数派ではなかった。特に負荷が重いと、見過ごしと逃避が目立った。決定が出たことと、問題が片づいたことは別物だということになる。</p></div></div><div class="find"><div class="pt">選択の機会は、問題と解を放り込む「ゴミ箱」になる</div><div class="dt"><p>会議や決定の場は、本来の議題に関係なく、参加者が抱える問題や持ち込みたい案の投げ込み先になる。</p><p>たとえば、予算の会議で組織の将来像や人事の不満まで議論される。何が議論されるかは、その時に他にどんな場が開かれているかに左右される。</p><p>ある場の中身は、その場だけ見ても分からない。同じ時期に開かれている他の場との関係で決まる。</p></div></div><div class="find"><div class="pt">負荷が重くなるほど、問題は解かれにくくなる</div><div class="dt"><p>組織が抱える問題の量に対し、人が割ける時間が少ないと、決まり方が変わる。</p><ul class="blist"><li>問題が場から場へ渡り歩く</li><li>決定に時間がかかる</li><li>問題を解かないまま決まる割合が増える</li></ul><p>著者たちは、予算が苦しくなった大学でこうした状態が起きやすいと論じた。豊かな時期には目立たなかった混乱が、逆境で表に出るという見立てである。</p></div></div><div class="find"><div class="pt">問題と人は、同じ場を一緒に渡り歩く</div><div class="dt"><p>模擬実験では、問題と参加者が連れ立って場から場へ移る傾向が見られた。</p><p>ある人が気にしている問題は、その人が行く場に一緒についていく。結果として、熱心な人が集まる場に問題が集中する。その場は決まりにくくなる。</p><p>一方で、誰も関心を持たない場は、問題が入らないまま静かに決まってしまう。</p></div></div><div class="find"><div class="pt">重要な問題ほど解かれやすく、重要な決定ほど問題を解かない</div><div class="dt"><p>論文はこの2つを区別している。</p><ul class="blist"><li>重要度の高い問題：優先して扱われるため、解決されやすい</li><li>重要度の高い決定の場：多くの問題が流れ込むため、見過ごしや逃避で決まりやすい</li></ul><p>つまり、重大な会議ほど、問題を本当に解いた結果として決まるとは限らない。直感に反するが、模擬実験の構造から出てくる結論である。</p></div></div>
+
+  <h2>なぜそうなるのか</h2>
+  <p>中心にある理屈は、4つの流れが「切り離されている」ことだ。問題・解・人・機会は、それぞれ別の理由で、別の時刻に組織へ入ってくる。</p><p>合理的なモデルでは、問題があるから案を探し、案が揃ったから決める。つまり、流れどうしが原因と結果でつながっている。この論文は、そのつながりを外した。</p><p>そうすると、何が決まるかは「何が同じ時刻に同じ場にいたか」でほぼ決まる。</p><ul class="blist"><li>解は、問題が来るのを待っている</li><li>問題は、扱ってくれる場を探している</li><li>人は、限られた時間をどこに使うか選んでいる</li><li>機会は、来る者を受け入れる</li></ul><p>もう一つの鍵は、決定に要る「手間の量」である。場に入った問題が多いほど、決めるために必要な手間が増える。参加者が割く時間がそれに届けば決まる。届かなければ決まらない。</p><p>だから、問題が入る前に決めてしまえば手間は少なくて済む。これが「見過ごし」だ。問題が他の場へ出ていけば、残った場の手間が減って決まる。これが「逃避」だ。</p><p>この見方では、決定の時期と順番が中身を左右する。誰が正しいかより、誰がいつそこにいたかが効いてくる。曖昧さの大きい組織ほど、この偶然の組み合わせが決定を支配する。</p>
+
+  <h2>どこまで言えるか</h2>
+  <div class="limits"><p>まず、この論文の根拠は模擬実験であって、現実の組織を測ったものではない。設定した前提を変えれば結果も変わる。大学の事例は例示であり、検証ではない。</p><p>対象も限られている。目的が明確で、手順が確立し、メンバーが安定した組織には当てはまりにくい。著者たち自身も、組織の一部や一時期に現れる性質として位置づけている。</p><p>後年の最も強い批判は、2001年のBendor・Moe・Shottsによるものだ。論文の言葉による主張と、プログラムの中身が一致していないと指摘した。プログラムには序列や参加制限がかなり組み込まれていて、実際は「無秩序」ではない。言葉で語られた結論の一部は、模擬実験から導かれていないという。Olsenはこれに反論したが、論争は決着していない。</p><p>一方で、考え方そのものは発展した。Kingdonの政策決定論（政策の窓）は、この発想を政府の議題設定に応用した。後には、条件を変えて模擬実験を作り直す研究も出ている。</p><p>総じて、厳密な予測の道具というより、現実を見るための視点として生き残った古典である。</p></div>
+
+  <a class="src" href="https://scholar.google.com/scholar?q=A%20Garbage%20Can%20Model%20of%20Organizational%20Choice" target="_blank" rel="noopener">Administrative Science Quarterlyを探す ↗</a>
+  <footer>経営学の古典を実務家向けに解説したものです。解釈は本記事によるもので、原典の記述
+  そのものではありません。判断の前に原典をご確認ください。</footer>
+</div></div>
+<script>
+(function(){
+  var KEY = "lsm-favs-v1";
+  function load(){ try { return JSON.parse(localStorage.getItem(KEY)) || []; }
+                   catch(e){ return []; } }
+  function save(v){ try { localStorage.setItem(KEY, JSON.stringify(v)); } catch(e){} }
+  function has(url){ return load().some(function(x){ return x.url === url; }); }
+  function paint(b){
+    var on = has(b.dataset.url);
+    b.setAttribute("aria-pressed", on ? "true" : "false");
+    var ic = b.querySelector(".ic"), tx = b.querySelector(".tx");
+    if (ic) ic.textContent = on ? "\u2605" : "\u2606";
+    if (tx) tx.textContent = on ? "保存済み" : "あとで読む";
+    if (!ic && !tx) b.textContent = on ? "\u2605" : "\u2606";
+  }
+  function toggle(b){
+    var d = b.dataset, list = load(), i = list.findIndex(function(x){ return x.url === d.url; });
+    if (i >= 0) list.splice(i, 1);
+    else list.unshift({url:d.url, title:d.title||d.url, kind:d.kind||"", date:d.date||"",
+                       note:d.note||"", saved:new Date().toISOString().slice(0,10)});
+    save(list); paint(b);
+    if (window.renderFavs) window.renderFavs();
+  }
+  function wire(){
+    var bs = document.querySelectorAll("[data-fav]");
+    for (var i = 0; i < bs.length; i++){
+      (function(b){ paint(b); b.addEventListener("click", function(e){
+        e.preventDefault(); e.stopPropagation(); toggle(b); }); })(bs[i]);
+    }
+  }
+  window.favStore = {load:load, save:save, has:has};
+  if (document.readyState === "loading")
+    document.addEventListener("DOMContentLoaded", wire);
+  else wire();
+})();
+</script>
+</body>
+</html>
